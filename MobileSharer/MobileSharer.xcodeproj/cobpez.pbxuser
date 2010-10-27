@@ -249,6 +249,10 @@
 			3293A0221278B5F200B07DD5 /* PBXTextBookmark */ = 3293A0221278B5F200B07DD5 /* PBXTextBookmark */;
 			3293A0281278B70200B07DD5 /* PBXTextBookmark */ = 3293A0281278B70200B07DD5 /* PBXTextBookmark */;
 			3293A0291278B70200B07DD5 /* PBXTextBookmark */ = 3293A0291278B70200B07DD5 /* PBXTextBookmark */;
+			3293A0351278B8D500B07DD5 /* PBXTextBookmark */ = 3293A0351278B8D500B07DD5 /* PBXTextBookmark */;
+			3293A0361278B8D500B07DD5 /* PBXTextBookmark */ = 3293A0361278B8D500B07DD5 /* PBXTextBookmark */;
+			3293A0371278B8D500B07DD5 /* PBXTextBookmark */ = 3293A0371278B8D500B07DD5 /* PBXTextBookmark */;
+			3293A0381278B8D500B07DD5 /* PBXTextBookmark */ = 3293A0381278B8D500B07DD5 /* PBXTextBookmark */;
 			32A2837B1277565400F8FEC1 = 32A2837B1277565400F8FEC1 /* PBXTextBookmark */;
 			32A2839D1277574100F8FEC1 = 32A2839D1277574100F8FEC1 /* PBXTextBookmark */;
 			32A283AF1277585600F8FEC1 = 32A283AF1277585600F8FEC1 /* PBXTextBookmark */;
@@ -289,7 +293,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1151, 1781}}";
 			sepNavSelRange = "{1224, 0}";
-			sepNavVisRange = "{0, 1239}";
+			sepNavVisRange = "{0, 1262}";
 			sepNavWindowFrame = "{{15, 370}, {1210, 803}}";
 		};
 	};
@@ -469,8 +473,8 @@
 	};
 	321F3BD1126CF6D2008473C8 /* AppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1103, 832}}";
-			sepNavSelRange = "{1468, 23}";
+			sepNavIntBoundsRect = "{{0, 0}, {1103, 806}}";
+			sepNavSelRange = "{1580, 0}";
 			sepNavVisRange = "{219, 2249}";
 			sepNavWindowFrame = "{{220, 368}, {1210, 803}}";
 		};
@@ -513,7 +517,7 @@
 	321F3BD7126CF6D2008473C8 /* TTFacebookSearchFeedModel.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1103, 1378}}";
-			sepNavSelRange = "{2389, 0}";
+			sepNavSelRange = "{2819, 0}";
 			sepNavVisRange = "{1731, 2076}";
 		};
 	};
@@ -1969,6 +1973,46 @@
 		rLoc = 1224;
 		rType = 0;
 		vrLen = 1239;
+		vrLoc = 0;
+	};
+	3293A0351278B8D500B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD7126CF6D2008473C8 /* TTFacebookSearchFeedModel.m */;
+		name = "TTFacebookSearchFeedModel.m: 76";
+		rLen = 0;
+		rLoc = 2819;
+		rType = 0;
+		vrLen = 2076;
+		vrLoc = 1731;
+	};
+	3293A0361278B8D500B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD1126CF6D2008473C8 /* AppDelegate.m */;
+		name = "AppDelegate.m: 34";
+		rLen = 23;
+		rLoc = 1468;
+		rType = 0;
+		vrLen = 2141;
+		vrLoc = 219;
+	};
+	3293A0371278B8D500B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD1126CF6D2008473C8 /* AppDelegate.m */;
+		name = "AppDelegate.m: 37";
+		rLen = 0;
+		rLoc = 1580;
+		rType = 0;
+		vrLen = 2249;
+		vrLoc = 219;
+	};
+	3293A0381278B8D500B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3215B0511272E15C005580D5 /* FacebookJanitor.m */;
+		name = "FacebookJanitor.m: 52";
+		rLen = 0;
+		rLoc = 1224;
+		rType = 0;
+		vrLen = 1262;
 		vrLoc = 0;
 	};
 	32A2837B1277565400F8FEC1 /* PBXTextBookmark */ = {
