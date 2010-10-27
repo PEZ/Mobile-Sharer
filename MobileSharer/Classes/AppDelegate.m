@@ -15,10 +15,8 @@
 //
 
 #import "AppDelegate.h"
-
 #import "TTFacebookSearchFeedViewController.h"
-
-//NSString* kAppRootURLPath = @"tt://root";
+#import "LoginViewController.h"
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,20 +31,21 @@
   [styleSheet addStyleSheetFromDisk:TTPathForBundleResource(@"stylesheet.css")];
   [TTStyleSheet setGlobalStyleSheet:styleSheet];
   TT_RELEASE_SAFELY(styleSheet);
-
   TTNavigator* navigator = [TTNavigator navigator];
   navigator.persistenceMode = TTNavigatorPersistenceModeNone;
-
+  
   TTURLMap* map = navigator.URLMap;
-
+  
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:kAppRootURLPath toViewController:[TTFacebookSearchFeedViewController class]];
-
+  [map from:kAppLoginURLPath toViewController:[LoginViewController class]];
   if (![navigator restoreViewControllers]) {
-    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppLoginURLPath]];
   }
 }
 
+#pragma mark -
+#pragma mark URL opening
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {

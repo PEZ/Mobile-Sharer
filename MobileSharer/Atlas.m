@@ -17,4 +17,4 @@
 #import "Atlas.h"
 
 NSString* kAppRootURLPath = @"tt://root";
-
+NSString* kAppLoginURLPath = @"ms://login";

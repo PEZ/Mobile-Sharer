@@ -15,13 +15,13 @@
 //
 
 #import "TTFacebookSearchFeedModel.h"
-
 #import "TTFacebookPost.h"
-
+#import "FacebookJanitor.h"
 #import <extThree20JSON/extThree20JSON.h>
 
-static NSString* kFacebookSearchFeedFormat = @"http://graph.facebook.com/search?q=%@&type=post";
 
+//static NSString* kFacebookSearchFeedFormat = @"http://graph.facebook.com/search?q=%@&type=post";
+static NSString* kFacebookSearchFeedFormat = @"me/home";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,23 +53,23 @@ static NSString* kFacebookSearchFeedFormat = @"http://graph.facebook.com/search?
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading && TTIsStringWithAnyText(_searchQuery)) {
-    NSString* url = [NSString stringWithFormat:kFacebookSearchFeedFormat, _searchQuery];
-
+    FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:kFacebookSearchFeedFormat andDelegate:nil];
+    NSString* url = [fbRequest getGetURL];
+    
     TTURLRequest* request = [TTURLRequest
                              requestWithURL: url
                              delegate: self];
-
+    
     request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;
-    request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
+    //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
 
     TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
     request.response = response;
     TT_RELEASE_SAFELY(response);
-
+    
     [request send];
   }
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
@@ -107,7 +107,6 @@ static NSString* kFacebookSearchFeedFormat = @"http://graph.facebook.com/search?
 
   [super requestDidFinishLoad:request];
 }
-
 
 @end
 
