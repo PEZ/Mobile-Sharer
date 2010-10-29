@@ -22,10 +22,10 @@
 		321F3B1E126CF005008473C8 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3AEB126CEFF0008473C8 /* libThree20UICommon.a */; };
 		321F3B1F126CF008008473C8 /* libThree20UINavigator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3AFD126CEFF0008473C8 /* libThree20UINavigator.a */; };
 		321F3BDA126CF6D2008473C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD1126CF6D2008473C8 /* AppDelegate.m */; };
-		321F3BDB126CF6D2008473C8 /* TTFacebookPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD3126CF6D2008473C8 /* TTFacebookPost.m */; };
-		321F3BDC126CF6D2008473C8 /* TTFacebookSearchFeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD5126CF6D2008473C8 /* TTFacebookSearchFeedDataSource.m */; };
-		321F3BDD126CF6D2008473C8 /* TTFacebookSearchFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD7126CF6D2008473C8 /* TTFacebookSearchFeedModel.m */; };
-		321F3BDE126CF6D2008473C8 /* TTFacebookSearchFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD9126CF6D2008473C8 /* TTFacebookSearchFeedViewController.m */; };
+		321F3BDB126CF6D2008473C8 /* FeedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD3126CF6D2008473C8 /* FeedPost.m */; };
+		321F3BDC126CF6D2008473C8 /* FeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD5126CF6D2008473C8 /* FeedDataSource.m */; };
+		321F3BDD126CF6D2008473C8 /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD7126CF6D2008473C8 /* FeedModel.m */; };
+		321F3BDE126CF6D2008473C8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD9126CF6D2008473C8 /* FeedViewController.m */; };
 		321F3BEB126CF72F008473C8 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3B8C126CF5B5008473C8 /* libextThree20JSON+YAJL.a */; };
 		321F3BEC126CF731008473C8 /* libextThree20CSSStyle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3B9F126CF5B5008473C8 /* libextThree20CSSStyle.a */; };
 		321F3CED126D038C008473C8 /* stylesheet.css in Resources */ = {isa = PBXBuildFile; fileRef = 321F3CEC126D038C008473C8 /* stylesheet.css */; };
@@ -535,14 +535,14 @@
 		321F3BCE126CF673008473C8 /* Atlas.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; name = Atlas.m; path = ../Atlas.m; sourceTree = "<group>"; };
 		321F3BD0126CF6D2008473C8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		321F3BD1126CF6D2008473C8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		321F3BD2126CF6D2008473C8 /* TTFacebookPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTFacebookPost.h; sourceTree = "<group>"; };
-		321F3BD3126CF6D2008473C8 /* TTFacebookPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTFacebookPost.m; sourceTree = "<group>"; };
-		321F3BD4126CF6D2008473C8 /* TTFacebookSearchFeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTFacebookSearchFeedDataSource.h; sourceTree = "<group>"; };
-		321F3BD5126CF6D2008473C8 /* TTFacebookSearchFeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTFacebookSearchFeedDataSource.m; sourceTree = "<group>"; };
-		321F3BD6126CF6D2008473C8 /* TTFacebookSearchFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTFacebookSearchFeedModel.h; sourceTree = "<group>"; };
-		321F3BD7126CF6D2008473C8 /* TTFacebookSearchFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTFacebookSearchFeedModel.m; sourceTree = "<group>"; };
-		321F3BD8126CF6D2008473C8 /* TTFacebookSearchFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTFacebookSearchFeedViewController.h; sourceTree = "<group>"; };
-		321F3BD9126CF6D2008473C8 /* TTFacebookSearchFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTFacebookSearchFeedViewController.m; sourceTree = "<group>"; };
+		321F3BD2126CF6D2008473C8 /* FeedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPost.h; sourceTree = "<group>"; };
+		321F3BD3126CF6D2008473C8 /* FeedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedPost.m; sourceTree = "<group>"; };
+		321F3BD4126CF6D2008473C8 /* FeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDataSource.h; sourceTree = "<group>"; };
+		321F3BD5126CF6D2008473C8 /* FeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDataSource.m; sourceTree = "<group>"; };
+		321F3BD6126CF6D2008473C8 /* FeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedModel.h; sourceTree = "<group>"; };
+		321F3BD7126CF6D2008473C8 /* FeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedModel.m; sourceTree = "<group>"; };
+		321F3BD8126CF6D2008473C8 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		321F3BD9126CF6D2008473C8 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		321F3CEC126D038C008473C8 /* stylesheet.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = stylesheet.css; path = ../stylesheet.css; sourceTree = SOURCE_ROOT; };
 		3288C8E9126E21F000BF1E3C /* extThree20CSSStyle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = extThree20CSSStyle.bundle; path = ../../three20/src/extThree20CSSStyle/Resources/extThree20CSSStyle.bundle; sourceTree = SOURCE_ROOT; };
 		3288C944126E2F1800BF1E3C /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = "../../facebook-ios-sdk/src/FBDialog.bundle"; sourceTree = SOURCE_ROOT; };
@@ -791,14 +791,14 @@
 				321F3BCE126CF673008473C8 /* Atlas.m */,
 				321F3BD0126CF6D2008473C8 /* AppDelegate.h */,
 				321F3BD1126CF6D2008473C8 /* AppDelegate.m */,
-				321F3BD2126CF6D2008473C8 /* TTFacebookPost.h */,
-				321F3BD3126CF6D2008473C8 /* TTFacebookPost.m */,
-				321F3BD4126CF6D2008473C8 /* TTFacebookSearchFeedDataSource.h */,
-				321F3BD5126CF6D2008473C8 /* TTFacebookSearchFeedDataSource.m */,
-				321F3BD6126CF6D2008473C8 /* TTFacebookSearchFeedModel.h */,
-				321F3BD7126CF6D2008473C8 /* TTFacebookSearchFeedModel.m */,
-				321F3BD8126CF6D2008473C8 /* TTFacebookSearchFeedViewController.h */,
-				321F3BD9126CF6D2008473C8 /* TTFacebookSearchFeedViewController.m */,
+				321F3BD2126CF6D2008473C8 /* FeedPost.h */,
+				321F3BD3126CF6D2008473C8 /* FeedPost.m */,
+				321F3BD4126CF6D2008473C8 /* FeedDataSource.h */,
+				321F3BD5126CF6D2008473C8 /* FeedDataSource.m */,
+				321F3BD6126CF6D2008473C8 /* FeedModel.h */,
+				321F3BD7126CF6D2008473C8 /* FeedModel.m */,
+				321F3BD8126CF6D2008473C8 /* FeedViewController.h */,
+				321F3BD9126CF6D2008473C8 /* FeedViewController.m */,
 				3215B24912747E01005580D5 /* LoginViewController.h */,
 				3215B24A12747E01005580D5 /* LoginViewController.m */,
 			);
@@ -1395,10 +1395,10 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				28C3AD8A0F43EF2300507BA6 /* MobileSharer.xcdatamodel in Sources */,
 				321F3BDA126CF6D2008473C8 /* AppDelegate.m in Sources */,
-				321F3BDB126CF6D2008473C8 /* TTFacebookPost.m in Sources */,
-				321F3BDC126CF6D2008473C8 /* TTFacebookSearchFeedDataSource.m in Sources */,
-				321F3BDD126CF6D2008473C8 /* TTFacebookSearchFeedModel.m in Sources */,
-				321F3BDE126CF6D2008473C8 /* TTFacebookSearchFeedViewController.m in Sources */,
+				321F3BDB126CF6D2008473C8 /* FeedPost.m in Sources */,
+				321F3BDC126CF6D2008473C8 /* FeedDataSource.m in Sources */,
+				321F3BDD126CF6D2008473C8 /* FeedModel.m in Sources */,
+				321F3BDE126CF6D2008473C8 /* FeedViewController.m in Sources */,
 				3288C8D9126E216300BF1E3C /* Atlas.m in Sources */,
 				3288C95D126E2F1800BF1E3C /* NSObject+SBJSON.m in Sources */,
 				3288C95E126E2F1800BF1E3C /* NSString+SBJSON.m in Sources */,

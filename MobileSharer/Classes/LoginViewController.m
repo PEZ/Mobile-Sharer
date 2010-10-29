@@ -29,7 +29,7 @@
 
 -(void) fbjDidLogin {
   NSLog(@"Did login");
-  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:kAppRootURLPath]];
+  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:[Atlas toFeedURLPath:@"me" name:@"My Feed"]]];
 }
 
 - (void)fbjDidNotLogin:(BOOL)cancelled {

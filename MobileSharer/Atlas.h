@@ -16,5 +16,13 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString* kAppRootURLPath;
+extern NSString* kFeedURLPathPrefix;
+extern NSString* kFeedURLPath;
 extern NSString* kAppLoginURLPath;
+
+@interface Atlas : NSObject {
+}
+
++ (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
+
+@end

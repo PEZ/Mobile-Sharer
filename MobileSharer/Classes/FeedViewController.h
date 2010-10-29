@@ -14,29 +14,15 @@
 // limitations under the License.
 //
 
-#import "TTFacebookPost.h"
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-@implementation TTFacebookPost
-
-@synthesize created = _created;
-@synthesize postId  = _postId;
-@synthesize text    = _text;
-@synthesize name    = _name;
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
-  TT_RELEASE_SAFELY(_created);
-  TT_RELEASE_SAFELY(_postId);
-  TT_RELEASE_SAFELY(_text);
-  TT_RELEASE_SAFELY(_name);
-
-  [super dealloc];
+@interface FeedViewController : TTTableViewController {
+  NSString* _feedId;
 }
 
+@property (nonatomic, copy)   NSString* feedId;
+
+- (id)initWithFBFeedIdAndName:(NSString *)feedId name:(NSString *)name;
 
 @end

@@ -14,16 +14,17 @@
 // limitations under the License.
 //
 
-@interface TTFacebookPost : NSObject {
-  NSDate*   _created;
-  NSNumber* _postId;
-  NSString* _text;
-  NSString* _name;
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+@interface FeedModel : TTURLRequestModel {
+  NSString* _searchQuery;
+  NSArray*  _posts;
 }
 
-@property (nonatomic, retain) NSDate*   created;
-@property (nonatomic, retain) NSNumber* postId;
-@property (nonatomic, copy)   NSString* text;
-@property (nonatomic, copy)   NSString* name;
+@property (nonatomic, copy)     NSString* searchQuery;
+@property (nonatomic, readonly) NSArray*  posts;
+
+- (id)initWithSearchQuery:(NSString*)searchQuery;
 
 @end

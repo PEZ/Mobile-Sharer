@@ -14,19 +14,19 @@
 // limitations under the License.
 //
 
-#import "TTFacebookSearchFeedModel.h"
-#import "TTFacebookPost.h"
+#import "FeedModel.h"
+#import "FeedPost.h"
 #import "FacebookJanitor.h"
 #import <extThree20JSON/extThree20JSON.h>
 
 
 //static NSString* kFacebookSearchFeedFormat = @"http://graph.facebook.com/search?q=%@&type=post";
-static NSString* kFacebookSearchFeedFormat = @"me/home";
+//static NSString* kFacebookSearchFeedFormat = @"me/home?type=full";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-@implementation TTFacebookSearchFeedModel
+@implementation FeedModel
 
 @synthesize searchQuery = _searchQuery;
 @synthesize posts      = _posts;
@@ -53,7 +53,9 @@ static NSString* kFacebookSearchFeedFormat = @"me/home";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading && TTIsStringWithAnyText(_searchQuery)) {
-    FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:kFacebookSearchFeedFormat andDelegate:nil];
+    NSString* path = [NSString stringWithFormat:@"%@/%@", self.searchQuery, [self.searchQuery isEqual:@"me"] ? @"home" : @"feed"];
+    NSLog(path);
+    FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
     NSString* url = [fbRequest getGetURL];
     
     TTURLRequest* request = [TTURLRequest
@@ -89,14 +91,24 @@ static NSString* kFacebookSearchFeedFormat = @"me/home";
   NSMutableArray* posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
 
   for (NSDictionary* entry in entries) {
-    TTFacebookPost* post = [[TTFacebookPost alloc] init];
+    FeedPost* post = [[FeedPost alloc] init];
 
     NSDate* date = [dateFormatter dateFromString:[entry objectForKey:@"created_time"]];
     post.created = date;
     post.postId = [NSNumber numberWithLongLong:
                      [[entry objectForKey:@"id"] longLongValue]];
-    post.text = [entry objectForKey:@"message"];
-    post.name = [[entry objectForKey:@"from"] objectForKey:@"name"];
+    post.message = [entry objectForKey:@"message"];
+    post.picture = [entry objectForKey:@"picture"];
+    if ([entry objectForKey:@"from"] != [NSNull null]) {
+      post.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
+      post.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
+      post.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
+    }
+    else {
+      post.fromName = @"Facebook User";
+      post.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
+    }
+
 
     [posts addObject:post];
     TT_RELEASE_SAFELY(post);

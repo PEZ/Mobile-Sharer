@@ -1,9 +1,10 @@
-#import "TTFacebookSearchFeedViewController.h"
+#import "FeedViewController.h"
 
-#import "TTFacebookSearchFeedDataSource.h"
+#import "FeedDataSource.h"
 
-@implementation TTFacebookSearchFeedViewController
+@implementation FeedViewController
 
+@synthesize feedId = _feedId;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -15,11 +16,19 @@
   return self;
 }
 
+- (id)initWithFBFeedIdAndName:(NSString *)feedId name:(NSString *)name {
+  if (self = [super initWithNibName:nil bundle:nil]) {
+    self.feedId = feedId;
+    self.title = name;
+    self.variableHeightRows = YES;
+  }
+  return self;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-  self.dataSource = [[[TTFacebookSearchFeedDataSource alloc]
-                      initWithSearchQuery:@"three20"] autorelease];
+  self.dataSource = [[[FeedDataSource alloc]
+                      initWithSearchQuery:self.feedId] autorelease];
 }
 
 
