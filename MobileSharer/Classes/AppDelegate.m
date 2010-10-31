@@ -1,5 +1,6 @@
 
 #import "AppDelegate.h"
+#import "DefaultStyleSheet.h"
 #import "FeedViewController.h"
 #import "LoginViewController.h"
 
@@ -7,16 +8,14 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-  TTDefaultCSSStyleSheet* styleSheet = [[TTDefaultCSSStyleSheet alloc] init];
-  [styleSheet addStyleSheetFromDisk:TTPathForBundleResource(@"stylesheet.css")];
-  [TTStyleSheet setGlobalStyleSheet:styleSheet];
-  TT_RELEASE_SAFELY(styleSheet);
+  [TTStyleSheet setGlobalStyleSheet:[[[DefaultStyleSheet 
+                                       alloc] init] autorelease]];
   TTNavigator* navigator = [TTNavigator navigator];
   navigator.persistenceMode = TTNavigatorPersistenceModeNone;
   
   TTURLMap* map = navigator.URLMap;
   
-  //[map from:@"*" toViewController:[TTWebController class]];
+  [map from:@"*" toViewController:[TTWebController class]];
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
   [map from:kAppLoginURLPath toViewController:[LoginViewController class]];
   if (![navigator restoreViewControllers]) {

@@ -1,5 +1,7 @@
 #import "FeedDataSource.h"
 
+#import "FeedPostTableCell.h"
+#import "FeedPostItem.h"
 #import "FeedModel.h"
 #import "FeedPost.h"
 
@@ -34,16 +36,27 @@
   NSMutableArray* items = [[NSMutableArray alloc] init];
 
   for (FeedPost* post in _searchFeedModel.posts) {
-    [items addObject:[TTTableMessageItem itemWithTitle: post.fromName
-                                               caption: nil
-                                                  text: post.message
-                                             timestamp: post.created
-                                              imageURL: post.fromAvatar
-                                                   URL: post.fromId != nil ? [Atlas toFeedURLPath:post.fromId name:post.fromName] : nil]];
+    [items addObject:[FeedPostItem itemWithPost: post
+                                         andURL: post.fromId != nil ? [Atlas toFeedURLPath:post.fromId name:post.fromName] : nil]];
   }
 
   self.items = items;
   TT_RELEASE_SAFELY(items);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTTableViewDataSource
+
+- (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
+	if ([object isKindOfClass:[FeedPostItem class]]) {
+		return [FeedPostTableCell class];
+	} else {
+		return [super tableView:tableView cellClassForObject:object];
+	}
+}
+
+- (void)tableView:(UITableView*)tableView prepareCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath {
+	cell.accessoryType = UITableViewCellAccessoryNone;
 }
 
 - (NSString*)titleForLoading:(BOOL)reloading {

@@ -54,7 +54,6 @@
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading && TTIsStringWithAnyText(_searchQuery)) {
     NSString* path = [NSString stringWithFormat:@"%@/%@", self.searchQuery, [self.searchQuery isEqual:@"me"] ? @"home" : @"feed"];
-    NSLog(path);
     FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
     NSString* url = [fbRequest getGetURL];
     
@@ -108,6 +107,11 @@
       post.fromName = @"Facebook User";
       post.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
     }
+    post.likes = [entry objectForKey:@"likes"];
+    if ([entry objectForKey:@"comments"] != [NSNull null]) {
+      post.commentCount = [[entry objectForKey:@"comments"] objectForKey:@"count"];
+    }
+    post.icon = [entry objectForKey:@"icon"];
 
 
     [posts addObject:post];
