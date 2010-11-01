@@ -11,9 +11,9 @@
   NSString* _picture;
   NSString* _fromAvatar;
   NSString* _link;
-  NSString* _linkName;
-  NSString* _linkCaption;
-  NSString* _linkDescription;
+  NSString* _linkURL;
+  NSString* _linkTitle;
+  NSString* _linkText;
   NSString* _source;
   NSString* _icon;
   NSNumber* _likes;
@@ -31,9 +31,9 @@
 @property (nonatomic, copy)   NSString* picture;
 @property (nonatomic, copy)   NSString* fromAvatar;
 @property (nonatomic, copy)   NSString* link;
-@property (nonatomic, copy)   NSString* linkName;
-@property (nonatomic, copy)   NSString* linkCaption;
-@property (nonatomic, copy)   NSString* linkDescription;
+@property (nonatomic, copy)   NSString* linkURL;
+@property (nonatomic, copy)   NSString* linkTitle;
+@property (nonatomic, copy)   NSString* linkText;
 @property (nonatomic, copy)   NSString* source;
 @property (nonatomic, copy)   NSString* icon;
 @property (nonatomic, retain) NSNumber* likes;

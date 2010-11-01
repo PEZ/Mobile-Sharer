@@ -25,6 +25,10 @@
 static const CGFloat    kDiscloureWidth   = 20;
 static const CGFloat    kDefaultMessageImageWidth   = 34;
 static const CGFloat    kDefaultMessageImageHeight  = 34;
+static const CGFloat    kIconImageWidth   = 15;
+static const CGFloat    kIconImageHeight  = 16;
+static const CGFloat    kPictureImageWidth   = 15;
+static const CGFloat    kPictureImageHeight  = 16;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,6 +55,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34;
   TT_RELEASE_SAFELY(_titleLabel);
   TT_RELEASE_SAFELY(_timestampLabel);
   TT_RELEASE_SAFELY(_iconImageView);
+  TT_RELEASE_SAFELY(_pictureImageView);
   TT_RELEASE_SAFELY(_linkTextLabel);
   TT_RELEASE_SAFELY(_countsLabel);
 
@@ -110,6 +115,8 @@ static const CGFloat    kDefaultMessageImageHeight  = 34;
   _titleLabel.text = nil;
   _timestampLabel.text = nil;
   [_iconImageView unsetImage];
+  [_pictureImageView unsetImage];
+  self.detailTextLabel.text = nil;
   _linkTextLabel.text = nil;
   _countsLabel.text = nil;
 }
@@ -186,6 +193,7 @@ static const CGFloat    kDefaultMessageImageHeight  = 34;
     _linkTextLabel.backgroundColor = self.backgroundColor;
     _countsLabel.backgroundColor = self.backgroundColor;
     _iconImageView.backgroundColor = self.backgroundColor;
+    _pictureImageView.backgroundColor = self.backgroundColor;
   }
 }
 
@@ -238,6 +246,15 @@ static const CGFloat    kDefaultMessageImageHeight  = 34;
     if (item.icon) {
       self.iconImageView.urlPath = item.icon;
     }
+    if (item.picture) {
+      self.pictureImageView.urlPath = item.picture;
+    }
+    if (item.linkTitle) {
+      self.detailTextLabel.text = item.linkTitle;
+    }
+    if (item.linkText) {
+      self.linkTextLabel.text = item.linkText;
+    }    
   }
 }
 
@@ -279,6 +296,14 @@ static const CGFloat    kDefaultMessageImageHeight  = 34;
   return _iconImageView;
 }
 
+- (TTImageView*)pictureImageView {
+  if (!_pictureImageView) {
+    _pictureImageView = [[TTImageView alloc] init];
+    [self.contentView addSubview:_pictureImageView];
+  }
+  return _pictureImageView;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UILabel*)titleLabel {
   if (!_titleLabel) {
@@ -311,8 +336,6 @@ static const CGFloat    kDefaultMessageImageHeight  = 34;
 - (TTImageView*)imageView2 {
   if (!_imageView2) {
     _imageView2 = [[TTImageView alloc] init];
-    //    _imageView2.defaultImage = TTSTYLEVAR(personImageSmall);
-    //    _imageView2.style = TTSTYLE(threadActorIcon);
     [self.contentView addSubview:_imageView2];
   }
   return _imageView2;

@@ -22,6 +22,10 @@
 @synthesize likes        = _likes;
 @synthesize commentCount = _commentCount;
 @synthesize icon         = _icon;
+@synthesize picture      = _picture;
+@synthesize linkURL      = _linkURL;
+@synthesize linkTitle    = _linkTitle;
+@synthesize linkText     = _linkText;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +35,11 @@
   TT_RELEASE_SAFELY(_likes);
   TT_RELEASE_SAFELY(_commentCount);
   TT_RELEASE_SAFELY(_icon);
-  
+  TT_RELEASE_SAFELY(_picture);
+  TT_RELEASE_SAFELY(_linkURL);
+  TT_RELEASE_SAFELY(_linkTitle);
+  TT_RELEASE_SAFELY(_linkText);
+
   [super dealloc];
 }
 
@@ -52,6 +60,10 @@
   item.likes = post.likes;
   item.commentCount = post.commentCount;
   item.icon = post.icon;
+  item.picture = post.picture;
+  item.linkURL = post.linkURL;
+  item.linkTitle = post.linkTitle;
+  item.linkText = post.linkText;
   return item;
 }
 
@@ -72,6 +84,10 @@
     self.likes = [decoder decodeObjectForKey:@"likes"];
     self.commentCount = [decoder decodeObjectForKey:@"commentCount"];
     self.icon = [decoder decodeObjectForKey:@"icon"];
+    self.picture = [decoder decodeObjectForKey:@"picture"];
+    self.linkURL = [decoder decodeObjectForKey:@"linkURL"];
+    self.linkTitle = [decoder decodeObjectForKey:@"linkTitle"];
+    self.linkText = [decoder decodeObjectForKey:@"linkText"];
   }
   return self;
 }
@@ -103,6 +119,18 @@
   }
   if (self.icon) {
     [encoder encodeObject:self.title forKey:@"icon"];
+  }
+  if (self.picture) {
+    [encoder encodeObject:self.title forKey:@"picture"];
+  }
+  if (self.linkURL) {
+    [encoder encodeObject:self.title forKey:@"linkURL"];
+  }
+  if (self.linkTitle) {
+    [encoder encodeObject:self.title forKey:@"linkTitle"];
+  }
+  if (self.linkText) {
+    [encoder encodeObject:self.title forKey:@"linkText"];
   }
 }
 

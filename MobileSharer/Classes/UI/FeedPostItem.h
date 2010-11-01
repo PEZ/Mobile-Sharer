@@ -15,6 +15,10 @@
   NSNumber* _likes;
   NSNumber* _commentCount;  
   NSString* _icon;
+  NSString* _picture;
+  NSString* _linkURL;
+  NSString* _linkTitle;
+  NSString* _linkText;
 }
 
 @property (nonatomic, copy)   NSString*  title;
@@ -22,6 +26,10 @@
 @property (nonatomic, retain) NSNumber*  likes;
 @property (nonatomic, retain) NSNumber*  commentCount;
 @property (nonatomic, copy)   NSString*  icon;
+@property (nonatomic, copy)   NSString*  picture;
+@property (nonatomic, copy)   NSString*  linkURL;
+@property (nonatomic, copy)   NSString*  linkTitle;
+@property (nonatomic, copy)   NSString*  linkText;
 
 + (id)itemWithPost:(FeedPost*)post andURL:(NSString*)URL;
 

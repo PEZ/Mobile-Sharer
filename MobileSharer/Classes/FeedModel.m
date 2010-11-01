@@ -96,6 +96,7 @@
     post.created = date;
     post.postId = [NSNumber numberWithLongLong:
                      [[entry objectForKey:@"id"] longLongValue]];
+    post.type = [entry objectForKey:@"type"];
     post.message = [entry objectForKey:@"message"];
     post.picture = [entry objectForKey:@"picture"];
     if ([entry objectForKey:@"from"] != [NSNull null]) {
@@ -112,6 +113,10 @@
       post.commentCount = [[entry objectForKey:@"comments"] objectForKey:@"count"];
     }
     post.icon = [entry objectForKey:@"icon"];
+    post.picture = [entry objectForKey:@"picture"];
+    post.linkURL = [entry objectForKey:@"link"];
+    post.linkTitle = [entry objectForKey:@"name"];
+    post.linkText = [entry objectForKey:@"description"];
 
 
     [posts addObject:post];

@@ -553,6 +553,45 @@
 			3293A960127DCB1E00B07DD5 /* PBXTextBookmark */ = 3293A960127DCB1E00B07DD5 /* PBXTextBookmark */;
 			3293A961127DCB1E00B07DD5 /* PBXTextBookmark */ = 3293A961127DCB1E00B07DD5 /* PBXTextBookmark */;
 			3293A962127DCB1E00B07DD5 /* PBXTextBookmark */ = 3293A962127DCB1E00B07DD5 /* PBXTextBookmark */;
+			3293A963127E000F00B07DD5 /* PBXTextBookmark */ = 3293A963127E000F00B07DD5 /* PBXTextBookmark */;
+			3293A964127E000F00B07DD5 /* PBXTextBookmark */ = 3293A964127E000F00B07DD5 /* PBXTextBookmark */;
+			3293A965127E000F00B07DD5 /* PBXTextBookmark */ = 3293A965127E000F00B07DD5 /* PBXTextBookmark */;
+			3293A966127E000F00B07DD5 /* PBXTextBookmark */ = 3293A966127E000F00B07DD5 /* PBXTextBookmark */;
+			3293A967127E000F00B07DD5 /* XCBuildMessageTextBookmark */ = 3293A967127E000F00B07DD5 /* XCBuildMessageTextBookmark */;
+			3293A968127E000F00B07DD5 /* PBXTextBookmark */ = 3293A968127E000F00B07DD5 /* PBXTextBookmark */;
+			3293A969127E000F00B07DD5 /* PBXTextBookmark */ = 3293A969127E000F00B07DD5 /* PBXTextBookmark */;
+			3293A96F127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A96F127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A970127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A970127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A971127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A971127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A972127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A972127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A973127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A973127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A974127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A974127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A975127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A975127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A976127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A976127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A977127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A977127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A978127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A978127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A979127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A979127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A97A127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A97A127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A97B127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A97B127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A97C127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A97C127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A97D127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A97D127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A97E127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A97E127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A97F127E0CAA00B07DD5 /* PBXTextBookmark */ = 3293A97F127E0CAA00B07DD5 /* PBXTextBookmark */;
+			3293A986127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A986127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A987127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A987127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A988127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A988127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A989127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A989127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A98A127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A98A127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A98B127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A98B127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A98C127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A98C127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A98D127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A98D127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A98E127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A98E127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A98F127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A98F127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A990127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A990127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A991127E0E0D00B07DD5 /* PBXTextBookmark */ = 3293A991127E0E0D00B07DD5 /* PBXTextBookmark */;
+			3293A999127E0EB800B07DD5 /* PBXTextBookmark */ = 3293A999127E0EB800B07DD5 /* PBXTextBookmark */;
+			3293A99A127E0EB800B07DD5 /* PBXTextBookmark */ = 3293A99A127E0EB800B07DD5 /* PBXTextBookmark */;
+			3293A99B127E0EB800B07DD5 /* PBXTextBookmark */ = 3293A99B127E0EB800B07DD5 /* PBXTextBookmark */;
 			32A2837B1277565400F8FEC1 = 32A2837B1277565400F8FEC1 /* PBXTextBookmark */;
 			32A283C11277594800F8FEC1 = 32A283C11277594800F8FEC1 /* PBXTextBookmark */;
 			32A283C31277594800F8FEC1 = 32A283C31277594800F8FEC1 /* PBXTextBookmark */;
@@ -708,21 +747,21 @@
 	};
 	321F3BD2126CF6D2008473C8 /* FeedPost.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1103, 581}}";
-			sepNavSelRange = "{437, 0}";
-			sepNavVisRange = "{0, 1331}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 559}}";
+			sepNavSelRange = "{179, 0}";
+			sepNavVisRange = "{1, 476}";
 		};
 	};
 	321F3BD3126CF6D2008473C8 /* FeedPost.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1103, 650}}";
-			sepNavSelRange = "{1383, 0}";
-			sepNavVisRange = "{48, 1335}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 637}}";
+			sepNavSelRange = "{335, 0}";
+			sepNavVisRange = "{133, 749}";
 		};
 	};
 	321F3BD4126CF6D2008473C8 /* FeedDataSource.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1103, 581}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 411}}";
 			sepNavSelRange = "{98, 0}";
 			sepNavVisRange = "{0, 157}";
 		};
@@ -731,7 +770,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1122, 1040}}";
 			sepNavSelRange = "{114, 0}";
-			sepNavVisRange = "{0, 632}";
+			sepNavVisRange = "{633, 1137}";
 			sepNavWindowFrame = "{{84, 307}, {1210, 803}}";
 		};
 	};
@@ -745,8 +784,8 @@
 	321F3BD7126CF6D2008473C8 /* FeedModel.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1122, 1742}}";
-			sepNavSelRange = "{3330, 0}";
-			sepNavVisRange = "{2976, 558}";
+			sepNavSelRange = "{4148, 0}";
+			sepNavVisRange = "{3213, 1782}";
 		};
 	};
 	321F3BD8126CF6D2008473C8 /* FeedViewController.h */ = {
@@ -1137,7 +1176,7 @@
 		fRef = 321F3BD3126CF6D2008473C8 /* FeedPost.m */;
 		name = "FeedPost.m: 50";
 		rLen = 0;
-		rLoc = 1383;
+		rLoc = 1400;
 		rType = 0;
 		vrLen = 1383;
 		vrLoc = 0;
@@ -1181,31 +1220,31 @@
 	};
 	3293A40E127C130700B07DD5 /* FeedPostTableCell.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1122, 390}}";
-			sepNavSelRange = "{304, 0}";
-			sepNavVisRange = "{0, 356}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 416}}";
+			sepNavSelRange = "{239, 20}";
+			sepNavVisRange = "{138, 732}";
 			sepNavWindowFrame = "{{107, 286}, {1210, 803}}";
 		};
 	};
 	3293A40F127C130700B07DD5 /* FeedPostTableCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1122, 4212}}";
-			sepNavSelRange = "{326, 0}";
-			sepNavVisRange = "{0, 1836}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 4329}}";
+			sepNavSelRange = "{4333, 0}";
+			sepNavVisRange = "{3285, 1713}";
 		};
 	};
 	3293A415127C178100B07DD5 /* FeedPostItem.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1122, 449}}";
-			sepNavSelRange = "{672, 0}";
-			sepNavVisRange = "{0, 678}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 586}}";
+			sepNavSelRange = "{752, 0}";
+			sepNavVisRange = "{0, 972}";
 		};
 	};
 	3293A416127C178100B07DD5 /* FeedPostItem.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {936, 1456}}";
-			sepNavSelRange = "{3487, 0}";
-			sepNavVisRange = "{427, 1266}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 1807}}";
+			sepNavSelRange = "{1090, 0}";
+			sepNavVisRange = "{557, 1542}";
 		};
 	};
 	3293A427127C1A0100B07DD5 /* PBXTextBookmark */ = {
@@ -1243,7 +1282,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 59";
 		rLen = 0;
-		rLoc = 1692;
+		rLoc = 2098;
 		rType = 0;
 		vrLen = 1316;
 		vrLoc = 2046;
@@ -1277,9 +1316,9 @@
 	};
 	3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1122, 897}}";
-			sepNavSelRange = "{937, 17}";
-			sepNavVisRange = "{814, 317}";
+			sepNavIntBoundsRect = "{{0, 0}, {936, 884}}";
+			sepNavSelRange = "{1269, 0}";
+			sepNavVisRange = "{433, 841}";
 		};
 	};
 	3293A479127C2D8400B07DD5 /* PBXTextBookmark */ = {
@@ -1396,7 +1435,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1151, 15106}}";
 			sepNavSelRange = "{23538, 9}";
-			sepNavVisRange = "{23814, 2356}";
+			sepNavVisRange = "{24113, 2221}";
 		};
 	};
 	3293A51F127C3C8400B07DD5 /* PBXTextBookmark */ = {
@@ -1404,7 +1443,7 @@
 		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
 		name = "FeedPostItem.h: 20";
 		rLen = 0;
-		rLoc = 613;
+		rLoc = 907;
 		rType = 0;
 		vrLen = 766;
 		vrLoc = 0;
@@ -1414,7 +1453,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 64";
 		rLen = 0;
-		rLoc = 1692;
+		rLoc = 2098;
 		rType = 0;
 		vrLen = 972;
 		vrLoc = 1140;
@@ -1424,7 +1463,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 107";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 683;
 		vrLoc = 0;
@@ -1434,7 +1473,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 25";
 		rLen = 0;
-		rLoc = 770;
+		rLoc = 877;
 		rType = 0;
 		vrLen = 539;
 		vrLoc = 0;
@@ -1454,7 +1493,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 25";
 		rLen = 0;
-		rLoc = 770;
+		rLoc = 877;
 		rType = 0;
 		vrLen = 539;
 		vrLoc = 0;
@@ -1464,7 +1503,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 112";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1066;
 		vrLoc = 3188;
@@ -1474,7 +1513,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 124";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1273;
 		vrLoc = 3451;
@@ -1484,7 +1523,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 25";
 		rLen = 0;
-		rLoc = 770;
+		rLoc = 877;
 		rType = 0;
 		vrLen = 539;
 		vrLoc = 0;
@@ -1511,7 +1550,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 131";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1227;
 		vrLoc = 3450;
@@ -1521,7 +1560,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 131";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1227;
 		vrLoc = 3450;
@@ -1531,7 +1570,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 23";
 		rLen = 0;
-		rLoc = 768;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 539;
 		vrLoc = 0;
@@ -1571,7 +1610,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 131";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1227;
 		vrLoc = 3450;
@@ -1581,7 +1620,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 131";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1227;
 		vrLoc = 3450;
@@ -1611,7 +1650,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 131";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1258;
 		vrLoc = 3684;
@@ -1702,7 +1741,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 56;
+		rLoc = 61;
 		rType = 1;
 	};
 	3293A603127C4EA700B07DD5 /* PBXTextBookmark */ = {
@@ -1710,7 +1749,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 120";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 5054;
@@ -1812,9 +1851,9 @@
 		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1103, 3224}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 3354}}";
 			sepNavSelRange = "{2287, 68}";
-			sepNavVisRange = "{1300, 1892}";
+			sepNavVisRange = "{5509, 1489}";
 		};
 	};
 	3293A620127C50D900B07DD5 /* PBXTextBookmark */ = {
@@ -1822,7 +1861,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 145";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 2046;
 		vrLoc = 3849;
@@ -1832,7 +1871,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 143";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1913;
 		vrLoc = 4030;
@@ -1863,7 +1902,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 56;
+		rLoc = 61;
 		rType = 1;
 	};
 	3293A625127C51D200B07DD5 /* PBXTextBookmark */ = {
@@ -1871,7 +1910,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 145";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1889;
 		vrLoc = 366;
@@ -1881,7 +1920,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 72";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 2065;
 		vrLoc = 1399;
@@ -1985,7 +2024,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 57";
 		rLen = 0;
-		rLoc = 1692;
+		rLoc = 2098;
 		rType = 0;
 		vrLen = 1577;
 		vrLoc = 0;
@@ -2005,7 +2044,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 155";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 2303;
 		vrLoc = 684;
@@ -2037,9 +2076,9 @@
 		path = "/Users/cobpez/Documents/XCode Projects/three20/Build/Products/three20/Three20UI/TTTableViewCell.h";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1103, 663}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 637}}";
 			sepNavSelRange = "{1670, 15}";
-			sepNavVisRange = "{0, 1903}";
+			sepNavVisRange = "{928, 975}";
 		};
 	};
 	3293A641127C546A00B07DD5 /* PBXTextBookmark */ = {
@@ -2059,9 +2098,9 @@
 		path = "/Users/cobpez/Documents/XCode Projects/three20/Build/Products/three20/Three20UI/TTTableLinkedItemCell.h";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1103, 663}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 351}}";
 			sepNavSelRange = "{703, 15}";
-			sepNavVisRange = "{0, 757}";
+			sepNavVisRange = "{105, 652}";
 		};
 	};
 	3293A643127C546A00B07DD5 /* PBXTextBookmark */ = {
@@ -2081,7 +2120,7 @@
 		path = "/Users/cobpez/Documents/XCode Projects/three20/Build/Products/three20/Three20UI/TTTableTextItemCell.h";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1103, 663}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 286}}";
 			sepNavSelRange = "{680, 21}";
 			sepNavVisRange = "{0, 707}";
 		};
@@ -2103,9 +2142,9 @@
 		path = "/Users/cobpez/Documents/XCode Projects/three20/Build/Products/three20/Three20UI/TTTableImageItemCell.h";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {936, 531}}";
-			sepNavSelRange = "{722, 28}";
-			sepNavVisRange = "{0, 824}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 377}}";
+			sepNavSelRange = "{700, 19}";
+			sepNavVisRange = "{216, 608}";
 		};
 	};
 	3293A647127C546A00B07DD5 /* PBXTextBookmark */ = {
@@ -2163,7 +2202,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 38";
 		rLen = 0;
-		rLoc = 1291;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 2154;
 		vrLoc = 317;
@@ -2173,7 +2212,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 38";
 		rLen = 0;
-		rLoc = 1291;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 2236;
 		vrLoc = 327;
@@ -2203,7 +2242,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 145";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1889;
 		vrLoc = 366;
@@ -2212,7 +2251,7 @@
 		isa = PBXTextBookmark;
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		rLen = 0;
-		rLoc = 10300;
+		rLoc = 11118;
 		rType = 0;
 	};
 	3293A65F127C555200B07DD5 /* PBXTextBookmark */ = {
@@ -2230,7 +2269,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 19";
 		rLen = 0;
-		rLoc = 487;
+		rLoc = 522;
 		rType = 0;
 		vrLen = 539;
 		vrLoc = 0;
@@ -2240,7 +2279,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 231";
 		rLen = 0;
-		rLoc = 10300;
+		rLoc = 11118;
 		rType = 0;
 		vrLen = 1690;
 		vrLoc = 6250;
@@ -2250,7 +2289,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 136";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1868;
 		vrLoc = 3702;
@@ -2280,7 +2319,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 19";
 		rLen = 0;
-		rLoc = 487;
+		rLoc = 522;
 		rType = 0;
 		vrLen = 471;
 		vrLoc = 0;
@@ -2290,7 +2329,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 183";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1775;
 		vrLoc = 6919;
@@ -2310,7 +2349,7 @@
 		fRef = 321F3BD3126CF6D2008473C8 /* FeedPost.m */;
 		name = "FeedPost.m: 50";
 		rLen = 0;
-		rLoc = 1383;
+		rLoc = 1400;
 		rType = 0;
 		vrLen = 1383;
 		vrLoc = 0;
@@ -2350,7 +2389,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 105";
 		rLen = 0;
-		rLoc = 3482;
+		rLoc = 4472;
 		rType = 0;
 		vrLen = 1686;
 		vrLoc = 1619;
@@ -2360,7 +2399,7 @@
 		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
 		name = "FeedPostItem.h: 17";
 		rLen = 0;
-		rLoc = 411;
+		rLoc = 502;
 		rType = 0;
 		vrLen = 695;
 		vrLoc = 0;
@@ -2370,7 +2409,7 @@
 		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
 		name = "FeedPostItem.h: 21";
 		rLen = 0;
-		rLoc = 672;
+		rLoc = 966;
 		rType = 0;
 		vrLen = 641;
 		vrLoc = 0;
@@ -2400,7 +2439,7 @@
 		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
 		name = "FeedPostItem.h: 21";
 		rLen = 0;
-		rLoc = 672;
+		rLoc = 966;
 		rType = 0;
 		vrLen = 641;
 		vrLoc = 0;
@@ -2430,7 +2469,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1890;
 		vrLoc = 366;
@@ -2440,7 +2479,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 105";
 		rLen = 0;
-		rLoc = 3482;
+		rLoc = 4472;
 		rType = 0;
 		vrLen = 1294;
 		vrLoc = 0;
@@ -2479,7 +2518,7 @@
 		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
 		name = "FeedPostItem.h: 16";
 		rLen = 0;
-		rLoc = 376;
+		rLoc = 467;
 		rType = 0;
 		vrLen = 641;
 		vrLoc = 0;
@@ -2489,7 +2528,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 105";
 		rLen = 0;
-		rLoc = 3482;
+		rLoc = 4472;
 		rType = 0;
 		vrLen = 1561;
 		vrLoc = 0;
@@ -2559,7 +2598,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 33";
 		rLen = 34;
-		rLoc = 975;
+		rLoc = 1173;
 		rType = 0;
 		vrLen = 1996;
 		vrLoc = 204;
@@ -2569,7 +2608,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 184";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1508;
 		vrLoc = 5289;
@@ -2636,7 +2675,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 105";
 		rLen = 0;
-		rLoc = 3482;
+		rLoc = 4472;
 		rType = 0;
 		vrLen = 1591;
 		vrLoc = 589;
@@ -2716,7 +2755,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 76";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1925;
 		vrLoc = 2459;
@@ -2726,7 +2765,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 104";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1858;
 		vrLoc = 2459;
@@ -2756,7 +2795,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 104";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1857;
 		vrLoc = 2459;
@@ -2796,7 +2835,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 67";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1840;
 		vrLoc = 2219;
@@ -2806,7 +2845,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 92";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1671;
 		vrLoc = 2459;
@@ -2836,7 +2875,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 141";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1664;
 		vrLoc = 3723;
@@ -2866,7 +2905,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 142";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1670;
 		vrLoc = 3723;
@@ -2896,7 +2935,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 86";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1727;
 		vrLoc = 2050;
@@ -2926,7 +2965,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 86";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 1598;
@@ -2956,7 +2995,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 44";
 		rLen = 0;
-		rLoc = 1530;
+		rLoc = 1728;
 		rType = 0;
 		vrLen = 2020;
 		vrLoc = 1018;
@@ -2986,7 +3025,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 44";
 		rLen = 0;
-		rLoc = 1472;
+		rLoc = 1670;
 		rType = 0;
 		vrLen = 1967;
 		vrLoc = 1018;
@@ -3016,7 +3055,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 137";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1667;
 		vrLoc = 3592;
@@ -3065,7 +3104,7 @@
 		isa = PBXTextBookmark;
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		rLen = 0;
-		rLoc = 1692;
+		rLoc = 2098;
 		rType = 0;
 	};
 	3293A749127CB01600B07DD5 /* PBXTextBookmark */ = {
@@ -3073,7 +3112,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 59";
 		rLen = 0;
-		rLoc = 1692;
+		rLoc = 2098;
 		rType = 0;
 		vrLen = 1372;
 		vrLoc = 807;
@@ -3083,7 +3122,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 137";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1734;
 		vrLoc = 0;
@@ -3093,7 +3132,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 59";
 		rLen = 0;
-		rLoc = 1692;
+		rLoc = 2098;
 		rType = 0;
 		vrLen = 477;
 		vrLoc = 1461;
@@ -3163,7 +3202,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 105";
 		rLen = 0;
-		rLoc = 3482;
+		rLoc = 4472;
 		rType = 0;
 		vrLen = 1622;
 		vrLoc = 556;
@@ -3363,7 +3402,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 37";
 		rLen = 0;
-		rLoc = 1291;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 1219;
 		vrLoc = 626;
@@ -3440,7 +3479,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 50";
 		rLen = 0;
-		rLoc = 1607;
+		rLoc = 1805;
 		rType = 0;
 		vrLen = 1857;
 		vrLoc = 318;
@@ -3470,7 +3509,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 83";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1760;
 		vrLoc = 1960;
@@ -3500,7 +3539,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 146";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1472;
 		vrLoc = 4241;
@@ -3530,7 +3569,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 126";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1508;
 		vrLoc = 3901;
@@ -3560,7 +3599,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 126";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1508;
 		vrLoc = 3901;
@@ -3590,7 +3629,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 85";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1660;
 		vrLoc = 1792;
@@ -3620,7 +3659,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 86";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1646;
 		vrLoc = 1945;
@@ -3650,7 +3689,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 135";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1548;
 		vrLoc = 3985;
@@ -3680,7 +3719,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 135";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1524;
 		vrLoc = 3985;
@@ -3690,7 +3729,7 @@
 		fRef = 321F3BD2126CF6D2008473C8 /* FeedPost.h */;
 		name = "FeedPost.h: 21";
 		rLen = 0;
-		rLoc = 436;
+		rLoc = 426;
 		rType = 0;
 		vrLen = 1331;
 		vrLoc = 0;
@@ -3700,7 +3739,7 @@
 		fRef = 321F3BD3126CF6D2008473C8 /* FeedPost.m */;
 		name = "FeedPost.m: 50";
 		rLen = 0;
-		rLoc = 1383;
+		rLoc = 1400;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 48;
@@ -3730,7 +3769,7 @@
 		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
 		name = "FeedPostItem.h: 24";
 		rLen = 0;
-		rLoc = 660;
+		rLoc = 954;
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 0;
@@ -3750,7 +3789,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 42";
 		rLen = 0;
-		rLoc = 1331;
+		rLoc = 1607;
 		rType = 0;
 		vrLen = 1448;
 		vrLoc = 22;
@@ -3797,7 +3836,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 47";
 		rLen = 0;
-		rLoc = 1521;
+		rLoc = 1797;
 		rType = 0;
 		vrLen = 1222;
 		vrLoc = 0;
@@ -3807,7 +3846,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 75";
 		rLen = 0;
-		rLoc = 1692;
+		rLoc = 2098;
 		rType = 0;
 		vrLen = 1490;
 		vrLoc = 981;
@@ -3817,7 +3856,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 42";
 		rLen = 56;
-		rLoc = 1285;
+		rLoc = 1561;
 		rType = 0;
 		vrLen = 1661;
 		vrLoc = 226;
@@ -3827,7 +3866,7 @@
 		fRef = 321F3BD3126CF6D2008473C8 /* FeedPost.m */;
 		name = "FeedPost.m: 50";
 		rLen = 0;
-		rLoc = 1383;
+		rLoc = 1400;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 48;
@@ -3837,7 +3876,7 @@
 		fRef = 321F3BD2126CF6D2008473C8 /* FeedPost.h */;
 		name = "FeedPost.h: 22";
 		rLen = 0;
-		rLoc = 437;
+		rLoc = 427;
 		rType = 0;
 		vrLen = 1331;
 		vrLoc = 0;
@@ -3857,7 +3896,7 @@
 		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
 		name = "FeedPostItem.h: 33";
 		rLen = 0;
-		rLoc = 678;
+		rLoc = 972;
 		rType = 0;
 		vrLen = 881;
 		vrLoc = 0;
@@ -3947,7 +3986,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 135";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1811;
 		vrLoc = 3834;
@@ -3957,7 +3996,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 135";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1664;
 		vrLoc = 2359;
@@ -3987,7 +4026,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 135";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1292;
 		vrLoc = 1986;
@@ -4007,7 +4046,7 @@
 		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
 		name = "FeedPostItem.h: 27";
 		rLen = 0;
-		rLoc = 672;
+		rLoc = 966;
 		rType = 0;
 		vrLen = 678;
 		vrLoc = 0;
@@ -4017,7 +4056,7 @@
 		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
 		name = "FeedPostItem.m: 105";
 		rLen = 0;
-		rLoc = 3470;
+		rLoc = 4122;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 327;
@@ -4027,7 +4066,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 123";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1111;
 		vrLoc = 0;
@@ -4057,7 +4096,7 @@
 		fRef = 321F3BD7126CF6D2008473C8 /* FeedModel.m */;
 		name = "FeedModel.m: 112";
 		rLen = 0;
-		rLoc = 4572;
+		rLoc = 4827;
 		rType = 0;
 		vrLen = 1254;
 		vrLoc = 3330;
@@ -4077,7 +4116,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 135";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1292;
 		vrLoc = 1986;
@@ -4087,7 +4126,7 @@
 		fRef = 321F3BD7126CF6D2008473C8 /* FeedModel.m */;
 		name = "FeedModel.m: 113";
 		rLen = 0;
-		rLoc = 4525;
+		rLoc = 4571;
 		rType = 0;
 		vrLen = 1277;
 		vrLoc = 3330;
@@ -4107,7 +4146,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 42";
 		rLen = 0;
-		rLoc = 1340;
+		rLoc = 1538;
 		rType = 0;
 		vrLen = 1949;
 		vrLoc = 317;
@@ -4227,7 +4266,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 42";
 		rLen = 0;
-		rLoc = 1340;
+		rLoc = 1538;
 		rType = 0;
 		vrLen = 1949;
 		vrLoc = 317;
@@ -4237,7 +4276,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 163";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1738;
 		vrLoc = 4069;
@@ -4257,7 +4296,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 23";
 		rLen = 0;
-		rLoc = 599;
+		rLoc = 634;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 187;
@@ -4277,7 +4316,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 246";
 		rLen = 0;
-		rLoc = 1896;
+		rLoc = 2134;
 		rType = 0;
 		vrLen = 1695;
 		vrLoc = 7391;
@@ -4287,7 +4326,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 23";
 		rLen = 0;
-		rLoc = 599;
+		rLoc = 634;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 187;
@@ -4307,7 +4346,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 171";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1543;
 		vrLoc = 4663;
@@ -4317,7 +4356,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 23";
 		rLen = 0;
-		rLoc = 599;
+		rLoc = 634;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 187;
@@ -4337,7 +4376,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 38";
 		rLen = 0;
-		rLoc = 1291;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 1835;
 		vrLoc = 138;
@@ -4347,7 +4386,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 38";
 		rLen = 0;
-		rLoc = 1291;
+		rLoc = 1489;
 		rType = 0;
 		vrLen = 1835;
 		vrLoc = 138;
@@ -4357,7 +4396,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 23";
 		rLen = 0;
-		rLoc = 599;
+		rLoc = 634;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 187;
@@ -4402,7 +4441,7 @@
 		isa = PBXTextBookmark;
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		rLen = 0;
-		rLoc = 38;
+		rLoc = 42;
 		rType = 1;
 	};
 	3293A893127D9AC300B07DD5 /* PBXTextBookmark */ = {
@@ -4410,7 +4449,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 39";
 		rLen = 0;
-		rLoc = 1340;
+		rLoc = 1538;
 		rType = 0;
 		vrLen = 1786;
 		vrLoc = 0;
@@ -4420,7 +4459,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 23";
 		rLen = 0;
-		rLoc = 599;
+		rLoc = 634;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 187;
@@ -4450,7 +4489,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 39";
 		rLen = 0;
-		rLoc = 1340;
+		rLoc = 1538;
 		rType = 0;
 		vrLen = 2014;
 		vrLoc = 238;
@@ -4460,7 +4499,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 157";
 		rLen = 0;
-		rLoc = 1859;
+		rLoc = 2097;
 		rType = 0;
 		vrLen = 1716;
 		vrLoc = 4994;
@@ -4470,7 +4509,7 @@
 		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
 		name = "FeedPostTableCell.h: 23";
 		rLen = 0;
-		rLoc = 599;
+		rLoc = 634;
 		rType = 0;
 		vrLen = 587;
 		vrLoc = 187;
@@ -4500,7 +4539,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 39";
 		rLen = 0;
-		rLoc = 1340;
+		rLoc = 1538;
 		rType = 0;
 		vrLen = 2133;
 		vrLoc = 366;
@@ -4510,7 +4549,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 255";
 		rLen = 0;
-		rLoc = 9382;
+		rLoc = 9997;
 		rType = 0;
 		vrLen = 1721;
 		vrLoc = 7728;
@@ -4560,7 +4599,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 224";
 		rLen = 0;
-		rLoc = 8238;
+		rLoc = 8607;
 		rType = 0;
 		vrLen = 1647;
 		vrLoc = 6869;
@@ -4590,7 +4629,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 232";
 		rLen = 0;
-		rLoc = 8383;
+		rLoc = 8752;
 		rType = 0;
 		vrLen = 1758;
 		vrLoc = 6826;
@@ -4620,7 +4659,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 62";
 		rLen = 0;
-		rLoc = 2071;
+		rLoc = 2309;
 		rType = 0;
 		vrLen = 2228;
 		vrLoc = 674;
@@ -4650,7 +4689,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 62";
 		rLen = 0;
-		rLoc = 2114;
+		rLoc = 2352;
 		rType = 0;
 		vrLen = 2022;
 		vrLoc = 1199;
@@ -4680,7 +4719,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 260";
 		rLen = 0;
-		rLoc = 9382;
+		rLoc = 9997;
 		rType = 0;
 		vrLen = 1774;
 		vrLoc = 8222;
@@ -4710,7 +4749,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1755;
 		vrLoc = 4128;
@@ -4740,7 +4779,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1795;
 		vrLoc = 4283;
@@ -4750,7 +4789,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1758;
 		vrLoc = 4283;
@@ -4780,7 +4819,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1904;
 		vrLoc = 4131;
@@ -4810,7 +4849,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1904;
 		vrLoc = 4131;
@@ -4820,7 +4859,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1904;
 		vrLoc = 4131;
@@ -4850,7 +4889,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1938;
 		vrLoc = 4364;
@@ -4880,7 +4919,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1786;
 		vrLoc = 7198;
@@ -4890,7 +4929,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1786;
 		vrLoc = 7198;
@@ -4920,7 +4959,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 138";
 		rLen = 0;
-		rLoc = 4771;
+		rLoc = 5078;
 		rType = 0;
 		vrLen = 1764;
 		vrLoc = 7499;
@@ -4950,7 +4989,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 281";
 		rLen = 0;
-		rLoc = 9776;
+		rLoc = 10591;
 		rType = 0;
 		vrLen = 1845;
 		vrLoc = 8984;
@@ -4980,7 +5019,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 170";
 		rLen = 0;
-		rLoc = 6136;
+		rLoc = 6443;
 		rType = 0;
 		vrLen = 1721;
 		vrLoc = 4922;
@@ -5010,7 +5049,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 211";
 		rLen = 0;
-		rLoc = 7523;
+		rLoc = 7892;
 		rType = 0;
 		vrLen = 1720;
 		vrLoc = 6645;
@@ -5040,7 +5079,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 97";
 		rLen = 0;
-		rLoc = 3528;
+		rLoc = 3766;
 		rType = 0;
 		vrLen = 1650;
 		vrLoc = 2691;
@@ -5070,7 +5109,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 39";
 		rLen = 0;
-		rLoc = 1340;
+		rLoc = 1538;
 		rType = 0;
 		vrLen = 1735;
 		vrLoc = 2335;
@@ -5080,7 +5119,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 93";
 		rLen = 0;
-		rLoc = 3368;
+		rLoc = 3606;
 		rType = 0;
 		vrLen = 1719;
 		vrLoc = 2320;
@@ -5110,7 +5149,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 93";
 		rLen = 0;
-		rLoc = 3368;
+		rLoc = 3606;
 		rType = 0;
 		vrLen = 1719;
 		vrLoc = 2320;
@@ -5140,7 +5179,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 93";
 		rLen = 1;
-		rLoc = 3385;
+		rLoc = 3623;
 		rType = 0;
 		vrLen = 1691;
 		vrLoc = 2567;
@@ -5170,7 +5209,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 91";
 		rLen = 0;
-		rLoc = 3323;
+		rLoc = 3561;
 		rType = 0;
 		vrLen = 1695;
 		vrLoc = 2631;
@@ -5200,7 +5239,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 92";
 		rLen = 0;
-		rLoc = 3350;
+		rLoc = 3588;
 		rType = 0;
 		vrLen = 1695;
 		vrLoc = 2631;
@@ -5230,7 +5269,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 95";
 		rLen = 0;
-		rLoc = 3457;
+		rLoc = 3695;
 		rType = 0;
 		vrLen = 1614;
 		vrLoc = 2631;
@@ -5260,7 +5299,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 95";
 		rLen = 0;
-		rLoc = 3457;
+		rLoc = 3695;
 		rType = 0;
 		vrLen = 1614;
 		vrLoc = 2631;
@@ -5290,7 +5329,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 96";
 		rLen = 0;
-		rLoc = 3487;
+		rLoc = 3725;
 		rType = 0;
 		vrLen = 1619;
 		vrLoc = 2631;
@@ -5320,7 +5359,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 96";
 		rLen = 0;
-		rLoc = 3487;
+		rLoc = 3725;
 		rType = 0;
 		vrLen = 1656;
 		vrLoc = 2631;
@@ -5350,7 +5389,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 169";
 		rLen = 0;
-		rLoc = 6013;
+		rLoc = 6320;
 		rType = 0;
 		vrLen = 1917;
 		vrLoc = 4561;
@@ -5380,7 +5419,7 @@
 		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
 		name = "FeedPostTableCell.m: 96";
 		rLen = 0;
-		rLoc = 3487;
+		rLoc = 3725;
 		rType = 0;
 		vrLen = 1468;
 		vrLoc = 2840;
@@ -5434,6 +5473,392 @@
 		rType = 0;
 		vrLen = 2356;
 		vrLoc = 23814;
+	};
+	3293A963127E000F00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
+		name = "FeedPostItem.m: 111";
+		rLen = 0;
+		rLoc = 4477;
+		rType = 0;
+		vrLen = 1266;
+		vrLoc = 427;
+	};
+	3293A964127E000F00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD8126CF6D2008473C8 /* FeedViewController.h */;
+		name = "FeedViewController.h: 20";
+		rLen = 0;
+		rLoc = 896;
+		rType = 0;
+		vrLen = 1103;
+		vrLoc = 0;
+	};
+	3293A965127E000F00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A646127C546A00B07DD5 /* TTTableImageItemCell.h */;
+		name = "TTTableImageItemCell.h: 23";
+		rLen = 28;
+		rLoc = 722;
+		rType = 0;
+		vrLen = 824;
+		vrLoc = 0;
+	};
+	3293A966127E000F00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
+		name = "FeedPostTableCell.m: 311";
+		rLen = 0;
+		rLoc = 11988;
+		rType = 0;
+		vrLen = 1340;
+		vrLoc = 7449;
+	};
+	3293A967127E000F00B07DD5 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Incomplete implementation of class 'DefaultStyleSheet'";
+		fRef = 3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 66;
+		rType = 1;
+	};
+	3293A968127E000F00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */;
+		name = "DefaultStyleSheet.m: 67";
+		rLen = 0;
+		rLoc = 1269;
+		rType = 0;
+		vrLen = 841;
+		vrLoc = 433;
+	};
+	3293A969127E000F00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
+		name = "FeedPostItem.m: 111";
+		rLen = 0;
+		rLoc = 4477;
+		rType = 0;
+		vrLen = 1758;
+		vrLoc = 1043;
+	};
+	3293A96F127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
+		name = "FeedPostTableCell.m: 255";
+		rLen = 0;
+		rLoc = 9176;
+		rType = 0;
+		vrLen = 1690;
+		vrLoc = 9499;
+	};
+	3293A970127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD2126CF6D2008473C8 /* FeedPost.h */;
+		name = "FeedPost.h: 22";
+		rLen = 0;
+		rLoc = 427;
+		rType = 0;
+		vrLen = 1331;
+		vrLoc = 0;
+	};
+	3293A971127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
+		name = "FeedPostItem.h: 30";
+		rLen = 0;
+		rLoc = 856;
+		rType = 0;
+		vrLen = 900;
+		vrLoc = 0;
+	};
+	3293A972127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */;
+		name = "FeedPostItem.m: 35";
+		rLen = 0;
+		rLoc = 1090;
+		rType = 0;
+		vrLen = 1542;
+		vrLoc = 557;
+	};
+	3293A973127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD7126CF6D2008473C8 /* FeedModel.m */;
+		name = "FeedModel.m: 55";
+		rLen = 0;
+		rLoc = 1907;
+		rType = 0;
+		vrLen = 2039;
+		vrLoc = 2533;
+	};
+	3293A974127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD7126CF6D2008473C8 /* FeedModel.m */;
+		name = "FeedModel.m: 105";
+		rLen = 0;
+		rLoc = 4148;
+		rType = 0;
+		vrLen = 1782;
+		vrLoc = 3213;
+	};
+	3293A975127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */;
+		name = "DefaultStyleSheet.m: 45";
+		rLen = 0;
+		rLoc = 923;
+		rType = 0;
+		vrLen = 142;
+		vrLoc = 988;
+	};
+	3293A976127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD3126CF6D2008473C8 /* FeedPost.m */;
+		name = "FeedPost.m: 13";
+		rLen = 0;
+		rLoc = 335;
+		rType = 0;
+		vrLen = 749;
+		vrLoc = 133;
+	};
+	3293A977127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
+		name = "FeedPostTableCell.m: 59";
+		rLen = 0;
+		rLoc = 2097;
+		rType = 0;
+		vrLen = 856;
+		vrLoc = 317;
+	};
+	3293A978127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
+		name = "FeedPostTableCell.h: 17";
+		rLen = 0;
+		rLoc = 356;
+		rType = 0;
+		vrLen = 877;
+		vrLoc = 0;
+	};
+	3293A979127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD4126CF6D2008473C8 /* FeedDataSource.h */;
+		name = "FeedDataSource.h: 6";
+		rLen = 0;
+		rLoc = 98;
+		rType = 0;
+		vrLen = 157;
+		vrLoc = 0;
+	};
+	3293A97A127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD5126CF6D2008473C8 /* FeedDataSource.m */;
+		name = "FeedDataSource.m: 6";
+		rLen = 0;
+		rLoc = 114;
+		rType = 0;
+		vrLen = 1137;
+		vrLoc = 633;
+	};
+	3293A97B127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A415127C178100B07DD5 /* FeedPostItem.h */;
+		name = "FeedPostItem.h: 29";
+		rLen = 0;
+		rLoc = 752;
+		rType = 0;
+		vrLen = 972;
+		vrLoc = 0;
+	};
+	3293A97C127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD7126CF6D2008473C8 /* FeedModel.m */;
+		name = "FeedModel.m: 88";
+		rLen = 0;
+		rLoc = 3330;
+		rType = 0;
+		vrLen = 890;
+		vrLoc = 2975;
+	};
+	3293A97D127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD2126CF6D2008473C8 /* FeedPost.h */;
+		name = "FeedPost.h: 43";
+		rLen = 0;
+		rLoc = 1311;
+		rType = 0;
+		vrLen = 476;
+		vrLoc = 1;
+	};
+	3293A97E127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD2126CF6D2008473C8 /* FeedPost.h */;
+		name = "FeedPost.h: 43";
+		rLen = 0;
+		rLoc = 1311;
+		rType = 0;
+		vrLen = 476;
+		vrLoc = 1;
+	};
+	3293A97F127E0CAA00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A48A127C2D8400B07DD5 /* TTDefaultStyleSheet.m */;
+		name = "TTDefaultStyleSheet.m: 552";
+		rLen = 9;
+		rLoc = 23538;
+		rType = 0;
+		vrLen = 2356;
+		vrLoc = 23814;
+	};
+	3293A986127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD7126CF6D2008473C8 /* FeedModel.m */;
+		name = "FeedModel.m: 105";
+		rLen = 0;
+		rLoc = 4148;
+		rType = 0;
+		vrLen = 1782;
+		vrLoc = 3213;
+	};
+	3293A987127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
+		name = "FeedPostTableCell.m: 255";
+		rLen = 0;
+		rLoc = 9176;
+		rType = 0;
+		vrLen = 1589;
+		vrLoc = 9499;
+	};
+	3293A988127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
+		name = "FeedPostTableCell.m: 252";
+		rLen = 0;
+		rLoc = 9071;
+		rType = 0;
+		vrLen = 1738;
+		vrLoc = 8044;
+	};
+	3293A989127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD2126CF6D2008473C8 /* FeedPost.h */;
+		name = "FeedPost.h: 9";
+		rLen = 0;
+		rLoc = 179;
+		rType = 0;
+		vrLen = 476;
+		vrLoc = 1;
+	};
+	3293A98A127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40E127C130700B07DD5 /* FeedPostTableCell.h */;
+		name = "FeedPostTableCell.h: 13";
+		rLen = 20;
+		rLoc = 239;
+		rType = 0;
+		vrLen = 732;
+		vrLoc = 138;
+	};
+	3293A98B127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A646127C546A00B07DD5 /* TTTableImageItemCell.h */;
+		name = "TTTableImageItemCell.h: 22";
+		rLen = 19;
+		rLoc = 700;
+		rType = 0;
+		vrLen = 608;
+		vrLoc = 216;
+	};
+	3293A98C127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A644127C546A00B07DD5 /* TTTableTextItemCell.h */;
+		name = "TTTableTextItemCell.h: 20";
+		rLen = 21;
+		rLoc = 680;
+		rType = 0;
+		vrLen = 707;
+		vrLoc = 0;
+	};
+	3293A98D127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A642127C546A00B07DD5 /* TTTableLinkedItemCell.h */;
+		name = "TTTableLinkedItemCell.h: 22";
+		rLen = 15;
+		rLoc = 703;
+		rType = 0;
+		vrLen = 652;
+		vrLoc = 105;
+	};
+	3293A98E127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A640127C546A00B07DD5 /* TTTableViewCell.h */;
+		name = "TTTableViewCell.h: 39";
+		rLen = 15;
+		rLoc = 1670;
+		rType = 0;
+		vrLen = 975;
+		vrLoc = 928;
+	};
+	3293A98F127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A61F127C50D900B07DD5 /* UITableViewCell.h */;
+		rLen = 1;
+		rLoc = 56;
+		rType = 1;
+	};
+	3293A990127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A61F127C50D900B07DD5 /* UITableViewCell.h */;
+		name = "UITableViewCell.h: 57";
+		rLen = 68;
+		rLoc = 2287;
+		rType = 0;
+		vrLen = 1489;
+		vrLoc = 5509;
+	};
+	3293A991127E0E0D00B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A48A127C2D8400B07DD5 /* TTDefaultStyleSheet.m */;
+		name = "TTDefaultStyleSheet.m: 552";
+		rLen = 9;
+		rLoc = 23538;
+		rType = 0;
+		vrLen = 2256;
+		vrLoc = 23914;
+	};
+	3293A999127E0EB800B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40F127C130700B07DD5 /* FeedPostTableCell.m */;
+		name = "FeedPostTableCell.m: 119";
+		rLen = 0;
+		rLoc = 4333;
+		rType = 0;
+		vrLen = 1713;
+		vrLoc = 3285;
+	};
+	3293A99A127E0EB800B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A61F127C50D900B07DD5 /* UITableViewCell.h */;
+		name = "UITableViewCell.h: 57";
+		rLen = 68;
+		rLoc = 2287;
+		rType = 0;
+		vrLen = 1489;
+		vrLoc = 5509;
+	};
+	3293A99B127E0EB800B07DD5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A48A127C2D8400B07DD5 /* TTDefaultStyleSheet.m */;
+		name = "TTDefaultStyleSheet.m: 552";
+		rLen = 9;
+		rLoc = 23538;
+		rType = 0;
+		vrLen = 2221;
+		vrLoc = 24113;
 	};
 	32A2837B1277565400F8FEC1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

@@ -16,11 +16,13 @@
   TTImageView*  _iconImageView;
   UILabel*      _linkTextLabel;
   UILabel*      _countsLabel;
+  TTImageView*  _pictureImageView;
 }
 
 @property (nonatomic, readonly, retain) UILabel*      titleLabel;
 @property (nonatomic, readonly, retain) UILabel*      timestampLabel;
 @property (nonatomic, readonly, retain) TTImageView*  iconImageView;
+@property (nonatomic, readonly, retain) TTImageView*  pictureImageView;
 @property (nonatomic, readonly, retain) UILabel*      linkTextLabel;
 @property (nonatomic, readonly, retain) UILabel*      countsLabel;
 

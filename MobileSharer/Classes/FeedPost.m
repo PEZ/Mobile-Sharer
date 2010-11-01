@@ -14,9 +14,9 @@
 @synthesize picture           = _picture;
 @synthesize fromAvatar        = _fromAvatar;
 @synthesize link              = _link;
-@synthesize linkName          = _linkName;
-@synthesize linkCaption       = _linkCaption;
-@synthesize linkDescription   = _linkDescription;
+@synthesize linkURL           = _linkURL;
+@synthesize linkTitle         = _linkTitle;
+@synthesize linkText          = _linkText;
 @synthesize source            = _source;
 @synthesize icon              = _icon;
 @synthesize likes             = _likes;
@@ -35,8 +35,9 @@
   TT_RELEASE_SAFELY(_picture);
   TT_RELEASE_SAFELY(_fromAvatar);
   TT_RELEASE_SAFELY(_link);
-  TT_RELEASE_SAFELY(_linkName);
-  TT_RELEASE_SAFELY(_linkCaption);
+  TT_RELEASE_SAFELY(_linkURL);
+  TT_RELEASE_SAFELY(_linkTitle)
+  TT_RELEASE_SAFELY(_linkText)
   TT_RELEASE_SAFELY(_source);
   TT_RELEASE_SAFELY(_icon);
   TT_RELEASE_SAFELY(_likes);
