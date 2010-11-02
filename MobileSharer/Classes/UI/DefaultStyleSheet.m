@@ -64,4 +64,12 @@
   return [self darkColor];
 }
 
+- (TTTextStyle*)tableTitleText {
+  return [TTTextStyle styleWithFont:TTSTYLEVAR(tableTitleFont) color:TTSTYLEVAR(tableTitleTextColor) next:nil];
+}
+
+- (TTTextStyle*)tableSubText {
+  return [TTTextStyle styleWithFont:TTSTYLEVAR(tableFont) color:TTSTYLEVAR(tableSubTextColor) next:nil];
+}
+
 @end

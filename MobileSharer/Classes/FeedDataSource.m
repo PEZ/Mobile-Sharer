@@ -1,6 +1,6 @@
 #import "FeedDataSource.h"
 
-#import "FeedPostTableCell.h"
+#import "LinkPostTableCell.h"
 #import "FeedPostItem.h"
 #import "FeedModel.h"
 #import "FeedPost.h"
@@ -49,7 +49,13 @@
 
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
 	if ([object isKindOfClass:[FeedPostItem class]]) {
-		return [FeedPostTableCell class];
+    FeedPostItem* item = object;
+    if (item.linkURL) {
+      return [LinkPostTableCell class];
+    }
+    else {
+      return [PostTableCell class];      
+    }
 	} else {
 		return [super tableView:tableView cellClassForObject:object];
 	}

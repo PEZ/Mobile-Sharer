@@ -1,73 +1,19 @@
 //
-//  FeedPostCell.m
+//  PostTableCell.m
 //  MobileSharer
 //
-//  Created by PEZ on 2010-10-30.
-//  Copyright 2010 Better Than Tomorrow. All rights reserved.
+//  Created by PEZ on 2010-11-01.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "FeedPostTableCell.h"
-#import "FeedPostItem.h"
+#import "PostTableCell.h"
 
-// UI
-#import "Three20UI/TTImageView.h"
-#import "Three20UI/UIViewAdditions.h"
-#import "Three20Style/UIFontAdditions.h"
-
-// Style
-#import "Three20Style/TTGlobalStyle.h"
-#import "Three20Style/TTDefaultStyleSheet.h"
-
-// Core
-#import "Three20Core/TTCorePreprocessorMacros.h"
-#import "Three20Core/NSDateAdditions.h"
-
-static const CGFloat    kDiscloureWidth   = 20;
-static const CGFloat    kDefaultMessageImageWidth   = 34;
-static const CGFloat    kDefaultMessageImageHeight  = 34;
-static const CGFloat    kIconImageWidth   = 15;
-static const CGFloat    kIconImageHeight  = 16;
-static const CGFloat    kPictureImageWidth   = 15;
-static const CGFloat    kPictureImageHeight  = 16;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-@implementation FeedPostTableCell
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
-  if (self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:identifier]) {
-    self.textLabel.font = TTSTYLEVAR(tableFont);
-    self.textLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
-    self.textLabel.textAlignment = UITextAlignmentLeft;
-    self.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    self.textLabel.adjustsFontSizeToFitWidth = NO;
-  }
-  
-  return self;
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)dealloc {
-  TT_RELEASE_SAFELY(_titleLabel);
-  TT_RELEASE_SAFELY(_timestampLabel);
-  TT_RELEASE_SAFELY(_iconImageView);
-  TT_RELEASE_SAFELY(_pictureImageView);
-  TT_RELEASE_SAFELY(_linkTextLabel);
-  TT_RELEASE_SAFELY(_countsLabel);
-
-  [super dealloc];
-}
+@implementation PostTableCell
 
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural {
   return [NSString stringWithFormat:@"%d %@", count, count == 1 ? singular : plural];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark TTTableViewCell class public
 
@@ -77,57 +23,65 @@ static const CGFloat    kPictureImageHeight  = 16;
                lineBreakMode:UILineBreakModeWordWrap].height;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-+ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
-  FeedPostItem* item = object;
-  
-  CGFloat left = kTableCellSmallMargin;
-  CGFloat imageHeight = 0;
-  if (item.imageURL) {
-    left += kDefaultMessageImageWidth + kTableCellSmallMargin;
-    imageHeight = kDefaultMessageImageHeight;
-  }
++ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(FeedPostItem *)item {
+  return 0;
+}
 
-  CGFloat textWidth = [UIScreen mainScreen].bounds.size.width - left - kTableCellSmallMargin;
++ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(FeedPostItem*)item  {
+  CGFloat textWidth = tableView.width - left - kTableCellSmallMargin;
   if (item.URL) {
     textWidth -= kDiscloureWidth;
   }
+  return textWidth;
+}
+
++ (CGFloat) getLeft:(CGFloat*)imageHeight_p item:(FeedPostItem*)item {
+  CGFloat left = kTableCellSmallMargin;
+  *imageHeight_p = 0;
+  if (item.imageURL) {
+    left += kDefaultMessageImageWidth + kTableCellSmallMargin;
+    *imageHeight_p = kDefaultMessageImageHeight;
+  }
+  return left;
+}
+
++ (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
+  FeedPostItem* item = object;
+  
+  CGFloat imageHeight;
+  CGFloat left = [self getLeft:&imageHeight item:item];
+  
+  CGFloat textWidth = [self getTextWidth:left tableView:tableView item:item];
   
   CGFloat textHeight = TTSTYLEVAR(tableTitleFont).ttLineHeight + TTSTYLEVAR(tableFont).ttLineHeight + kTableCellSmallMargin;
   if (item.text.length) {
     textHeight += [self heightForText:item.text withFont:TTSTYLEVAR(tableFont) andWidth:textWidth];
   }
   
-  return MAX(imageHeight + 26, textHeight) + kTableCellSmallMargin * 2;
+  return MAX(imageHeight + 26, textHeight + [self tableView:tableView heightForMoreBody:item]) + kTableCellSmallMargin * 2;
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark UIView
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)prepareForReuse {
   [super prepareForReuse];
   [_imageView2 unsetImage];
   _titleLabel.text = nil;
   _timestampLabel.text = nil;
   [_iconImageView unsetImage];
-  [_pictureImageView unsetImage];
-  self.detailTextLabel.text = nil;
-  _linkTextLabel.text = nil;
   _countsLabel.text = nil;
 }
 
+- (CGFloat)layoutMoreBodyAtX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w{
+  return y;
+}
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)layoutSubviews {
   [super layoutSubviews];
-
+  
   FeedPostItem* item = self.object;
-
+  
   CGFloat left = 0;
   if (item.imageURL) {
     CGFloat iconWidth = item.imageURL ? kDefaultMessageImageWidth : 0;
@@ -146,7 +100,7 @@ static const CGFloat    kPictureImageHeight  = 16;
   
   _titleLabel.frame = CGRectMake(left, top, width, _titleLabel.font.ttLineHeight);
   top += _titleLabel.height;
-    
+  
   if (self.textLabel.text.length) {
     self.textLabel.frame = CGRectMake(left, top, width, 0);
     self.textLabel.numberOfLines = 0;
@@ -154,7 +108,7 @@ static const CGFloat    kPictureImageHeight  = 16;
   } else {
     self.textLabel.frame = CGRectZero;
   }
-
+  
   if (_timestampLabel.text.length) {
     _timestampLabel.alpha = !self.showingDeleteConfirmation;
     [_timestampLabel sizeToFit];
@@ -164,25 +118,21 @@ static const CGFloat    kPictureImageHeight  = 16;
   } else {
     _timestampLabel.frame = CGRectZero;
   }
-
+  
+  CGFloat y = [self layoutMoreBodyAtX:left andY:self.textLabel.bottom withWidth:width];
+  
   if (_countsLabel.text.length) {
     [_countsLabel sizeToFit];
     _countsLabel.left = left;
-    _countsLabel.top = self.textLabel.bottom + kTableCellSmallMargin;
+    _countsLabel.top = y + kTableCellSmallMargin;
   }
-
+  
   if (item.icon) {
     _iconImageView.frame = CGRectMake(_countsLabel.left - _iconImageView.width - kTableCellSmallMargin,
                                       _countsLabel.bottom - 16, 15, 16);
-    //_iconImageView.bottom = _countsLabel.bottom;
-    //_iconImageView.left = _countsLabel.left - _iconImageView.width - kTableCellSmallMargin;
-    //    _iconImageView.frame = CGRectMake(_imageView2.bottom + kTableCellSmallMargin, kTableCellSmallMargin, 0, 0);
-    //[_iconImageView sizeToFit];
   }
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)didMoveToSuperview {
   [super didMoveToSuperview];
   
@@ -190,21 +140,14 @@ static const CGFloat    kPictureImageHeight  = 16;
     _imageView2.backgroundColor = self.backgroundColor;
     _titleLabel.backgroundColor = self.backgroundColor;
     _timestampLabel.backgroundColor = self.backgroundColor;
-    _linkTextLabel.backgroundColor = self.backgroundColor;
     _countsLabel.backgroundColor = self.backgroundColor;
     _iconImageView.backgroundColor = self.backgroundColor;
-    _pictureImageView.backgroundColor = self.backgroundColor;
   }
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark TTTableViewCell
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setObject:(id)object {
   if (_item != object) {
     [super setObject:object];
@@ -246,35 +189,11 @@ static const CGFloat    kPictureImageHeight  = 16;
     if (item.icon) {
       self.iconImageView.urlPath = item.icon;
     }
-    if (item.picture) {
-      self.pictureImageView.urlPath = item.picture;
-    }
-    if (item.linkTitle) {
-      self.detailTextLabel.text = item.linkTitle;
-    }
-    if (item.linkText) {
-      self.linkTextLabel.text = item.linkText;
-    }    
   }
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark Public
-
-- (UILabel*)linkTextLabel {
-  if (!_linkTextLabel) {
-    _linkTextLabel = [[UILabel alloc] init];
-    _linkTextLabel.textColor = TTSTYLEVAR(tableTitleTextColor);
-    _linkTextLabel.highlightedTextColor = [UIColor whiteColor];
-    _linkTextLabel.font = TTSTYLEVAR(tableFont);
-    _linkTextLabel.contentMode = UIViewContentModeLeft;
-    [self.contentView addSubview:_linkTextLabel];
-  }
-  return _linkTextLabel;
-}
 
 - (UILabel*)countsLabel {
   if (!_countsLabel) {
@@ -296,13 +215,6 @@ static const CGFloat    kPictureImageHeight  = 16;
   return _iconImageView;
 }
 
-- (TTImageView*)pictureImageView {
-  if (!_pictureImageView) {
-    _pictureImageView = [[TTImageView alloc] init];
-    [self.contentView addSubview:_pictureImageView];
-  }
-  return _pictureImageView;
-}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UILabel*)titleLabel {
@@ -331,7 +243,6 @@ static const CGFloat    kPictureImageHeight  = 16;
   return _timestampLabel;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (TTImageView*)imageView2 {
   if (!_imageView2) {
@@ -340,6 +251,5 @@ static const CGFloat    kPictureImageHeight  = 16;
   }
   return _imageView2;
 }
-
 
 @end

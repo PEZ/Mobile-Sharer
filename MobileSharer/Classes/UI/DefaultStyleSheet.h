@@ -10,5 +10,9 @@
 #import <Three20Style/TTDefaultStyleSheet.h>
 
 @interface DefaultStyleSheet : TTDefaultStyleSheet
+
+- (TTTextStyle*)tableTitleText;
+- (TTTextStyle*)tableSubText;
+
 @end
 
