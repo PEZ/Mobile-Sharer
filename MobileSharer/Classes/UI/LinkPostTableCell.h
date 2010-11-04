@@ -15,5 +15,3 @@
 @property (nonatomic, readonly, retain) TTStyledTextLabel*      linkTextLabel;
 
 @end
-
-

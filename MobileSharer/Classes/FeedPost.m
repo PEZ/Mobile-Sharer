@@ -9,11 +9,11 @@
 @synthesize type              = _type;
 @synthesize fromId            = _fromId;
 @synthesize toId              = _toId;
-@synthesize message           = _message;
+@synthesize text              = _message;
 @synthesize fromName          = _fromName;
 @synthesize picture           = _picture;
-@synthesize fromAvatar        = _fromAvatar;
-@synthesize link              = _link;
+@synthesize imageURL          = _fromAvatar;
+@synthesize linkCaption              = _link;
 @synthesize linkURL           = _linkURL;
 @synthesize linkTitle         = _linkTitle;
 @synthesize linkText          = _linkText;
@@ -22,11 +22,11 @@
 @synthesize likes             = _likes;
 @synthesize commentCount      = _commentCount;
 
-
 - (void)dealloc {
   TT_RELEASE_SAFELY(_updated);
   TT_RELEASE_SAFELY(_created);
   TT_RELEASE_SAFELY(_postId);
+  TT_RELEASE_SAFELY(_URL);
   TT_RELEASE_SAFELY(_type);
   TT_RELEASE_SAFELY(_fromId);
   TT_RELEASE_SAFELY(_toId);
@@ -45,6 +45,5 @@
 
   [super dealloc];
 }
-
 
 @end

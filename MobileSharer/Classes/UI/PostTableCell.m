@@ -10,6 +10,23 @@
 
 @implementation PostTableCell
 
+@synthesize imageView2 = _imageView2;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
+  if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
+    _imageView2 = [[TTImageView alloc] init];
+    [self.contentView addSubview:_imageView2];
+    
+    self.textLabel.font = TTSTYLEVAR(tableFont);
+    self.textLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
+    self.textLabel.textAlignment = UITextAlignmentLeft;
+    self.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    self.textLabel.adjustsFontSizeToFitWidth = NO;    
+  }
+  
+  return self;
+}
+
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural {
   return [NSString stringWithFormat:@"%d %@", count, count == 1 ? singular : plural];
 }
@@ -23,11 +40,11 @@
                lineBreakMode:UILineBreakModeWordWrap].height;
 }
 
-+ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(FeedPostItem *)item {
++ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(FeedPost *)item {
   return 0;
 }
 
-+ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(FeedPostItem*)item  {
++ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(FeedPost*)item  {
   CGFloat textWidth = tableView.width - left - kTableCellSmallMargin;
   if (item.URL) {
     textWidth -= kDiscloureWidth;
@@ -35,7 +52,7 @@
   return textWidth;
 }
 
-+ (CGFloat) getLeft:(CGFloat*)imageHeight_p item:(FeedPostItem*)item {
++ (CGFloat) getLeft:(CGFloat*)imageHeight_p item:(FeedPost*)item {
   CGFloat left = kTableCellSmallMargin;
   *imageHeight_p = 0;
   if (item.imageURL) {
@@ -46,7 +63,7 @@
 }
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
-  FeedPostItem* item = object;
+  FeedPost* item = object;
   
   CGFloat imageHeight;
   CGFloat left = [self getLeft:&imageHeight item:item];
@@ -54,11 +71,11 @@
   CGFloat textWidth = [self getTextWidth:left tableView:tableView item:item];
   
   CGFloat textHeight = TTSTYLEVAR(tableTitleFont).ttLineHeight + TTSTYLEVAR(tableFont).ttLineHeight + kTableCellSmallMargin;
-  if (item.text.length) {
+  if (item.text) {
     textHeight += [self heightForText:item.text withFont:TTSTYLEVAR(tableFont) andWidth:textWidth];
   }
   
-  return MAX(imageHeight + 26, textHeight + [self tableView:tableView heightForMoreBody:item]) + kTableCellSmallMargin * 2;
+  return MAX(imageHeight + 25, textHeight + [self tableView:tableView heightForMoreBody:item]) + kTableCellSmallMargin * 2;
 }
 
 #pragma mark -
@@ -67,6 +84,7 @@
 - (void)prepareForReuse {
   [super prepareForReuse];
   [_imageView2 unsetImage];
+  self.textLabel.text = nil;
   _titleLabel.text = nil;
   _timestampLabel.text = nil;
   [_iconImageView unsetImage];
@@ -80,16 +98,16 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   
-  FeedPostItem* item = self.object;
+  FeedPost* item = self.object;
   
   CGFloat left = 0;
   if (item.imageURL) {
-    CGFloat iconWidth = item.imageURL ? kDefaultMessageImageWidth : 0;
-    CGFloat iconHeight = item.imageURL ? kDefaultMessageImageHeight : 0;
+    CGFloat avatarWidth = item.imageURL ? kDefaultMessageImageWidth : 0;
+    CGFloat avatarHeight = item.imageURL ? kDefaultMessageImageHeight : 0;
     
     _imageView2.frame = CGRectMake(kTableCellSmallMargin, kTableCellSmallMargin,
-                                   iconWidth, iconHeight);
-    left += kTableCellSmallMargin + iconWidth + kTableCellSmallMargin;
+                                   avatarWidth, avatarHeight);
+    left += kTableCellSmallMargin + avatarWidth + kTableCellSmallMargin;
   } else {
     _imageView2.frame = CGRectZero;
     left = kTableCellMargin;
@@ -101,12 +119,10 @@
   _titleLabel.frame = CGRectMake(left, top, width, _titleLabel.font.ttLineHeight);
   top += _titleLabel.height;
   
-  if (self.textLabel.text.length) {
-    self.textLabel.frame = CGRectMake(left, top, width, 0);
+  self.textLabel.frame = CGRectMake(left, top, width, 0);
+  if (self.textLabel.text) {
     self.textLabel.numberOfLines = 0;
     [self.textLabel sizeToFit];
-  } else {
-    self.textLabel.frame = CGRectZero;
   }
   
   if (_timestampLabel.text.length) {
@@ -137,6 +153,7 @@
   [super didMoveToSuperview];
   
   if (self.superview) {
+    self.textLabel.backgroundColor = self.backgroundColor;
     _imageView2.backgroundColor = self.backgroundColor;
     _titleLabel.backgroundColor = self.backgroundColor;
     _timestampLabel.backgroundColor = self.backgroundColor;
@@ -152,25 +169,20 @@
   if (_item != object) {
     [super setObject:object];
     
-    FeedPostItem* item = object;
-    if (item.title.length) {
-      self.titleLabel.text = item.title;
+    FeedPost* item = object;
+    if (item.fromName) {
+      self.titleLabel.text = item.fromName;
     }
-    if (item.text.length) {
+    if (item.text) {
       self.textLabel.text = item.text;
     }
-    else {
-      self.textLabel.text = @" ";
-    }
-    if (item.timestamp) {
-      self.timestampLabel.text = [item.timestamp formatRelativeTime];
+    if (item.created) {
+      self.timestampLabel.text = [item.created formatRelativeTime];
     }
     if (item.imageURL) {
       self.imageView2.urlPath = item.imageURL;
     }
-    if (item.imageStyle) {
-      self.imageView2.style = item.imageStyle;
-    }
+    self.imageView2.style = TTSTYLE(avatar);
     if (item.commentCount) {
       self.countsLabel.text = [[self class] textForCount:[item.commentCount intValue] withSingular:@"comment" andPlural:@"comments"];
     }
@@ -241,15 +253,6 @@
     [self.contentView addSubview:_timestampLabel];
   }
   return _timestampLabel;
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (TTImageView*)imageView2 {
-  if (!_imageView2) {
-    _imageView2 = [[TTImageView alloc] init];
-    [self.contentView addSubview:_imageView2];
-  }
-  return _imageView2;
 }
 
 @end

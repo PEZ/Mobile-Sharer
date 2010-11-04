@@ -1,7 +1,6 @@
 #import "FeedDataSource.h"
 
 #import "LinkPostTableCell.h"
-#import "FeedPostItem.h"
 #import "FeedModel.h"
 #import "FeedPost.h"
 
@@ -36,8 +35,8 @@
   NSMutableArray* items = [[NSMutableArray alloc] init];
 
   for (FeedPost* post in _searchFeedModel.posts) {
-    [items addObject:[FeedPostItem itemWithPost: post
-                                         andURL: post.fromId != nil ? [Atlas toFeedURLPath:post.fromId name:post.fromName] : nil]];
+    post.URL = post.fromId != nil ? [Atlas toFeedURLPath:post.fromId name:post.fromName] : nil;
+    [items addObject:post];
   }
 
   self.items = items;
@@ -48,8 +47,8 @@
 // TTTableViewDataSource
 
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
-	if ([object isKindOfClass:[FeedPostItem class]]) {
-    FeedPostItem* item = object;
+	if ([object isKindOfClass:[FeedPost class]]) {
+    FeedPost* item = object;
     if (item.linkURL) {
       return [LinkPostTableCell class];
     }

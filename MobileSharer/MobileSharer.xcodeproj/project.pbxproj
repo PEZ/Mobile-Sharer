@@ -42,7 +42,6 @@
 		32891DB2127F5D6D00786BE7 /* PostTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891DB1127F5D6D00786BE7 /* PostTableCell.m */; };
 		32939FF51278ABD900B07DD5 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 32939FF41278ABD900B07DD5 /* Facebook.m */; };
 		3293A410127C130700B07DD5 /* LinkPostTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A40F127C130700B07DD5 /* LinkPostTableCell.m */; };
-		3293A417127C178100B07DD5 /* FeedPostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A416127C178100B07DD5 /* FeedPostItem.m */; };
 		3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
@@ -572,8 +571,6 @@
 		32939FF41278ABD900B07DD5 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = "../../facebook-ios-sdk/src/Facebook.m"; sourceTree = SOURCE_ROOT; };
 		3293A40E127C130700B07DD5 /* LinkPostTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkPostTableCell.h; sourceTree = "<group>"; };
 		3293A40F127C130700B07DD5 /* LinkPostTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkPostTableCell.m; sourceTree = "<group>"; };
-		3293A415127C178100B07DD5 /* FeedPostItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPostItem.h; sourceTree = "<group>"; };
-		3293A416127C178100B07DD5 /* FeedPostItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedPostItem.m; sourceTree = "<group>"; };
 		3293A456127C208B00B07DD5 /* DefaultStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultStyleSheet.h; sourceTree = "<group>"; };
 		3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultStyleSheet.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* MobileSharer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileSharer_Prefix.pch; sourceTree = "<group>"; };
@@ -860,8 +857,6 @@
 				32891DB1127F5D6D00786BE7 /* PostTableCell.m */,
 				3293A40E127C130700B07DD5 /* LinkPostTableCell.h */,
 				3293A40F127C130700B07DD5 /* LinkPostTableCell.m */,
-				3293A415127C178100B07DD5 /* FeedPostItem.h */,
-				3293A416127C178100B07DD5 /* FeedPostItem.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1433,7 +1428,6 @@
 				3215B24B12747E01005580D5 /* LoginViewController.m in Sources */,
 				32939FF51278ABD900B07DD5 /* Facebook.m in Sources */,
 				3293A410127C130700B07DD5 /* LinkPostTableCell.m in Sources */,
-				3293A417127C178100B07DD5 /* FeedPostItem.m in Sources */,
 				3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */,
 				32891DB2127F5D6D00786BE7 /* PostTableCell.m in Sources */,
 			);

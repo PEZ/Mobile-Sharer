@@ -36,9 +36,13 @@
   return
   [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
    [TTSolidBorderStyle styleWithColor:[self darkColor] width:0.5 next:
-    //[TTShadowStyle styleWithColor:[self darkColorA] blur:0 offset:CGSizeMake(0, 1) next:
-     [TTContentStyle styleWithNext:nil]]];
+    [TTContentStyle styleWithNext:nil]]];
 }
+
+- (TTStyle*)tablePostImage {
+  return [TTContentStyle styleWithNext:nil];
+}
+
 
 - (UIFont*)tableFont {
   return [UIFont systemFontOfSize:14];

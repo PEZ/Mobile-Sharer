@@ -8,19 +8,26 @@
 
 #import "LinkPostTableCell.h"
 
-static const CGFloat    kPictureImageHeight  = 50;
+static const CGFloat    kPictureImageHeight  = 55;
+static const CGFloat    kPictureImageWidth  = 80;
 
 @implementation LinkPostTableCell
+@synthesize linkTextLabel = _linkTextLabel;
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
++ (TTStyledTextLabel*)createStyledLabel {
+  TTStyledTextLabel* label = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
+  label.textColor = TTSTYLEVAR(tableSubTextColor);
+  label.highlightedTextColor = [UIColor whiteColor];
+  label.font = TTSTYLEVAR(tableFont);
+  label.contentMode = UIViewContentModeLeft;
+  return label;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
   if (self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:identifier]) {
-    self.textLabel.font = TTSTYLEVAR(tableFont);
-    self.textLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
-    self.textLabel.textAlignment = UITextAlignmentLeft;
-    self.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    self.textLabel.adjustsFontSizeToFitWidth = NO;
+    _linkTextLabel = [[self class] createStyledLabel];
+    [self.contentView addSubview:_linkTextLabel];
   }
   
   return self;
@@ -32,26 +39,21 @@ static const CGFloat    kPictureImageHeight  = 50;
   [super dealloc];
 }
 
-+ (TTStyledTextLabel*)createStyledLabel {
-  TTStyledTextLabel* label = [[TTStyledTextLabel alloc] init];
-  label.textColor = TTSTYLEVAR(tableSubTextColor);
-  label.highlightedTextColor = [UIColor whiteColor];
-  label.font = TTSTYLEVAR(tableFont);
-  return label;
-}
-
-+ (NSString *) getLinkHTML:(FeedPostItem*)item  {
++ (NSString *) getLinkHTML:(FeedPost*)item  {
   NSString* linkText = @"";
-  if (item.picture) {
-    linkText = [NSString stringWithFormat:@"%@<img src=\"%@\"/>", linkText, item.picture];
-  }
   if (item.linkTitle) {
-    linkText = [NSString stringWithFormat:@"%@<span class=\"tableTitleText\">%@</span>", linkText, item.linkTitle];
+    linkText = [NSString stringWithFormat:@"%@<div class=\"tableTitleText\">%@</div>", linkText, item.linkTitle];
+  }
+  if (item.linkCaption) {
+    linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, item.linkCaption];
+  }
+  if (item.picture) {
+    linkText = [NSString stringWithFormat:@"%@<img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" />", linkText, kPictureImageWidth,
+                kPictureImageHeight, [item.picture stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
   }
   if (item.linkText) {
-    linkText = [NSString stringWithFormat:@"%@<span class=\"tableSubText\">%@</span>", linkText, item.linkText];
+    linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, item.linkText];
   }
-  NSLog(@"+html: %@", linkText);
   return linkText;
 }
 
@@ -59,12 +61,11 @@ static const CGFloat    kPictureImageHeight  = 50;
 #pragma mark -
 #pragma mark TTTableViewCell class public
 
-+ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(FeedPostItem *)item {
++ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(FeedPost *)item {
   TTStyledTextLabel* label = [self createStyledLabel];
   CGFloat junk;
   CGFloat left = [self getLeft:&junk item:item];
   label.text = [TTStyledText textFromXHTML:[self getLinkHTML:item] lineBreaks:YES URLs:NO];
-  NSLog(@"+height: %@", [TTStyledText textFromXHTML:[self getLinkHTML:item] lineBreaks:YES URLs:NO]);
 
   label.frame = CGRectMake(left, 0, [self getTextWidth:left tableView:tableView item:item], 0);
   [label sizeToFit];
@@ -79,7 +80,6 @@ static const CGFloat    kPictureImageHeight  = 50;
 
 - (CGFloat)layoutMoreBodyAtX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w {
   _linkTextLabel.frame = CGRectMake(x, y, w, 0);
-  NSLog(@"-layout: %@", _linkTextLabel.text);
   [_linkTextLabel sizeToFit];
   return _linkTextLabel.bottom;
 }
@@ -111,22 +111,13 @@ static const CGFloat    kPictureImageHeight  = 50;
   if (_item != object) {
     [super setObject:object];
     
-    FeedPostItem* item = object;
-    NSString *linkText;
-    linkText = [[self class] getLinkHTML: item];
-
+    FeedPost* item = object;    
     _linkTextLabel.text = [TTStyledText textFromXHTML:[[self class] getLinkHTML:item] lineBreaks:YES URLs:NO];
   }
+  [self setNeedsLayout];
 }
 
 #pragma mark -
 #pragma mark Public
-
-- (TTStyledTextLabel*)linkTextLabel {
-  if (!_linkTextLabel) {
-    _linkTextLabel = [[self class] createStyledLabel];
-  }
-  return _linkTextLabel;
-}
 
 @end

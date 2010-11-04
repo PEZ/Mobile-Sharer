@@ -62,7 +62,7 @@
                              delegate: self];
     
     request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;
-    //request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
+    request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
 
     TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
     request.response = response;
@@ -97,16 +97,16 @@
     post.postId = [NSNumber numberWithLongLong:
                      [[entry objectForKey:@"id"] longLongValue]];
     post.type = [entry objectForKey:@"type"];
-    post.message = [entry objectForKey:@"message"];
-    post.picture = [entry objectForKey:@"picture"];
+    post.text = [entry objectForKey:@"message"];
     if ([entry objectForKey:@"from"] != [NSNull null]) {
       post.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
       post.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
-      post.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
+      post.URL = [Atlas toFeedURLPath:post.fromId name:post.fromName];
+      post.imageURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
     }
     else {
       post.fromName = @"Facebook User";
-      post.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
+      post.imageURL = @"https://graph.facebook.com/1/picture?type=square";
     }
     post.likes = [entry objectForKey:@"likes"];
     if ([entry objectForKey:@"comments"] != [NSNull null]) {
@@ -115,6 +115,7 @@
     post.icon = [entry objectForKey:@"icon"];
     post.picture = [entry objectForKey:@"picture"];
     post.linkURL = [entry objectForKey:@"link"];
+    post.linkCaption = [entry objectForKey:@"caption"];
     post.linkTitle = [entry objectForKey:@"name"];
     post.linkText = [entry objectForKey:@"description"];
 

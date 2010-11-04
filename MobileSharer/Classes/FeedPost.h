@@ -1,5 +1,5 @@
 
-@interface FeedPost : NSObject {
+@interface FeedPost : TTTableImageItem {
   NSDate*   _created;
   NSDate*   _updated;
   NSNumber* _postId;
@@ -26,11 +26,11 @@
 @property (nonatomic, copy)   NSString* type;
 @property (nonatomic, copy)   NSString* fromId;
 @property (nonatomic, copy)   NSString* toId;
-@property (nonatomic, copy)   NSString* message;
+@property (nonatomic, copy)   NSString* text;
 @property (nonatomic, copy)   NSString* fromName;
 @property (nonatomic, copy)   NSString* picture;
-@property (nonatomic, copy)   NSString* fromAvatar;
-@property (nonatomic, copy)   NSString* link;
+@property (nonatomic, copy)   NSString* imageURL;
+@property (nonatomic, copy)   NSString* linkCaption;
 @property (nonatomic, copy)   NSString* linkURL;
 @property (nonatomic, copy)   NSString* linkTitle;
 @property (nonatomic, copy)   NSString* linkText;
