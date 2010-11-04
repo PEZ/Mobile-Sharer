@@ -167,7 +167,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 321F3A71126CEE6F008473C8 /* MobileSharer */;
-		activeSDKPreference = iphonesimulator4.1;
+		activeSDKPreference = iphoneos4.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* MobileSharer */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* MobileSharer */,
@@ -339,6 +339,9 @@
 			329079B812835B51005D193A /* PBXTextBookmark */ = 329079B812835B51005D193A /* PBXTextBookmark */;
 			329079B912835B51005D193A /* PBXTextBookmark */ = 329079B912835B51005D193A /* PBXTextBookmark */;
 			329079BA12835B51005D193A /* PBXTextBookmark */ = 329079BA12835B51005D193A /* PBXTextBookmark */;
+			329079D412836DFC005D193A /* PBXTextBookmark */ = 329079D412836DFC005D193A /* PBXTextBookmark */;
+			329079D512836DFC005D193A /* PBXTextBookmark */ = 329079D512836DFC005D193A /* PBXTextBookmark */;
+			329079D612836DFC005D193A /* PBXTextBookmark */ = 329079D612836DFC005D193A /* PBXTextBookmark */;
 			32939F6C12777A5D00B07DD5 = 32939F6C12777A5D00B07DD5 /* PBXTextBookmark */;
 			32939F6E12777A5D00B07DD5 = 32939F6E12777A5D00B07DD5 /* PBXTextBookmark */;
 			32939F8612777D1A00B07DD5 = 32939F8612777D1A00B07DD5 /* PBXTextBookmark */;
@@ -495,7 +498,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -732,9 +735,9 @@
 	};
 	32891DB1127F5D6D00786BE7 /* PostTableCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1122, 3367}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1122, 3419}}";
 			sepNavSelRange = "{2722, 0}";
-			sepNavVisRange = "{1727, 1332}";
+			sepNavVisRange = "{1659, 1380}";
 		};
 	};
 	32891DEC127F651500786BE7 /* PBXTextBookmark */ = {
@@ -1345,6 +1348,36 @@
 		vrLoc = 2023;
 	};
 	329079BA12835B51005D193A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3293A40F127C130700B07DD5 /* LinkPostTableCell.m */;
+		name = "LinkPostTableCell.m: 114";
+		rLen = 0;
+		rLoc = 3478;
+		rType = 0;
+		vrLen = 435;
+		vrLoc = 2671;
+	};
+	329079D412836DFC005D193A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32891DB1127F5D6D00786BE7 /* PostTableCell.m */;
+		name = "PostTableCell.m: 87";
+		rLen = 0;
+		rLoc = 2722;
+		rType = 0;
+		vrLen = 1332;
+		vrLoc = 1727;
+	};
+	329079D512836DFC005D193A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32891DB1127F5D6D00786BE7 /* PostTableCell.m */;
+		name = "PostTableCell.m: 87";
+		rLen = 0;
+		rLoc = 2722;
+		rType = 0;
+		vrLen = 1380;
+		vrLoc = 1659;
+	};
+	329079D612836DFC005D193A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 3293A40F127C130700B07DD5 /* LinkPostTableCell.m */;
 		name = "LinkPostTableCell.m: 114";

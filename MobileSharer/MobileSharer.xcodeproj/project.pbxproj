@@ -40,6 +40,7 @@
 		3288C965126E2F1800BF1E3C /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C959126E2F1800BF1E3C /* FBLoginDialog.m */; };
 		3288C966126E2F1800BF1E3C /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C95B126E2F1800BF1E3C /* FBDialog.m */; };
 		32891DB2127F5D6D00786BE7 /* PostTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891DB1127F5D6D00786BE7 /* PostTableCell.m */; };
+		329079CF12836D95005D193A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329079CE12836D95005D193A /* Icon.png */; };
 		32939FF51278ABD900B07DD5 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 32939FF41278ABD900B07DD5 /* Facebook.m */; };
 		3293A410127C130700B07DD5 /* LinkPostTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A40F127C130700B07DD5 /* LinkPostTableCell.m */; };
 		3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */; };
@@ -567,6 +568,7 @@
 		3288C95B126E2F1800BF1E3C /* FBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBDialog.m; path = "../../facebook-ios-sdk/src/FBDialog.m"; sourceTree = SOURCE_ROOT; };
 		32891DB0127F5D6C00786BE7 /* PostTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableCell.h; sourceTree = "<group>"; };
 		32891DB1127F5D6D00786BE7 /* PostTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableCell.m; sourceTree = "<group>"; };
+		329079CE12836D95005D193A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Images/Icon.png; sourceTree = SOURCE_ROOT; };
 		32939FF31278ABD900B07DD5 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = "../../facebook-ios-sdk/src/Facebook.h"; sourceTree = SOURCE_ROOT; };
 		32939FF41278ABD900B07DD5 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = "../../facebook-ios-sdk/src/Facebook.m"; sourceTree = SOURCE_ROOT; };
 		3293A40E127C130700B07DD5 /* LinkPostTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkPostTableCell.h; sourceTree = "<group>"; };
@@ -638,6 +640,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				329079CE12836D95005D193A /* Icon.png */,
 				EB383D1010BBFC630000B2D2 /* Three20.bundle */,
 				28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */,
 				8D1107310486CEB800E47090 /* MobileSharer-Info.plist */,
@@ -1397,6 +1400,7 @@
 			files = (
 				EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */,
 				3288C95C126E2F1800BF1E3C /* FBDialog.bundle in Resources */,
+				329079CF12836D95005D193A /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
