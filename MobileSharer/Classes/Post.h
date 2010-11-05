@@ -1,5 +1,5 @@
 
-@interface FeedPost : TTTableImageItem {
+@interface Post : TTTableImageItem {
   NSDate*   _created;
   NSDate*   _updated;
   NSNumber* _postId;

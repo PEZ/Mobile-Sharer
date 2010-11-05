@@ -40,11 +40,11 @@
                lineBreakMode:UILineBreakModeWordWrap].height;
 }
 
-+ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(FeedPost *)item {
++ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(Post *)item {
   return 0;
 }
 
-+ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(FeedPost*)item  {
++ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(Post*)item  {
   CGFloat textWidth = tableView.width - left - kTableCellSmallMargin;
   if (item.URL) {
     textWidth -= kDiscloureWidth;
@@ -52,7 +52,7 @@
   return textWidth;
 }
 
-+ (CGFloat) getLeft:(CGFloat*)imageHeight_p item:(FeedPost*)item {
++ (CGFloat) getLeft:(CGFloat*)imageHeight_p item:(Post*)item {
   CGFloat left = kTableCellSmallMargin;
   *imageHeight_p = 0;
   if (item.imageURL) {
@@ -63,7 +63,7 @@
 }
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
-  FeedPost* item = object;
+  Post* item = object;
   
   CGFloat imageHeight;
   CGFloat left = [self getLeft:&imageHeight item:item];
@@ -98,7 +98,7 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   
-  FeedPost* item = self.object;
+  Post* item = self.object;
   
   CGFloat left = 0;
   if (item.imageURL) {
@@ -169,7 +169,7 @@
   if (_item != object) {
     [super setObject:object];
     
-    FeedPost* item = object;
+    Post* item = object;
     if (item.fromName) {
       self.titleLabel.text = item.fromName;
     }

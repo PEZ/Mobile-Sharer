@@ -14,7 +14,6 @@
 		28C3AD8A0F43EF2300507BA6 /* MobileSharer.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
 		3215B0521272E15C005580D5 /* FacebookJanitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215B0511272E15C005580D5 /* FacebookJanitor.m */; };
-		3215B24B12747E01005580D5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215B24A12747E01005580D5 /* LoginViewController.m */; };
 		321F3B1A126CEFFB008473C8 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3AB5126CEFF0008473C8 /* libThree20Core.a */; };
 		321F3B1B126CEFFE008473C8 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3AC7126CEFF0008473C8 /* libThree20Network.a */; };
 		321F3B1C126CF000008473C8 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3AD9126CEFF0008473C8 /* libThree20Style.a */; };
@@ -22,10 +21,7 @@
 		321F3B1E126CF005008473C8 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3AEB126CEFF0008473C8 /* libThree20UICommon.a */; };
 		321F3B1F126CF008008473C8 /* libThree20UINavigator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3AFD126CEFF0008473C8 /* libThree20UINavigator.a */; };
 		321F3BDA126CF6D2008473C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD1126CF6D2008473C8 /* AppDelegate.m */; };
-		321F3BDB126CF6D2008473C8 /* FeedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD3126CF6D2008473C8 /* FeedPost.m */; };
-		321F3BDC126CF6D2008473C8 /* FeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD5126CF6D2008473C8 /* FeedDataSource.m */; };
-		321F3BDD126CF6D2008473C8 /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD7126CF6D2008473C8 /* FeedModel.m */; };
-		321F3BDE126CF6D2008473C8 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD9126CF6D2008473C8 /* FeedViewController.m */; };
+		321F3BDB126CF6D2008473C8 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD3126CF6D2008473C8 /* Post.m */; };
 		321F3BEB126CF72F008473C8 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3B8C126CF5B5008473C8 /* libextThree20JSON+YAJL.a */; };
 		321F3BEC126CF731008473C8 /* libextThree20CSSStyle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3B9F126CF5B5008473C8 /* libextThree20CSSStyle.a */; };
 		3288C8D9126E216300BF1E3C /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BCE126CF673008473C8 /* Atlas.m */; };
@@ -41,6 +37,11 @@
 		3288C966126E2F1800BF1E3C /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C95B126E2F1800BF1E3C /* FBDialog.m */; };
 		32891DB2127F5D6D00786BE7 /* PostTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891DB1127F5D6D00786BE7 /* PostTableCell.m */; };
 		329079CF12836D95005D193A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329079CE12836D95005D193A /* Icon.png */; };
+		329079ED1284410A005D193A /* FeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EA1284410A005D193A /* FeedDataSource.m */; };
+		329079EE1284410A005D193A /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EC1284410A005D193A /* FeedModel.m */; };
+		329079F312844115005D193A /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F012844115005D193A /* FeedViewController.m */; };
+		329079F412844115005D193A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F212844115005D193A /* LoginViewController.m */; };
+		329079F912844295005D193A /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F812844295005D193A /* PostViewController.m */; };
 		32939FF51278ABD900B07DD5 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 32939FF41278ABD900B07DD5 /* Facebook.m */; };
 		3293A410127C130700B07DD5 /* LinkPostTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A40F127C130700B07DD5 /* LinkPostTableCell.m */; };
 		3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */; };
@@ -523,8 +524,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3215B0501272E15C005580D5 /* FacebookJanitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookJanitor.h; sourceTree = "<group>"; };
 		3215B0511272E15C005580D5 /* FacebookJanitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookJanitor.m; sourceTree = "<group>"; };
-		3215B24912747E01005580D5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		3215B24A12747E01005580D5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		321F3A9C126CEFF0008473C8 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../../three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		321F3A9F126CEFF0008473C8 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../../three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
 		321F3AA2126CEFF0008473C8 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -537,14 +536,8 @@
 		321F3BCE126CF673008473C8 /* Atlas.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; name = Atlas.m; path = ../Atlas.m; sourceTree = "<group>"; };
 		321F3BD0126CF6D2008473C8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		321F3BD1126CF6D2008473C8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		321F3BD2126CF6D2008473C8 /* FeedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPost.h; sourceTree = "<group>"; };
-		321F3BD3126CF6D2008473C8 /* FeedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedPost.m; sourceTree = "<group>"; };
-		321F3BD4126CF6D2008473C8 /* FeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDataSource.h; sourceTree = "<group>"; };
-		321F3BD5126CF6D2008473C8 /* FeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDataSource.m; sourceTree = "<group>"; };
-		321F3BD6126CF6D2008473C8 /* FeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedModel.h; sourceTree = "<group>"; };
-		321F3BD7126CF6D2008473C8 /* FeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedModel.m; sourceTree = "<group>"; };
-		321F3BD8126CF6D2008473C8 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
-		321F3BD9126CF6D2008473C8 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		321F3BD2126CF6D2008473C8 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = ../Post.h; sourceTree = "<group>"; };
+		321F3BD3126CF6D2008473C8 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Post.m; path = ../Post.m; sourceTree = "<group>"; };
 		3288C944126E2F1800BF1E3C /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = "../../facebook-ios-sdk/src/FBDialog.bundle"; sourceTree = SOURCE_ROOT; };
 		3288C946126E2F1800BF1E3C /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = "../../facebook-ios-sdk/src/JSON/JSON.h"; sourceTree = SOURCE_ROOT; };
 		3288C947126E2F1800BF1E3C /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJSON.h"; path = "../../facebook-ios-sdk/src/JSON/NSObject+SBJSON.h"; sourceTree = SOURCE_ROOT; };
@@ -569,6 +562,16 @@
 		32891DB0127F5D6C00786BE7 /* PostTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableCell.h; sourceTree = "<group>"; };
 		32891DB1127F5D6D00786BE7 /* PostTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableCell.m; sourceTree = "<group>"; };
 		329079CE12836D95005D193A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Images/Icon.png; sourceTree = SOURCE_ROOT; };
+		329079E91284410A005D193A /* FeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDataSource.h; sourceTree = "<group>"; };
+		329079EA1284410A005D193A /* FeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDataSource.m; sourceTree = "<group>"; };
+		329079EB1284410A005D193A /* FeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedModel.h; sourceTree = "<group>"; };
+		329079EC1284410A005D193A /* FeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedModel.m; sourceTree = "<group>"; };
+		329079EF12844115005D193A /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		329079F012844115005D193A /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		329079F112844115005D193A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		329079F212844115005D193A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		329079F712844295005D193A /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		329079F812844295005D193A /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		32939FF31278ABD900B07DD5 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = "../../facebook-ios-sdk/src/Facebook.h"; sourceTree = SOURCE_ROOT; };
 		32939FF41278ABD900B07DD5 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = "../../facebook-ios-sdk/src/Facebook.m"; sourceTree = SOURCE_ROOT; };
 		3293A40E127C130700B07DD5 /* LinkPostTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkPostTableCell.h; sourceTree = "<group>"; };
@@ -792,22 +795,14 @@
 		321F3BCF126CF6D2008473C8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				329079DD1284403C005D193A /* Models */,
+				329079DC12843FF6005D193A /* Controllers */,
 				3293A409127C121E00B07DD5 /* UI */,
 				3215B0571272F70E005580D5 /* Connectivity */,
 				321F3BCD126CF673008473C8 /* Atlas.h */,
 				321F3BCE126CF673008473C8 /* Atlas.m */,
 				321F3BD0126CF6D2008473C8 /* AppDelegate.h */,
 				321F3BD1126CF6D2008473C8 /* AppDelegate.m */,
-				321F3BD2126CF6D2008473C8 /* FeedPost.h */,
-				321F3BD3126CF6D2008473C8 /* FeedPost.m */,
-				321F3BD4126CF6D2008473C8 /* FeedDataSource.h */,
-				321F3BD5126CF6D2008473C8 /* FeedDataSource.m */,
-				321F3BD6126CF6D2008473C8 /* FeedModel.h */,
-				321F3BD7126CF6D2008473C8 /* FeedModel.m */,
-				321F3BD8126CF6D2008473C8 /* FeedViewController.h */,
-				321F3BD9126CF6D2008473C8 /* FeedViewController.m */,
-				3215B24912747E01005580D5 /* LoginViewController.h */,
-				3215B24A12747E01005580D5 /* LoginViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -850,6 +845,32 @@
 			name = JSON;
 			path = "../../facebook-ios-sdk/src/JSON";
 			sourceTree = SOURCE_ROOT;
+		};
+		329079DC12843FF6005D193A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				329079EF12844115005D193A /* FeedViewController.h */,
+				329079F012844115005D193A /* FeedViewController.m */,
+				329079F112844115005D193A /* LoginViewController.h */,
+				329079F212844115005D193A /* LoginViewController.m */,
+				329079F712844295005D193A /* PostViewController.h */,
+				329079F812844295005D193A /* PostViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		329079DD1284403C005D193A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				321F3BD2126CF6D2008473C8 /* Post.h */,
+				321F3BD3126CF6D2008473C8 /* Post.m */,
+				329079E91284410A005D193A /* FeedDataSource.h */,
+				329079EA1284410A005D193A /* FeedDataSource.m */,
+				329079EB1284410A005D193A /* FeedModel.h */,
+				329079EC1284410A005D193A /* FeedModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
 		};
 		3293A409127C121E00B07DD5 /* UI */ = {
 			isa = PBXGroup;
@@ -1414,10 +1435,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				28C3AD8A0F43EF2300507BA6 /* MobileSharer.xcdatamodel in Sources */,
 				321F3BDA126CF6D2008473C8 /* AppDelegate.m in Sources */,
-				321F3BDB126CF6D2008473C8 /* FeedPost.m in Sources */,
-				321F3BDC126CF6D2008473C8 /* FeedDataSource.m in Sources */,
-				321F3BDD126CF6D2008473C8 /* FeedModel.m in Sources */,
-				321F3BDE126CF6D2008473C8 /* FeedViewController.m in Sources */,
+				321F3BDB126CF6D2008473C8 /* Post.m in Sources */,
 				3288C8D9126E216300BF1E3C /* Atlas.m in Sources */,
 				3288C95D126E2F1800BF1E3C /* NSObject+SBJSON.m in Sources */,
 				3288C95E126E2F1800BF1E3C /* NSString+SBJSON.m in Sources */,
@@ -1429,11 +1447,15 @@
 				3288C965126E2F1800BF1E3C /* FBLoginDialog.m in Sources */,
 				3288C966126E2F1800BF1E3C /* FBDialog.m in Sources */,
 				3215B0521272E15C005580D5 /* FacebookJanitor.m in Sources */,
-				3215B24B12747E01005580D5 /* LoginViewController.m in Sources */,
 				32939FF51278ABD900B07DD5 /* Facebook.m in Sources */,
 				3293A410127C130700B07DD5 /* LinkPostTableCell.m in Sources */,
 				3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */,
 				32891DB2127F5D6D00786BE7 /* PostTableCell.m in Sources */,
+				329079ED1284410A005D193A /* FeedDataSource.m in Sources */,
+				329079EE1284410A005D193A /* FeedModel.m in Sources */,
+				329079F312844115005D193A /* FeedViewController.m in Sources */,
+				329079F412844115005D193A /* LoginViewController.m in Sources */,
+				329079F912844295005D193A /* PostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

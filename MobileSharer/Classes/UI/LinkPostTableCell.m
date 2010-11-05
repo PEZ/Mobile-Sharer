@@ -39,7 +39,7 @@ static const CGFloat    kPictureImageWidth  = 80;
   [super dealloc];
 }
 
-+ (NSString *) getLinkHTML:(FeedPost*)item  {
++ (NSString *) getLinkHTML:(Post*)item  {
   NSString* linkText = @"";
   if (item.linkTitle) {
     linkText = [NSString stringWithFormat:@"%@<div class=\"tableTitleText\">%@</div>", linkText, item.linkTitle];
@@ -61,7 +61,7 @@ static const CGFloat    kPictureImageWidth  = 80;
 #pragma mark -
 #pragma mark TTTableViewCell class public
 
-+ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(FeedPost *)item {
++ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(Post *)item {
   TTStyledTextLabel* label = [self createStyledLabel];
   CGFloat junk;
   CGFloat left = [self getLeft:&junk item:item];
@@ -111,7 +111,7 @@ static const CGFloat    kPictureImageWidth  = 80;
   if (_item != object) {
     [super setObject:object];
     
-    FeedPost* item = object;    
+    Post* item = object;    
     _linkTextLabel.text = [TTStyledText textFromXHTML:[[self class] getLinkHTML:item] lineBreaks:YES URLs:NO];
   }
   [self setNeedsLayout];

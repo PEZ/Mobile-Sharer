@@ -19,7 +19,7 @@
 #import "Three20Core/TTCorePreprocessorMacros.h"
 #import "Three20Core/NSDateAdditions.h"
 
-#import "FeedPost.h"
+#import "Post.h"
 #import "Three20UI/TTTableImageItemCell.h"
 
 static const CGFloat    kDiscloureWidth   = 20;
@@ -43,9 +43,9 @@ static const CGFloat    kIconImageHeight  = 16;
 @property (nonatomic, readonly, retain) UILabel*      countsLabel;
 
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural;
-+ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(FeedPost *)item;
-+ (CGFloat)getLeft:(CGFloat*)imageHeight_p item:(FeedPost*)item;
-+ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(FeedPost*)item;
++ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(Post *)item;
++ (CGFloat)getLeft:(CGFloat*)imageHeight_p item:(Post*)item;
++ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(Post*)item;
 
 - (CGFloat)layoutMoreBodyAtX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w;
 

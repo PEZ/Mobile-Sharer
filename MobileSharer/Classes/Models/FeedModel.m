@@ -15,7 +15,7 @@
 //
 
 #import "FeedModel.h"
-#import "FeedPost.h"
+#import "Post.h"
 #import "FacebookJanitor.h"
 #import <extThree20JSON/extThree20JSON.h>
 
@@ -90,7 +90,7 @@
   NSMutableArray* posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
 
   for (NSDictionary* entry in entries) {
-    FeedPost* post = [[FeedPost alloc] init];
+    Post* post = [[Post alloc] init];
 
     NSDate* date = [dateFormatter dateFromString:[entry objectForKey:@"created_time"]];
     post.created = date;

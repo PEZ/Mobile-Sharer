@@ -2,7 +2,7 @@
 
 #import "LinkPostTableCell.h"
 #import "FeedModel.h"
-#import "FeedPost.h"
+#import "Post.h"
 
 //#import <Three20Core/NSDateAdditions.h>
 
@@ -34,7 +34,7 @@
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
 
-  for (FeedPost* post in _searchFeedModel.posts) {
+  for (Post* post in _searchFeedModel.posts) {
     post.URL = post.fromId != nil ? [Atlas toFeedURLPath:post.fromId name:post.fromName] : nil;
     [items addObject:post];
   }
@@ -47,8 +47,8 @@
 // TTTableViewDataSource
 
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
-	if ([object isKindOfClass:[FeedPost class]]) {
-    FeedPost* item = object;
+	if ([object isKindOfClass:[Post class]]) {
+    Post* item = object;
     if (item.linkURL) {
       return [LinkPostTableCell class];
     }

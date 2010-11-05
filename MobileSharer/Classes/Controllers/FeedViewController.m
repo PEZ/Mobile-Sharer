@@ -1,5 +1,12 @@
-#import "FeedViewController.h"
+//
+//  PostViewController.h
+//  MobileSharer
+//
+//  Created by PEZ on 2010-11-05.
+//  Copyright 2010 Better Than Tomorrow. All rights reserved.
+//
 
+#import "FeedViewController.h"
 #import "FeedDataSource.h"
 
 @implementation FeedViewController

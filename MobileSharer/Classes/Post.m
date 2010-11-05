@@ -1,7 +1,7 @@
-#import "FeedPost.h"
+#import "Post.h"
 
 
-@implementation FeedPost
+@implementation Post
 
 @synthesize created           = _created;
 @synthesize updated           = _updated;
