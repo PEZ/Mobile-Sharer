@@ -1,5 +1,12 @@
-#import "Post.h"
+//
+//  Post.h
+//  MobileSharer
+//
+//  Created by PEZ on 2010-11-08.
+//  Copyright 2010 Better Than Tomorrow. All rights reserved.
+//
 
+#import "Post.h"
 
 @implementation Post
 
@@ -9,11 +16,11 @@
 @synthesize type              = _type;
 @synthesize fromId            = _fromId;
 @synthesize toId              = _toId;
-@synthesize text              = _message;
+@synthesize message           = _message;
 @synthesize fromName          = _fromName;
 @synthesize picture           = _picture;
-@synthesize imageURL          = _fromAvatar;
-@synthesize linkCaption              = _link;
+@synthesize fromAvatar        = _fromAvatar;
+@synthesize linkCaption       = _link;
 @synthesize linkURL           = _linkURL;
 @synthesize linkTitle         = _linkTitle;
 @synthesize linkText          = _linkText;

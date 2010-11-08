@@ -55,7 +55,7 @@
 + (CGFloat) getLeft:(CGFloat*)imageHeight_p item:(Post*)item {
   CGFloat left = kTableCellSmallMargin;
   *imageHeight_p = 0;
-  if (item.imageURL) {
+  if (item.fromAvatar) {
     left += kDefaultMessageImageWidth + kTableCellSmallMargin;
     *imageHeight_p = kDefaultMessageImageHeight;
   }
@@ -71,8 +71,8 @@
   CGFloat textWidth = [self getTextWidth:left tableView:tableView item:item];
   
   CGFloat textHeight = TTSTYLEVAR(tableTitleFont).ttLineHeight + TTSTYLEVAR(tableFont).ttLineHeight + kTableCellSmallMargin;
-  if (item.text) {
-    textHeight += [self heightForText:item.text withFont:TTSTYLEVAR(tableFont) andWidth:textWidth];
+  if (item.message) {
+    textHeight += [self heightForText:item.message withFont:TTSTYLEVAR(tableFont) andWidth:textWidth];
   }
   
   return MAX(imageHeight + 25, textHeight + [self tableView:tableView heightForMoreBody:item]) + kTableCellSmallMargin * 2;
@@ -101,9 +101,9 @@
   Post* item = self.object;
   
   CGFloat left = 0;
-  if (item.imageURL) {
-    CGFloat avatarWidth = item.imageURL ? kDefaultMessageImageWidth : 0;
-    CGFloat avatarHeight = item.imageURL ? kDefaultMessageImageHeight : 0;
+  if (item.fromAvatar) {
+    CGFloat avatarWidth = item.fromAvatar ? kDefaultMessageImageWidth : 0;
+    CGFloat avatarHeight = item.fromAvatar ? kDefaultMessageImageHeight : 0;
     
     _imageView2.frame = CGRectMake(kTableCellSmallMargin, kTableCellSmallMargin,
                                    avatarWidth, avatarHeight);
@@ -173,14 +173,14 @@
     if (item.fromName) {
       self.titleLabel.text = item.fromName;
     }
-    if (item.text) {
-      self.textLabel.text = item.text;
+    if (item.message) {
+      self.textLabel.text = item.message;
     }
     if (item.created) {
       self.timestampLabel.text = [item.created formatRelativeTime];
     }
-    if (item.imageURL) {
-      self.imageView2.urlPath = item.imageURL;
+    if (item.fromAvatar) {
+      self.imageView2.urlPath = item.fromAvatar;
     }
     self.imageView2.style = TTSTYLE(avatar);
     if (item.commentCount) {

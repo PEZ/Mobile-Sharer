@@ -16,7 +16,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString* kFeedURLPathPrefix;
+extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;
 extern NSString* kAppLoginURLPath;
 

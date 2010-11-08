@@ -1,10 +1,10 @@
 
-@class FeedModel;
+#import "FeedModel.h"
 
 @interface FeedDataSource : TTListDataSource {
-  FeedModel* _searchFeedModel;
+  FeedModel* _feedModel;
 }
 
-- (id)initWithSearchQuery:(NSString*)searchQuery;
+- (id)initWithFeedId:(NSString*)feedId;
 
 @end

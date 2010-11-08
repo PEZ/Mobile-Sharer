@@ -1,59 +1,31 @@
-//
-// Copyright 2009-2010 Facebook
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
 
 #import "FeedModel.h"
 #import "Post.h"
 #import "FacebookJanitor.h"
 #import <extThree20JSON/extThree20JSON.h>
 
-
-//static NSString* kFacebookSearchFeedFormat = @"http://graph.facebook.com/search?q=%@&type=post";
-//static NSString* kFacebookSearchFeedFormat = @"me/home?type=full";
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation FeedModel
 
-@synthesize searchQuery = _searchQuery;
+@synthesize feedId = _feedId;
 @synthesize posts      = _posts;
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithSearchQuery:(NSString*)searchQuery {
+- (id)initWithFeedId:(NSString*)feedId {
   if (self = [super init]) {
-    self.searchQuery = searchQuery;
+    self.feedId = feedId;
   }
 
   return self;
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) dealloc {
-  TT_RELEASE_SAFELY(_searchQuery);
+  TT_RELEASE_SAFELY(_feedId);
   TT_RELEASE_SAFELY(_posts);
   [super dealloc];
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
-  if (!self.isLoading && TTIsStringWithAnyText(_searchQuery)) {
-    NSString* path = [NSString stringWithFormat:@"%@/%@", self.searchQuery, [self.searchQuery isEqual:@"me"] ? @"home" : @"feed"];
+  if (!self.isLoading && TTIsStringWithAnyText(_feedId)) {
+    NSString* path = [NSString stringWithFormat:@"%@/%@", self.feedId, [self.feedId isEqual:@"me"] ? @"home" : @"feed"];
     FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
     NSString* url = [fbRequest getGetURL];
     
@@ -72,7 +44,6 @@
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
   TTURLJSONResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
@@ -97,16 +68,16 @@
     post.postId = [NSNumber numberWithLongLong:
                      [[entry objectForKey:@"id"] longLongValue]];
     post.type = [entry objectForKey:@"type"];
-    post.text = [entry objectForKey:@"message"];
+    post.message = [entry objectForKey:@"message"];
     if ([entry objectForKey:@"from"] != [NSNull null]) {
       post.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
       post.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
       post.URL = [Atlas toFeedURLPath:post.fromId name:post.fromName];
-      post.imageURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
+      post.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
     }
     else {
       post.fromName = @"Facebook User";
-      post.imageURL = @"https://graph.facebook.com/1/picture?type=square";
+      post.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
     }
     post.likes = [entry objectForKey:@"likes"];
     if ([entry objectForKey:@"comments"] != [NSNull null]) {

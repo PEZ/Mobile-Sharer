@@ -1,7 +1,7 @@
 
 #import "Atlas.h"
 
-NSString* kFeedURLPathPrefix = @"ms://feed";
+NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedIdAndName:)/(name:)";
 NSString* kAppLoginURLPath = @"ms://login";
 
@@ -17,7 +17,7 @@ NSString* urlEncode(NSString* unencodedString) {
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name {
   NSString* url = [NSString stringWithFormat:@"%@/%@/%@",
-                   kFeedURLPathPrefix,
+                   kNavPathPrefix,
                    feedId,
                    urlEncode(name)];
   NSLog(@"%@", url);

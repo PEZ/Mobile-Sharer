@@ -35,7 +35,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
   self.dataSource = [[[FeedDataSource alloc]
-                      initWithSearchQuery:self.feedId] autorelease];
+                      initWithFeedId:self.feedId] autorelease];
 }
 
 

@@ -7,24 +7,25 @@
 //
 
 #import "PostViewController.h"
-#import "FeedDataSource.h"
+#import "PostDataSource.h"
 
 @implementation PostViewController
 
-@synthesize postId = _postId;
+@synthesize post = _post;
 
-- (id)initWithPostId:(NSString *)postId andName:(NSString *)name {
+- (id)initWithNavigatorURL:(NSURL *)URL query:(NSDictionary *)query { 
+  Post* passedPost = [query objectForKey:@"__userInfo__"];
   if (self = [super initWithNibName:nil bundle:nil]) {
-    self.postId = postId;
-    self.title = name;
+    self.post = passedPost;
+    self.title = @"Comments";
     self.variableHeightRows = YES;
   }
   return self;
 }
 
 - (void)createModel {
-  self.dataSource = [[[FeedDataSource alloc]
-                      initWithSearchQuery:self.postId] autorelease];
+  self.dataSource = [[[PostDataSource alloc]
+                      initWithPost:self.post] autorelease];
 }
 
 

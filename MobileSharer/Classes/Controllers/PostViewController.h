@@ -6,12 +6,14 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
+#import "Post.h"
+
 @interface PostViewController : TTTableViewController {
-  NSString* _postId;
+  Post* _post;
 }
 
-@property (nonatomic, copy)   NSString* postId;
+@property (nonatomic, copy)   Post* post;
 
-- (id)initWithPostId:(NSString *)postId andName:(NSString *)name;
+- (id)initWithNavigatorURL:(NSURL *)URL query:(NSDictionary *)query;
 
 @end

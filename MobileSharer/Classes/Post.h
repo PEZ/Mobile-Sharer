@@ -1,3 +1,10 @@
+//
+//  Post.h
+//  MobileSharer
+//
+//  Created by PEZ on 2010-11-08.
+//  Copyright 2010 Better Than Tomorrow. All rights reserved.
+//
 
 @interface Post : TTTableImageItem {
   NSDate*   _created;
@@ -26,10 +33,10 @@
 @property (nonatomic, copy)   NSString* type;
 @property (nonatomic, copy)   NSString* fromId;
 @property (nonatomic, copy)   NSString* toId;
-@property (nonatomic, copy)   NSString* text;
+@property (nonatomic, copy)   NSString* message;
 @property (nonatomic, copy)   NSString* fromName;
 @property (nonatomic, copy)   NSString* picture;
-@property (nonatomic, copy)   NSString* imageURL;
+@property (nonatomic, copy)   NSString* fromAvatar;
 @property (nonatomic, copy)   NSString* linkCaption;
 @property (nonatomic, copy)   NSString* linkURL;
 @property (nonatomic, copy)   NSString* linkTitle;

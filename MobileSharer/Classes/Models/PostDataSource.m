@@ -1,38 +1,47 @@
-#import "FeedDataSource.h"
+//
+//  PostDataSource.m
+//  MobileSharer
+//
+//  Created by PEZ on 2010-11-06.
+//  Copyright 2010 Better Than Tomorrow. All rights reserved.
+//
+
+#import "PostDataSource.h"
 
 #import "LinkPostTableCell.h"
-#import "Post.h"
+#import "PostTableCell.h"
 
-@implementation FeedDataSource
+@implementation PostDataSource
 
-- (id)initWithFeedId:(NSString*)feedId {
+- (id)initWithPost:(Post*)post {
   if (self = [super init]) {
-    _feedModel = [[FeedModel alloc] initWithFeedId:feedId];
+    _postModel = [[PostModel alloc] initWithPost:post];
   }
-
+  
   return self;
 }
 
 
 - (void)dealloc {
-  TT_RELEASE_SAFELY(_feedModel);
+  TT_RELEASE_SAFELY(_postModel);
+  
   [super dealloc];
 }
 
 
 - (id<TTModel>)model {
-  return _feedModel;
+  return _postModel;
 }
 
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
-
-  for (Post* post in _feedModel.posts) {
+  
+  for (Post* post in _postModel.comments) {
     post.URL = post.fromId != nil ? [Atlas toFeedURLPath:post.fromId name:post.fromName] : nil;
     [items addObject:post];
   }
-
+  
   self.items = items;
   TT_RELEASE_SAFELY(items);
 }
