@@ -45,5 +45,6 @@
 @property (nonatomic, copy)   NSString* icon;
 @property (nonatomic, retain) NSNumber* likes;
 @property (nonatomic, retain) NSNumber* commentCount;
+@property (nonatomic, readonly, retain) Post*     userInfo;
 
 @end

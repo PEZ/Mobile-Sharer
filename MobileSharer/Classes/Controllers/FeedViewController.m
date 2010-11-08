@@ -32,6 +32,11 @@
   return self;
 }
 
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_feedId);
+  [super dealloc];
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
   self.dataSource = [[[FeedDataSource alloc]

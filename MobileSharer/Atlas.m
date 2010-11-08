@@ -3,6 +3,8 @@
 
 NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedIdAndName:)/(name:)";
+NSString* kPostPathPrefix = @"ms://post";
+NSString* kPostPath = @"ms://post/(initWithNavigatorURL:)";
 NSString* kAppLoginURLPath = @"ms://login";
 
 NSString* urlEncode(NSString* unencodedString) {
@@ -20,6 +22,14 @@ NSString* urlEncode(NSString* unencodedString) {
                    kNavPathPrefix,
                    feedId,
                    urlEncode(name)];
+  NSLog(@"%@", url);
+  return url;
+}
+
++ (NSString *) toPostPath:(Post *)post {
+  NSString* url = [NSString stringWithFormat:@"%@/%@",
+                   kPostPathPrefix,
+                   post.postId];
   NSLog(@"%@", url);
   return url;
 }

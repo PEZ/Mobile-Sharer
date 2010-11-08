@@ -14,15 +14,17 @@
 // limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+#import "Post.h"
 
 extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;
+extern NSString* kPostPath;
 extern NSString* kAppLoginURLPath;
 
 @interface Atlas : NSObject {
 }
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
++ (NSString *) toPostPath:(Post*)post;
 
 @end

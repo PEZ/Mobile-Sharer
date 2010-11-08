@@ -14,13 +14,18 @@
 @synthesize post = _post;
 
 - (id)initWithNavigatorURL:(NSURL *)URL query:(NSDictionary *)query { 
-  Post* passedPost = [query objectForKey:@"__userInfo__"];
   if (self = [super initWithNibName:nil bundle:nil]) {
+    Post* passedPost = [query objectForKey:@"__userInfo__"];
     self.post = passedPost;
     self.title = @"Comments";
     self.variableHeightRows = YES;
   }
   return self;
+}
+
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_post);
+  [super dealloc];
 }
 
 - (void)createModel {

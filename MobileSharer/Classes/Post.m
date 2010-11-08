@@ -33,7 +33,6 @@
   TT_RELEASE_SAFELY(_updated);
   TT_RELEASE_SAFELY(_created);
   TT_RELEASE_SAFELY(_postId);
-  TT_RELEASE_SAFELY(_URL);
   TT_RELEASE_SAFELY(_type);
   TT_RELEASE_SAFELY(_fromId);
   TT_RELEASE_SAFELY(_toId);
@@ -51,6 +50,10 @@
   TT_RELEASE_SAFELY(_commentCount);
 
   [super dealloc];
+}
+
+- (id)userInfo {
+  return self;
 }
 
 @end

@@ -12,7 +12,7 @@
   Post* _post;
 }
 
-@property (nonatomic, copy)   Post* post;
+@property (nonatomic, retain)   Post* post;
 
 - (id)initWithNavigatorURL:(NSURL *)URL query:(NSDictionary *)query;
 

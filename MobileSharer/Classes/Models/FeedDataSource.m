@@ -29,7 +29,6 @@
   NSMutableArray* items = [[NSMutableArray alloc] init];
 
   for (Post* post in _feedModel.posts) {
-    post.URL = post.fromId != nil ? [Atlas toFeedURLPath:post.fromId name:post.fromName] : nil;
     [items addObject:post];
   }
 

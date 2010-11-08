@@ -6,7 +6,7 @@
 
 @implementation FeedModel
 
-@synthesize feedId = _feedId;
+@synthesize feedId     = _feedId;
 @synthesize posts      = _posts;
 
 - (id)initWithFeedId:(NSString*)feedId {
@@ -72,7 +72,7 @@
     if ([entry objectForKey:@"from"] != [NSNull null]) {
       post.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
       post.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
-      post.URL = [Atlas toFeedURLPath:post.fromId name:post.fromName];
+      post.URL = [Atlas toPostPath:post];
       post.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
     }
     else {

@@ -13,7 +13,7 @@
   NSArray*   _comments;
 }
 
-@property (nonatomic, copy)     Post*      post;
+@property (nonatomic, retain)     Post*      post;
 @property (nonatomic, readonly) NSArray*   comments;
 
 - (id)initWithPost:(Post*)post;

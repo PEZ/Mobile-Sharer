@@ -2,6 +2,7 @@
 #import "AppDelegate.h"
 #import "DefaultStyleSheet.h"
 #import "FeedViewController.h"
+#import "PostViewController.h"
 #import "LoginViewController.h"
 
 
@@ -17,6 +18,7 @@
   
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
+  [map from:kPostPath toViewController:[PostViewController class]];
   [map from:kAppLoginURLPath toViewController:[LoginViewController class]];
   if (![navigator restoreViewControllers]) {
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppLoginURLPath]];
