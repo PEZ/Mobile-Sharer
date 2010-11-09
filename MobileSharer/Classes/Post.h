@@ -9,7 +9,7 @@
 @interface Post : TTTableImageItem {
   NSDate*   _created;
   NSDate*   _updated;
-  NSNumber* _postId;
+  NSString* _postId;
   NSString* _type;
   NSString* _fromId;
   NSString* _toId;
@@ -29,7 +29,7 @@
 
 @property (nonatomic, retain) NSDate*   created;
 @property (nonatomic, retain) NSDate*   updated;
-@property (nonatomic, retain) NSNumber* postId;
+@property (nonatomic, retain) NSString* postId;
 @property (nonatomic, copy)   NSString* type;
 @property (nonatomic, copy)   NSString* fromId;
 @property (nonatomic, copy)   NSString* toId;

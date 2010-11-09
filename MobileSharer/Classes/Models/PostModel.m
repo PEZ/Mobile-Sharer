@@ -32,7 +32,7 @@
 }
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
-  if (!self) {
+  if (!self.isLoading) {
     NSString* path = [NSString stringWithFormat:@"%@/comments", self.post.postId];
     FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
     NSString* url = [fbRequest getGetURL];
@@ -41,7 +41,7 @@
                              requestWithURL: url
                              delegate: self];
     
-    request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;
+    request.cachePolicy = TTURLRequestCachePolicyNone; //cachePolicy | TTURLRequestCachePolicyEtag;
     request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
     
     TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];

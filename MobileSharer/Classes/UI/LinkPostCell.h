@@ -6,9 +6,9 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "PostTableCell.h"
+#import "PostCell.h"
 
-@interface LinkPostTableCell : PostTableCell {
+@interface LinkPostCell : PostCell {
   TTStyledTextLabel*      _linkTextLabel;
 }
 

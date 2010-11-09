@@ -20,6 +20,7 @@
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
   [map from:kPostPath toViewController:[PostViewController class]];
   [map from:kAppLoginURLPath toViewController:[LoginViewController class]];
+  //navigator.persistenceMode = TTNavigatorPersistenceModeAll;
   if (![navigator restoreViewControllers]) {
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppLoginURLPath]];
   }

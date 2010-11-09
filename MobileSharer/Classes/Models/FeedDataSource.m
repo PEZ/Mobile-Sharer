@@ -1,6 +1,6 @@
 #import "FeedDataSource.h"
 
-#import "LinkPostTableCell.h"
+#import "LinkPostCell.h"
 #import "Post.h"
 
 @implementation FeedDataSource
@@ -43,10 +43,10 @@
 	if ([object isKindOfClass:[Post class]]) {
     Post* item = object;
     if (item.linkURL) {
-      return [LinkPostTableCell class];
+      return [LinkPostCell class];
     }
     else {
-      return [PostTableCell class];      
+      return [PostCell class];      
     }
 	} else {
 		return [super tableView:tableView cellClassForObject:object];

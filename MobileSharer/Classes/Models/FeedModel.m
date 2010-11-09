@@ -33,7 +33,7 @@
                              requestWithURL: url
                              delegate: self];
     
-    request.cachePolicy = cachePolicy | TTURLRequestCachePolicyEtag;
+    request.cachePolicy = TTURLRequestCachePolicyNone;// cachePolicy | TTURLRequestCachePolicyEtag;
     request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
 
     TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
@@ -65,8 +65,7 @@
 
     NSDate* date = [dateFormatter dateFromString:[entry objectForKey:@"created_time"]];
     post.created = date;
-    post.postId = [NSNumber numberWithLongLong:
-                     [[entry objectForKey:@"id"] longLongValue]];
+    post.postId = [entry objectForKey:@"id"];
     post.type = [entry objectForKey:@"type"];
     post.message = [entry objectForKey:@"message"];
     if ([entry objectForKey:@"from"] != [NSNull null]) {

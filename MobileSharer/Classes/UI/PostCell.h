@@ -7,28 +7,21 @@
 //
 
 // UI
-#import "Three20UI/TTImageView.h"
 #import "Three20UI/UIViewAdditions.h"
 #import "Three20Style/UIFontAdditions.h"
 
-// Style
-#import "Three20Style/TTGlobalStyle.h"
-#import "Three20Style/TTDefaultStyleSheet.h"
-
 // Core
-#import "Three20Core/TTCorePreprocessorMacros.h"
 #import "Three20Core/NSDateAdditions.h"
 
 #import "Post.h"
+#import "Cells.h"
 #import "Three20UI/TTTableImageItemCell.h"
 
 static const CGFloat    kDiscloureWidth   = 20;
-static const CGFloat    kDefaultMessageImageWidth   = 35;
-static const CGFloat    kDefaultMessageImageHeight  = 35;
 static const CGFloat    kIconImageWidth   = 15;
 static const CGFloat    kIconImageHeight  = 16;
 
-@interface PostTableCell : TTTableLinkedItemCell {
+@interface PostCell : TTTableLinkedItemCell {
   UILabel*      _titleLabel;
   UILabel*      _timestampLabel;
   TTImageView*  _iconImageView;

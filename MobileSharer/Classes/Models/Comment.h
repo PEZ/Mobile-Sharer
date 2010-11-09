@@ -6,10 +6,7 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-
-@interface Comment : NSObject {
+@interface Comment : TTTableImageItem {
   NSDate*   _created;
   NSString* _commentId;
   NSString* _fromId;

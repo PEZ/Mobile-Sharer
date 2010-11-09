@@ -8,8 +8,9 @@
 
 #import "PostDataSource.h"
 
-#import "LinkPostTableCell.h"
-#import "PostTableCell.h"
+#import "LinkPostCell.h"
+#import "PostCell.h"
+#import "CommentCell.h"
 
 @implementation PostDataSource
 
@@ -36,10 +37,9 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
-  
-  for (Post* post in _postModel.comments) {
-    post.URL = post.fromId != nil ? [Atlas toFeedURLPath:post.fromId name:post.fromName] : nil;
-    [items addObject:post];
+  [items addObject:_postModel.post];
+  for (Comment* comment in _postModel.comments) {
+    [items addObject:comment];
   }
   
   self.items = items;
@@ -53,12 +53,15 @@
 	if ([object isKindOfClass:[Post class]]) {
     Post* item = object;
     if (item.linkURL) {
-      return [LinkPostTableCell class];
+      return [LinkPostCell class];
     }
     else {
-      return [PostTableCell class];      
+      return [PostCell class];      
     }
-	} else {
+	} else 	if ([object isKindOfClass:[Comment class]]) {
+    return [CommentCell class];
+  }
+  else {
 		return [super tableView:tableView cellClassForObject:object];
 	}
 }

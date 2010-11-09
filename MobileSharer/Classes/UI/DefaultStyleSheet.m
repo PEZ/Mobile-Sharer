@@ -23,6 +23,11 @@
   return RGBCOLOR(111, 121, 141);
 }
 
+- (UIColor*)lightColor {
+  return RGBCOLOR(247, 247, 247);
+}
+
+
 #pragma mark -
 #pragma mark views
 

@@ -6,12 +6,12 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "LinkPostTableCell.h"
+#import "LinkPostCell.h"
 
 static const CGFloat    kPictureImageHeight  = 55;
 static const CGFloat    kPictureImageWidth  = 80;
 
-@implementation LinkPostTableCell
+@implementation LinkPostCell
 @synthesize linkTextLabel = _linkTextLabel;
 
 
