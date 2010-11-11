@@ -24,6 +24,7 @@
 		321F3BDB126CF6D2008473C8 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BD3126CF6D2008473C8 /* Post.m */; };
 		321F3BEB126CF72F008473C8 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3B8C126CF5B5008473C8 /* libextThree20JSON+YAJL.a */; };
 		321F3BEC126CF731008473C8 /* libextThree20CSSStyle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3B9F126CF5B5008473C8 /* libextThree20CSSStyle.a */; };
+		322DD288128CA5AF00E7D1DA /* CommentsPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD287128CA5AF00E7D1DA /* CommentsPostController.m */; };
 		323B93D5128559560097E308 /* PostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D4128559560097E308 /* PostDataSource.m */; };
 		323B93D812855A7E0097E308 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D712855A7E0097E308 /* PostModel.m */; };
 		32633DB51289CFA900D9621E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32633DB41289CFA900D9621E /* CommentCell.m */; };
@@ -544,6 +545,8 @@
 		321F3BD2126CF6D2008473C8 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = ../Post.h; sourceTree = "<group>"; };
 		321F3BD3126CF6D2008473C8 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Post.m; path = ../Post.m; sourceTree = "<group>"; };
 		322DCF3C1289E31100E7D1DA /* Cells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cells.h; sourceTree = "<group>"; };
+		322DD286128CA5AF00E7D1DA /* CommentsPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsPostController.h; sourceTree = "<group>"; };
+		322DD287128CA5AF00E7D1DA /* CommentsPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsPostController.m; sourceTree = "<group>"; };
 		323B93D3128559560097E308 /* PostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDataSource.h; sourceTree = "<group>"; };
 		323B93D4128559560097E308 /* PostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDataSource.m; sourceTree = "<group>"; };
 		323B93D612855A7E0097E308 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
@@ -871,6 +874,8 @@
 				329079F212844115005D193A /* LoginViewController.m */,
 				329079F712844295005D193A /* PostViewController.h */,
 				329079F812844295005D193A /* PostViewController.m */,
+				322DD286128CA5AF00E7D1DA /* CommentsPostController.h */,
+				322DD287128CA5AF00E7D1DA /* CommentsPostController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1488,6 +1493,7 @@
 				323B93D812855A7E0097E308 /* PostModel.m in Sources */,
 				32CEF85C128807AD00B2D224 /* Comment.m in Sources */,
 				32633DB51289CFA900D9621E /* CommentCell.m in Sources */,
+				322DD288128CA5AF00E7D1DA /* CommentsPostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

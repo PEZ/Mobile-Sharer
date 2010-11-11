@@ -284,14 +284,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>35</integer>
+									<integer>37</integer>
 									<integer>29</integer>
 									<integer>13</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 413}, {372, 1044}}</string>
+							<string>{{0, 412}, {372, 1044}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -338,7 +338,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>322DD283128C9C4900E7D1DA</string>
+										<string>322DD2DF128CB58000E7D1DA</string>
 										<key>history</key>
 										<array>
 											<string>3288C8B3126E179D00BF1E3C</string>
@@ -445,7 +445,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PostViewController.m</string>
+								<string>CommentsPostController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -453,11 +453,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>PostViewController.m</string>
+										<string>CommentsPostController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>322DD284128C9C4900E7D1DA</string>
+										<string>322DD2E0128CB58000E7D1DA</string>
 										<key>history</key>
 										<array>
 											<string>3288C8B3126E179D00BF1E3C</string>
@@ -497,7 +497,6 @@
 											<string>32CEF8511287EA1B00B2D224</string>
 											<string>32CEF8C01288356000B2D224</string>
 											<string>32CEF8C11288356000B2D224</string>
-											<string>32CEF8C21288356000B2D224</string>
 											<string>32CEF8C51288356000B2D224</string>
 											<string>32CEF8C61288356000B2D224</string>
 											<string>322DD03C128A96FA00E7D1DA</string>
@@ -515,9 +514,13 @@
 											<string>322DD1DE128C83AA00E7D1DA</string>
 											<string>322DD1E0128C83AA00E7D1DA</string>
 											<string>322DD243128C918800E7D1DA</string>
-											<string>322DD252128C961E00E7D1DA</string>
 											<string>322DD27D128C9A5B00E7D1DA</string>
-											<string>322DD27E128C9A5B00E7D1DA</string>
+											<string>322DD2B5128CB0E700E7D1DA</string>
+											<string>322DD2B6128CB0E700E7D1DA</string>
+											<string>322DD2B7128CB0E700E7D1DA</string>
+											<string>322DD2D5128CB43300E7D1DA</string>
+											<string>322DD2D6128CB43300E7D1DA</string>
+											<string>322DD2D7128CB43300E7D1DA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -717,7 +720,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>322DD285128C9C4900E7D1DA</string>
+		<string>322DD2DE128CB57000E7D1DA</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>322DD045128A96FA00E7D1DA</string>
 		<string>322DD046128A96FA00E7D1DA</string>
@@ -749,7 +752,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PostViewController.m</string>
+								<string>CommentsPostController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

@@ -7,13 +7,13 @@
 //
 
 #import "PostViewController.h"
+#import "CommentsPostController.h"
 #import "PostDataSource.h"
 #import "FacebookJanitor.h"
 
 @implementation PostViewController
 
 @synthesize post = _post;
-@synthesize pendingComment = _pendingComment;
 
 - (id)initWithNavigatorURL:(NSURL *)URL query:(NSDictionary *)query { 
   if (self = [super initWithNibName:nil bundle:nil]) {
@@ -21,22 +21,18 @@
     self.post = passedPost;
     self.title = @"Comments";
     self.variableHeightRows = YES;
-    self.pendingComment = @"";
   }
   return self;
 }
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_post);
-  TT_RELEASE_SAFELY(_pendingComment);
   [super dealloc];
 }
 
 - (void)comment {
-  TTPostController* controller = [[TTPostController alloc] init];
-  controller.title = @"Comment";
-  controller.textView.text = self.pendingComment;
-  controller.delegate = self;
+  CommentsPostController* controller = [[CommentsPostController alloc] initWithPostId:(NSString *)self.post.postId
+                                                                          andDelegate:self];
   controller.originView = self.view;
   [controller showInView:self.view animated:YES];
   [controller release];
@@ -70,26 +66,18 @@
   return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
 
+
 #pragma mark -
 #pragma mark TTPostControllerDelegate
 
 - (void)postController: (TTPostController*)postController
            didPostText: (NSString*)text
             withResult: (id)result {
-  self.pendingComment = text;
-  Facebook* fb = [FacebookJanitor sharedInstance].facebook;
-  [fb requestWithGraphPath:[NSString stringWithFormat:@"%@/comments", self.post.postId]
-                 andParams:[NSMutableDictionary dictionaryWithObject:text forKey:@"message"]
-             andHttpMethod:@"POST"
-               andDelegate:self];
-}
-
-- (void)postControllerDidCancel:(TTPostController *)postController {
-  self.pendingComment = postController.textView.text;
+  [self reload];
 }
 
 - (BOOL)postController:(TTPostController *)postController willPostText:(NSString *)text {
-  return !text.isEmptyOrWhitespace;
+  return NO;
 }
 
 #pragma mark -
@@ -109,8 +97,6 @@
 }
 
 - (void)request:(FBRequest*)request didLoad:(id)result {
-  self.pendingComment = @"";
-  [self reload];
 }
    
 @end
