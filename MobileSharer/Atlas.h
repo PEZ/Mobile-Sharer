@@ -20,6 +20,7 @@ extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;
 extern NSString* kPostPath;
 extern NSString* kAppLoginURLPath;
+extern NSString* kCommentPath;
 
 @interface Atlas : NSObject {
 }

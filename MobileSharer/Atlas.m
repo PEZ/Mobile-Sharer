@@ -6,6 +6,7 @@ NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedIdAndName:)/(name:)";
 NSString* kPostPathPrefix = @"ms://post";
 NSString* kPostPath = @"ms://post/(initWithNavigatorURL:)";
 NSString* kAppLoginURLPath = @"ms://login";
+NSString* kCommentPath = @"ms://comment";
 
 NSString* urlEncode(NSString* unencodedString) {
   return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
