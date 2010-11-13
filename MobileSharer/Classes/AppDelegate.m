@@ -29,12 +29,21 @@
 #pragma mark -
 #pragma mark URL opening
 
+- (BOOL)isFBAuthenticationURL:(NSURL*)URL {
+  return [[URL absoluteString] hasPrefix:kFacebookLoginPath];
+}
+
 - (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
   return YES;
 }
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
+  if (![self isFBAuthenticationURL:URL]) {
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
+  }
+  else {
+    [[FacebookJanitor sharedInstance].facebook handleOpenURL:URL];
+  }
   return YES;
 }
 

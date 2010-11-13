@@ -36,6 +36,10 @@ static NSString* kAppId = @"139083852806042";
 #pragma mark -
 #pragma mark Janitor tasks
 
+- (void)authenticated:(NSURL*)url {
+  [_facebook handleOpenURL:url];
+}
+
 - (void) getPermissions:(NSArray*)permissions delegate:(id<FBSessionDelegate>)delegate {
   [_facebook authorize:kAppId permissions:permissions delegate:delegate];
 }

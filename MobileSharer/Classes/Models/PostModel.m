@@ -35,10 +35,9 @@
   if (!self.isLoading) {
     NSString* path = [NSString stringWithFormat:@"%@/comments", self.post.postId];
     FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
-    NSString* url = [fbRequest getGetURL];
     
     TTURLRequest* request = [TTURLRequest
-                             requestWithURL: url
+                             requestWithURL: [fbRequest getConnectURL]
                              delegate: self];
     
     request.cachePolicy = TTURLRequestCachePolicyNone; //cachePolicy | TTURLRequestCachePolicyEtag;

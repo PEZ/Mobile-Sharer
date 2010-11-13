@@ -16,4 +16,5 @@
   #import "Three20Core/NSStringAdditions.h"
   #import "FBConnect.h"
   #import "Atlas.h"
+  #import "DefaultStyleSheet.h"
 #endif

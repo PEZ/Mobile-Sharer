@@ -27,10 +27,8 @@
   if (!self.isLoading && TTIsStringWithAnyText(_feedId)) {
     NSString* path = [NSString stringWithFormat:@"%@/%@", self.feedId, [self.feedId isEqual:@"me"] ? @"home" : @"feed"];
     FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
-    NSString* url = [fbRequest getGetURL];
-    
     TTURLRequest* request = [TTURLRequest
-                             requestWithURL: url
+                             requestWithURL: [fbRequest getConnectURL]
                              delegate: self];
     
     request.cachePolicy = TTURLRequestCachePolicyNone;// cachePolicy | TTURLRequestCachePolicyEtag;

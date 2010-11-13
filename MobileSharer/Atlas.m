@@ -6,14 +6,15 @@ NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedIdAndName:)/(name:)";
 NSString* kPostPathPrefix = @"ms://post";
 NSString* kPostPath = @"ms://post/(initWithNavigatorURL:)";
 NSString* kAppLoginURLPath = @"ms://login";
+NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = @"ms://comment";
 
 NSString* urlEncode(NSString* unencodedString) {
-  return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
+  return [(NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
                                                              (CFStringRef)unencodedString,
                                                              NULL,
                                                              (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
-                                                             kCFStringEncodingUTF8 );
+                                                             kCFStringEncodingUTF8 ) autorelease];
 }
 
 @implementation Atlas

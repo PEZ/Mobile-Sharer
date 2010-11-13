@@ -13,6 +13,8 @@
 
 - (TTTextStyle*)tableTitleText;
 - (TTTextStyle*)tableSubText;
+- (UIColor*)darkColor;
+- (UIColor*)mediumColor;
 - (UIColor*)lightColor;
 
 @end

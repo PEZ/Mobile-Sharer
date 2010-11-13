@@ -12,15 +12,19 @@
 @implementation DefaultStyleSheet
 
 - (UIColor*)darkColorA {
-  return RGBACOLOR(11, 21, 41, 0.4);
+  return RGBACOLOR(31, 31, 31, 0.4);
 }
 
 - (UIColor*)darkColor {
-  return RGBCOLOR(11, 21, 41);
+  return RGBCOLOR(31, 31, 31);
 }
 
 - (UIColor*)mediumColor {
-  return RGBCOLOR(111, 121, 141);
+  return RGBCOLOR(121, 121, 121);
+}
+
+- (UIColor*)toolbarTintColor {
+  return RGBCOLOR(171, 171, 171);
 }
 
 - (UIColor*)lightColor {

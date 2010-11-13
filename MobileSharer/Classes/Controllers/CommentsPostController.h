@@ -6,9 +6,9 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "FacebookJanitor.h"
+#import "PostController.h"
 
-@interface CommentsPostController : TTPostController <TTPostControllerDelegate, FBRequestDelegate> {
+@interface CommentsPostController : PostController {
   NSString* _postId;
 }
 

@@ -8,6 +8,7 @@
 
 #import "PostViewController.h"
 #import "CommentsPostController.h"
+#import "SharePostController.h"
 #import "PostDataSource.h"
 #import "FacebookJanitor.h"
 
@@ -31,8 +32,16 @@
 }
 
 - (void)comment {
-  CommentsPostController* controller = [[CommentsPostController alloc] initWithPostId:(NSString *)self.post.postId
+  CommentsPostController* controller = [[CommentsPostController alloc] initWithPostId:self.post.postId
                                                                           andDelegate:self];
+  controller.originView = self.view;
+  [controller showInView:self.view animated:YES];
+  [controller release];
+}
+
+- (void)share {
+  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
+                                                                  andDelegate:self];
   controller.originView = self.view;
   [controller showInView:self.view animated:YES];
   [controller release];
@@ -40,11 +49,16 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  UIBarButtonItem * commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
+  UIBarButtonItem* commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(comment)]autorelease];
-  [self setToolbarItems:[NSArray arrayWithObject:commentButton] animated:NO];
+  UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(share)]autorelease];
+  [self setToolbarItems:[NSArray arrayWithObjects:commentButton, shareButton, nil] animated:NO];
+  self.navigationController.toolbar.tintColor = TTSTYLEVAR(toolbarTintColor);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

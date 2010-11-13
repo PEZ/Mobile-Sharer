@@ -25,7 +25,7 @@ static const CGFloat    kPictureImageWidth  = 80;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
-  if (self = [super initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:identifier]) {
+  if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
     _linkTextLabel = [[self class] createStyledLabel];
     [self.contentView addSubview:_linkTextLabel];
   }
@@ -49,12 +49,12 @@ static const CGFloat    kPictureImageWidth  = 80;
   }
   if (item.picture) {
     linkText = [NSString stringWithFormat:@"%@<img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" />", linkText, kPictureImageWidth,
-                kPictureImageHeight, [item.picture stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]];
+                kPictureImageHeight, item.picture];
   }
   if (item.linkText) {
     linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, item.linkText];
   }
-  return linkText;
+  return [linkText stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
 }
 
 

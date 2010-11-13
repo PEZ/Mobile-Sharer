@@ -25,6 +25,8 @@
 		321F3BEB126CF72F008473C8 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3B8C126CF5B5008473C8 /* libextThree20JSON+YAJL.a */; };
 		321F3BEC126CF731008473C8 /* libextThree20CSSStyle.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3B9F126CF5B5008473C8 /* libextThree20CSSStyle.a */; };
 		322DD288128CA5AF00E7D1DA /* CommentsPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD287128CA5AF00E7D1DA /* CommentsPostController.m */; };
+		322DD348128DB47E00E7D1DA /* SharePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD347128DB47E00E7D1DA /* SharePostController.m */; };
+		322DD46B128F1F6400E7D1DA /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD445128F1D0400E7D1DA /* PostController.m */; };
 		323B93D5128559560097E308 /* PostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D4128559560097E308 /* PostDataSource.m */; };
 		323B93D812855A7E0097E308 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D712855A7E0097E308 /* PostModel.m */; };
 		32633DB51289CFA900D9621E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32633DB41289CFA900D9621E /* CommentCell.m */; };
@@ -547,6 +549,10 @@
 		322DCF3C1289E31100E7D1DA /* Cells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cells.h; sourceTree = "<group>"; };
 		322DD286128CA5AF00E7D1DA /* CommentsPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsPostController.h; sourceTree = "<group>"; };
 		322DD287128CA5AF00E7D1DA /* CommentsPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsPostController.m; sourceTree = "<group>"; };
+		322DD346128DB47E00E7D1DA /* SharePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharePostController.h; sourceTree = "<group>"; };
+		322DD347128DB47E00E7D1DA /* SharePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharePostController.m; sourceTree = "<group>"; };
+		322DD444128F1D0400E7D1DA /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
+		322DD445128F1D0400E7D1DA /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostController.m; sourceTree = "<group>"; };
 		323B93D3128559560097E308 /* PostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDataSource.h; sourceTree = "<group>"; };
 		323B93D4128559560097E308 /* PostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDataSource.m; sourceTree = "<group>"; };
 		323B93D612855A7E0097E308 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
@@ -876,6 +882,10 @@
 				329079F812844295005D193A /* PostViewController.m */,
 				322DD286128CA5AF00E7D1DA /* CommentsPostController.h */,
 				322DD287128CA5AF00E7D1DA /* CommentsPostController.m */,
+				322DD346128DB47E00E7D1DA /* SharePostController.h */,
+				322DD347128DB47E00E7D1DA /* SharePostController.m */,
+				322DD444128F1D0400E7D1DA /* PostController.h */,
+				322DD445128F1D0400E7D1DA /* PostController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1494,6 +1504,8 @@
 				32CEF85C128807AD00B2D224 /* Comment.m in Sources */,
 				32633DB51289CFA900D9621E /* CommentCell.m in Sources */,
 				322DD288128CA5AF00E7D1DA /* CommentsPostController.m in Sources */,
+				322DD348128DB47E00E7D1DA /* SharePostController.m in Sources */,
+				322DD46B128F1F6400E7D1DA /* PostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
