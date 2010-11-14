@@ -26,7 +26,20 @@
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading && TTIsStringWithAnyText(_feedId)) {
     NSString* path = [NSString stringWithFormat:@"%@/%@", self.feedId, [self.feedId isEqual:@"me"] ? @"home" : @"feed"];
-    FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
+    FBRequest* fbRequest;
+    if (more) {
+      NSString* until = [NSString stringWithFormat:@"%@",
+                         [NSNumber numberWithDouble:[[[_posts lastObject] created] timeIntervalSince1970]]];
+      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:until forKey:@"until"];
+      fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path
+                                                                           andParams:params
+                                                                       andHttpMethod:@"GET"
+                                                                         andDelegate:nil];
+    }
+    else {
+      fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
+    }
+    
     TTURLRequest* request = [TTURLRequest
                              requestWithURL: [fbRequest getConnectURL]
                              delegate: self];
@@ -55,8 +68,16 @@
   [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
   [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
 
+  BOOL more = ([[request urlPath] rangeOfString:@"until="].location != NSNotFound);
+  NSMutableArray* posts;
+  
+  if (more) {
+    posts = [[NSMutableArray arrayWithArray:_posts] retain];
+  }
+  else {
+    posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
+  }
   TT_RELEASE_SAFELY(_posts);
-  NSMutableArray* posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
 
   for (NSDictionary* entry in entries) {
     Post* post = [[Post alloc] init];

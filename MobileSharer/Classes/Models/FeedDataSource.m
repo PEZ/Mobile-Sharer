@@ -31,6 +31,8 @@
   for (Post* post in _feedModel.posts) {
     [items addObject:post];
   }
+  
+  [items addObject:[TTTableMoreButton itemWithText:@"Load more posts..."]];// URL:<#(NSString *)URL#>
 
   self.items = items;
   TT_RELEASE_SAFELY(items);
