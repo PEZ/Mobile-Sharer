@@ -69,14 +69,16 @@
     if ([entry objectForKey:@"from"] != [NSNull null]) {
       post.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
       post.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
-      post.URL = [Atlas toPostPath:post];
+      post.URL = [Etcetera toPostPath:post];
       post.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
     }
     else {
       post.fromName = @"Facebook User";
       post.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
     }
-    post.likes = [entry objectForKey:@"likes"];
+    if ([entry objectForKey:@"likes"] != [NSNull null]) {
+      post.likes = [[entry objectForKey:@"likes"] objectForKey:@"count"];
+    }
     if ([entry objectForKey:@"comments"] != [NSNull null]) {
       post.commentCount = [[entry objectForKey:@"comments"] objectForKey:@"count"];
     }

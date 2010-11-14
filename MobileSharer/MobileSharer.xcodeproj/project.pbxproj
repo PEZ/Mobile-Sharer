@@ -30,7 +30,7 @@
 		323B93D5128559560097E308 /* PostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D4128559560097E308 /* PostDataSource.m */; };
 		323B93D812855A7E0097E308 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D712855A7E0097E308 /* PostModel.m */; };
 		32633DB51289CFA900D9621E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32633DB41289CFA900D9621E /* CommentCell.m */; };
-		3288C8D9126E216300BF1E3C /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BCE126CF673008473C8 /* Atlas.m */; };
+		3288C8D9126E216300BF1E3C /* Etcetera.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BCE126CF673008473C8 /* Etcetera.m */; };
 		3288C95C126E2F1800BF1E3C /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3288C944126E2F1800BF1E3C /* FBDialog.bundle */; };
 		3288C95D126E2F1800BF1E3C /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C948126E2F1800BF1E3C /* NSObject+SBJSON.m */; };
 		3288C95E126E2F1800BF1E3C /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C94A126E2F1800BF1E3C /* NSString+SBJSON.m */; };
@@ -540,8 +540,8 @@
 		321F3AAB126CEFF0008473C8 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		321F3B76126CF5B5008473C8 /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = SOURCE_ROOT; };
 		321F3B79126CF5B5008473C8 /* extThree20CSSStyle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20CSSStyle.xcodeproj; path = ../../three20/src/extThree20CSSStyle/extThree20CSSStyle.xcodeproj; sourceTree = SOURCE_ROOT; };
-		321F3BCD126CF673008473C8 /* Atlas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Atlas.h; path = ../Atlas.h; sourceTree = "<group>"; };
-		321F3BCE126CF673008473C8 /* Atlas.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; name = Atlas.m; path = ../Atlas.m; sourceTree = "<group>"; };
+		321F3BCD126CF673008473C8 /* Etcetera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Etcetera.h; path = ../Etcetera.h; sourceTree = "<group>"; };
+		321F3BCE126CF673008473C8 /* Etcetera.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; name = Etcetera.m; path = ../Etcetera.m; sourceTree = "<group>"; };
 		321F3BD0126CF6D2008473C8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		321F3BD1126CF6D2008473C8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		321F3BD2126CF6D2008473C8 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = ../Post.h; sourceTree = "<group>"; };
@@ -824,8 +824,8 @@
 				329079DC12843FF6005D193A /* Controllers */,
 				3293A409127C121E00B07DD5 /* UI */,
 				3215B0571272F70E005580D5 /* Connectivity */,
-				321F3BCD126CF673008473C8 /* Atlas.h */,
-				321F3BCE126CF673008473C8 /* Atlas.m */,
+				321F3BCD126CF673008473C8 /* Etcetera.h */,
+				321F3BCE126CF673008473C8 /* Etcetera.m */,
 				321F3BD0126CF6D2008473C8 /* AppDelegate.h */,
 				321F3BD1126CF6D2008473C8 /* AppDelegate.m */,
 			);
@@ -1478,7 +1478,7 @@
 				28C3AD8A0F43EF2300507BA6 /* MobileSharer.xcdatamodel in Sources */,
 				321F3BDA126CF6D2008473C8 /* AppDelegate.m in Sources */,
 				321F3BDB126CF6D2008473C8 /* Post.m in Sources */,
-				3288C8D9126E216300BF1E3C /* Atlas.m in Sources */,
+				3288C8D9126E216300BF1E3C /* Etcetera.m in Sources */,
 				3288C95D126E2F1800BF1E3C /* NSObject+SBJSON.m in Sources */,
 				3288C95E126E2F1800BF1E3C /* NSString+SBJSON.m in Sources */,
 				3288C95F126E2F1800BF1E3C /* SBJSON.m in Sources */,

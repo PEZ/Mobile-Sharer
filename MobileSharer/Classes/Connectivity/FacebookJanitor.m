@@ -24,11 +24,28 @@ static NSString* kAppId = @"139083852806042";
   return sharedInstance;
 }
 
+#pragma mark -
+#pragma mark Save/restore session
+
+- (void)saveSession {
+  NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+  [prefs setObject:_facebook.accessToken forKey:@"fbAccessToken"];
+  [prefs setObject:_facebook.expirationDate forKey:@"fbExpirationDate"];
+}
+
+- (id)restoreSession {
+  NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+  _facebook.accessToken = [prefs stringForKey:@"fbAccessToken"];
+  _facebook.expirationDate = [prefs objectForKey:@"fbExpirationDate"];
+  return self;
+}
+
 - (id) init {
   if (self = [super init]) {
     _permissions =  [[NSArray arrayWithObjects: 
                       @"read_stream", @"publish_stream",nil] retain];
     _facebook = [[Facebook alloc] init];
+    [self restoreSession];
   }
   return self;
 }
@@ -46,7 +63,12 @@ static NSString* kAppId = @"139083852806042";
 
 - (void) login:(id<FBJSessionDelegate>)delegate {
   _sessionDelegate = delegate;
-  [self getPermissions:_permissions delegate:self];
+  if (![_facebook isSessionValid]) {
+    [self getPermissions:_permissions delegate:self];
+  }
+  else {
+    [_sessionDelegate fbjDidLogin];
+  }
 }
 
 - (void) logout {
@@ -72,6 +94,7 @@ static NSString* kAppId = @"139083852806042";
 -(void) fbDidLogin {
   NSLog(@"Logged in");
   _isLoggedIn = YES;
+  [self saveSession];
   [_sessionDelegate fbjDidLogin];
 }
 
