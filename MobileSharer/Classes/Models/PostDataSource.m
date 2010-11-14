@@ -8,15 +8,19 @@
 
 #import "PostDataSource.h"
 
-#import "LinkPostCell.h"
+#import "LinkPostCellStandalone.h"
 #import "PostCell.h"
 #import "CommentCell.h"
 
 @implementation PostDataSource
 
+@synthesize postItem = _postItem;
+
 - (id)initWithPost:(Post*)post {
   if (self = [super init]) {
     _postModel = [[PostModel alloc] initWithPost:post];
+    _postItem = [post copy];
+    _postItem.URL = nil;
   }
   
   return self;
@@ -25,6 +29,7 @@
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_postModel);
+  TT_RELEASE_SAFELY(_postItem);
   
   [super dealloc];
 }
@@ -37,7 +42,7 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
-  [items addObject:_postModel.post];
+  [items addObject:_postItem];
   for (Comment* comment in _postModel.comments) {
     [items addObject:comment];
   }
@@ -53,7 +58,7 @@
 	if ([object isKindOfClass:[Post class]]) {
     Post* item = object;
     if (item.linkURL) {
-      return [LinkPostCell class];
+      return [LinkPostCellStandalone class];
     }
     else {
       return [PostCell class];      

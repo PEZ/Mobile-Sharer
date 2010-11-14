@@ -34,12 +34,12 @@
   if (!self.textView.text.isEmptyOrWhitespace) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"];
-    [Etcetera params:&params addObject:self.sharePost.linkURL forKey:@"link"];
-    [Etcetera params:&params addObject:self.sharePost.linkText forKey:@"description"];
-    [Etcetera params:&params addObject:self.sharePost.linkCaption forKey:@"caption"];
-    [Etcetera params:&params addObject:self.sharePost.linkTitle forKey:@"name"];
-    [Etcetera params:&params addObject:self.sharePost.type forKey:@"type"];
     [Etcetera params:&params addObject:[Etcetera pictureURL:self.sharePost.picture] forKey:@"picture"];
+    [Etcetera params:&params addObject:self.sharePost.linkURL forKey:@"link"];
+    [Etcetera params:&params addObject:self.sharePost.linkTitle forKey:@"name"];
+    [Etcetera params:&params addObject:self.sharePost.linkCaption forKey:@"caption"];
+    [Etcetera params:&params addObject:self.sharePost.linkText forKey:@"description"];
+    [Etcetera params:&params addObject:self.sharePost.source forKey:@"source"];
     [fb requestWithGraphPath:@"me/feed"
                    andParams:params
                andHttpMethod:@"POST"

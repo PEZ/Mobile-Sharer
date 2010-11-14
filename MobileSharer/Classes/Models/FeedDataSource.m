@@ -1,6 +1,6 @@
 #import "FeedDataSource.h"
 
-#import "LinkPostCell.h"
+#import "LinkPostCell4Feed.h"
 #import "Post.h"
 
 @implementation FeedDataSource
@@ -43,7 +43,7 @@
 	if ([object isKindOfClass:[Post class]]) {
     Post* item = object;
     if (item.linkURL) {
-      return [LinkPostCell class];
+      return [LinkPostCell4Feed class];
     }
     else {
       return [PostCell class];      

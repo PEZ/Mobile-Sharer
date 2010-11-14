@@ -8,7 +8,7 @@
 
 #import "PostCell.h"
 
-@interface LinkPostCell : PostCell {
+@interface LinkPostCellBase : PostCell {
   TTStyledTextLabel*      _linkTextLabel;
 }
 

@@ -13,7 +13,10 @@
 
 @interface PostDataSource : TTListDataSource {
   PostModel* _postModel;
+  Post* _postItem;
 }
+
+@property (nonatomic, copy) Post* postItem;
 
 - (id)initWithPost:(Post*)post;
 

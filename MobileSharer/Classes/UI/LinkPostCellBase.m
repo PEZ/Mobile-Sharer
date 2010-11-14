@@ -1,17 +1,17 @@
 //
-//  FeedPostCell.m
+//  FeedPostCellBase.m
 //  MobileSharer
 //
 //  Created by PEZ on 2010-10-30.
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "LinkPostCell.h"
+#import "LinkPostCellBase.h"
 
 static const CGFloat    kPictureImageHeight  = 55;
 static const CGFloat    kPictureImageWidth  = 80;
 
-@implementation LinkPostCell
+@implementation LinkPostCellBase
 @synthesize linkTextLabel = _linkTextLabel;
 
 
@@ -33,16 +33,22 @@ static const CGFloat    kPictureImageWidth  = 80;
   return self;
 }
 
-- (void)dealloc {
+- (void) dealloc {
   TT_RELEASE_SAFELY(_linkTextLabel);
 
   [super dealloc];
 }
 
-+ (NSString *) getLinkHTML:(Post*)item  {
++ (NSString*) getLinkTitleHTML:(Post*)item {
+  //return [NSString stringWithFormat:@"%@<div class=\"tableTitleText\">%@</div>", linkText, item.linkTitle];
+  //linkText = [NSString stringWithFormat:@"%@<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", linkText, item.linkURL, item.linkTitle];
+  return nil;
+}
+
++ (NSString*) getLinkHTML:(Post*)item  {
   NSString* linkText = @"";
   if (item.linkTitle) {
-    linkText = [NSString stringWithFormat:@"%@<div class=\"tableTitleText\">%@</div>", linkText, item.linkTitle];
+    linkText = [NSString stringWithFormat:@"%@%@", linkText, [self getLinkTitleHTML:item]];
   }
   if (item.linkCaption) {
     linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, item.linkCaption];

@@ -56,4 +56,28 @@
   return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+  Post *another = [[Post alloc] init];
+  another.created = [_created copyWithZone: zone];
+  another.updated = [_updated copyWithZone: zone];
+  another.postId = [_postId copyWithZone: zone];
+  another.type = [_type copyWithZone: zone];
+  another.fromId = [_fromId copyWithZone: zone];
+  another.toId = [_toId copyWithZone: zone];
+  another.message = [_message copyWithZone: zone];
+  another.fromName = [_fromName copyWithZone: zone];
+  another.picture = [_picture copyWithZone: zone];
+  another.fromAvatar = [_fromAvatar copyWithZone: zone];
+  another.linkCaption = [_link copyWithZone: zone];
+  another.linkURL = [_linkURL copyWithZone: zone];
+  another.linkTitle = [_linkTitle copyWithZone: zone];
+  another.linkText = [_linkText copyWithZone: zone];
+  another.source = [_source copyWithZone: zone];
+  another.icon = [_icon copyWithZone: zone];
+  another.likes = [_likes copyWithZone: zone];
+  another.commentCount = [_commentCount copyWithZone: zone];
+  
+  return another;
+}
+
 @end

@@ -18,7 +18,7 @@
 #import "Three20UI/TTTableImageItemCell.h"
 
 static const CGFloat    kDiscloureWidth   = 20;
-static const CGFloat    kIconImageWidth   = 15;
+static const CGFloat    kIconImageWidth   = 16;
 static const CGFloat    kIconImageHeight  = 16;
 
 @interface PostCell : TTTableLinkedItemCell {
