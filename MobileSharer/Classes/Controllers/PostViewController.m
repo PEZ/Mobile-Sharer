@@ -98,11 +98,11 @@
 #pragma mark FBRequestDelegate
 
 - (void)requestLoading:(FBRequest*)request {
-  NSLog(@"request loading");
+  //NSLog(@"request loading");
 }
 
 - (void)request:(FBRequest*)request didReceiveResponse:(NSURLResponse*)response {
-  NSLog(@"response recieved: %@", response);
+  //NSLog(@"response recieved: %@", response);
 }
 
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error {

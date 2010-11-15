@@ -91,7 +91,7 @@
   _countsLabel.text = nil;
 }
 
-- (CGFloat)layoutMoreBodyAtX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w{
+- (CGFloat)layoutMoreBodyForItem:(Post *)item andX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w {
   return y;
 }
 
@@ -135,7 +135,7 @@
     _timestampLabel.frame = CGRectZero;
   }
   
-  CGFloat y = [self layoutMoreBodyAtX:left andY:self.textLabel.bottom withWidth:width];
+  CGFloat y = [self layoutMoreBodyForItem:item andX:left andY:self.textLabel.bottom withWidth:width];
   
   if (_countsLabel.text.length) {
     [_countsLabel sizeToFit];

@@ -40,6 +40,6 @@ static const CGFloat    kIconImageHeight  = 16;
 + (CGFloat)getLeft:(CGFloat*)imageHeight_p item:(Post*)item;
 + (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(Post*)item;
 
-- (CGFloat)layoutMoreBodyAtX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w;
+- (CGFloat)layoutMoreBodyForItem:(Post *)item andX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w;
 
 @end

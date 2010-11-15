@@ -84,8 +84,9 @@ static const CGFloat    kPictureImageWidth  = 80;
 #pragma mark UIView
 
 
-- (CGFloat)layoutMoreBodyAtX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w {
+- (CGFloat)layoutMoreBodyForItem:(Post *)item andX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w {
   _linkTextLabel.frame = CGRectMake(x, y, w, 0);
+  _linkTextLabel.text = [TTStyledText textFromXHTML:[[self class] getLinkHTML:item]];
   [_linkTextLabel sizeToFit];
   return _linkTextLabel.bottom;
 }
