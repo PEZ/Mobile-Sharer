@@ -31,6 +31,7 @@
 		322DD6A912903FB400E7D1DA /* LinkPostCellStandalone.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD6A812903FB400E7D1DA /* LinkPostCellStandalone.m */; };
 		323B93D5128559560097E308 /* PostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D4128559560097E308 /* PostDataSource.m */; };
 		323B93D812855A7E0097E308 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D712855A7E0097E308 /* PostModel.m */; };
+		32425F621291EAC90017A401 /* LoadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32425F611291EAC90017A401 /* LoadMoreCell.m */; };
 		32633DB51289CFA900D9621E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32633DB41289CFA900D9621E /* CommentCell.m */; };
 		3288C8D9126E216300BF1E3C /* Etcetera.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BCE126CF673008473C8 /* Etcetera.m */; };
 		3288C95C126E2F1800BF1E3C /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3288C944126E2F1800BF1E3C /* FBDialog.bundle */; };
@@ -563,6 +564,8 @@
 		323B93D4128559560097E308 /* PostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDataSource.m; sourceTree = "<group>"; };
 		323B93D612855A7E0097E308 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
 		323B93D712855A7E0097E308 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
+		32425F601291EAC90017A401 /* LoadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreCell.h; sourceTree = "<group>"; };
+		32425F611291EAC90017A401 /* LoadMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreCell.m; sourceTree = "<group>"; };
 		32633DB31289CFA900D9621E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		32633DB41289CFA900D9621E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		3288C944126E2F1800BF1E3C /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = "../../facebook-ios-sdk/src/FBDialog.bundle"; sourceTree = SOURCE_ROOT; };
@@ -933,6 +936,8 @@
 				322DD68D12903E7200E7D1DA /* LinkPostCell4Feed.m */,
 				322DD6A712903FB400E7D1DA /* LinkPostCellStandalone.h */,
 				322DD6A812903FB400E7D1DA /* LinkPostCellStandalone.m */,
+				32425F601291EAC90017A401 /* LoadMoreCell.h */,
+				32425F611291EAC90017A401 /* LoadMoreCell.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1518,6 +1523,7 @@
 				322DD46B128F1F6400E7D1DA /* PostController.m in Sources */,
 				322DD68E12903E7200E7D1DA /* LinkPostCell4Feed.m in Sources */,
 				322DD6A912903FB400E7D1DA /* LinkPostCellStandalone.m in Sources */,
+				32425F621291EAC90017A401 /* LoadMoreCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

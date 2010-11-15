@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic, retain)     Post*      post;
-@property (nonatomic, readonly) NSArray*   comments;
+@property (nonatomic, readonly)   NSArray*   comments;
 
 - (id)initWithPost:(Post*)post;
 

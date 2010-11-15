@@ -58,7 +58,7 @@
                                                                      target:self
                                                                      action:@selector(share)]autorelease];
   [self setToolbarItems:[NSArray arrayWithObjects:commentButton, shareButton, nil] animated:NO];
-  self.navigationController.toolbar.tintColor = TTSTYLEVAR(toolbarTintColor);
+  //self.navigationController.toolbar.tintColor = TTSTYLEVAR(toolbarTintColor);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

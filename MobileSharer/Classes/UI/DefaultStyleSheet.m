@@ -35,9 +35,9 @@
 #pragma mark -
 #pragma mark views
 
-- (UIColor*)navigationBarTintColor {
-  return [self darkColor];
-}
+//- (UIColor*)navigationBarTintColor {
+//  return [self darkColor];
+//}
 
 #pragma mark -
 #pragma mark table cells

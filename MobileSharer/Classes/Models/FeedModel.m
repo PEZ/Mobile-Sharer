@@ -44,7 +44,7 @@
                              requestWithURL: [fbRequest getConnectURL]
                              delegate: self];
     
-    request.cachePolicy = TTURLRequestCachePolicyNone;// cachePolicy | TTURLRequestCachePolicyEtag;
+    request.cachePolicy = TTURLRequestCachePolicyNetwork; //cachePolicy;// | TTURLRequestCachePolicyEtag;
     request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
 
     TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];

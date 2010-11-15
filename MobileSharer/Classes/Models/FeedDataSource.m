@@ -1,6 +1,7 @@
 #import "FeedDataSource.h"
 
 #import "LinkPostCell4Feed.h"
+#import "LoadMoreCell.h"
 #import "Post.h"
 
 @implementation FeedDataSource
@@ -32,15 +33,15 @@
     [items addObject:post];
   }
   
-  [items addObject:[TTTableMoreButton itemWithText:@"Load more posts..."]];// URL:<#(NSString *)URL#>
+  [items addObject:[TTTableMoreButton itemWithText:@"Load more posts..."]];
 
   self.items = items;
   TT_RELEASE_SAFELY(items);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// TTTableViewDataSource
 
+#pragma mark -
+#pragma mark TTTableViewDataSource
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
 	if ([object isKindOfClass:[Post class]]) {
     Post* item = object;
@@ -50,7 +51,11 @@
     else {
       return [PostCell class];      
     }
-	} else {
+	}
+  else if ([object isKindOfClass:[TTTableMoreButton class]]) {
+    return [LoadMoreCell class];
+  }  
+  else {
 		return [super tableView:tableView cellClassForObject:object];
 	}
 }
