@@ -40,8 +40,10 @@
     [Etcetera params:&params addObject:self.sharePost.linkCaption forKey:@"caption"];
     [Etcetera params:&params addObject:self.sharePost.linkText forKey:@"description"];
     [Etcetera params:&params addObject:self.sharePost.source forKey:@"source"];
-    //[params setObject:@"{\"name\": \"Like\", \"name\": \"Comment\"}" forKey:@"action_links"];
-    [fb requestWithGraphPath:@"me/feed"
+    NSString* path = [NSString stringWithFormat:@"me/%@",
+                          ([self.sharePost.type isEqualToString:@"links"] ||
+                           [self.sharePost.type isEqualToString:@"movie"]) ? @"link" : @"feed"];
+    [fb requestWithGraphPath:path
                    andParams:params
                andHttpMethod:@"POST"
                  andDelegate:self];
