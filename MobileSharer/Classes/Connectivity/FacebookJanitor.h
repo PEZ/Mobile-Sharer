@@ -15,12 +15,15 @@
   Facebook* _facebook;
   NSArray* _permissions;
   BOOL _isLoggedIn;
+  NSDateFormatter* _dateFormatter;
 }
 
 @property(nonatomic, retain) Facebook* facebook;
 @property(nonatomic, getter=_isLoggedIn) BOOL loggedIn;
+@property(nonatomic, retain) NSDateFormatter* dateFormatter;
 
 + (FacebookJanitor*) sharedInstance;
++ (NSDateFormatter*) dateFormatter;
 
 - (void) getPermissions:(NSArray*)permissions delegate:(id<FBSessionDelegate>)delegate;
 - (void) login:(id<FBJSessionDelegate>)delegate;

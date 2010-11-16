@@ -13,7 +13,7 @@ static NSString* kAppId = @"139083852806042";
 
 @implementation FacebookJanitor
 
-@synthesize loggedIn = _isLoggedIn, facebook = _facebook;
+@synthesize loggedIn = _isLoggedIn, facebook = _facebook, dateFormatter = _dateFormatter;
 
 + (FacebookJanitor *)sharedInstance {
   static BOOL initialized = NO;
@@ -22,6 +22,10 @@ static NSString* kAppId = @"139083852806042";
     sharedInstance = [[FacebookJanitor alloc] init];
   }
   return sharedInstance;
+}
+
++ (NSDateFormatter*) dateFormatter {
+  return [[self sharedInstance] dateFormatter];
 }
 
 #pragma mark -
@@ -40,6 +44,12 @@ static NSString* kAppId = @"139083852806042";
   return self;
 }
 
+- (void) createDateFormatter {
+  _dateFormatter = [[NSDateFormatter alloc] init];
+  [_dateFormatter setTimeStyle:NSDateFormatterFullStyle];
+  [_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
+}
+
 - (id) init {
   if (self = [super init]) {
     _permissions =  [[NSArray arrayWithObjects: 
@@ -49,6 +59,7 @@ static NSString* kAppId = @"139083852806042";
   }
   return self;
 }
+
 
 #pragma mark -
 #pragma mark Janitor tasks
@@ -82,6 +93,7 @@ static NSString* kAppId = @"139083852806042";
   TT_RELEASE_SAFELY(_facebook);
   TT_RELEASE_SAFELY(_permissions);
   TT_RELEASE_SAFELY(_sessionDelegate);
+  TT_RELEASE_SAFELY(_dateFormatter);
   [super dealloc];
 }
 

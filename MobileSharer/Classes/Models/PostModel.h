@@ -6,13 +6,15 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "Post.h"
+#import "FacebookModel.h"
 
-@interface PostModel : TTURLRequestModel {
+@interface PostModel : FacebookModel {
+  NSString*  _postId;
   Post*      _post;
   NSArray*   _comments;
 }
 
+@property (nonatomic, copy)       NSString*  postId;
 @property (nonatomic, retain)     Post*      post;
 @property (nonatomic, readonly)   NSArray*   comments;
 

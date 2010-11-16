@@ -123,7 +123,7 @@
     self.textLabel.text = item.message;
     self.timestampLabel.text = [item.created formatRelativeTime];
     self.imageView2.urlPath = item.fromAvatar;
-    self.imageView2.style = TTSTYLE(avatar);
+    self.imageView2.defaultImage = TTIMAGE(@"bundle://Three20.bundle/images/photoDefault.png");
   }
 }
 

@@ -6,8 +6,9 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
+#import "FacebookModel.h"
 
-@interface FeedModel : TTURLRequestModel {
+@interface FeedModel : FacebookModel {
   NSString* _feedId;
   NSArray*  _posts;
 }

@@ -9,7 +9,6 @@
 #import "PostModel.h"
 #import "Comment.h"
 #import "FacebookJanitor.h"
-#import <extThree20JSON/extThree20JSON.h>
 
 BOOL commentsEmpty(NSArray* comments) {
   return comments == nil || [comments count] == 0;
@@ -17,6 +16,7 @@ BOOL commentsEmpty(NSArray* comments) {
 
 @implementation PostModel
 
+@synthesize postId        = _postId;
 @synthesize post          = _post;
 @synthesize comments      = _comments;
 
@@ -24,11 +24,18 @@ BOOL commentsEmpty(NSArray* comments) {
   if (self = [super init]) {
     self.post = post;
   }
-  
+  return self;
+}
+
+- (id)initWithPostId:(NSString*)postId {
+  if (self = [super init]) {
+    self.postId = postId;
+  }
   return self;
 }
 
 - (void) dealloc {
+  TT_RELEASE_SAFELY(_postId);
   TT_RELEASE_SAFELY(_post);
   TT_RELEASE_SAFELY(_comments);
   [super dealloc];
@@ -50,19 +57,9 @@ BOOL commentsEmpty(NSArray* comments) {
     }
     else {
       fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
-    }    
-    TTURLRequest* request = [TTURLRequest
-                             requestWithURL: [fbRequest getConnectURL]
-                             delegate: self];
+    }
     
-    request.cachePolicy = TTURLRequestCachePolicyNetwork;//cachePolicy; // | TTURLRequestCachePolicyEtag;
-    request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
-    
-    TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
-    request.response = response;
-    TT_RELEASE_SAFELY(response);
-    
-    [request send];
+    [[self createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork] send]; //TODO: use cachePolicy arg
   }
 }
 
@@ -75,10 +72,6 @@ BOOL commentsEmpty(NSArray* comments) {
   
   NSArray* entries = [feed objectForKey:@"data"];
   
-  NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
-  [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-
   BOOL more = ([[request urlPath] rangeOfString:@"offset="].location != NSNotFound);
   NSMutableArray* oldComments;
   if (more && !commentsEmpty(_comments)) {
@@ -96,7 +89,7 @@ BOOL commentsEmpty(NSArray* comments) {
   for (NSDictionary* entry in entries) {
     Comment* comment = [[Comment alloc] init];
     
-    NSDate* date = [dateFormatter dateFromString:[entry objectForKey:@"created_time"]];
+    NSDate* date = [[FacebookJanitor dateFormatter] dateFromString:[entry objectForKey:@"created_time"]];
     comment.created = date;
     comment.commentId = [entry objectForKey:@"id"];
     comment.message = [entry objectForKey:@"message"];
@@ -118,9 +111,7 @@ BOOL commentsEmpty(NSArray* comments) {
     [comments addObjectsFromArray:oldComments];
   }
   _comments = comments;
-  
-  TT_RELEASE_SAFELY(dateFormatter);
-  
+    
   [super requestDidFinishLoad:request];
 }
 

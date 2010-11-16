@@ -2,7 +2,6 @@
 #import "FeedModel.h"
 #import "Post.h"
 #import "FacebookJanitor.h"
-#import <extThree20JSON/extThree20JSON.h>
 
 @implementation FeedModel
 
@@ -25,8 +24,8 @@
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading && TTIsStringWithAnyText(_feedId)) {
-    NSString* path = [NSString stringWithFormat:@"%@/%@", self.feedId, [self.feedId isEqual:@"me"] ? @"home" : @"feed"];
     FBRequest* fbRequest;
+    NSString* path = [NSString stringWithFormat:@"%@/%@", _feedId, [_feedId isEqual:@"me"] ? @"home" : @"feed"];
     if (more) {
       NSString* until = [NSString stringWithFormat:@"%@",
                          [NSNumber numberWithDouble:[[[_posts lastObject] created] timeIntervalSince1970]]];
@@ -40,20 +39,11 @@
       fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
     }
     
-    TTURLRequest* request = [TTURLRequest
-                             requestWithURL: [fbRequest getConnectURL]
-                             delegate: self];
-    
-    request.cachePolicy = TTURLRequestCachePolicyNetwork; //cachePolicy;// | TTURLRequestCachePolicyEtag;
-    request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
-
-    TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
-    request.response = response;
-    TT_RELEASE_SAFELY(response);
-    
-    [request send];
+    [[self createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork] send]; //TODO: use cachePolicy arg
   }
 }
+
+
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
   TTURLJSONResponse* response = request.response;
@@ -63,10 +53,6 @@
   TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
 
   NSArray* entries = [feed objectForKey:@"data"];
-
-  NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
-  [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
 
   BOOL more = ([[request urlPath] rangeOfString:@"until="].location != NSNotFound);
   NSMutableArray* posts;
@@ -80,43 +66,9 @@
   TT_RELEASE_SAFELY(_posts);
 
   for (NSDictionary* entry in entries) {
-    Post* post = [[Post alloc] init];
-
-    NSDate* date = [dateFormatter dateFromString:[entry objectForKey:@"created_time"]];
-    post.created = date;
-    post.postId = [entry objectForKey:@"id"];
-    post.type = [entry objectForKey:@"type"];
-    post.message = [entry objectForKey:@"message"];
-    if ([entry objectForKey:@"from"] != [NSNull null]) {
-      post.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
-      post.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
-      post.URL = [Etcetera toPostPath:post];
-      post.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
-    }
-    else {
-      post.fromName = @"Facebook User";
-      post.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
-    }
-    if ([entry objectForKey:@"likes"] != [NSNull null]) {
-      post.likes = [[entry objectForKey:@"likes"] objectForKey:@"count"];
-    }
-    if ([entry objectForKey:@"comments"] != [NSNull null]) {
-      post.commentCount = [[entry objectForKey:@"comments"] objectForKey:@"count"];
-    }
-    post.icon = [entry objectForKey:@"icon"];
-    post.picture = [entry objectForKey:@"picture"];
-    post.linkURL = [entry objectForKey:@"link"];
-    post.linkCaption = [entry objectForKey:@"caption"];
-    post.linkTitle = [entry objectForKey:@"name"];
-    post.linkText = [entry objectForKey:@"description"];
-
-
-    [posts addObject:post];
-    TT_RELEASE_SAFELY(post);
+    [posts addObject:[self postFromEntry: entry]];
   }
   _posts = posts;
-
-  TT_RELEASE_SAFELY(dateFormatter);
 
   [super requestDidFinishLoad:request];
 }

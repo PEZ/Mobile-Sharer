@@ -41,8 +41,8 @@
     [Etcetera params:&params addObject:self.sharePost.linkText forKey:@"description"];
     [Etcetera params:&params addObject:self.sharePost.source forKey:@"source"];
     NSString* path = [NSString stringWithFormat:@"me/%@",
-                          ([self.sharePost.type isEqualToString:@"links"] ||
-                           [self.sharePost.type isEqualToString:@"movie"]) ? @"link" : @"feed"];
+                          ([self.sharePost.type isEqualToString:@"link"] ||
+                           [self.sharePost.type isEqualToString:@"video"]) ? @"links" : @"feed"];
     [fb requestWithGraphPath:path
                    andParams:params
                andHttpMethod:@"POST"
