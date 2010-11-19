@@ -167,7 +167,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 321F3A71126CEE6F008473C8 /* MobileSharer */;
-		activeSDKPreference = iphonesimulator4.1;
+		activeSDKPreference = iphoneos4.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* MobileSharer */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* MobileSharer */,
@@ -549,6 +549,21 @@
 			320250D41295F66600A9CF49 /* PBXTextBookmark */ = 320250D41295F66600A9CF49 /* PBXTextBookmark */;
 			320250D51295F66600A9CF49 /* PBXTextBookmark */ = 320250D51295F66600A9CF49 /* PBXTextBookmark */;
 			320250D61295F66600A9CF49 /* PBXTextBookmark */ = 320250D61295F66600A9CF49 /* PBXTextBookmark */;
+			320250DE1295FC8E00A9CF49 /* PBXTextBookmark */ = 320250DE1295FC8E00A9CF49 /* PBXTextBookmark */;
+			320250DF1295FC8E00A9CF49 /* PBXTextBookmark */ = 320250DF1295FC8E00A9CF49 /* PBXTextBookmark */;
+			320250E01295FC8E00A9CF49 /* PBXTextBookmark */ = 320250E01295FC8E00A9CF49 /* PBXTextBookmark */;
+			320250E11295FC8E00A9CF49 /* PBXTextBookmark */ = 320250E11295FC8E00A9CF49 /* PBXTextBookmark */;
+			320250E21295FC8E00A9CF49 /* PBXTextBookmark */ = 320250E21295FC8E00A9CF49 /* PBXTextBookmark */;
+			320250E31295FC8E00A9CF49 /* PBXTextBookmark */ = 320250E31295FC8E00A9CF49 /* PBXTextBookmark */;
+			320250E41295FC8E00A9CF49 /* XCBuildMessageTextBookmark */ = 320250E41295FC8E00A9CF49 /* XCBuildMessageTextBookmark */;
+			320250E51295FC8E00A9CF49 /* PBXTextBookmark */ = 320250E51295FC8E00A9CF49 /* PBXTextBookmark */;
+			320250E61295FC8E00A9CF49 /* PBXTextBookmark */ = 320250E61295FC8E00A9CF49 /* PBXTextBookmark */;
+			320250E71295FC8F00A9CF49 /* PBXTextBookmark */ = 320250E71295FC8F00A9CF49 /* PBXTextBookmark */;
+			320250E81295FC8F00A9CF49 /* PBXTextBookmark */ = 320250E81295FC8F00A9CF49 /* PBXTextBookmark */;
+			320250E91295FC8F00A9CF49 /* PBXTextBookmark */ = 320250E91295FC8F00A9CF49 /* PBXTextBookmark */;
+			320250EA1295FC8F00A9CF49 /* PBXTextBookmark */ = 320250EA1295FC8F00A9CF49 /* PBXTextBookmark */;
+			320250EB1295FC8F00A9CF49 /* PBXTextBookmark */ = 320250EB1295FC8F00A9CF49 /* PBXTextBookmark */;
+			320250EC1295FC8F00A9CF49 /* PBXTextBookmark */ = 320250EC1295FC8F00A9CF49 /* PBXTextBookmark */;
 			3215B14012737BFE005580D5 = 3215B14012737BFE005580D5 /* PBXTextBookmark */;
 			322DD02D128A96FA00E7D1DA = 322DD02D128A96FA00E7D1DA /* PBXTextBookmark */;
 			322DD02E128A96FA00E7D1DA = 322DD02E128A96FA00E7D1DA /* PBXTextBookmark */;
@@ -3297,6 +3312,155 @@
 		vrLen = 141;
 		vrLoc = 0;
 	};
+	320250DE1295FC8E00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BCE126CF673008473C8 /* Etcetera.m */;
+		name = "Etcetera.m: 51";
+		rLen = 0;
+		rLoc = 1772;
+		rType = 0;
+		vrLen = 1663;
+		vrLoc = 624;
+	};
+	320250DF1295FC8E00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD1126CF6D2008473C8 /* AppDelegate.m */;
+		name = "AppDelegate.m: 23";
+		rLen = 0;
+		rLoc = 824;
+		rType = 0;
+		vrLen = 1767;
+		vrLoc = 0;
+	};
+	320250E01295FC8E00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 323B93D4128559560097E308 /* PostDataSource.m */;
+		name = "PostDataSource.m: 29";
+		rLen = 0;
+		rLoc = 583;
+		rType = 0;
+		vrLen = 883;
+		vrLoc = 0;
+	};
+	320250E11295FC8E00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32024F711295D89300A9CF49 /* PostViewController.h */;
+		name = "PostViewController.h: 14";
+		rLen = 0;
+		rLoc = 243;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 0;
+	};
+	320250E21295FC8E00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32024F751295DBE700A9CF49 /* PostIdViewController.m */;
+		name = "PostIdViewController.m: 38";
+		rLen = 0;
+		rLoc = 850;
+		rType = 0;
+		vrLen = 908;
+		vrLoc = 0;
+	};
+	320250E31295FC8E00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32024F721295D89300A9CF49 /* PostViewController.m */;
+		name = "PostViewController.m: 48";
+		rLen = 0;
+		rLoc = 1531;
+		rType = 0;
+		vrLen = 1571;
+		vrLoc = 0;
+	};
+	320250E41295FC8E00A9CF49 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Incomplete implementation of class 'PostViewControllerBase'";
+		fRef = 329079F812844295005D193A /* PostViewControllerBase.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 104;
+		rType = 1;
+	};
+	320250E51295FC8E00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 329079F812844295005D193A /* PostViewControllerBase.m */;
+		name = "PostViewControllerBase.m: 105";
+		rLen = 0;
+		rLoc = 2798;
+		rType = 0;
+		vrLen = 1458;
+		vrLoc = 1055;
+	};
+	320250E61295FC8E00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 321F3BD1126CF6D2008473C8 /* AppDelegate.m */;
+		name = "AppDelegate.m: 22";
+		rLen = 0;
+		rLoc = 752;
+		rType = 0;
+		vrLen = 1454;
+		vrLoc = 0;
+	};
+	320250E71295FC8F00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32053B1412931DA2006ABC35 /* FacebookModel.m */;
+		name = "FacebookModel.m: 34";
+		rLen = 0;
+		rLoc = 1195;
+		rType = 0;
+		vrLen = 2174;
+		vrLoc = 0;
+	};
+	320250E81295FC8F00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 323B93D712855A7E0097E308 /* PostModel.m */;
+		name = "PostModel.m: 48";
+		rLen = 0;
+		rLoc = 937;
+		rType = 0;
+		vrLen = 1910;
+		vrLoc = 2252;
+	};
+	320250E91295FC8F00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32891DB1127F5D6D00786BE7 /* PostCell.m */;
+		name = "PostCell.m: 59";
+		rLen = 25;
+		rLoc = 1804;
+		rType = 0;
+		vrLen = 1958;
+		vrLoc = 994;
+	};
+	320250EA1295FC8F00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32633DB41289CFA900D9621E /* CommentCell.m */;
+		name = "CommentCell.m: 127";
+		rLen = 0;
+		rLoc = 4104;
+		rType = 0;
+		vrLen = 1999;
+		vrLoc = 3027;
+	};
+	320250EB1295FC8F00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32633DB41289CFA900D9621E /* CommentCell.m */;
+		name = "CommentCell.m: 127";
+		rLen = 0;
+		rLoc = 4104;
+		rType = 0;
+		vrLen = 1919;
+		vrLoc = 0;
+	};
+	320250EC1295FC8F00A9CF49 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 322DD444128F1D0400E7D1DA /* PostController.h */;
+		name = "PostController.h: 18";
+		rLen = 0;
+		rLoc = 286;
+		rType = 0;
+		vrLen = 141;
+		vrLoc = 0;
+	};
 	32053B1312931DA2006ABC35 /* FacebookModel.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1117, 806}}";
@@ -3307,8 +3471,8 @@
 	32053B1412931DA2006ABC35 /* FacebookModel.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1117, 832}}";
-			sepNavSelRange = "{1658, 0}";
-			sepNavVisRange = "{0, 2179}";
+			sepNavSelRange = "{1195, 0}";
+			sepNavVisRange = "{0, 2174}";
 		};
 	};
 	3215B0501272E15C005580D5 /* FacebookJanitor.h */ = {
@@ -3418,9 +3582,9 @@
 	};
 	321F3BD1126CF6D2008473C8 /* AppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1060, 741}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1060, 676}}";
 			sepNavSelRange = "{752, 0}";
-			sepNavVisRange = "{0, 1344}";
+			sepNavVisRange = "{0, 1454}";
 			sepNavWindowFrame = "{{220, 368}, {1210, 803}}";
 		};
 	};
@@ -4234,9 +4398,9 @@
 	};
 	323B93D712855A7E0097E308 /* PostModel.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1117, 1768}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1117, 1755}}";
 			sepNavSelRange = "{937, 0}";
-			sepNavVisRange = "{619, 2308}";
+			sepNavVisRange = "{2252, 1910}";
 		};
 	};
 	32425E3D12915C6B0017A401 /* PBXTextBookmark */ = {
@@ -4759,9 +4923,9 @@
 	};
 	32633DB41289CFA900D9621E /* CommentCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1081, 2015}}";
-			sepNavSelRange = "{3757, 0}";
-			sepNavVisRange = "{3333, 1084}";
+			sepNavIntBoundsRect = "{{0, 0}, {1117, 2054}}";
+			sepNavSelRange = "{4104, 0}";
+			sepNavVisRange = "{0, 1919}";
 		};
 	};
 	3288C8B3126E179D00BF1E3C /* PBXTextBookmark */ = {
@@ -4818,9 +4982,9 @@
 	};
 	32891DB1127F5D6D00786BE7 /* PostCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1060, 3380}}";
-			sepNavSelRange = "{5889, 0}";
-			sepNavVisRange = "{5252, 1425}";
+			sepNavIntBoundsRect = "{{0, 0}, {1117, 3484}}";
+			sepNavSelRange = "{1804, 25}";
+			sepNavVisRange = "{994, 1958}";
 		};
 	};
 	329079E91284410A005D193A /* FeedDataSource.h */ = {
