@@ -11,9 +11,28 @@
 static void * volatile sharedInstance = nil;                                                
 static NSString* kAppId = @"139083852806042";
 
+@interface FacebookJanitor(Private)
+
+- (id)restoreSession;
+- (void)createDateFormatter;
+- (id)restoreSession;
+
+@end
+
 @implementation FacebookJanitor
 
 @synthesize loggedIn = _isLoggedIn, facebook = _facebook, dateFormatter = _dateFormatter;
+
+- (id) init {
+  if (self = [super init]) {
+    _permissions =  [[NSArray arrayWithObjects: 
+                      @"read_stream", @"publish_stream",nil] retain];
+    _facebook = [[Facebook alloc] init];
+    [self createDateFormatter];
+    [self restoreSession];
+  }
+  return self;
+}
 
 + (FacebookJanitor *)sharedInstance {
   static BOOL initialized = NO;
@@ -26,6 +45,12 @@ static NSString* kAppId = @"139083852806042";
 
 + (NSDateFormatter*) dateFormatter {
   return [[self sharedInstance] dateFormatter];
+}
+
+- (void) createDateFormatter {
+  _dateFormatter = [[NSDateFormatter alloc] init];
+  [_dateFormatter setTimeStyle:NSDateFormatterFullStyle];
+  [_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
 }
 
 #pragma mark -
@@ -43,23 +68,6 @@ static NSString* kAppId = @"139083852806042";
   _facebook.expirationDate = [prefs objectForKey:@"fbExpirationDate"];
   return self;
 }
-
-- (void) createDateFormatter {
-  _dateFormatter = [[NSDateFormatter alloc] init];
-  [_dateFormatter setTimeStyle:NSDateFormatterFullStyle];
-  [_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZ"];
-}
-
-- (id) init {
-  if (self = [super init]) {
-    _permissions =  [[NSArray arrayWithObjects: 
-                      @"read_stream", @"publish_stream",nil] retain];
-    _facebook = [[Facebook alloc] init];
-    [self restoreSession];
-  }
-  return self;
-}
-
 
 #pragma mark -
 #pragma mark Janitor tasks
