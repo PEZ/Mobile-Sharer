@@ -30,6 +30,10 @@
     post.fromName = @"Facebook User";
     post.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
   }
+  if ([entry objectForKey:@"from"] != [NSNull null]) {
+    post.toName = [[[[entry objectForKey:@"from"] objectForKey:@"data"] objectAtIndex:0] objectForKey:@"name"];
+    post.toId = [[[[entry objectForKey:@"from"] objectForKey:@"data"] objectAtIndex:0] objectForKey:@"id"];
+  }
   if ([entry objectForKey:@"likes"] != [NSNull null]) {
     post.likes = [[entry objectForKey:@"likes"] objectForKey:@"count"];
   }

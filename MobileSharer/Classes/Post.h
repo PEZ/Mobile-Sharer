@@ -11,10 +11,11 @@
   NSDate*   _updated;
   NSString* _postId;
   NSString* _type;
+  NSString* _fromName;
   NSString* _fromId;
+  NSString* _toName;
   NSString* _toId;
   NSString* _message;
-  NSString* _fromName;
   NSString* _picture;
   NSString* _fromAvatar;
   NSString* _link;
@@ -31,10 +32,11 @@
 @property (nonatomic, retain) NSDate*   updated;
 @property (nonatomic, retain) NSString* postId;
 @property (nonatomic, copy)   NSString* type;
+@property (nonatomic, copy)   NSString* fromName;
 @property (nonatomic, copy)   NSString* fromId;
 @property (nonatomic, copy)   NSString* toId;
+@property (nonatomic, copy)   NSString* toName;
 @property (nonatomic, copy)   NSString* message;
-@property (nonatomic, copy)   NSString* fromName;
 @property (nonatomic, copy)   NSString* picture;
 @property (nonatomic, copy)   NSString* fromAvatar;
 @property (nonatomic, copy)   NSString* linkCaption;

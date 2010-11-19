@@ -11,8 +11,11 @@
 
 @interface DefaultStyleSheet : TTDefaultStyleSheet
 
+- (UIFont*)tableTimestampFont;
+- (TTTextStyle*)tableText;
 - (TTTextStyle*)tableTitleText;
 - (TTTextStyle*)tableSubText;
+- (UIColor*)tableTextColor;
 - (UIColor*)darkColor;
 - (UIColor*)mediumColor;
 - (UIColor*)lightColor;

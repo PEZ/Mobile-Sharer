@@ -63,7 +63,6 @@ static const CGFloat    kPictureImageWidth  = 80;
   return [linkText stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
 }
 
-
 #pragma mark -
 #pragma mark TTTableViewCell class public
 

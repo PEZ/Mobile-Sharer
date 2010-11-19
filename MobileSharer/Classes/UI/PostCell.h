@@ -22,18 +22,16 @@ static const CGFloat    kIconImageWidth   = 16;
 static const CGFloat    kIconImageHeight  = 16;
 
 @interface PostCell : TTTableLinkedItemCell {
-  UILabel*      _titleLabel;
-  UILabel*      _timestampLabel;
+  TTStyledTextLabel* _messageLabel;
   TTImageView*  _iconImageView;
   TTImageView*  _imageView2;
   UILabel*      _countsLabel;
 }
 
-@property (nonatomic, readonly, retain) UILabel*      titleLabel;
-@property (nonatomic, readonly, retain) UILabel*      timestampLabel;
-@property (nonatomic, readonly, retain) TTImageView*  iconImageView;
-@property (nonatomic, readonly, retain) TTImageView*  imageView2;
-@property (nonatomic, readonly, retain) UILabel*      countsLabel;
+@property (nonatomic, readonly, retain) TTStyledTextLabel*  messageLabel;
+@property (nonatomic, readonly, retain) TTImageView*        iconImageView;
+@property (nonatomic, readonly, retain) TTImageView*        imageView2;
+@property (nonatomic, readonly, retain) UILabel*            countsLabel;
 
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural;
 + (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(Post *)item;

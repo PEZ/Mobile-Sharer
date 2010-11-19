@@ -16,14 +16,7 @@
   if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
     _imageView2 = [[TTImageView alloc] init];
     [self.contentView addSubview:_imageView2];
-    
-    self.textLabel.font = TTSTYLEVAR(tableFont);
-    self.textLabel.highlightedTextColor = TTSTYLEVAR(highlightedTextColor);
-    self.textLabel.textAlignment = UITextAlignmentLeft;
-    self.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    self.textLabel.adjustsFontSizeToFitWidth = NO;    
   }
-  
   return self;
 }
 
@@ -38,6 +31,23 @@
   return [_text sizeWithFont:_font
            constrainedToSize:CGSizeMake(_width, CGFLOAT_MAX)
                lineBreakMode:UILineBreakModeWordWrap].height;
+}
+
++ (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId {
+  return [NSString stringWithFormat:@"<span class=\"tableTitleText\"><a href=\"%@\">%@</a></span>",
+          [Etcetera toFeedURLPath:feedId name:name], name];
+}
+
++ (NSString*) getMessageHTML:(Post*)item  {
+  NSString* messageText = @"";
+  messageText = [NSString stringWithFormat:@"%@%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
+  if (item.toName && ![item.toId isEqualToString:item.fromId]) {
+    messageText = [NSString stringWithFormat:@"%@ &gt; %@", messageText, [self getNameHTML:item.toName feedId:item.toId]];
+  }
+  if (item.message) {
+    messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, item.message];
+  }
+  return messageText;
 }
 
 + (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(Post *)item {
@@ -62,20 +72,39 @@
   return left;
 }
 
+
++ (TTStyledTextLabel*)createStyledLabel {
+  TTStyledTextLabel* label = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
+  label.textColor = TTSTYLEVAR(tableTextColor);
+  label.highlightedTextColor = [UIColor whiteColor];
+  label.font = TTSTYLEVAR(tableFont);
+  label.contentMode = UIViewContentModeLeft;
+  return label;  
+}
+
++ (CGFloat)tableView:(UITableView*)tableView styledHeight:(Post*)item {
+  TTStyledTextLabel* label = [self createStyledLabel];
+  CGFloat junk;
+  CGFloat left = [self getLeft:&junk item:item];
+  label.text = [TTStyledText textFromXHTML:[self getMessageHTML:item] lineBreaks:YES URLs:NO];
+  label.frame = CGRectMake(left, 0, [self getTextWidth:left tableView:tableView item:item], 0);
+  [label sizeToFit];
+  CGFloat h = label.height;
+  TT_RELEASE_SAFELY(label);
+  return h;
+}
+
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
   Post* item = object;
   
   CGFloat imageHeight;
-  CGFloat left = [self getLeft:&imageHeight item:item];
+
+  CGFloat messageHeight = [self tableView:tableView styledHeight:item] + kTableCellSmallMargin;
   
-  CGFloat textWidth = [self getTextWidth:left tableView:tableView item:item];
+  CGFloat countsHeight = TTSTYLEVAR(tableTimestampFont).ttLineHeight + kTableCellSmallMargin;
   
-  CGFloat textHeight = TTSTYLEVAR(tableTitleFont).ttLineHeight + TTSTYLEVAR(tableFont).ttLineHeight + kTableCellSmallMargin;
-  if (item.message) {
-    textHeight += [self heightForText:item.message withFont:TTSTYLEVAR(tableFont) andWidth:textWidth];
-  }
-  
-  return MAX(imageHeight + 25, textHeight + [self tableView:tableView heightForMoreBody:item]) + kTableCellSmallMargin * 2;
+  return kTableCellSmallMargin + MAX(imageHeight + 25, messageHeight +
+                                     [self tableView:tableView heightForMoreBody:item]) + countsHeight;
 }
 
 #pragma mark -
@@ -85,8 +114,7 @@
   [super prepareForReuse];
   [_imageView2 unsetImage];
   self.textLabel.text = nil;
-  _titleLabel.text = nil;
-  _timestampLabel.text = nil;
+  _messageLabel.text = nil;
   [_iconImageView unsetImage];
   _countsLabel.text = nil;
 }
@@ -116,26 +144,13 @@
   CGFloat width = self.contentView.width - left - kTableCellSmallMargin;
   CGFloat top = kTableCellSmallMargin;
   
-  _titleLabel.frame = CGRectMake(left, top, width, _titleLabel.font.ttLineHeight);
-  top += _titleLabel.height;
+  _messageLabel.frame = CGRectMake(left, top, width, 0);
+  _messageLabel.text = [TTStyledText textFromXHTML:[[self class] getMessageHTML:item]];
+  [_messageLabel sizeToFit];
   
-  self.textLabel.frame = CGRectMake(left, top, width, 0);
-  if (self.textLabel.text) {
-    self.textLabel.numberOfLines = 0;
-    [self.textLabel sizeToFit];
-  }
-  
-  if (_timestampLabel.text.length) {
-    _timestampLabel.alpha = !self.showingDeleteConfirmation;
-    [_timestampLabel sizeToFit];
-    _timestampLabel.left = [UIScreen mainScreen].bounds.size.width - (_timestampLabel.width + kTableCellSmallMargin);
-    _timestampLabel.top = _titleLabel.top;
-    _titleLabel.width -= _timestampLabel.width + kTableCellSmallMargin*2;
-  } else {
-    _timestampLabel.frame = CGRectZero;
-  }
-  
-  CGFloat y = [self layoutMoreBodyForItem:item andX:left andY:self.textLabel.bottom withWidth:width];
+  top = _messageLabel.bottom;
+    
+  CGFloat y = [self layoutMoreBodyForItem:item andX:left andY:_messageLabel.bottom withWidth:width];
   
   if (_countsLabel.text.length) {
     [_countsLabel sizeToFit];
@@ -153,10 +168,8 @@
   [super didMoveToSuperview];
   
   if (self.superview) {
-    self.textLabel.backgroundColor = self.backgroundColor;
     _imageView2.backgroundColor = self.backgroundColor;
-    _titleLabel.backgroundColor = self.backgroundColor;
-    _timestampLabel.backgroundColor = self.backgroundColor;
+    _messageLabel.backgroundColor = self.backgroundColor;
     _countsLabel.backgroundColor = self.backgroundColor;
     _iconImageView.backgroundColor = self.backgroundColor;
   }
@@ -168,22 +181,15 @@
 - (void)setObject:(id)object {
   if (_item != object) {
     [super setObject:object];
-    
+
     Post* item = object;
-    if (item.fromName) {
-      self.titleLabel.text = item.fromName;
-    }
-    if (item.message) {
-      self.textLabel.text = item.message;
-    }
-    if (item.created) {
-      self.timestampLabel.text = [item.created formatRelativeTime];
-    }
+
+    self.messageLabel.text = [TTStyledText textFromXHTML:[[self class] getMessageHTML:item] lineBreaks:YES URLs:NO];
+
     self.imageView2.defaultImage = TTIMAGE(@"bundle://Three20.bundle/images/photoDefault.png");
     if (item.fromAvatar) {
       self.imageView2.urlPath = item.fromAvatar;
     }
-    //self.imageView2.style = TTSTYLE(avatar);
     if (item.commentCount) {
       self.countsLabel.text = [[self class] textForCount:[item.commentCount intValue] withSingular:@"comment" andPlural:@"comments"];
     }
@@ -199,6 +205,7 @@
     if (!item.commentCount && !item.likes) {
       self.countsLabel.text = @"No comments yet";
     }
+    self.countsLabel.text = [NSString stringWithFormat:@"%@, %@", [item.created formatRelativeTime], self.countsLabel.text];
     if (item.icon) {
       self.iconImageView.urlPath = item.icon;
     }
@@ -211,9 +218,9 @@
 - (UILabel*)countsLabel {
   if (!_countsLabel) {
     _countsLabel = [[UILabel alloc] init];
-    _countsLabel.textColor = TTSTYLEVAR(tableSubTextColor);
+    _countsLabel.textColor = TTSTYLEVAR(timestampTextColor);
     _countsLabel.highlightedTextColor = [UIColor whiteColor];
-    _countsLabel.font = TTSTYLEVAR(tableFont);
+    _countsLabel.font = TTSTYLEVAR(tableTimestampFont);
     _countsLabel.contentMode = UIViewContentModeLeft;
     [self.contentView addSubview:_countsLabel];
   }
@@ -228,32 +235,16 @@
   return _iconImageView;
 }
 
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (UILabel*)titleLabel {
-  if (!_titleLabel) {
-    _titleLabel = [[UILabel alloc] init];
-    _titleLabel.textColor = TTSTYLEVAR(tableTitleTextColor);
-    _titleLabel.highlightedTextColor = [UIColor whiteColor];
-    _titleLabel.font = TTSTYLEVAR(tableTitleFont);
-    _titleLabel.contentMode = UIViewContentModeLeft;
-    [self.contentView addSubview:_titleLabel];
+- (TTStyledTextLabel*)messageLabel {
+  if (!_messageLabel) {
+    _messageLabel = [[self class] createStyledLabel];
+    [self.contentView addSubview:_messageLabel];
+    return _messageLabel;
   }
-  return _titleLabel;
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (UILabel*)timestampLabel {
-  if (!_timestampLabel) {
-    _timestampLabel = [[UILabel alloc] init];
-    _timestampLabel.font = TTSTYLEVAR(tableTimestampFont);
-    _timestampLabel.textColor = TTSTYLEVAR(timestampTextColor);
-    _timestampLabel.textAlignment = UITextAlignmentRight;
-    _timestampLabel.highlightedTextColor = [UIColor whiteColor];
-    _timestampLabel.contentMode = UIViewContentModeRight;
-    [self.contentView addSubview:_timestampLabel];
+  else {
+    return _messageLabel;
   }
-  return _timestampLabel;
+
 }
 
 @end

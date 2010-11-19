@@ -77,8 +77,16 @@
   return [self darkColor];
 }
 
+- (UIColor*)tableTextColor {
+  return [self darkColor];
+}
+
 - (TTTextStyle*)tableTitleText {
   return [TTTextStyle styleWithFont:TTSTYLEVAR(tableTitleFont) color:TTSTYLEVAR(tableTitleTextColor) next:nil];
+}
+
+- (TTTextStyle*)tableText {
+  return [TTTextStyle styleWithFont:TTSTYLEVAR(tableFont) color:TTSTYLEVAR(tableTextColor) next:nil];
 }
 
 - (TTTextStyle*)tableSubText {

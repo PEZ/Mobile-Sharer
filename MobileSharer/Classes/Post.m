@@ -14,10 +14,11 @@
 @synthesize updated           = _updated;
 @synthesize postId            = _postId;
 @synthesize type              = _type;
+@synthesize fromName          = _fromName;
 @synthesize fromId            = _fromId;
+@synthesize toName          = _toName;
 @synthesize toId              = _toId;
 @synthesize message           = _message;
-@synthesize fromName          = _fromName;
 @synthesize picture           = _picture;
 @synthesize fromAvatar        = _fromAvatar;
 @synthesize linkCaption       = _link;
@@ -34,10 +35,11 @@
   TT_RELEASE_SAFELY(_created);
   TT_RELEASE_SAFELY(_postId);
   TT_RELEASE_SAFELY(_type);
+  TT_RELEASE_SAFELY(_fromName);
   TT_RELEASE_SAFELY(_fromId);
+  TT_RELEASE_SAFELY(_toName);
   TT_RELEASE_SAFELY(_toId);
   TT_RELEASE_SAFELY(_message);
-  TT_RELEASE_SAFELY(_fromName);
   TT_RELEASE_SAFELY(_picture);
   TT_RELEASE_SAFELY(_fromAvatar);
   TT_RELEASE_SAFELY(_link);
@@ -62,10 +64,11 @@
   newPost.updated = [_updated copyWithZone: zone];
   newPost.postId = [_postId copyWithZone: zone];
   newPost.type = [_type copyWithZone: zone];
+  newPost.fromName = [_fromName copyWithZone: zone];
   newPost.fromId = [_fromId copyWithZone: zone];
+  newPost.toName = [_toName copyWithZone: zone];
   newPost.toId = [_toId copyWithZone: zone];
   newPost.message = [_message copyWithZone: zone];
-  newPost.fromName = [_fromName copyWithZone: zone];
   newPost.picture = [_picture copyWithZone: zone];
   newPost.fromAvatar = [_fromAvatar copyWithZone: zone];
   newPost.linkCaption = [_link copyWithZone: zone];
