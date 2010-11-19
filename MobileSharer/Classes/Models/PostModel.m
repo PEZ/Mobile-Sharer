@@ -78,55 +78,53 @@ BOOL commentsEmpty(NSArray* comments) {
   
   NSArray* entries;
   
-  TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
-  entries = [feed objectForKey:@"data"];
+  if ([feed objectForKey:@"data"] != nil) {
+    entries = [feed objectForKey:@"data"];
+  }
+  else {
+    entries = [[feed objectForKey:@"comments"] objectForKey:@"data"];
+    _post = [[self postFromEntry:feed] retain];
+  }
 
   NSMutableArray* comments;
 
-  if (_post != nil) {
-    BOOL more = ([[request urlPath] rangeOfString:@"offset="].location != NSNotFound);
-    NSMutableArray* oldComments;
-    if (more && !commentsEmpty(_comments)) {
-      oldComments = [[NSMutableArray arrayWithArray:_comments] retain];
-    }
-    else {
-      oldComments = [[NSMutableArray alloc] initWithCapacity:0];
-    }
-    
-    comments = [[NSMutableArray alloc] initWithCapacity:[entries count]];
-    
-    TT_RELEASE_SAFELY(_comments);
-    
-    for (NSDictionary* entry in entries) {
-      Comment* comment = [[Comment alloc] init];
-      
-      NSDate* date = [[FacebookJanitor dateFormatter] dateFromString:[entry objectForKey:@"created_time"]];
-      comment.created = date;
-      comment.commentId = [entry objectForKey:@"id"];
-      comment.message = [entry objectForKey:@"message"];
-      if ([entry objectForKey:@"from"] != [NSNull null]) {
-        comment.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
-        comment.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
-        comment.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", comment.fromId];
-      }
-      else {
-        comment.fromName = @"Facebook User";
-        comment.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
-      }    
-      
-      [comments addObject:comment];
-      TT_RELEASE_SAFELY(comment);
-    }
-    if (more) {
-      [comments addObjectsFromArray:oldComments];
-    }
+  BOOL more = ([[request urlPath] rangeOfString:@"offset="].location != NSNotFound);
+  NSMutableArray* oldComments;
+  if (more && !commentsEmpty(_comments)) {
+    oldComments = [[NSMutableArray arrayWithArray:_comments] retain];
   }
   else {
-    TT_RELEASE_SAFELY(_comments);
-    comments = [[NSMutableArray alloc] initWithCapacity:[entries count]];
+    oldComments = [[NSMutableArray alloc] initWithCapacity:0];
   }
-
   
+  comments = [[NSMutableArray alloc] initWithCapacity:[entries count]];
+  
+  TT_RELEASE_SAFELY(_comments);
+  
+  for (NSDictionary* entry in entries) {
+    Comment* comment = [[Comment alloc] init];
+    
+    NSDate* date = [[FacebookJanitor dateFormatter] dateFromString:[entry objectForKey:@"created_time"]];
+    comment.created = date;
+    comment.commentId = [entry objectForKey:@"id"];
+    comment.message = [entry objectForKey:@"message"];
+    if ([entry objectForKey:@"from"] != [NSNull null]) {
+      comment.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
+      comment.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
+      comment.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", comment.fromId];
+    }
+    else {
+      comment.fromName = @"Facebook User";
+      comment.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
+    }    
+    
+    [comments addObject:comment];
+    TT_RELEASE_SAFELY(comment);
+  }
+  if (more) {
+    [comments addObjectsFromArray:oldComments];
+  }
+    
   _comments = comments;
     
   [super requestDidFinishLoad:request];

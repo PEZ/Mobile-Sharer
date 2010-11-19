@@ -30,7 +30,7 @@
 - (void)post {
   if (!self.textView.text.isEmptyOrWhitespace) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
-    [fb requestWithGraphPath:[NSString stringWithFormat:@"%@/comments", self.postId]
+    [fb requestWithGraphPath:[NSString stringWithFormat:@"%@/comments", _postId]
                    andParams:[NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"]
                andHttpMethod:@"POST"
                  andDelegate:self];

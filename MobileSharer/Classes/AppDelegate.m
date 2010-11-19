@@ -3,6 +3,7 @@
 #import "DefaultStyleSheet.h"
 #import "FeedViewController.h"
 #import "PostViewController.h"
+#import "PostIdViewController.h"
 #import "LoginViewController.h"
 
 
@@ -19,9 +20,11 @@
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
   [map from:kPostPath toViewController:[PostViewController class]];
+  [map from:kPostIdPath toViewController:[PostIdViewController class]];
   [map from:kAppLoginURLPath toViewController:[LoginViewController class]];
   //navigator.persistenceMode = TTNavigatorPersistenceModeAll;
   if (![navigator restoreViewControllers]) {
+    //[navigator openURLAction:[TTURLAction actionWithURLPath:@"ms://postid/100001673056780_124381537622572"]];
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppLoginURLPath]];
   }
 }

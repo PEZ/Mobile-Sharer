@@ -43,7 +43,7 @@
   post.linkTitle = [entry objectForKey:@"name"];
   post.linkText = [entry objectForKey:@"description"];
 
-  return [post autorelease];
+  return post;
 }
 
 - (TTURLRequest*)createRequest:(FBRequest*)fbRequest cachePolicy:(TTURLRequestCachePolicy)cachePolicy {

@@ -1,5 +1,5 @@
 //
-//  PostViewController.h
+//  PostIdViewController.h
 //  MobileSharer
 //
 //  Created by PEZ on 2010-11-18.
@@ -8,9 +8,11 @@
 
 #import "PostViewControllerBase.h"
 
-@interface PostViewController : PostViewControllerBase {
+
+@interface PostIdViewController : PostViewControllerBase {
+  NSString* _postId;
 }
 
-- (id)initWithNavigatorURL:(NSURL *)URL query:(NSDictionary *)query;
+- (id)initWithPostId:(NSString*)postId;
 
 @end

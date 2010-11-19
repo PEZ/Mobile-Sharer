@@ -13,6 +13,8 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28C3AD8A0F43EF2300507BA6 /* MobileSharer.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		32024F731295D89300A9CF49 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32024F721295D89300A9CF49 /* PostViewController.m */; };
+		32024F761295DBE700A9CF49 /* PostIdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32024F751295DBE700A9CF49 /* PostIdViewController.m */; };
 		32053B1512931DA2006ABC35 /* FacebookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32053B1412931DA2006ABC35 /* FacebookModel.m */; };
 		3215B0521272E15C005580D5 /* FacebookJanitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215B0511272E15C005580D5 /* FacebookJanitor.m */; };
 		321F3B1A126CEFFB008473C8 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 321F3AB5126CEFF0008473C8 /* libThree20Core.a */; };
@@ -51,7 +53,7 @@
 		329079EE1284410A005D193A /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EC1284410A005D193A /* FeedModel.m */; };
 		329079F312844115005D193A /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F012844115005D193A /* FeedViewController.m */; };
 		329079F412844115005D193A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F212844115005D193A /* LoginViewController.m */; };
-		329079F912844295005D193A /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F812844295005D193A /* PostViewController.m */; };
+		329079F912844295005D193A /* PostViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F812844295005D193A /* PostViewControllerBase.m */; };
 		32907BB212854883005D193A /* TTTableViewDelegate+URLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */; };
 		32939FF51278ABD900B07DD5 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 32939FF41278ABD900B07DD5 /* Facebook.m */; };
 		3293A410127C130700B07DD5 /* LinkPostCellBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A40F127C130700B07DD5 /* LinkPostCellBase.m */; };
@@ -534,6 +536,10 @@
 		28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MobileSharer.xcdatamodel; sourceTree = "<group>"; };
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32024F711295D89300A9CF49 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		32024F721295D89300A9CF49 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		32024F741295DBE700A9CF49 /* PostIdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostIdViewController.h; sourceTree = "<group>"; };
+		32024F751295DBE700A9CF49 /* PostIdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostIdViewController.m; sourceTree = "<group>"; };
 		32053B1312931DA2006ABC35 /* FacebookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookModel.h; sourceTree = "<group>"; };
 		32053B1412931DA2006ABC35 /* FacebookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookModel.m; sourceTree = "<group>"; };
 		3215B0501272E15C005580D5 /* FacebookJanitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookJanitor.h; sourceTree = "<group>"; };
@@ -603,8 +609,8 @@
 		329079F012844115005D193A /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		329079F112844115005D193A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		329079F212844115005D193A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		329079F712844295005D193A /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
-		329079F812844295005D193A /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		329079F712844295005D193A /* PostViewControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewControllerBase.h; sourceTree = "<group>"; };
+		329079F812844295005D193A /* PostViewControllerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewControllerBase.m; sourceTree = "<group>"; };
 		32907BB012854883005D193A /* TTTableViewDelegate+URLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTTableViewDelegate+URLAdditions.h"; sourceTree = "<group>"; };
 		32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTableViewDelegate+URLAdditions.m"; sourceTree = "<group>"; };
 		32939FF31278ABD900B07DD5 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = "../../facebook-ios-sdk/src/Facebook.h"; sourceTree = SOURCE_ROOT; };
@@ -890,8 +896,12 @@
 				329079F012844115005D193A /* FeedViewController.m */,
 				329079F112844115005D193A /* LoginViewController.h */,
 				329079F212844115005D193A /* LoginViewController.m */,
-				329079F712844295005D193A /* PostViewController.h */,
-				329079F812844295005D193A /* PostViewController.m */,
+				329079F712844295005D193A /* PostViewControllerBase.h */,
+				329079F812844295005D193A /* PostViewControllerBase.m */,
+				32024F711295D89300A9CF49 /* PostViewController.h */,
+				32024F721295D89300A9CF49 /* PostViewController.m */,
+				32024F741295DBE700A9CF49 /* PostIdViewController.h */,
+				32024F751295DBE700A9CF49 /* PostIdViewController.m */,
 				322DD286128CA5AF00E7D1DA /* CommentsPostController.h */,
 				322DD287128CA5AF00E7D1DA /* CommentsPostController.m */,
 				322DD346128DB47E00E7D1DA /* SharePostController.h */,
@@ -1517,7 +1527,7 @@
 				329079EE1284410A005D193A /* FeedModel.m in Sources */,
 				329079F312844115005D193A /* FeedViewController.m in Sources */,
 				329079F412844115005D193A /* LoginViewController.m in Sources */,
-				329079F912844295005D193A /* PostViewController.m in Sources */,
+				329079F912844295005D193A /* PostViewControllerBase.m in Sources */,
 				32907BB212854883005D193A /* TTTableViewDelegate+URLAdditions.m in Sources */,
 				323B93D5128559560097E308 /* PostDataSource.m in Sources */,
 				323B93D812855A7E0097E308 /* PostModel.m in Sources */,
@@ -1530,6 +1540,8 @@
 				322DD6A912903FB400E7D1DA /* LinkPostCellStandalone.m in Sources */,
 				32425F621291EAC90017A401 /* LoadMoreCell.m in Sources */,
 				32053B1512931DA2006ABC35 /* FacebookModel.m in Sources */,
+				32024F731295D89300A9CF49 /* PostViewController.m in Sources */,
+				32024F761295DBE700A9CF49 /* PostIdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

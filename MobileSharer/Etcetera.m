@@ -12,6 +12,8 @@ NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedIdAndName:)/(name:)";
 NSString* kPostPathPrefix = @"ms://post";
 NSString* kPostPath = @"ms://post/(initWithNavigatorURL:)";
+NSString* kPostIdPathPrefix = @"ms://postid";
+NSString* kPostIdPath = @"ms://postid/(initWithPostId:)";
 NSString* kAppLoginURLPath = @"ms://login";
 NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = @"ms://comment";
@@ -26,7 +28,7 @@ NSString* kCommentPath = @"ms://comment";
                                                               kCFStringEncodingUTF8 ) autorelease];
 }
 
-+ (NSString*) toFeedURLPath:(NSString *)feedId name:(NSString *)name {
++ (NSString*) toFeedURLPath:(NSString*)feedId name:(NSString *)name {
   NSString* url = [NSString stringWithFormat:@"%@/%@/%@",
                    kNavPathPrefix,
                    feedId,
@@ -35,10 +37,18 @@ NSString* kCommentPath = @"ms://comment";
   return url;
 }
 
-+ (NSString*) toPostPath:(Post *)post {
++ (NSString*) toPostPath:(Post*)post {
   NSString* url = [NSString stringWithFormat:@"%@/%@",
                    kPostPathPrefix,
                    post.postId];
+  //NSLog(@"%@", url);
+  return url;
+}
+
++ (NSString*) toPostIdPath:(NSString*)postId {
+  NSString* url = [NSString stringWithFormat:@"%@/%@",
+                   kPostIdPathPrefix,
+                   postId];
   //NSLog(@"%@", url);
   return url;
 }

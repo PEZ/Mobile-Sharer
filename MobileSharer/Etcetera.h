@@ -10,7 +10,10 @@
 
 extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;
+extern NSString* kPostPathPrefix;
 extern NSString* kPostPath;
+extern NSString* kPostIdPathPrefix;
+extern NSString* kPostIdPath;
 extern NSString* kAppLoginURLPath;
 extern NSString* kFacebookLoginPath;
 extern NSString* kCommentPath;
@@ -22,6 +25,7 @@ extern NSString* kCommentPath;
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
 + (NSString *) toPostPath:(Post*)post;
++ (NSString *) toPostIdPath:(NSString*)postId;
 
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key;
 + (NSString*)pictureURL:(NSString*)url;

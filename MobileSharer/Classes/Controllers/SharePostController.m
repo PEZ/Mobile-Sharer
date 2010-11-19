@@ -51,12 +51,22 @@
   }
 }
 
+#pragma mark -
+#pragma mark TTPostController
+
 - (NSString*)titleForError:(NSError*)error {
   return [NSString stringWithFormat:@"Posting link failed: %@", [error localizedDescription]];
 }
 
 - (NSString*)titleForActivity {
   return @"Posting link...";
+}
+
+#pragma mark -
+#pragma mark FBRequestDelegate
+
+- (void)request:(FBRequest*)request didLoad:(id)result {
+  [self dismissWithResult:result animated:YES];
 }
 
 @end

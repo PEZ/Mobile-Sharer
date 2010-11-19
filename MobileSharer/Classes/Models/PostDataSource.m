@@ -15,18 +15,21 @@
 
 @implementation PostDataSource
 
-@synthesize postItem = _postItem;
-
 - (id)initWithPost:(Post*)post {
   if (self = [super init]) {
     _postModel = [[PostModel alloc] initWithPost:post];
-    _postItem = [post copy];
-    _postItem.URL = nil;
   }
   
   return self;
 }
 
+- (id)initWithPostId:(NSString*)postId {
+  if (self = [super init]) {
+    _postModel = [[PostModel alloc] initWithPostId:postId];
+  }
+  
+  return self;
+}
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_postModel);
@@ -43,6 +46,8 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
+  _postItem = [_postModel.post copy];
+  _postItem.URL = nil;
   [items addObject:_postItem];
   if ([_postItem.commentCount intValue] > [_postModel.comments count]) {
     [items addObject:[TTTableMoreButton itemWithText:@"Load earlier comments..."]];
