@@ -1,6 +1,6 @@
 #import "FeedDataSource.h"
 
-#import "LinkPostCell4Feed.h"
+#import "FeedPostCell.h"
 #import "LoadMoreCell.h"
 #import "Post.h"
 
@@ -44,13 +44,7 @@
 #pragma mark TTTableViewDataSource
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
 	if ([object isKindOfClass:[Post class]]) {
-    Post* item = object;
-    if (item.linkURL) {
-      return [LinkPostCell4Feed class];
-    }
-    else {
-      return [PostCell class];      
-    }
+    return [FeedPostCell class];
 	}
   else if ([object isKindOfClass:[TTTableMoreButton class]]) {
     return [LoadMoreCell class];

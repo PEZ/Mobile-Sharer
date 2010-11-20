@@ -6,10 +6,10 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "LinkPostCellStandalone.h"
+#import "StandalonePostCell.h"
 
 
-@implementation LinkPostCellStandalone
+@implementation StandalonePostCell
 
 + (NSString*) getLinkTitleHTML:(Post*)item {
   return [NSString stringWithFormat:@"<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", item.linkURL, item.linkTitle];

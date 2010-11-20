@@ -30,8 +30,8 @@
 		322DD288128CA5AF00E7D1DA /* CommentsPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD287128CA5AF00E7D1DA /* CommentsPostController.m */; };
 		322DD348128DB47E00E7D1DA /* SharePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD347128DB47E00E7D1DA /* SharePostController.m */; };
 		322DD46B128F1F6400E7D1DA /* PostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD445128F1D0400E7D1DA /* PostController.m */; };
-		322DD68E12903E7200E7D1DA /* LinkPostCell4Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD68D12903E7200E7D1DA /* LinkPostCell4Feed.m */; };
-		322DD6A912903FB400E7D1DA /* LinkPostCellStandalone.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD6A812903FB400E7D1DA /* LinkPostCellStandalone.m */; };
+		322DD68E12903E7200E7D1DA /* FeedPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD68D12903E7200E7D1DA /* FeedPostCell.m */; };
+		322DD6A912903FB400E7D1DA /* StandalonePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 322DD6A812903FB400E7D1DA /* StandalonePostCell.m */; };
 		323B93D5128559560097E308 /* PostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D4128559560097E308 /* PostDataSource.m */; };
 		323B93D812855A7E0097E308 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D712855A7E0097E308 /* PostModel.m */; };
 		32425F621291EAC90017A401 /* LoadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32425F611291EAC90017A401 /* LoadMoreCell.m */; };
@@ -47,7 +47,7 @@
 		3288C963126E2F1800BF1E3C /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C955126E2F1800BF1E3C /* FBRequest.m */; };
 		3288C965126E2F1800BF1E3C /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C959126E2F1800BF1E3C /* FBLoginDialog.m */; };
 		3288C966126E2F1800BF1E3C /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C95B126E2F1800BF1E3C /* FBDialog.m */; };
-		32891DB2127F5D6D00786BE7 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891DB1127F5D6D00786BE7 /* PostCell.m */; };
+		32891DB2127F5D6D00786BE7 /* PostCellBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891DB1127F5D6D00786BE7 /* PostCellBase.m */; };
 		329079CF12836D95005D193A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329079CE12836D95005D193A /* Icon.png */; };
 		329079ED1284410A005D193A /* FeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EA1284410A005D193A /* FeedDataSource.m */; };
 		329079EE1284410A005D193A /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EC1284410A005D193A /* FeedModel.m */; };
@@ -564,10 +564,10 @@
 		322DD347128DB47E00E7D1DA /* SharePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharePostController.m; sourceTree = "<group>"; };
 		322DD444128F1D0400E7D1DA /* PostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostController.h; sourceTree = "<group>"; };
 		322DD445128F1D0400E7D1DA /* PostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostController.m; sourceTree = "<group>"; };
-		322DD68C12903E7200E7D1DA /* LinkPostCell4Feed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkPostCell4Feed.h; sourceTree = "<group>"; };
-		322DD68D12903E7200E7D1DA /* LinkPostCell4Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkPostCell4Feed.m; sourceTree = "<group>"; };
-		322DD6A712903FB400E7D1DA /* LinkPostCellStandalone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkPostCellStandalone.h; sourceTree = "<group>"; };
-		322DD6A812903FB400E7D1DA /* LinkPostCellStandalone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkPostCellStandalone.m; sourceTree = "<group>"; };
+		322DD68C12903E7200E7D1DA /* FeedPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedPostCell.h; sourceTree = "<group>"; };
+		322DD68D12903E7200E7D1DA /* FeedPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedPostCell.m; sourceTree = "<group>"; };
+		322DD6A712903FB400E7D1DA /* StandalonePostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandalonePostCell.h; sourceTree = "<group>"; };
+		322DD6A812903FB400E7D1DA /* StandalonePostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandalonePostCell.m; sourceTree = "<group>"; };
 		323B93D3128559560097E308 /* PostDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDataSource.h; sourceTree = "<group>"; };
 		323B93D4128559560097E308 /* PostDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDataSource.m; sourceTree = "<group>"; };
 		323B93D612855A7E0097E308 /* PostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostModel.h; sourceTree = "<group>"; };
@@ -597,8 +597,8 @@
 		3288C959126E2F1800BF1E3C /* FBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBLoginDialog.m; path = "../../facebook-ios-sdk/src/FBLoginDialog.m"; sourceTree = SOURCE_ROOT; };
 		3288C95A126E2F1800BF1E3C /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBDialog.h; path = "../../facebook-ios-sdk/src/FBDialog.h"; sourceTree = SOURCE_ROOT; };
 		3288C95B126E2F1800BF1E3C /* FBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBDialog.m; path = "../../facebook-ios-sdk/src/FBDialog.m"; sourceTree = SOURCE_ROOT; };
-		32891DB0127F5D6C00786BE7 /* PostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
-		32891DB1127F5D6D00786BE7 /* PostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		32891DB0127F5D6C00786BE7 /* PostCellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCellBase.h; sourceTree = "<group>"; };
+		32891DB1127F5D6D00786BE7 /* PostCellBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCellBase.m; sourceTree = "<group>"; };
 		329079CE12836D95005D193A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Images/Icon.png; sourceTree = SOURCE_ROOT; };
 		329079E91284410A005D193A /* FeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDataSource.h; sourceTree = "<group>"; };
 		329079EA1284410A005D193A /* FeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDataSource.m; sourceTree = "<group>"; };
@@ -938,14 +938,14 @@
 				322DCF3C1289E31100E7D1DA /* Cells.h */,
 				3293A456127C208B00B07DD5 /* DefaultStyleSheet.h */,
 				3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */,
-				32891DB0127F5D6C00786BE7 /* PostCell.h */,
-				32891DB1127F5D6D00786BE7 /* PostCell.m */,
+				32891DB0127F5D6C00786BE7 /* PostCellBase.h */,
+				32891DB1127F5D6D00786BE7 /* PostCellBase.m */,
 				32633DB31289CFA900D9621E /* CommentCell.h */,
 				32633DB41289CFA900D9621E /* CommentCell.m */,
-				322DD68C12903E7200E7D1DA /* LinkPostCell4Feed.h */,
-				322DD68D12903E7200E7D1DA /* LinkPostCell4Feed.m */,
-				322DD6A712903FB400E7D1DA /* LinkPostCellStandalone.h */,
-				322DD6A812903FB400E7D1DA /* LinkPostCellStandalone.m */,
+				322DD68C12903E7200E7D1DA /* FeedPostCell.h */,
+				322DD68D12903E7200E7D1DA /* FeedPostCell.m */,
+				322DD6A712903FB400E7D1DA /* StandalonePostCell.h */,
+				322DD6A812903FB400E7D1DA /* StandalonePostCell.m */,
 				32425F601291EAC90017A401 /* LoadMoreCell.h */,
 				32425F611291EAC90017A401 /* LoadMoreCell.m */,
 			);
@@ -1516,7 +1516,7 @@
 				3215B0521272E15C005580D5 /* FacebookJanitor.m in Sources */,
 				32939FF51278ABD900B07DD5 /* Facebook.m in Sources */,
 				3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */,
-				32891DB2127F5D6D00786BE7 /* PostCell.m in Sources */,
+				32891DB2127F5D6D00786BE7 /* PostCellBase.m in Sources */,
 				329079ED1284410A005D193A /* FeedDataSource.m in Sources */,
 				329079EE1284410A005D193A /* FeedModel.m in Sources */,
 				329079F312844115005D193A /* FeedViewController.m in Sources */,
@@ -1530,8 +1530,8 @@
 				322DD288128CA5AF00E7D1DA /* CommentsPostController.m in Sources */,
 				322DD348128DB47E00E7D1DA /* SharePostController.m in Sources */,
 				322DD46B128F1F6400E7D1DA /* PostController.m in Sources */,
-				322DD68E12903E7200E7D1DA /* LinkPostCell4Feed.m in Sources */,
-				322DD6A912903FB400E7D1DA /* LinkPostCellStandalone.m in Sources */,
+				322DD68E12903E7200E7D1DA /* FeedPostCell.m in Sources */,
+				322DD6A912903FB400E7D1DA /* StandalonePostCell.m in Sources */,
 				32425F621291EAC90017A401 /* LoadMoreCell.m in Sources */,
 				32053B1512931DA2006ABC35 /* FacebookModel.m in Sources */,
 				32024F731295D89300A9CF49 /* PostViewController.m in Sources */,

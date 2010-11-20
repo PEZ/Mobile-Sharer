@@ -8,8 +8,8 @@
 
 #import "PostDataSource.h"
 
-#import "LinkPostCellStandalone.h"
-#import "PostCell.h"
+#import "StandalonePostCell.h"
+#import "PostCellBase.h"
 #import "CommentCell.h"
 #import "LoadMoreCell.h"
 
@@ -65,13 +65,7 @@
 
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
 	if ([object isKindOfClass:[Post class]]) {
-    Post* item = object;
-    if (item.linkURL) {
-      return [LinkPostCellStandalone class];
-    }
-    else {
-      return [PostCell class];      
-    }
+    return [StandalonePostCell class];
 	}
   else 	if ([object isKindOfClass:[Comment class]]) {
     return [CommentCell class];

@@ -6,10 +6,10 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "LinkPostCell4Feed.h"
+#import "FeedPostCell.h"
 
 
-@implementation LinkPostCell4Feed
+@implementation FeedPostCell
 
 + (NSString*) getLinkTitleHTML:(Post*)item {
   return [NSString stringWithFormat:@"<div class=\"tableTitleText\">%@</div>", item.linkTitle];

@@ -23,7 +23,7 @@ static const CGFloat    kIconImageHeight  = 16;
 static const CGFloat    kPictureImageHeight  = 55;
 static const CGFloat    kPictureImageWidth  = 80;
 
-@interface PostCell : TTTableLinkedItemCell {
+@interface PostCellBase : TTTableLinkedItemCell {
   TTStyledTextLabel* _messageLabel;
   TTImageView*  _iconImageView;
   TTImageView*  _imageView2;

@@ -6,11 +6,11 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "PostCell.h"
+#import "PostCellBase.h"
 
 static TTStyledTextLabel* _measureLabel;
 
-@implementation PostCell
+@implementation PostCellBase
 
 @synthesize imageView2 = _imageView2;
 
