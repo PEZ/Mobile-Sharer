@@ -48,8 +48,11 @@
     [TTContentStyle styleWithNext:nil]]];
 }
 
-- (TTStyle*)tablePostImage {
-  return [TTContentStyle styleWithNext:nil];
+- (TTBoxStyle*)tablePostImage {
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, 0, 0, 5)
+                             padding:UIEdgeInsetsMake(0, 0, 0, 0)
+                             minSize:CGSizeZero position:TTPositionFloatLeft next:
+                       nil];
 }
 
 
@@ -61,11 +64,11 @@
   return [self mediumColor];
 }
 
-- (UIFont*)tableTimestampFont {
+- (UIFont*)tableMetaFont {
   return [UIFont systemFontOfSize:12];
 }
 
-- (UIColor*)timestampTextColor {
+- (UIColor*)tableMetaTextColor {
   return RGBCOLOR(11, 91, 216);
 }
 
@@ -87,6 +90,10 @@
 
 - (TTTextStyle*)tableText {
   return [TTTextStyle styleWithFont:TTSTYLEVAR(tableFont) color:TTSTYLEVAR(tableTextColor) next:nil];
+}
+
+- (TTTextStyle*)tableMetaText {
+  return [TTTextStyle styleWithFont:TTSTYLEVAR(tableMetaFont) color:TTSTYLEVAR(tableMetaTextColor) next:nil];
 }
 
 - (TTTextStyle*)tableSubText {

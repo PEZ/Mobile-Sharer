@@ -25,15 +25,11 @@ static const CGFloat    kPictureImageWidth  = 80;
 
 @interface PostCellBase : TTTableLinkedItemCell {
   TTStyledTextLabel* _messageLabel;
-  TTImageView*  _iconImageView;
   TTImageView*  _imageView2;
-  UILabel*      _countsLabel;
 }
 
 @property (nonatomic, readonly, retain) TTStyledTextLabel*  messageLabel;
-@property (nonatomic, readonly, retain) TTImageView*        iconImageView;
 @property (nonatomic, readonly, retain) TTImageView*        imageView2;
-@property (nonatomic, readonly, retain) UILabel*            countsLabel;
 
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural;
 + (CGFloat)getLeft:(CGFloat*)imageHeight_p item:(Post*)item;

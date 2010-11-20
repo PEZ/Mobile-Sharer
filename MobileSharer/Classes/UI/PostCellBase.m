@@ -53,12 +53,30 @@ static TTStyledTextLabel* _measureLabel;
                 kPictureImageHeight, item.picture];
   }
   if (item.linkText) {
-    linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, item.linkText];
+    linkText = [NSString stringWithFormat:@"%@<span class=\"tableSubText\">%@</span>", linkText, item.linkText];
   }
   return [linkText stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
 }
 
-+ (NSString*) getMessageHTML:(Post*)item  {
++ (NSString*) getMetaHTML:(Post*)item {
+  NSString* messageText = @"";
+  if (item.icon) {
+    messageText = [NSString stringWithFormat:@"%@<img width=\"16\" height=\"16\" src=\"%@\" /> ",
+                   messageText, item.icon];
+  }
+  messageText = [NSString stringWithFormat:@"%@%@", messageText, [item.created formatRelativeTime]];
+  if (item.commentCount) {
+    messageText = [NSString stringWithFormat:@"%@, %@", messageText,
+                   [[self class] textForCount:[item.commentCount intValue] withSingular:@"comment" andPlural:@"comments"]];
+  }
+  if (item.likes) {
+    messageText = [NSString stringWithFormat:@"%@, %@", messageText,
+                               [[self class] textForCount:[item.likes intValue] withSingular:@"like" andPlural:@"likes"]];
+  }
+  return [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@</div>", messageText];
+}
+
++ (NSString*) getMessageHTML:(Post*)item {
   NSString* messageText = @"";
   messageText = [NSString stringWithFormat:@"%@%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
   if (item.toName && ![item.toId isEqualToString:item.fromId]) {
@@ -68,6 +86,8 @@ static TTStyledTextLabel* _measureLabel;
     messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, item.message];
   }
   messageText = [NSString stringWithFormat:@"%@%@", messageText, [self getLinkHTML:item]];
+  messageText = [NSString stringWithFormat:@"%@%@", messageText, [self getMetaHTML:item]];
+
   return messageText;
 }
 
@@ -116,11 +136,9 @@ static TTStyledTextLabel* _measureLabel;
   
   CGFloat imageHeight;
 
-  CGFloat messageHeight = [self tableView:tableView styledHeight:item] + kTableCellSmallMargin;
-  
-  CGFloat countsHeight = TTSTYLEVAR(tableTimestampFont).ttLineHeight + kTableCellSmallMargin;
-  
-  return kTableCellSmallMargin + MAX(imageHeight + 25, messageHeight) + countsHeight;
+  CGFloat messageHeight = [self tableView:tableView styledHeight:item];
+    
+  return kTableCellSmallMargin + MAX(imageHeight + 25, messageHeight) + kTableCellSmallMargin;
 }
 
 #pragma mark -
@@ -131,8 +149,6 @@ static TTStyledTextLabel* _measureLabel;
   [_imageView2 unsetImage];
   self.textLabel.text = nil;
   _messageLabel.text = nil;
-  [_iconImageView unsetImage];
-  _countsLabel.text = nil;
 }
 
 - (void)layoutSubviews {
@@ -158,20 +174,7 @@ static TTStyledTextLabel* _measureLabel;
   
   _messageLabel.frame = CGRectMake(left, top, width, 0);
   _messageLabel.text = [TTStyledText textFromXHTML:[[self class] getMessageHTML:item]];
-  [_messageLabel sizeToFit];
-  
-  top = _messageLabel.bottom;
-    
-  if (_countsLabel.text.length) {
-    [_countsLabel sizeToFit];
-    _countsLabel.left = left;
-    _countsLabel.top = top + kTableCellSmallMargin;
-  }
-  
-  if (item.icon) {
-    _iconImageView.frame = CGRectMake(_countsLabel.left - _iconImageView.width - kTableCellSmallMargin,
-                                      _countsLabel.bottom - 16, 15, 16);
-  }
+  [_messageLabel sizeToFit];  
 }
 
 - (void)didMoveToSuperview {
@@ -180,8 +183,6 @@ static TTStyledTextLabel* _measureLabel;
   if (self.superview) {
     _imageView2.backgroundColor = self.backgroundColor;
     _messageLabel.backgroundColor = self.backgroundColor;
-    _countsLabel.backgroundColor = self.backgroundColor;
-    _iconImageView.backgroundColor = self.backgroundColor;
   }
 }
 
@@ -200,50 +201,11 @@ static TTStyledTextLabel* _measureLabel;
     if (item.fromAvatar) {
       self.imageView2.urlPath = item.fromAvatar;
     }
-    if (item.commentCount) {
-      self.countsLabel.text = [[self class] textForCount:[item.commentCount intValue] withSingular:@"comment" andPlural:@"comments"];
-    }
-    if (item.likes) {
-      if (self.countsLabel.text.length) {
-        self.countsLabel.text = [NSString stringWithFormat:@"%@, %@", self.countsLabel.text,
-                                 [[self class] textForCount:[item.likes intValue] withSingular:@"like" andPlural:@"likes"]];
-      }
-      else {
-        self.countsLabel.text = [[self class] textForCount:[item.likes intValue] withSingular:@"like" andPlural:@"likes"];
-      }
-    }
-    if (!item.commentCount && !item.likes) {
-      self.countsLabel.text = @"No comments yet";
-    }
-    self.countsLabel.text = [NSString stringWithFormat:@"%@, %@", [item.created formatRelativeTime], self.countsLabel.text];
-    if (item.icon) {
-      self.iconImageView.urlPath = item.icon;
-    }
   }
 }
 
 #pragma mark -
 #pragma mark Public
-
-- (UILabel*)countsLabel {
-  if (!_countsLabel) {
-    _countsLabel = [[UILabel alloc] init];
-    _countsLabel.textColor = TTSTYLEVAR(timestampTextColor);
-    _countsLabel.highlightedTextColor = [UIColor whiteColor];
-    _countsLabel.font = TTSTYLEVAR(tableTimestampFont);
-    _countsLabel.contentMode = UIViewContentModeLeft;
-    [self.contentView addSubview:_countsLabel];
-  }
-  return _countsLabel;
-}
-
-- (TTImageView*)iconImageView {
-  if (!_iconImageView) {
-    _iconImageView = [[TTImageView alloc] init];
-    [self.contentView addSubview:_iconImageView];
-  }
-  return _iconImageView;
-}
 
 - (TTStyledTextLabel*)messageLabel {
   if (!_messageLabel) {

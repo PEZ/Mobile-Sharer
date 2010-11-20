@@ -935,17 +935,17 @@
 		3293A409127C121E00B07DD5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				322DCF3C1289E31100E7D1DA /* Cells.h */,
 				3293A456127C208B00B07DD5 /* DefaultStyleSheet.h */,
 				3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */,
+				322DCF3C1289E31100E7D1DA /* Cells.h */,
 				32891DB0127F5D6C00786BE7 /* PostCellBase.h */,
 				32891DB1127F5D6D00786BE7 /* PostCellBase.m */,
-				32633DB31289CFA900D9621E /* CommentCell.h */,
-				32633DB41289CFA900D9621E /* CommentCell.m */,
 				322DD68C12903E7200E7D1DA /* FeedPostCell.h */,
 				322DD68D12903E7200E7D1DA /* FeedPostCell.m */,
 				322DD6A712903FB400E7D1DA /* StandalonePostCell.h */,
 				322DD6A812903FB400E7D1DA /* StandalonePostCell.m */,
+				32633DB31289CFA900D9621E /* CommentCell.h */,
+				32633DB41289CFA900D9621E /* CommentCell.m */,
 				32425F601291EAC90017A401 /* LoadMoreCell.h */,
 				32425F611291EAC90017A401 /* LoadMoreCell.m */,
 			);
