@@ -8,6 +8,9 @@
 
 #import "Etcetera.h"
 
+CGFloat   kDefaultMessageImageWidth   = 35;
+CGFloat   kDefaultMessageImageHeight  = 35;
+
 NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedIdAndName:)/(name:)";
 NSString* kPostPathPrefix = @"ms://post";

@@ -21,7 +21,6 @@
 // Core
 #import "Three20Core/NSDateAdditions.h"
 #import "Three20UI/TTTableImageItemCell.h"
-#import "Cells.h"
 #import "Comment.h"
 
 @interface CommentCell : TTTableImageItemCell {

@@ -8,16 +8,10 @@
 
 #import "PostCellBase.h"
 
-static TTStyledTextLabel* _measureLabel;
-
 @implementation PostCellBase
-
-@synthesize imageView2 = _imageView2;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
   if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
-    _imageView2 = [[TTImageView alloc] init];
-    [self.contentView addSubview:_imageView2];
   }
   return self;
 }
@@ -76,19 +70,23 @@ static TTStyledTextLabel* _measureLabel;
   return [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@</div>", messageText];
 }
 
-+ (NSString*) getMessageHTML:(Post*)item {
-  NSString* messageText = @"";
-  messageText = [NSString stringWithFormat:@"%@%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
-  if (item.toName && ![item.toId isEqualToString:item.fromId]) {
-    messageText = [NSString stringWithFormat:@"%@ &gt; %@", messageText, [self getNameHTML:item.toName feedId:item.toId]];
++ (void) setMessageHTML:(Post*)item {
+  if (item.asHTML == nil) {
+    NSString* messageText = @"";
+    messageText = [NSString stringWithFormat:@"%@<img class=\"avatar\" width=\"%f\" height=\"%f\" src=\"%@\" />",
+                   messageText, kDefaultMessageImageWidth, kDefaultMessageImageHeight, item.fromAvatar];
+    messageText = [NSString stringWithFormat:@"%@<div class=\"tableMessageContent\">%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
+    if (item.toName && ![item.toId isEqualToString:item.fromId]) {
+      messageText = [NSString stringWithFormat:@"%@ &gt; %@", messageText, [self getNameHTML:item.toName feedId:item.toId]];
+    }
+    if (item.message) {
+      messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, item.message];
+    }
+    messageText = [NSString stringWithFormat:@"%@<div class=\"tableAttachmentText\">%@</div>", messageText, [self getLinkHTML:item]];
+    messageText = [NSString stringWithFormat:@"%@<br />%@</div>", messageText, [self getMetaHTML:item]];
+    
+    item.asHTML = messageText;
   }
-  if (item.message) {
-    messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, item.message];
-  }
-  messageText = [NSString stringWithFormat:@"%@%@", messageText, [self getLinkHTML:item]];
-  messageText = [NSString stringWithFormat:@"%@%@", messageText, [self getMetaHTML:item]];
-
-  return messageText;
 }
 
 + (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(Post*)item  {
@@ -97,16 +95,6 @@ static TTStyledTextLabel* _measureLabel;
     textWidth -= kDiscloureWidth;
   }
   return textWidth;
-}
-
-+ (CGFloat) getLeft:(CGFloat*)imageHeight_p item:(Post*)item {
-  CGFloat left = kTableCellSmallMargin;
-  *imageHeight_p = 0;
-  if (item.fromAvatar) {
-    left += kDefaultMessageImageWidth + kTableCellSmallMargin;
-    *imageHeight_p = kDefaultMessageImageHeight;
-  }
-  return left;
 }
 
 + (TTStyledTextLabel*)createStyledLabel {
@@ -118,27 +106,11 @@ static TTStyledTextLabel* _measureLabel;
   return label;  
 }
 
-+ (CGFloat)tableView:(UITableView*)tableView styledHeight:(Post*)item {
-  if (!_measureLabel) {
-    _measureLabel = [[self class] createStyledLabel];
-  }  
-  CGFloat junk;
-  CGFloat left = [self getLeft:&junk item:item];
-  _measureLabel.text = [TTStyledText textFromXHTML:[self getMessageHTML:item] lineBreaks:YES URLs:NO];
-  _measureLabel.frame = CGRectMake(left, 0, [self getTextWidth:left tableView:tableView item:item], 0);
-  [_measureLabel sizeToFit];
-
-  return _measureLabel.height;
-}
-
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
   Post* item = object;
-  
-  CGFloat imageHeight;
-
-  CGFloat messageHeight = [self tableView:tableView styledHeight:item];
-    
-  return kTableCellSmallMargin + MAX(imageHeight + 25, messageHeight) + kTableCellSmallMargin;
+  [self setMessageHTML:item];
+  item.styledText.width = [self getTextWidth:kTableCellSmallMargin tableView:tableView item:item];
+  return kTableCellSmallMargin + MAX(kDefaultMessageImageHeight, item.styledText.height) + kTableCellSmallMargin;
 }
 
 #pragma mark -
@@ -146,42 +118,23 @@ static TTStyledTextLabel* _measureLabel;
 
 - (void)prepareForReuse {
   [super prepareForReuse];
-  [_imageView2 unsetImage];
-  self.textLabel.text = nil;
   _messageLabel.text = nil;
 }
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
   Post* item = self.object;
-  
-  CGFloat left = 0;
-  if (item.fromAvatar) {
-    CGFloat avatarWidth = item.fromAvatar ? kDefaultMessageImageWidth : 0;
-    CGFloat avatarHeight = item.fromAvatar ? kDefaultMessageImageHeight : 0;
-    
-    _imageView2.frame = CGRectMake(kTableCellSmallMargin, kTableCellSmallMargin,
-                                   avatarWidth, avatarHeight);
-    left += kTableCellSmallMargin + avatarWidth + kTableCellSmallMargin;
-  } else {
-    _imageView2.frame = CGRectZero;
-    left = kTableCellMargin;
-  }
-  
-  CGFloat width = self.contentView.width - left - kTableCellSmallMargin;
-  CGFloat top = kTableCellSmallMargin;
-  
-  _messageLabel.frame = CGRectMake(left, top, width, 0);
-  _messageLabel.text = [TTStyledText textFromXHTML:[[self class] getMessageHTML:item]];
-  [_messageLabel sizeToFit];  
+  CGFloat width = self.contentView.width - kTableCellSmallMargin - kTableCellSmallMargin;  
+  _messageLabel.frame = CGRectMake(kTableCellSmallMargin, kTableCellSmallMargin, width, 0);
+  [[self class] setMessageHTML:item];
+  _messageLabel.text = item.styledText;
+  [_messageLabel sizeToFit];
 }
 
 - (void)didMoveToSuperview {
   [super didMoveToSuperview];
   
   if (self.superview) {
-    _imageView2.backgroundColor = self.backgroundColor;
     _messageLabel.backgroundColor = self.backgroundColor;
   }
 }
@@ -192,15 +145,9 @@ static TTStyledTextLabel* _measureLabel;
 - (void)setObject:(id)object {
   if (_item != object) {
     [super setObject:object];
-
     Post* item = object;
-
-    self.messageLabel.text = [TTStyledText textFromXHTML:[[self class] getMessageHTML:item] lineBreaks:YES URLs:NO];
-
-    self.imageView2.defaultImage = TTIMAGE(@"bundle://Three20.bundle/images/photoDefault.png");
-    if (item.fromAvatar) {
-      self.imageView2.urlPath = item.fromAvatar;
-    }
+    [[self class] setMessageHTML:item];
+    self.messageLabel.text = item.styledText;
   }
 }
 

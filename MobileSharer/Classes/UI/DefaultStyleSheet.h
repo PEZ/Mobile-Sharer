@@ -11,10 +11,6 @@
 
 @interface DefaultStyleSheet : TTDefaultStyleSheet
 
-- (TTTextStyle*)tableMetaText;
-- (TTTextStyle*)tableText;
-- (TTTextStyle*)tableTitleText;
-- (TTTextStyle*)tableSubText;
 - (UIColor*)tableTextColor;
 - (UIColor*)darkColor;
 - (UIColor*)mediumColor;

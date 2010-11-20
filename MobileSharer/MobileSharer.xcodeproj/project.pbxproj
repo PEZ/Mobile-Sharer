@@ -557,7 +557,6 @@
 		321F3BD1126CF6D2008473C8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		321F3BD2126CF6D2008473C8 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = ../Post.h; sourceTree = "<group>"; };
 		321F3BD3126CF6D2008473C8 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Post.m; path = ../Post.m; sourceTree = "<group>"; };
-		322DCF3C1289E31100E7D1DA /* Cells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cells.h; sourceTree = "<group>"; };
 		322DD286128CA5AF00E7D1DA /* CommentsPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsPostController.h; sourceTree = "<group>"; };
 		322DD287128CA5AF00E7D1DA /* CommentsPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsPostController.m; sourceTree = "<group>"; };
 		322DD346128DB47E00E7D1DA /* SharePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharePostController.h; sourceTree = "<group>"; };
@@ -937,7 +936,6 @@
 			children = (
 				3293A456127C208B00B07DD5 /* DefaultStyleSheet.h */,
 				3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */,
-				322DCF3C1289E31100E7D1DA /* Cells.h */,
 				32891DB0127F5D6C00786BE7 /* PostCellBase.h */,
 				32891DB1127F5D6D00786BE7 /* PostCellBase.m */,
 				322DD68C12903E7200E7D1DA /* FeedPostCell.h */,

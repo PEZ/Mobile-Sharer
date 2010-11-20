@@ -42,10 +42,22 @@
 #pragma mark -
 #pragma mark table cells
 - (TTStyle*)avatar {
-  return
-  [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
-   [TTSolidBorderStyle styleWithColor:[self darkColor] width:0.5 next:
-    [TTContentStyle styleWithNext:nil]]];
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsZero
+                             padding:UIEdgeInsetsZero
+                             minSize:CGSizeZero
+                            position:TTPositionAbsolute
+                                next:
+          [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
+           [TTSolidBorderStyle styleWithColor:[self darkColor] width:0.5 next:
+            [TTContentStyle styleWithNext:nil]]]];
+}
+
+- (TTStyle*)tableMessageContent {
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, kDefaultMessageImageWidth + kTableCellSmallMargin, 0, 0)
+                                          padding:UIEdgeInsetsZero
+                                          minSize:CGSizeZero
+                                         position:TTPositionStatic
+                                             next:nil];
 }
 
 - (TTBoxStyle*)tablePostImage {
@@ -55,6 +67,9 @@
                        nil];
 }
 
+- (TTBoxStyle*)tableAttachmentText {
+  return [TTBoxStyle styleWithFloats:TTPositionStatic next:nil];
+}
 
 - (UIFont*)tableFont {
   return [UIFont systemFontOfSize:14];
@@ -92,8 +107,10 @@
   return [TTTextStyle styleWithFont:TTSTYLEVAR(tableFont) color:TTSTYLEVAR(tableTextColor) next:nil];
 }
 
-- (TTTextStyle*)tableMetaText {
-  return [TTTextStyle styleWithFont:TTSTYLEVAR(tableMetaFont) color:TTSTYLEVAR(tableMetaTextColor) next:nil];
+- (TTBoxStyle*)tableMetaText {
+  return [TTBoxStyle styleWithFloats:TTPositionStatic next:
+          [TTTextStyle styleWithFont:TTSTYLEVAR(tableMetaFont) color:TTSTYLEVAR(tableMetaTextColor) next:
+           nil]];
 }
 
 - (TTTextStyle*)tableSubText {

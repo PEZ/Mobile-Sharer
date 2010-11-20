@@ -26,6 +26,8 @@
   NSString* _icon;
   NSNumber* _likes;
   NSNumber* _commentCount;
+  NSString* _asHTML;
+  TTStyledText* _styledText;
 }
 
 @property (nonatomic, retain) NSDate*   created;
@@ -48,5 +50,7 @@
 @property (nonatomic, retain) NSNumber* likes;
 @property (nonatomic, retain) NSNumber* commentCount;
 @property (nonatomic, readonly, retain) Post*     userInfo;
+@property (nonatomic, retain) NSString* asHTML;
+@property (nonatomic, readonly, retain) TTStyledText* styledText;
 
 @end

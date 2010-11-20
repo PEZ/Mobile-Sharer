@@ -16,7 +16,7 @@
 @synthesize type              = _type;
 @synthesize fromName          = _fromName;
 @synthesize fromId            = _fromId;
-@synthesize toName          = _toName;
+@synthesize toName            = _toName;
 @synthesize toId              = _toId;
 @synthesize message           = _message;
 @synthesize picture           = _picture;
@@ -29,6 +29,7 @@
 @synthesize icon              = _icon;
 @synthesize likes             = _likes;
 @synthesize commentCount      = _commentCount;
+@synthesize asHTML            = _asHTML;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_updated);
@@ -50,6 +51,8 @@
   TT_RELEASE_SAFELY(_icon);
   TT_RELEASE_SAFELY(_likes);
   TT_RELEASE_SAFELY(_commentCount);
+  TT_RELEASE_SAFELY(_asHTML);
+  TT_RELEASE_SAFELY(_styledText);
 
   [super dealloc];
 }
@@ -81,6 +84,13 @@
   newPost.commentCount = [_commentCount copyWithZone: zone];
   
   return newPost;
+}
+
+- (TTStyledText*)styledText {
+  if (!_styledText) {
+    _styledText = [[TTStyledText textFromXHTML:_asHTML lineBreaks:YES URLs:(self.URL == nil)] retain];
+  }
+  return _styledText;
 }
 
 @end

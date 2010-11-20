@@ -6,8 +6,6 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "Cells.h"
-
 #import "LoadMoreCell.h"
 
 #import "Three20UI/TTTableMoreButtonCell.h"
