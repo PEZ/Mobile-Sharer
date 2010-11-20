@@ -6,10 +6,10 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "LinkPostCellBase.h"
+#import "PostCell.h"
 
 
-@interface LinkPostCellStandalone : LinkPostCellBase {
+@interface LinkPostCellStandalone : PostCell {
 
 }
 

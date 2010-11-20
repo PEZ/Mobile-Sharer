@@ -8,6 +8,8 @@
 
 #import "PostCell.h"
 
+static TTStyledTextLabel* _measureLabel;
+
 @implementation PostCell
 
 @synthesize imageView2 = _imageView2;
@@ -27,15 +29,33 @@
 #pragma mark -
 #pragma mark TTTableViewCell class public
 
-+ (CGFloat)heightForText:(NSString*)_text withFont:(UIFont*)_font andWidth:(CGFloat)_width {
-  return [_text sizeWithFont:_font
-           constrainedToSize:CGSizeMake(_width, CGFLOAT_MAX)
-               lineBreakMode:UILineBreakModeWordWrap].height;
-}
-
 + (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId {
   return [NSString stringWithFormat:@"<span class=\"tableTitleText\"><a href=\"%@\">%@</a></span>",
           [Etcetera toFeedURLPath:feedId name:name], name];
+}
+
++ (NSString*) getLinkTitleHTML:(Post*)item {
+  //return [NSString stringWithFormat:@"%@<div class=\"tableTitleText\">%@</div>", linkText, item.linkTitle];
+  //linkText = [NSString stringWithFormat:@"%@<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", linkText, item.linkURL, item.linkTitle];
+  return nil;
+}
+
++ (NSString*) getLinkHTML:(Post*)item  {
+  NSString* linkText = @"";
+  if (item.linkTitle) {
+    linkText = [NSString stringWithFormat:@"%@%@", linkText, [self getLinkTitleHTML:item]];
+  }
+  if (item.linkCaption) {
+    linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, item.linkCaption];
+  }
+  if (item.picture) {
+    linkText = [NSString stringWithFormat:@"%@<img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" />", linkText, kPictureImageWidth,
+                kPictureImageHeight, item.picture];
+  }
+  if (item.linkText) {
+    linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, item.linkText];
+  }
+  return [linkText stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
 }
 
 + (NSString*) getMessageHTML:(Post*)item  {
@@ -47,11 +67,8 @@
   if (item.message) {
     messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, item.message];
   }
+  messageText = [NSString stringWithFormat:@"%@%@", messageText, [self getLinkHTML:item]];
   return messageText;
-}
-
-+ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(Post *)item {
-  return 0;
 }
 
 + (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(Post*)item  {
@@ -72,7 +89,6 @@
   return left;
 }
 
-
 + (TTStyledTextLabel*)createStyledLabel {
   TTStyledTextLabel* label = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
   label.textColor = TTSTYLEVAR(tableTextColor);
@@ -83,15 +99,16 @@
 }
 
 + (CGFloat)tableView:(UITableView*)tableView styledHeight:(Post*)item {
-  TTStyledTextLabel* label = [self createStyledLabel];
+  if (!_measureLabel) {
+    _measureLabel = [[self class] createStyledLabel];
+  }  
   CGFloat junk;
   CGFloat left = [self getLeft:&junk item:item];
-  label.text = [TTStyledText textFromXHTML:[self getMessageHTML:item] lineBreaks:YES URLs:NO];
-  label.frame = CGRectMake(left, 0, [self getTextWidth:left tableView:tableView item:item], 0);
-  [label sizeToFit];
-  CGFloat h = label.height;
-  TT_RELEASE_SAFELY(label);
-  return h;
+  _measureLabel.text = [TTStyledText textFromXHTML:[self getMessageHTML:item] lineBreaks:YES URLs:NO];
+  _measureLabel.frame = CGRectMake(left, 0, [self getTextWidth:left tableView:tableView item:item], 0);
+  [_measureLabel sizeToFit];
+
+  return _measureLabel.height;
 }
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
@@ -103,8 +120,7 @@
   
   CGFloat countsHeight = TTSTYLEVAR(tableTimestampFont).ttLineHeight + kTableCellSmallMargin;
   
-  return kTableCellSmallMargin + MAX(imageHeight + 25, messageHeight +
-                                     [self tableView:tableView heightForMoreBody:item]) + countsHeight;
+  return kTableCellSmallMargin + MAX(imageHeight + 25, messageHeight) + countsHeight;
 }
 
 #pragma mark -
@@ -117,10 +133,6 @@
   _messageLabel.text = nil;
   [_iconImageView unsetImage];
   _countsLabel.text = nil;
-}
-
-- (CGFloat)layoutMoreBodyForItem:(Post *)item andX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w {
-  return y;
 }
 
 - (void)layoutSubviews {
@@ -150,12 +162,10 @@
   
   top = _messageLabel.bottom;
     
-  CGFloat y = [self layoutMoreBodyForItem:item andX:left andY:_messageLabel.bottom withWidth:width];
-  
   if (_countsLabel.text.length) {
     [_countsLabel sizeToFit];
     _countsLabel.left = left;
-    _countsLabel.top = y + kTableCellSmallMargin;
+    _countsLabel.top = top + kTableCellSmallMargin;
   }
   
   if (item.icon) {

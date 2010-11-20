@@ -56,7 +56,6 @@
 		329079F912844295005D193A /* PostViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F812844295005D193A /* PostViewControllerBase.m */; };
 		32907BB212854883005D193A /* TTTableViewDelegate+URLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */; };
 		32939FF51278ABD900B07DD5 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 32939FF41278ABD900B07DD5 /* Facebook.m */; };
-		3293A410127C130700B07DD5 /* LinkPostCellBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A40F127C130700B07DD5 /* LinkPostCellBase.m */; };
 		3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */; };
 		32CEF85C128807AD00B2D224 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEF85B128807AD00B2D224 /* Comment.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
@@ -615,8 +614,6 @@
 		32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTableViewDelegate+URLAdditions.m"; sourceTree = "<group>"; };
 		32939FF31278ABD900B07DD5 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = "../../facebook-ios-sdk/src/Facebook.h"; sourceTree = SOURCE_ROOT; };
 		32939FF41278ABD900B07DD5 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = "../../facebook-ios-sdk/src/Facebook.m"; sourceTree = SOURCE_ROOT; };
-		3293A40E127C130700B07DD5 /* LinkPostCellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkPostCellBase.h; sourceTree = "<group>"; };
-		3293A40F127C130700B07DD5 /* LinkPostCellBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkPostCellBase.m; sourceTree = "<group>"; };
 		3293A456127C208B00B07DD5 /* DefaultStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultStyleSheet.h; sourceTree = "<group>"; };
 		3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultStyleSheet.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* MobileSharer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileSharer_Prefix.pch; sourceTree = "<group>"; };
@@ -943,8 +940,6 @@
 				3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */,
 				32891DB0127F5D6C00786BE7 /* PostCell.h */,
 				32891DB1127F5D6D00786BE7 /* PostCell.m */,
-				3293A40E127C130700B07DD5 /* LinkPostCellBase.h */,
-				3293A40F127C130700B07DD5 /* LinkPostCellBase.m */,
 				32633DB31289CFA900D9621E /* CommentCell.h */,
 				32633DB41289CFA900D9621E /* CommentCell.m */,
 				322DD68C12903E7200E7D1DA /* LinkPostCell4Feed.h */,
@@ -1520,7 +1515,6 @@
 				3288C966126E2F1800BF1E3C /* FBDialog.m in Sources */,
 				3215B0521272E15C005580D5 /* FacebookJanitor.m in Sources */,
 				32939FF51278ABD900B07DD5 /* Facebook.m in Sources */,
-				3293A410127C130700B07DD5 /* LinkPostCellBase.m in Sources */,
 				3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */,
 				32891DB2127F5D6D00786BE7 /* PostCell.m in Sources */,
 				329079ED1284410A005D193A /* FeedDataSource.m in Sources */,

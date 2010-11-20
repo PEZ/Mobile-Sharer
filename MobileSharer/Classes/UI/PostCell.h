@@ -20,6 +20,8 @@
 static const CGFloat    kDiscloureWidth   = 20;
 static const CGFloat    kIconImageWidth   = 16;
 static const CGFloat    kIconImageHeight  = 16;
+static const CGFloat    kPictureImageHeight  = 55;
+static const CGFloat    kPictureImageWidth  = 80;
 
 @interface PostCell : TTTableLinkedItemCell {
   TTStyledTextLabel* _messageLabel;
@@ -34,10 +36,7 @@ static const CGFloat    kIconImageHeight  = 16;
 @property (nonatomic, readonly, retain) UILabel*            countsLabel;
 
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural;
-+ (CGFloat)tableView:(UITableView *)tableView heightForMoreBody:(Post *)item;
 + (CGFloat)getLeft:(CGFloat*)imageHeight_p item:(Post*)item;
 + (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(Post*)item;
-
-- (CGFloat)layoutMoreBodyForItem:(Post *)item andX:(CGFloat)x andY:(CGFloat)y withWidth:(CGFloat)w;
 
 @end
