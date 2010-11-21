@@ -10,10 +10,20 @@
 
 @implementation LoginViewController
 
-- (id) init {
-  if (self = [super init]) {
+@synthesize infoLabel = _infoLabel;
+@synthesize loginLogoutButton = _loginLogoutButton;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    self.title = @"Menu";
   }
   return self;
+}
+
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_infoLabel);
+  TT_RELEASE_SAFELY(_loginLogoutButton);
+  [super dealloc];
 }
 
 - (void) viewDidLoad {
