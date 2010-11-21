@@ -12,7 +12,7 @@
 @implementation FeedPostCell
 
 + (NSString*) getLinkTitleHTML:(Post*)item {
-  return [NSString stringWithFormat:@"<div class=\"tableTitleText\">%@</div>", item.linkTitle];
+  return [NSString stringWithFormat:@"<div class=\"tableTitleText\">%@</div>", [Etc xmlEscape:item.linkTitle]];
   //linkText = [NSString stringWithFormat:@"%@<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", linkText, item.linkURL, item.linkTitle];
 }
 

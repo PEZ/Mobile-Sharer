@@ -25,7 +25,7 @@
 
 + (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId {
   return [NSString stringWithFormat:@"<span class=\"tableTitleText\"><a href=\"%@\">%@</a></span>",
-          [Etcetera toFeedURLPath:feedId name:name], name];
+          [Etc toFeedURLPath:feedId name:name], [Etc xmlEscape:name]];
 }
 
 + (NSString*) getLinkTitleHTML:(Post*)item {
@@ -40,47 +40,47 @@
     linkText = [NSString stringWithFormat:@"%@%@", linkText, [self getLinkTitleHTML:item]];
   }
   if (item.linkCaption) {
-    linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, item.linkCaption];
+    linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, [Etc xmlEscape:item.linkCaption]];
   }
   if (item.picture) {
     linkText = [NSString stringWithFormat:@"%@<img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" />", linkText, kPictureImageWidth,
-                kPictureImageHeight, item.picture];
+                kPictureImageHeight, [Etc xmlEscape:item.picture]];
   }
   if (item.linkText) {
-    linkText = [NSString stringWithFormat:@"%@<span class=\"tableSubText\">%@</span>", linkText, item.linkText];
+    linkText = [NSString stringWithFormat:@"%@<span class=\"tableSubText\">%@</span>", linkText, [Etc xmlEscape:item.linkText]];
   }
-  return [linkText stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+  return linkText;
 }
 
 + (NSString*) getMetaHTML:(Post*)item {
-  NSString* messageText = @"";
+  NSString* metaText = @"";
   if (item.icon) {
-    messageText = [NSString stringWithFormat:@"%@<img width=\"16\" height=\"16\" src=\"%@\" /> ",
-                   messageText, item.icon];
+    metaText = [NSString stringWithFormat:@"%@<img width=\"16\" height=\"16\" src=\"%@\" /> ",
+                   metaText, [Etc xmlEscape:item.icon]];
   }
-  messageText = [NSString stringWithFormat:@"%@%@", messageText, [item.created formatRelativeTime]];
+  metaText = [NSString stringWithFormat:@"%@%@", metaText, [item.created formatRelativeTime]];
   if (item.commentCount) {
-    messageText = [NSString stringWithFormat:@"%@, %@", messageText,
+    metaText = [NSString stringWithFormat:@"%@, %@", metaText,
                    [[self class] textForCount:[item.commentCount intValue] withSingular:@"comment" andPlural:@"comments"]];
   }
   if (item.likes) {
-    messageText = [NSString stringWithFormat:@"%@, %@", messageText,
+    metaText = [NSString stringWithFormat:@"%@, %@", metaText,
                                [[self class] textForCount:[item.likes intValue] withSingular:@"like" andPlural:@"likes"]];
   }
-  return [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@</div>", messageText];
+  return [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@</div>", metaText];
 }
 
 + (void) setMessageHTML:(Post*)item {
   if (item.asHTML == nil) {
     NSString* messageText = @"";
     messageText = [NSString stringWithFormat:@"%@<img class=\"avatar\" width=\"%f\" height=\"%f\" src=\"%@\" />",
-                   messageText, kDefaultMessageImageWidth, kDefaultMessageImageHeight, item.fromAvatar];
+                   messageText, kDefaultMessageImageWidth, kDefaultMessageImageHeight, [Etc xmlEscape:item.fromAvatar]];
     messageText = [NSString stringWithFormat:@"%@<div class=\"tableMessageContent\">%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
     if (item.toName && ![item.toId isEqualToString:item.fromId]) {
       messageText = [NSString stringWithFormat:@"%@ &gt; %@", messageText, [self getNameHTML:item.toName feedId:item.toId]];
     }
     if (item.message) {
-      messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, item.message];
+      messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, [Etc xmlEscape:item.message]];
     }
     messageText = [NSString stringWithFormat:@"%@<div class=\"tableAttachmentText\">%@</div>", messageText, [self getLinkHTML:item]];
     messageText = [NSString stringWithFormat:@"%@<br />%@</div>", messageText, [self getMetaHTML:item]];

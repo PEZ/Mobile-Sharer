@@ -21,9 +21,10 @@ extern NSString* kAppLoginURLPath;
 extern NSString* kFacebookLoginPath;
 extern NSString* kCommentPath;
 
-@interface Etcetera : NSObject {
+@interface Etc : NSObject {
 }
 
++ (NSString*) xmlEscape:(NSString*)unescapedString;
 + (NSString*) urlEncode:(NSString*)unencodedString;
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;

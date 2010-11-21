@@ -15,6 +15,6 @@
   #import "Three20/Three20.h"
   #import "Three20Core/NSStringAdditions.h"
   #import "FBConnect.h"
-  #import "Etcetera.h"
+  #import "Etc.h"
   #import "DefaultStyleSheet.h"
 #endif

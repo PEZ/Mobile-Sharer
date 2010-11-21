@@ -6,7 +6,7 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "Etcetera.h"
+#import "Etc.h"
 
 CGFloat   kDefaultMessageImageWidth   = 35;
 CGFloat   kDefaultMessageImageHeight  = 35;
@@ -21,7 +21,7 @@ NSString* kAppLoginURLPath = @"ms://login";
 NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = @"ms://comment";
 
-@implementation Etcetera
+@implementation Etc
 
 + (NSString*) urlEncode:(NSString*)unencodedString {
   return [(NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
@@ -29,6 +29,14 @@ NSString* kCommentPath = @"ms://comment";
                                                               NULL,
                                                               (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
                                                               kCFStringEncodingUTF8 ) autorelease];
+}
+
++ (NSString*) xmlEscape:(NSString*)unescapedString {
+  return [[[[unescapedString
+             stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]
+            stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"]
+           stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"]
+          stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"];
 }
 
 + (NSString*) toFeedURLPath:(NSString*)feedId name:(NSString *)name {

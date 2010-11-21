@@ -12,7 +12,7 @@
 @implementation StandalonePostCell
 
 + (NSString*) getLinkTitleHTML:(Post*)item {
-  return [NSString stringWithFormat:@"<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", item.linkURL, item.linkTitle];
+  return [NSString stringWithFormat:@"<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", item.linkURL, [Etc xmlEscape:item.linkTitle]];
 }
 
 @end

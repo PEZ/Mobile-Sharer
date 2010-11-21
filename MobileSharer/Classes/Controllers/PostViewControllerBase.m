@@ -71,7 +71,7 @@
            didPostText: (NSString*)text
             withResult: (id)result {
   if (_wasShared) {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:[Etcetera toPostIdPath:[result objectForKey:@"id"]]]];
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:[Etc toPostIdPath:[result objectForKey:@"id"]]]];
   }
   else {
     [self reload];
