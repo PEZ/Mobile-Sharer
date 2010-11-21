@@ -63,7 +63,7 @@
 - (TTBoxStyle*)tablePostImage {
   return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, 0, 0, 5)
                              padding:UIEdgeInsetsMake(0, 0, 0, 0)
-                             minSize:CGSizeZero position:TTPositionFloatLeft next:
+                             minSize:CGSizeZero position:TTPositionStatic next:
                        nil];
 }
 
