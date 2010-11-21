@@ -11,8 +11,13 @@
 
 @implementation StandalonePostCell
 
-+ (NSString*) getLinkTitleHTML:(Post*)item {
-  return [NSString stringWithFormat:@"<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", item.linkURL, [Etc xmlEscape:item.linkTitle]];
++ (NSString*) getLinkHTMLForText:(NSString*)text andURL:(NSString*)url {
+  return [NSString stringWithFormat:@"<a href=\"%@\">%@</a>", [Etc xmlEscape:url], [Etc xmlEscape:text]];
+}
+
++ (NSString*) getAttachmentTitleHTML:(Post*)item {
+  return [NSString stringWithFormat:@"<div class=\"tableTitleText\">%@</div>",
+          [self getLinkHTMLForText:item.linkTitle andURL:item.linkURL]];
 }
 
 @end

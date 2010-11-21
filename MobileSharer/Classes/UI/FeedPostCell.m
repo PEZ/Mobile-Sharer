@@ -11,9 +11,13 @@
 
 @implementation FeedPostCell
 
-+ (NSString*) getLinkTitleHTML:(Post*)item {
-  return [NSString stringWithFormat:@"<div class=\"tableTitleText\">%@</div>", [Etc xmlEscape:item.linkTitle]];
-  //linkText = [NSString stringWithFormat:@"%@<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", linkText, item.linkURL, item.linkTitle];
++ (NSString*) getLinkHTMLForText:(NSString*)text andURL:(NSString*)url {
+  return [NSString stringWithFormat:@"%@", [Etc xmlEscape:text]];
+}
+
++ (NSString*) getAttachmentTitleHTML:(Post*)item {
+  return [NSString stringWithFormat:@"<div class=\"tableTitleText\">%@</div>",
+          [self getLinkHTMLForText:item.linkTitle andURL:nil]];
 }
 
 @end

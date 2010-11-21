@@ -23,33 +23,35 @@
 #pragma mark -
 #pragma mark TTTableViewCell class public
 
++ (NSString*) getLinkHTMLForText:(NSString*)text andURL:(NSString*)url {
+  return nil; //Not inplemented in base class
+}
+
++ (NSString*) getAttachmentTitleHTML:(Post*)item {
+  return nil; //Not inplemented in base class
+}
+
 + (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId {
-  return [NSString stringWithFormat:@"<span class=\"tableTitleText\"><a href=\"%@\">%@</a></span>",
-          [Etc toFeedURLPath:feedId name:name], [Etc xmlEscape:name]];
+  return [NSString stringWithFormat:@"<span class=\"tableTitleText\">%@</span>",
+          [self getLinkHTMLForText:name andURL:[Etc toFeedURLPath:feedId name:name]]];
 }
 
-+ (NSString*) getLinkTitleHTML:(Post*)item {
-  //return [NSString stringWithFormat:@"%@<div class=\"tableTitleText\">%@</div>", linkText, item.linkTitle];
-  //linkText = [NSString stringWithFormat:@"%@<div class=\"tableTitleText\"><a href=\"%@\">%@</a></div>", linkText, item.linkURL, item.linkTitle];
-  return nil;
-}
-
-+ (NSString*) getLinkHTML:(Post*)item  {
-  NSString* linkText = @"";
++ (NSString*) getAttachmentHTML:(Post*)item  {
+  NSString* attachmentText = @"";
   if (item.linkTitle) {
-    linkText = [NSString stringWithFormat:@"%@%@", linkText, [self getLinkTitleHTML:item]];
+    attachmentText = [NSString stringWithFormat:@"%@%@", attachmentText, [self getAttachmentTitleHTML:item]];
   }
   if (item.linkCaption) {
-    linkText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", linkText, [Etc xmlEscape:item.linkCaption]];
+    attachmentText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", attachmentText, [Etc xmlEscape:item.linkCaption]];
   }
   if (item.picture) {
-    linkText = [NSString stringWithFormat:@"%@<img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" />", linkText, kPictureImageWidth,
+    attachmentText = [NSString stringWithFormat:@"%@<img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" />", attachmentText, kPictureImageWidth,
                 kPictureImageHeight, [Etc xmlEscape:item.picture]];
   }
   if (item.linkText) {
-    linkText = [NSString stringWithFormat:@"%@<span class=\"tableSubText\">%@</span>", linkText, [Etc xmlEscape:item.linkText]];
+    attachmentText = [NSString stringWithFormat:@"%@<span class=\"tableSubText\">%@</span>", attachmentText, [Etc xmlEscape:item.linkText]];
   }
-  return linkText;
+  return attachmentText;
 }
 
 + (NSString*) getMetaHTML:(Post*)item {
@@ -82,7 +84,7 @@
     if (item.message) {
       messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, [Etc xmlEscape:item.message]];
     }
-    messageText = [NSString stringWithFormat:@"%@<div class=\"tableAttachmentText\">%@</div>", messageText, [self getLinkHTML:item]];
+    messageText = [NSString stringWithFormat:@"%@<div class=\"tableAttachmentText\">%@</div>", messageText, [self getAttachmentHTML:item]];
     messageText = [NSString stringWithFormat:@"%@<br />%@</div>", messageText, [self getMetaHTML:item]];
     
     item.asHTML = messageText;
