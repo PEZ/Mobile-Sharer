@@ -73,7 +73,7 @@
 }
 
 + (void) setMessageHTML:(Post*)item {
-  if (item.asHTML == nil) {
+  if (item.html == nil) {
     NSString* messageText = @"";
     messageText = [NSString stringWithFormat:@"%@<img class=\"avatar\" width=\"%f\" height=\"%f\" src=\"%@\" />",
                    messageText, kDefaultMessageImageWidth, kDefaultMessageImageHeight, [Etc xmlEscape:item.fromAvatar]];
@@ -87,7 +87,7 @@
     messageText = [NSString stringWithFormat:@"%@<div class=\"tableAttachmentText\">%@</div>", messageText, [self getAttachmentHTML:item]];
     messageText = [NSString stringWithFormat:@"%@<br />%@</div>", messageText, [self getMetaHTML:item]];
     
-    item.asHTML = messageText;
+    item.html = messageText;
   }
 }
 
@@ -125,11 +125,8 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  Post* item = self.object;
   CGFloat width = self.contentView.width - kTableCellSmallMargin - kTableCellSmallMargin;  
   _messageLabel.frame = CGRectMake(kTableCellSmallMargin, kTableCellSmallMargin, width, 0);
-  [[self class] setMessageHTML:item];
-  _messageLabel.text = item.styledText;
   [_messageLabel sizeToFit];
 }
 
@@ -148,6 +145,7 @@
   if (_item != object) {
     [super setObject:object];
     [[self class] setMessageHTML:(Post*)_item];
+    _messageLabel.text = ((Post*)_item).styledText;
     self.messageLabel.text = ((Post*)_item).styledText;
   }
 }
@@ -158,13 +156,13 @@
 - (TTStyledTextLabel*)messageLabel {
   if (!_messageLabel) {
     _messageLabel = [[self class] createStyledLabel];
+    _messageLabel.highlightedTextColor = TTSTYLEVAR(lightColor); //TODO: This doesn't do what I want it to do.
     [self.contentView addSubview:_messageLabel];
     return _messageLabel;
   }
   else {
     return _messageLabel;
   }
-
 }
 
 @end

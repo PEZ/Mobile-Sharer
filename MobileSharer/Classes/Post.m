@@ -29,7 +29,7 @@
 @synthesize icon              = _icon;
 @synthesize likes             = _likes;
 @synthesize commentCount      = _commentCount;
-@synthesize asHTML            = _asHTML;
+@synthesize html            = _html;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_updated);
@@ -51,7 +51,7 @@
   TT_RELEASE_SAFELY(_icon);
   TT_RELEASE_SAFELY(_likes);
   TT_RELEASE_SAFELY(_commentCount);
-  TT_RELEASE_SAFELY(_asHTML);
+  TT_RELEASE_SAFELY(_html);
   TT_RELEASE_SAFELY(_styledText);
 
   [super dealloc];
@@ -88,7 +88,7 @@
 
 - (TTStyledText*)styledText {
   if (!_styledText) {
-    _styledText = [[TTStyledText textFromXHTML:_asHTML lineBreaks:YES URLs:(self.URL == nil)] retain];
+    _styledText = [[TTStyledText textFromXHTML:_html lineBreaks:YES URLs:(self.URL == nil)] retain];
   }
   return _styledText;
 }
