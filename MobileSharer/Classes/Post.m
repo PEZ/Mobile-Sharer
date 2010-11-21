@@ -62,7 +62,7 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-  Post *newPost = [[Post alloc] init];
+  Post *newPost = [[Post allocWithZone:zone] init];
   newPost.created = [_created copyWithZone: zone];
   newPost.updated = [_updated copyWithZone: zone];
   newPost.postId = [_postId copyWithZone: zone];

@@ -94,7 +94,7 @@ BOOL commentsEmpty(NSArray* comments) {
     oldComments = [[NSMutableArray arrayWithArray:_comments] retain];
   }
   else {
-    oldComments = [[NSMutableArray alloc] initWithCapacity:0];
+    oldComments = [[NSMutableArray arrayWithObjects:nil] retain];
   }
   
   comments = [[NSMutableArray alloc] initWithCapacity:[entries count]];
@@ -126,6 +126,7 @@ BOOL commentsEmpty(NSArray* comments) {
   }
     
   _comments = comments;
+  TT_RELEASE_SAFELY(oldComments);
     
   [super requestDidFinishLoad:request];
 }

@@ -145,9 +145,8 @@
 - (void)setObject:(id)object {
   if (_item != object) {
     [super setObject:object];
-    Post* item = object;
-    [[self class] setMessageHTML:item];
-    self.messageLabel.text = item.styledText;
+    [[self class] setMessageHTML:(Post*)_item];
+    self.messageLabel.text = ((Post*)_item).styledText;
   }
 }
 
