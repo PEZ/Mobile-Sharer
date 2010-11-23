@@ -6,14 +6,12 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
+#import "LoginView.h"
 #import "FacebookJanitor.h"
 
 @interface LoginViewController : TTViewController <FBJSessionDelegate> {
-  TTStyledTextLabel* _infoLabel;
-  UIButton* _loginLogoutButton;
+  @private
+  LoginView* _contentView;
 }
-
-@property (nonatomic, retain) TTStyledTextLabel* infoLabel;
-@property (nonatomic, retain) UIButton* loginLogoutButton;
 
 @end

@@ -72,6 +72,10 @@ static NSString* kAppId = @"139083852806042";
 #pragma mark -
 #pragma mark Janitor tasks
 
+- (BOOL)isLoggedIn {
+  return [_facebook isSessionValid];
+}
+
 - (void)authenticated:(NSURL*)url {
   [_facebook handleOpenURL:url];
 }
@@ -82,7 +86,7 @@ static NSString* kAppId = @"139083852806042";
 
 - (void) login:(id<FBJSessionDelegate>)delegate {
   _sessionDelegate = delegate;
-  if (![_facebook isSessionValid]) {
+  if (![self isLoggedIn]) {
     [self getPermissions:_permissions delegate:self];
   }
   else {
@@ -90,7 +94,8 @@ static NSString* kAppId = @"139083852806042";
   }
 }
 
-- (void) logout {
+- (void) logout:(id<FBJSessionDelegate>)delegate {
+  _sessionDelegate = delegate;
   [_facebook logout:self]; 
 }
 
@@ -131,8 +136,10 @@ static NSString* kAppId = @"139083852806042";
  * Callback for facebook logout
  */ 
 -(void) fbDidLogout {
-  _isLoggedIn = YES;
-  NSLog(@"Logged in");
+  _isLoggedIn = NO;
+  [self saveSession];
+  [_sessionDelegate fbjDidLogout];
+  NSLog(@"Logged out");
 }
 
 

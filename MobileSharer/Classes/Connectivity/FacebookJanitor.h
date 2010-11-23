@@ -27,7 +27,8 @@
 
 - (void) getPermissions:(NSArray*)permissions delegate:(id<FBSessionDelegate>)delegate;
 - (void) login:(id<FBJSessionDelegate>)delegate;
-- (void) logout;
+- (void) logout:(id<FBJSessionDelegate>)delegate;
+- (BOOL) isLoggedIn;
 
 @end
 
@@ -36,9 +37,14 @@
 @optional
 
 /**
- * Called when the dialog successful log in the user
+ * Called when the Janitor successfully logged in the user
  */
 - (void)fbjDidLogin;
+
+/**
+ * Called when the Janitor successfully logged out the user
+ */
+- (void)fbjDidLogout;
 
 /**
  * Called when the user dismiss the dialog without login
