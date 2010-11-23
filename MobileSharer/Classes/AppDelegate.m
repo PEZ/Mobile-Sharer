@@ -25,7 +25,7 @@
   //navigator.persistenceMode = TTNavigatorPersistenceModeAll;
   if (![navigator restoreViewControllers]) {
     //[navigator openURLAction:[TTURLAction actionWithURLPath:@"ms://postid/100001673056780_124381537622572"]];
-    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppLoginURLPath]];
+    TTOpenURL(kAppLoginURLPath);
   }
 }
 
@@ -42,7 +42,7 @@
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
   if (![self isFBAuthenticationURL:URL]) {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
+    TTOpenURL([TTURLAction actionWithURLPath:URL.absoluteString]);
   }
   else {
     [[FacebookJanitor sharedInstance].facebook handleOpenURL:URL];

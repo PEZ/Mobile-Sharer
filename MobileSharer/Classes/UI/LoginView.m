@@ -22,8 +22,6 @@
     _loginLogoutButton = [TTButton buttonWithStyle:@"defaultButton:" title:@"Login"];
     [self addSubview:_infoLabel];
     [self addSubview:_loginLogoutButton];
-    _showFeedButton = [TTButton buttonWithStyle:@"forwardButton:" title:@"My Feed"];
-    [_showFeedButton sizeToFit];
   }
   return self;
 }

@@ -23,7 +23,7 @@
 }
 
 - (void) showFeed {
-  [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:[Etc toFeedURLPath:@"me" name:@"My Feed"]]];
+  TTOpenURL([Etc toFeedURLPath:@"me" name:@"My Feed"]);
 }
 
 - (void)loadView {
@@ -33,13 +33,15 @@
 }
 
 - (void)updateView {
+  [_contentView.loginLogoutButton removeTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     _contentView.infoLabel.text = [TTStyledText textFromXHTML:@"Good choice that to log in." lineBreaks:YES URLs:YES];
     [_contentView.loginLogoutButton setTitle:@"Logout" forState:UIControlStateNormal];
     [_contentView.loginLogoutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_contentView.showFeedButton];
-    self.navigationItem.rightBarButtonItem.target = self;
-    self.navigationItem.rightBarButtonItem.action = @selector(showFeed);
+    _contentView.showFeedButton = [TTButton buttonWithStyle:@"forwardButton:" title:@"My Feed"];
+    [_contentView.showFeedButton sizeToFit];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:_contentView.showFeedButton] autorelease];
+    [_contentView.showFeedButton addTarget:self action:@selector(showFeed) forControlEvents:UIControlEventTouchUpInside];
   }
   else {
     _contentView.infoLabel.text = [TTStyledText textFromXHTML:@"Login and allow everything!" lineBreaks:YES URLs:YES];
