@@ -64,4 +64,8 @@
   return request;
 }
 
+- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+  NSLog(@"request failed: %@", [error localizedDescription]);
+}
+
 @end

@@ -13,9 +13,8 @@ static NSString* kAppId = @"139083852806042";
 
 @interface FacebookJanitor(Private)
 
-- (id)restoreSession;
+- (void)restoreSession;
 - (void)createDateFormatter;
-- (id)restoreSession;
 
 @end
 
@@ -60,13 +59,14 @@ static NSString* kAppId = @"139083852806042";
   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
   [prefs setObject:_facebook.accessToken forKey:@"fbAccessToken"];
   [prefs setObject:_facebook.expirationDate forKey:@"fbExpirationDate"];
+  [prefs synchronize];
 }
 
-- (id)restoreSession {
+- (void)restoreSession {
   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
   _facebook.accessToken = [prefs stringForKey:@"fbAccessToken"];
   _facebook.expirationDate = [prefs objectForKey:@"fbExpirationDate"];
-  return self;
+  [prefs synchronize];
 }
 
 #pragma mark -
@@ -96,7 +96,7 @@ static NSString* kAppId = @"139083852806042";
 
 - (void) logout:(id<FBJSessionDelegate>)delegate {
   _sessionDelegate = delegate;
-  [_facebook logout:self]; 
+  [_facebook logout:self];
 }
 
 #pragma mark -
