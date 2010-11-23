@@ -111,7 +111,7 @@ BOOL commentsEmpty(NSArray* comments) {
     if ([entry objectForKey:@"from"] != [NSNull null]) {
       comment.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
       comment.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
-      comment.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", comment.fromId];
+      comment.fromAvatar = [FacebookJanitor avatarForId:comment.fromId];
     }
     else {
       comment.fromName = @"Facebook User";

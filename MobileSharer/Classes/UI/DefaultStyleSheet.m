@@ -71,17 +71,22 @@
   return [TTSTYLESHEET toolbarButtonForState:state shape:shape tintColor:TTSTYLEVAR(navigationBarTintColor) font:nil];
 }
 
+- (TTShapeStyle *) avatar {
+  return [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
+          [TTSolidBorderStyle styleWithColor:[self darkColor] width:0.5 next:
+           [TTContentStyle styleWithNext:nil]]];
+  
+}
+
 #pragma mark -
 #pragma mark table cells
-- (TTStyle*)avatar {
+
+- (TTStyle*)feedAvatar {
   return [TTBoxStyle styleWithMargin:UIEdgeInsetsZero
                              padding:UIEdgeInsetsZero
                              minSize:CGSizeZero
                             position:TTPositionAbsolute
-                                next:
-          [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
-           [TTSolidBorderStyle styleWithColor:[self darkColor] width:0.5 next:
-            [TTContentStyle styleWithNext:nil]]]];
+                                next:[self avatar]];
 }
 
 - (TTStyle*)tableMessageContent {

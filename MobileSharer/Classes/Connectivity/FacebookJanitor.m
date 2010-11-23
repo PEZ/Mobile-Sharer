@@ -20,7 +20,10 @@ static NSString* kAppId = @"139083852806042";
 
 @implementation FacebookJanitor
 
-@synthesize loggedIn = _isLoggedIn, facebook = _facebook, dateFormatter = _dateFormatter;
+@synthesize loggedIn = _isLoggedIn;
+@synthesize facebook = _facebook;
+@synthesize dateFormatter = _dateFormatter;
+@synthesize currentUser = _currentUser;
 
 - (id) init {
   if (self = [super init]) {
@@ -97,6 +100,30 @@ static NSString* kAppId = @"139083852806042";
 - (void) logout:(id<FBJSessionDelegate>)delegate {
   _sessionDelegate = delegate;
   [_facebook logout:self];
+}
+
+- (void) getCurrentUserInfo:(id<UserRequestDelegate>)delegate {
+  _userRequestDelegate = delegate;
+  UserModel* model = [[[UserModel alloc] initWithGraphPath:@"me" andDelegate:self] autorelease];
+  [model load:TTURLRequestCachePolicyNetwork more:NO];
+}
+
++ (NSString*)avatarForId:(NSString*)fbId {
+  return [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", fbId];
+}
+
++ (NSString*)getAppId {
+  return kAppId;
+}
+
+#pragma mark -
+#pragma mark UserRequestDelegate
+/**
+ * Called when the current logged in users info has been fetched
+ */
+- (void) userRequestDidFinishLoad:(User*)user {
+  _currentUser = user;
+  [_userRequestDelegate userRequestDidFinishLoad:user];
 }
 
 #pragma mark -

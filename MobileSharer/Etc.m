@@ -12,7 +12,7 @@ CGFloat   kDefaultMessageImageWidth   = 35;
 CGFloat   kDefaultMessageImageHeight  = 35;
 
 NSString* kNavPathPrefix = @"ms://feed";
-NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedIdAndName:)/(name:)";
+NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedId:)/(andName:)";
 NSString* kPostPathPrefix = @"ms://post";
 NSString* kPostPath = @"ms://post/(initWithNavigatorURL:)";
 NSString* kPostIdPathPrefix = @"ms://postid";

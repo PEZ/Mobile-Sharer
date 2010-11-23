@@ -9,9 +9,10 @@
 #import "LoginView.h"
 #import "FacebookJanitor.h"
 
-@interface LoginViewController : TTViewController <FBJSessionDelegate> {
+@interface LoginViewController : TTViewController <FBJSessionDelegate, UserRequestDelegate> {
   @private
   LoginView* _contentView;
+  BOOL       _currentUserLoaded;
 }
 
 @end

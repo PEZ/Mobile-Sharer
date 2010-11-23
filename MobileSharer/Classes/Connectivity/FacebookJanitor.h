@@ -7,27 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserModel.h"
 
 @protocol FBJSessionDelegate;
 
-@interface FacebookJanitor : NSObject <FBRequestDelegate, FBDialogDelegate, FBSessionDelegate> {
+@interface FacebookJanitor : NSObject <FBRequestDelegate, FBDialogDelegate, FBSessionDelegate, UserRequestDelegate> {
   id<FBJSessionDelegate> _sessionDelegate;
+  id<UserRequestDelegate> _userRequestDelegate;
   Facebook* _facebook;
   NSArray* _permissions;
   BOOL _isLoggedIn;
   NSDateFormatter* _dateFormatter;
+  User* _currentUser;
 }
 
 @property(nonatomic, retain) Facebook* facebook;
 @property(nonatomic, getter=_isLoggedIn) BOOL loggedIn;
 @property(nonatomic, retain) NSDateFormatter* dateFormatter;
-
+@property(nonatomic, retain) User* currentUser;
+          
 + (FacebookJanitor*) sharedInstance;
 + (NSDateFormatter*) dateFormatter;
++ (NSString*)avatarForId:(NSString*)fbId;
++ (NSString*)getAppId;
 
 - (void) getPermissions:(NSArray*)permissions delegate:(id<FBSessionDelegate>)delegate;
 - (void) login:(id<FBJSessionDelegate>)delegate;
 - (void) logout:(id<FBJSessionDelegate>)delegate;
+- (void) getCurrentUserInfo:(id<UserRequestDelegate>)delegate;
 - (BOOL) isLoggedIn;
 
 @end

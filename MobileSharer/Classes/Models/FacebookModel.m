@@ -24,7 +24,7 @@
     post.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
     post.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
     post.URL = [Etc toPostPath:post];
-    post.fromAvatar = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", post.fromId];
+    post.fromAvatar = [FacebookJanitor avatarForId:post.fromId];
   }
   else {
     post.fromName = @"Facebook User";

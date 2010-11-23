@@ -23,7 +23,7 @@
   return self;
 }
 
-- (id)initWithFBFeedIdAndName:(NSString *)feedId name:(NSString *)name {
+- (id)initWithFBFeedId:(NSString *)feedId andName:(NSString *)name {
   if (self = [super initWithNibName:nil bundle:nil]) {
     self.feedId = feedId;
     self.title = name;

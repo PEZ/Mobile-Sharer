@@ -12,6 +12,6 @@
 
 @property (nonatomic, copy)   NSString* feedId;
 
-- (id)initWithFBFeedIdAndName:(NSString *)feedId name:(NSString *)name;
+- (id)initWithFBFeedId:(NSString *)feedId andName:(NSString *)name;
 
 @end
