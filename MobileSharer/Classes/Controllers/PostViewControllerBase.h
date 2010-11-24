@@ -11,6 +11,19 @@
 #import "CommentsPostController.h"
 #import "Post.h"
 
+@class PostViewControllerBase;
+
+@interface LikeButton : UIBarButtonItem <FBRequestDelegate> {
+  PostViewControllerBase* _controller;
+  BOOL _liked;
+}
+
+- (void)likeIt;
+- (void)unLikeIt;
+
+@end
+
+
 @interface PostViewControllerBase : TTTableViewController <TTPostControllerDelegate, FBRequestDelegate> {
   Post* _post;
   BOOL _wasShared;
