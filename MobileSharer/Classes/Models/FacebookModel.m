@@ -68,4 +68,8 @@
   NSLog(@"request failed: %@", [error localizedDescription]);
 }
 
+- (void)requestDidCancelLoad:(TTURLRequest*)request {
+  NSLog(@"request cancelled");
+}
+
 @end

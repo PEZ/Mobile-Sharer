@@ -29,11 +29,12 @@
 - (void)loadView {
   [super loadView];
   _contentView = [[LoginView alloc] initWithFrame:self.view.frame];
+  self.navigationItem.leftBarButtonItem = _contentView.loginLogoutButton;
+  _contentView.loginLogoutButton.target = self;
   [self.view addSubview:_contentView];
 }
 
 - (void)updateView {
-  [_contentView.loginLogoutButton removeTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     NSString* html = @"";
     html = [NSString stringWithFormat:@"%@At <a href=\"http://blog.betterthantomorrow.com\">Better Than Tomorrow</a> we are happy \
@@ -48,17 +49,15 @@ Please consider posting about the app on Facebook. (We also get all warm and fuz
     }
     html = [NSString stringWithFormat:@"<div class=\"appInfo\">%@</div>", html];
     _contentView.infoLabel.text = [TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES];
-    [_contentView.loginLogoutButton setTitle:@"Logout" forState:UIControlStateNormal];
-    [_contentView.loginLogoutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-    _contentView.showFeedButton = [TTButton buttonWithStyle:@"forwardButton:" title:@"My Feed"];
-    [_contentView.showFeedButton sizeToFit];
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithCustomView:_contentView.showFeedButton] autorelease];
+    _contentView.loginLogoutButton.title = @"Logout";
+    _contentView.loginLogoutButton.action = @selector(logout);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_contentView.showFeedButton];
     [_contentView.showFeedButton addTarget:self action:@selector(showFeed) forControlEvents:UIControlEventTouchUpInside];
   }
   else {
     _contentView.infoLabel.text = [TTStyledText textFromXHTML:@"<div class=\"appInfo\">Login and allow everything!</div>" lineBreaks:YES URLs:YES];
-    [_contentView.loginLogoutButton setTitle:@"Login" forState:UIControlStateNormal];
-    [_contentView.loginLogoutButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+    _contentView.loginLogoutButton.title = @"Login";
+    _contentView.loginLogoutButton.action = @selector(login);
     self.navigationItem.rightBarButtonItem = nil;
   }
   _contentView.loginLogoutButton.enabled = YES;
@@ -110,7 +109,7 @@ Please consider posting about the app on Facebook. (We also get all warm and fuz
 /**
  * Called when the current logged in users info has been fetched
  */
-- (void) userRequestDidFinishLoad:(User*)user {
+- (void) userRequestDidFinishLoad:(UserModel*)userModel {
   _currentUserLoaded = YES;
   [self updateView];
 }

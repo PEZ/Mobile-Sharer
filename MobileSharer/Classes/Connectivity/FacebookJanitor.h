@@ -18,13 +18,13 @@
   NSArray* _permissions;
   BOOL _isLoggedIn;
   NSDateFormatter* _dateFormatter;
-  User* _currentUser;
+  UserModel* _currentUserModel;
 }
 
 @property(nonatomic, retain) Facebook* facebook;
 @property(nonatomic, getter=_isLoggedIn) BOOL loggedIn;
 @property(nonatomic, retain) NSDateFormatter* dateFormatter;
-@property(nonatomic, retain) User* currentUser;
+@property(nonatomic, readonly) User* currentUser;
           
 + (FacebookJanitor*) sharedInstance;
 + (NSDateFormatter*) dateFormatter;

@@ -23,7 +23,6 @@ static NSString* kAppId = @"139083852806042";
 @synthesize loggedIn = _isLoggedIn;
 @synthesize facebook = _facebook;
 @synthesize dateFormatter = _dateFormatter;
-@synthesize currentUser = _currentUser;
 
 - (id) init {
   if (self = [super init]) {
@@ -104,8 +103,13 @@ static NSString* kAppId = @"139083852806042";
 
 - (void) getCurrentUserInfo:(id<UserRequestDelegate>)delegate {
   _userRequestDelegate = delegate;
-  UserModel* model = [[[UserModel alloc] initWithGraphPath:@"me" andDelegate:self] autorelease];
-  [model load:TTURLRequestCachePolicyNetwork more:NO];
+  TT_RELEASE_SAFELY(_currentUserModel);
+  _currentUserModel = [[[UserModel alloc] initWithGraphPath:@"me" andDelegate:self] retain];
+  [_currentUserModel load:TTURLRequestCachePolicyNetwork more:NO];
+}
+
+- (User*) currentUser {
+  return _currentUserModel.user;
 }
 
 + (NSString*)avatarForId:(NSString*)fbId {
@@ -121,9 +125,9 @@ static NSString* kAppId = @"139083852806042";
 /**
  * Called when the current logged in users info has been fetched
  */
-- (void) userRequestDidFinishLoad:(User*)user {
-  _currentUser = user;
-  [_userRequestDelegate userRequestDidFinishLoad:user];
+- (void) userRequestDidFinishLoad:(UserModel*)userModel {
+  _currentUserModel = userModel;
+  [_userRequestDelegate userRequestDidFinishLoad:userModel];
 }
 
 #pragma mark -

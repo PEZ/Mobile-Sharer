@@ -50,7 +50,7 @@
   _user.userName = [info objectForKey:@"name"];
   _user.about    = [info objectForKey:@"about"];
   
-  [_delegate userRequestDidFinishLoad:_user];
+  [_delegate userRequestDidFinishLoad:self];
   [super requestDidFinishLoad:request];
 }
 

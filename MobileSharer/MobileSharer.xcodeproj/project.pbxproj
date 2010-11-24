@@ -932,14 +932,14 @@
 				329079EA1284410A005D193A /* FeedDataSource.m */,
 				323B93D3128559560097E308 /* PostDataSource.h */,
 				323B93D4128559560097E308 /* PostDataSource.m */,
+				32053B1312931DA2006ABC35 /* FacebookModel.h */,
+				32053B1412931DA2006ABC35 /* FacebookModel.m */,
 				329ADFBB129C53F700B9B01A /* UserModel.h */,
 				329ADFBC129C53F700B9B01A /* UserModel.m */,
 				329079EB1284410A005D193A /* FeedModel.h */,
 				329079EC1284410A005D193A /* FeedModel.m */,
 				323B93D612855A7E0097E308 /* PostModel.h */,
 				323B93D712855A7E0097E308 /* PostModel.m */,
-				32053B1312931DA2006ABC35 /* FacebookModel.h */,
-				32053B1412931DA2006ABC35 /* FacebookModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";

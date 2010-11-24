@@ -11,6 +11,9 @@
 
 @implementation DefaultStyleSheet
 
+#pragma mark -
+#pragma mark colors
+
 - (UIColor*)darkColorA {
   return RGBACOLOR(31, 31, 31, 0.4);
 }
@@ -23,14 +26,13 @@
   return RGBCOLOR(121, 121, 121);
 }
 
-- (UIColor*)toolbarTintColor {
-  return RGBCOLOR(171, 171, 171);
-}
-
 - (UIColor*)lightColor {
   return RGBCOLOR(247, 247, 247);
 }
 
+- (UIColor*)toolbarTintColor {
+  return RGBCOLOR(100, 122, 152);
+}
 
 #pragma mark -
 #pragma mark buttons
@@ -68,7 +70,7 @@
 - (TTStyle*)forwardButton:(UIControlState)state {
   TTShape* shape = [TTRoundedRightArrowShape shapeWithRadius:4.5];
   //UIColor* tintColor = RGBCOLOR(0, 0, 0);
-  return [TTSTYLESHEET toolbarButtonForState:state shape:shape tintColor:TTSTYLEVAR(navigationBarTintColor) font:nil];
+  return [TTSTYLESHEET toolbarButtonForState:state shape:shape tintColor:TTSTYLEVAR(toolbarTintColor) font:nil];
 }
 
 - (TTShapeStyle *) avatar {

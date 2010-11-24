@@ -7,12 +7,12 @@
 //
 
 @interface LoginView : TTView {
-  TTButton* _loginLogoutButton;
+  UIBarButtonItem* _loginLogoutButton;
   TTButton* _showFeedButton;
   TTStyledTextLabel* _infoLabel;
 }
 
-@property (nonatomic, retain) TTButton* loginLogoutButton;
+@property (nonatomic, retain) UIBarButtonItem* loginLogoutButton;
 @property (nonatomic, retain) TTButton* showFeedButton;
 @property (nonatomic, retain) TTStyledTextLabel* infoLabel;
 

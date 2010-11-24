@@ -9,8 +9,10 @@
 #import "FacebookModel.h"
 #import "User.h"
 
+@class UserModel;
+
 @protocol UserRequestDelegate
-- (void)userRequestDidFinishLoad:(User*)user;
+- (void)userRequestDidFinishLoad:(UserModel*)userModel;
 @end
 
 @interface UserModel : FacebookModel {
