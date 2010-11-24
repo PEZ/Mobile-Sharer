@@ -10,6 +10,61 @@
 #import "FacebookJanitor.h"
 #import "CommentsPostController.h"
 
+@implementation LikeButton
+
+- (id)initWithController:(PostViewControllerBase*)controller {
+  if (self = [super init]) {
+    _controller = controller;
+    self.title = @"Like";
+    self.style = UIBarButtonItemStyleBordered;
+    self.target = self;
+    self.action = @selector(likeIt);
+  }
+  return self;
+}
+
+- (void)dealloc {
+  //TT_RELEASE_SAFELY(_controller);
+  [super dealloc];
+}
+
+- (void) updateLikes:(NSString*)method  {
+  NSString* path = [NSString stringWithFormat:@"%@/likes", _controller.post.postId];
+  Facebook* fb = [FacebookJanitor sharedInstance].facebook;
+  [fb requestWithGraphPath:path andParams:[NSMutableDictionary dictionaryWithCapacity:0] andHttpMethod:method andDelegate:self];
+}
+
+- (void)likeIt {
+  _liked = YES;
+  self.enabled = NO;
+  [self updateLikes:@"POST"];
+}
+
+- (void)unLikeIt {
+  _liked = NO;
+  self.enabled = NO;
+  [self updateLikes:@"DELETE"];
+}
+
+#pragma mark -
+#pragma mark FBRequestDelegate
+
+- (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
+  self.enabled = YES;
+  NSLog(@"Failed posting like: %@", error);
+  TTAlert([NSString stringWithFormat:@"Updating likes failed: %@", [error localizedDescription]]);
+}
+
+- (void)request:(FBRequest*)request didLoad:(id)result {
+  self.enabled = YES;
+  self.title = _liked ? @"Unlike" : @"Like";
+  self.action = _liked ? @selector(unLikeIt) : @selector(likeIt);
+  _controller.post.likes = [NSNumber numberWithInt:[_controller.post.likes intValue] + (_liked ? 1 : -1)];
+  [_controller reload];
+}
+
+@end
+
 
 @implementation PostViewControllerBase
 
@@ -39,14 +94,14 @@
   [controller release];
 }
 
-
 - (void)viewDidLoad {
   [super viewDidLoad];
   UIBarButtonItem* commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(comment)]autorelease];
-  [self setToolbarItems:[NSArray arrayWithObjects:commentButton, nil] animated:NO];
+  LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
+  [self setToolbarItems:[NSArray arrayWithObjects:commentButton, likeButton, nil] animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -71,7 +126,7 @@
            didPostText: (NSString*)text
             withResult: (id)result {
   if (_wasShared) {
-    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:[Etc toPostIdPath:[result objectForKey:@"id"]]]];
+    TTOpenURL([Etc toPostIdPath:[result objectForKey:@"id"]]);
   }
   else {
     [self reload];
