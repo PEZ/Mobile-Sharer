@@ -2,4 +2,4 @@ To compile this project, in the same directory:
 
 * Clone this repo
 * CLone this fork of the facebook-ios-sdk repo: git@github.com:PEZ/facebook-ios-sdk.git
-* Clone facebook/three20: https://github.com/facebook/three20
+* Clone facebook/three20: git://github.com/facebook/three20.git
