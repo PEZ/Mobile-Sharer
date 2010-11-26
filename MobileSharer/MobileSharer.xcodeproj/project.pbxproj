@@ -36,6 +36,7 @@
 		323B93D5128559560097E308 /* PostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D4128559560097E308 /* PostDataSource.m */; };
 		323B93D812855A7E0097E308 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D712855A7E0097E308 /* PostModel.m */; };
 		32425F621291EAC90017A401 /* LoadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32425F611291EAC90017A401 /* LoadMoreCell.m */; };
+		324A051812A079DC008BCD8F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 324A051712A079DC008BCD8F /* Default.png */; };
 		32633DB51289CFA900D9621E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32633DB41289CFA900D9621E /* CommentCell.m */; };
 		3288C8D9126E216300BF1E3C /* Etc.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BCE126CF673008473C8 /* Etc.m */; };
 		3288C95C126E2F1800BF1E3C /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3288C944126E2F1800BF1E3C /* FBDialog.bundle */; };
@@ -579,6 +580,7 @@
 		323B93D712855A7E0097E308 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
 		32425F601291EAC90017A401 /* LoadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreCell.h; sourceTree = "<group>"; };
 		32425F611291EAC90017A401 /* LoadMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreCell.m; sourceTree = "<group>"; };
+		324A051712A079DC008BCD8F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		32633DB31289CFA900D9621E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		32633DB41289CFA900D9621E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		3288C944126E2F1800BF1E3C /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = "../../facebook-ios-sdk/src/FBDialog.bundle"; sourceTree = SOURCE_ROOT; };
@@ -695,6 +697,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				324A051712A079DC008BCD8F /* Default.png */,
 				329079CE12836D95005D193A /* Icon.png */,
 				EB383D1010BBFC630000B2D2 /* Three20.bundle */,
 				28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */,
@@ -1515,6 +1518,7 @@
 				EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */,
 				3288C95C126E2F1800BF1E3C /* FBDialog.bundle in Resources */,
 				329079CF12836D95005D193A /* Icon.png in Resources */,
+				324A051812A079DC008BCD8F /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1681,6 +1685,7 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
+				PRODUCT_NAME = "Mobile Sharer";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1693,6 +1698,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				PRODUCT_NAME = "Mobile Sharer";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
