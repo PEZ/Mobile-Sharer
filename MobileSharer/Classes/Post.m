@@ -23,6 +23,7 @@
 @synthesize fromAvatar        = _fromAvatar;
 @synthesize linkCaption       = _link;
 @synthesize linkURL           = _linkURL;
+@synthesize shareURL          = _shareURL;
 @synthesize linkTitle         = _linkTitle;
 @synthesize linkText          = _linkText;
 @synthesize source            = _source;
@@ -45,6 +46,7 @@
   TT_RELEASE_SAFELY(_fromAvatar);
   TT_RELEASE_SAFELY(_link);
   TT_RELEASE_SAFELY(_linkURL);
+  TT_RELEASE_SAFELY(_shareURL);
   TT_RELEASE_SAFELY(_linkTitle)
   TT_RELEASE_SAFELY(_linkText)
   TT_RELEASE_SAFELY(_source);
@@ -76,6 +78,7 @@
   newPost.fromAvatar = [_fromAvatar copyWithZone: zone];
   newPost.linkCaption = [_link copyWithZone: zone];
   newPost.linkURL = [_linkURL copyWithZone: zone];
+  newPost.shareURL = [_shareURL copyWithZone: zone];
   newPost.linkTitle = [_linkTitle copyWithZone: zone];
   newPost.linkText = [_linkText copyWithZone: zone];
   newPost.source = [_source copyWithZone: zone];

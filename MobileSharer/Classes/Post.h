@@ -20,6 +20,7 @@
   NSString* _fromAvatar;
   NSString* _link;
   NSString* _linkURL;
+  NSString* _shareURL;
   NSString* _linkTitle;
   NSString* _linkText;
   NSString* _source;
@@ -43,6 +44,7 @@
 @property (nonatomic, copy)   NSString* fromAvatar;
 @property (nonatomic, copy)   NSString* linkCaption;
 @property (nonatomic, copy)   NSString* linkURL;
+@property (nonatomic, copy)   NSString* shareURL;
 @property (nonatomic, copy)   NSString* linkTitle;
 @property (nonatomic, copy)   NSString* linkText;
 @property (nonatomic, copy)   NSString* source;

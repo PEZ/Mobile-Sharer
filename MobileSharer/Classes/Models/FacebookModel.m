@@ -58,7 +58,8 @@
   }
   post.icon = [entry objectForKey:@"icon"];
   post.picture = [entry objectForKey:@"picture"];
-  post.linkURL = [self urlFromURL:[entry objectForKey:@"link"]];
+  post.shareURL = [entry objectForKey:@"link"];
+  post.linkURL = [self urlFromURL:post.shareURL];
   post.linkCaption = [entry objectForKey:@"caption"];
   post.linkTitle = [entry objectForKey:@"name"];
   post.linkText = [entry objectForKey:@"description"];
