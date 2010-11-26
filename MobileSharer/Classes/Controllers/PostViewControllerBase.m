@@ -102,8 +102,7 @@
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(comment)]autorelease];
-  LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
-  [self setToolbarItems:[NSArray arrayWithObjects:commentButton, likeButton, nil] animated:NO];
+  [self setToolbarItems:[NSArray arrayWithObjects:commentButton, nil] animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
