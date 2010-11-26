@@ -76,7 +76,7 @@
   if (item.html == nil) {
     NSString* messageText = @"";
     messageText = [NSString stringWithFormat:@"%@<img class=\"feedAvatar\" width=\"%f\" height=\"%f\" src=\"%@\" />",
-                   messageText, kDefaultMessageImageWidth, kDefaultMessageImageHeight, [Etc xmlEscape:item.fromAvatar]];
+                   messageText, kAvatarImageWidth, kAvatarImageHeight, [Etc xmlEscape:item.fromAvatar]];
     messageText = [NSString stringWithFormat:@"%@<div class=\"tableMessageContent\">%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
     if (item.toName && ![item.toId isEqualToString:item.fromId]) {
       messageText = [NSString stringWithFormat:@"%@ &gt; %@", messageText, [self getNameHTML:item.toName feedId:item.toId]];
@@ -112,7 +112,7 @@
   Post* item = object;
   [self setMessageHTML:item];
   item.styledText.width = [self getTextWidth:kTableCellSmallMargin tableView:tableView item:item];
-  return kTableCellSmallMargin + MAX(kDefaultMessageImageHeight, item.styledText.height) + kTableCellSmallMargin;
+  return kTableCellSmallMargin + MAX(kAvatarImageHeight, item.styledText.height) + kTableCellSmallMargin;
 }
 
 #pragma mark -
@@ -145,7 +145,7 @@
   if (_item != object) {
     [super setObject:object];
     [[self class] setMessageHTML:(Post*)_item];
-    _messageLabel.text = ((Post*)_item).styledText;
+    //_messageLabel.text = ((Post*)_item).styledText;
     self.messageLabel.text = ((Post*)_item).styledText;
   }
 }

@@ -60,6 +60,7 @@
 		3293A458127C208B00B07DD5 /* DefaultStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */; };
 		329ADFBA129C50A700B9B01A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 329ADFB9129C50A700B9B01A /* User.m */; };
 		329ADFBD129C53F700B9B01A /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 329ADFBC129C53F700B9B01A /* UserModel.m */; };
+		329AE1E9129F178800B9B01A /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 329AE1E8129F178800B9B01A /* RegexKitLite.m */; };
 		32CEF85C128807AD00B2D224 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEF85B128807AD00B2D224 /* Comment.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
@@ -624,6 +625,8 @@
 		329ADFB9129C50A700B9B01A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		329ADFBB129C53F700B9B01A /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		329ADFBC129C53F700B9B01A /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		329AE1E7129F178800B9B01A /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = ../Classes/RegexKitLite.h; sourceTree = "<group>"; };
+		329AE1E8129F178800B9B01A /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = ../Classes/RegexKitLite.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* MobileSharer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileSharer_Prefix.pch; sourceTree = "<group>"; };
 		32CEF85A128807AD00B2D224 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		32CEF85B128807AD00B2D224 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
@@ -668,6 +671,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				329AE1F4129F179000B9B01A /* RegexKitLite */,
 				3288C943126E2F1800BF1E3C /* FBConnect */,
 				321F3BCF126CF6D2008473C8 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -963,6 +967,15 @@
 				3202568F129B028400A9CF49 /* LoginView.m */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		329AE1F4129F179000B9B01A /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				329AE1E7129F178800B9B01A /* RegexKitLite.h */,
+				329AE1E8129F178800B9B01A /* RegexKitLite.m */,
+			);
+			path = RegexKitLite;
 			sourceTree = "<group>";
 		};
 		6E37974711B9BDB80011C497 /* Three20 */ = {
@@ -1552,6 +1565,7 @@
 				32025690129B028400A9CF49 /* LoginView.m in Sources */,
 				329ADFBA129C50A700B9B01A /* User.m in Sources */,
 				329ADFBD129C53F700B9B01A /* UserModel.m in Sources */,
+				329AE1E9129F178800B9B01A /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1625,6 +1639,7 @@
 				INFOPLIST_FILE = "MobileSharer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_LDFLAGS = (
+					"-licucore",
 					"-all_load",
 					"-ObjC",
 				);
@@ -1646,6 +1661,7 @@
 				INFOPLIST_FILE = "MobileSharer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_LDFLAGS = (
+					"-licucore",
 					"-all_load",
 					"-ObjC",
 				);

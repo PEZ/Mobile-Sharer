@@ -8,9 +8,25 @@
 
 #import "FacebookModel.h"
 #import "FacebookJanitor.h"
-
+#import "RegexKitLite.h"
 
 @implementation FacebookModel
+
+- (NSString*)urlFromURL:(NSString*)url {
+  if (url) {
+    NSString* pagesRegex = @"^http://www.facebook.com/pages/([^/]+)/([0-9]+)";
+    if ([url stringByMatching:pagesRegex]) {
+      NSArray* nameAndId = [[url arrayOfCaptureComponentsMatchedByRegex:pagesRegex] objectAtIndex:0];
+      return [Etc toFeedURLPath:[nameAndId objectAtIndex:2] name:[nameAndId objectAtIndex:1]];
+    }
+//    NSString* namedFeedRegex = @"^http://www.facebook.com/([^?/#]+)/?$";
+//    if ([url stringByMatching:namedFeedRegex]) {
+//      NSArray* name = [[url arrayOfCaptureComponentsMatchedByRegex:namedFeedRegex] objectAtIndex:0];
+//      return [Etc toFeedURLPath:[name objectAtIndex:1] name:[name objectAtIndex:1]];
+//    }
+  }    
+  return url;
+}
 
 - (Post*)postFromEntry:(NSDictionary *)entry {
   Post* post = [[Post alloc] init];
@@ -42,7 +58,7 @@
   }
   post.icon = [entry objectForKey:@"icon"];
   post.picture = [entry objectForKey:@"picture"];
-  post.linkURL = [entry objectForKey:@"link"];
+  post.linkURL = [self urlFromURL:[entry objectForKey:@"link"]];
   post.linkCaption = [entry objectForKey:@"caption"];
   post.linkTitle = [entry objectForKey:@"name"];
   post.linkText = [entry objectForKey:@"description"];

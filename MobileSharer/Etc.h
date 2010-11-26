@@ -8,8 +8,8 @@
 
 #import "Post.h"
 
-extern CGFloat   kDefaultMessageImageWidth;
-extern CGFloat   kDefaultMessageImageHeight;
+extern CGFloat   kAvatarImageWidth;
+extern CGFloat   kAvatarImageHeight;
 
 extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;

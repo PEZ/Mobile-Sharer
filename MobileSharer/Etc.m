@@ -8,8 +8,8 @@
 
 #import "Etc.h"
 
-CGFloat   kDefaultMessageImageWidth   = 35;
-CGFloat   kDefaultMessageImageHeight  = 35;
+CGFloat   kAvatarImageWidth   = 35;
+CGFloat   kAvatarImageHeight  = 35;
 
 NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedId:)/(andName:)";

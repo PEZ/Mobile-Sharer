@@ -15,6 +15,6 @@
 
 @property (nonatomic, retain) Post* sharePost;
 
-- (id)initWithPost:(Post *)post andDelegate:(id<TTPostControllerDelegate>)delegate;
+- (id)initWithPost:(Post *)post quote:(BOOL)quote andDelegate:(id<TTPostControllerDelegate>)delegate;
 
 @end

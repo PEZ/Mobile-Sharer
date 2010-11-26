@@ -92,7 +92,7 @@
 }
 
 - (TTStyle*)tableMessageContent {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, kDefaultMessageImageWidth + kTableCellSmallMargin, 0, 0)
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, kAvatarImageWidth + kTableCellSmallMargin, 0, 0)
                                           padding:UIEdgeInsetsZero
                                           minSize:CGSizeZero
                                          position:TTPositionStatic

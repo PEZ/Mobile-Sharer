@@ -43,7 +43,7 @@
 }
 
 + (CGFloat) getLeft {
-  return kTableCellSmallMargin + kDefaultMessageImageWidth + kTableCellSmallMargin;
+  return kTableCellSmallMargin + kAvatarImageWidth + kTableCellSmallMargin;
 }
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
@@ -56,7 +56,7 @@
   CGFloat textHeight = TTSTYLEVAR(tableTitleFont).ttLineHeight + kTableCellSmallMargin +
     [self heightForText:item.message withFont:TTSTYLEVAR(tableFont) andWidth:textWidth];
   
-  return MAX(kDefaultMessageImageHeight, textHeight) + kTableCellSmallMargin * 2;
+  return MAX(kAvatarImageHeight, textHeight) + kTableCellSmallMargin * 2;
 }
 
 #pragma mark -
@@ -79,8 +79,8 @@
   
   CGFloat left = 0;
   _imageView2.frame = CGRectMake(kTableCellSmallMargin, kTableCellSmallMargin,
-                                 kDefaultMessageImageWidth, kDefaultMessageImageHeight);
-  left += kTableCellSmallMargin + kDefaultMessageImageWidth + kTableCellSmallMargin;
+                                 kAvatarImageWidth, kAvatarImageHeight);
+  left += kTableCellSmallMargin + kAvatarImageWidth + kTableCellSmallMargin;
   
   CGFloat width = self.contentView.width - left - kTableCellSmallMargin;
   CGFloat top = kTableCellSmallMargin;

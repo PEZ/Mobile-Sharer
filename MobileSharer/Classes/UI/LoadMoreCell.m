@@ -41,7 +41,7 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   
-  CGFloat margin = kDefaultMessageImageWidth + kTableCellSmallMargin + kTableCellSmallMargin;
+  CGFloat margin = kAvatarImageWidth + kTableCellSmallMargin + kTableCellSmallMargin;
   _activityIndicatorView.left = margin - (_activityIndicatorView.width + kTableCellSmallMargin);
   _activityIndicatorView.top = floor(self.contentView.height/2 - _activityIndicatorView.height/2);
   

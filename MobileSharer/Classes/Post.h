@@ -6,7 +6,7 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-@interface Post : TTTableImageItem {
+@interface Post : TTTableLinkedItem {
   NSDate*   _created;
   NSDate*   _updated;
   NSString* _postId;

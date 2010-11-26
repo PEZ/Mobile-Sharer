@@ -30,22 +30,39 @@
   return controller;
 }
 
-- (void)share {
-  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
-                                                                  andDelegate:self];
+- (void) openShareView: (SharePostController *) controller  {
   _wasShared = YES;
   controller.originView = self.view;
   [controller showInView:self.view animated:YES];
   [controller release];
+
+}
+
+- (void)share {
+  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
+                                                                        quote:NO
+                                                                  andDelegate:self];
+  [self openShareView: controller];
+}
+
+- (void)shareQ {
+  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
+                                                                        quote:YES
+                                                                  andDelegate:self];
+  [self openShareView: controller];
 }
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(shareQ)]autorelease];
   UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
                                                                   action:@selector(share)]autorelease];
-  [self setToolbarItems:[[self toolbarItems] arrayByAddingObjectsFromArray:[NSArray arrayWithObjects:shareButton, nil]] animated:NO];
+  [self setToolbarItems:[[self toolbarItems] arrayByAddingObjectsFromArray:[NSArray arrayWithObjects:shareButtonQ, shareButton, nil]] animated:NO];
   //[self setToolbarItems:[NSArray arrayWithObjects:commentButton, shareButton, nil] animated:NO];
 }
 

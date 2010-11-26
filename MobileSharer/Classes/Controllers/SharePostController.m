@@ -13,12 +13,12 @@
 
 @synthesize sharePost = _post;
 
-- (id)initWithPost:(Post *)post andDelegate:(id<TTPostControllerDelegate>)delegate {
+- (id)initWithPost:(Post *)post quote:(BOOL)quote andDelegate:(id<TTPostControllerDelegate>)delegate {
   if (self = [super init]) {
     self.sharePost = post;
-    self.title = @"Share";
-    if (post.message != NULL) {
-      self.textView.text = [NSString stringWithFormat:@"\"%@\" (via %@)", post.message, post.fromName];
+    self.title = quote ? @"“Share”" : @"Share";
+    if (quote && post.message != NULL) {
+      self.textView.text = [NSString stringWithFormat:@"“%@” (via %@)", post.message, post.fromName];
     }
     self.delegate = delegate;
   }
