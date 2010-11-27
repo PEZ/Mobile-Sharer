@@ -54,7 +54,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
   UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
@@ -63,7 +62,8 @@
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
                                                                   action:@selector(share)]autorelease];
-  [self setToolbarItems:[[self toolbarItems] arrayByAddingObjectsFromArray:[NSArray arrayWithObjects:likeButton, shareButtonQ, shareButton, nil]] animated:NO];
+  [self setToolbarItems:[[self toolbarItems] arrayByAddingObjectsFromArray:
+                         [NSArray arrayWithObjects:shareButtonQ, shareButton, nil]] animated:NO];
   //[self setToolbarItems:[NSArray arrayWithObjects:commentButton, shareButton, nil] animated:NO];
 }
 

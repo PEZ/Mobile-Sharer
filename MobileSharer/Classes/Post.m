@@ -30,7 +30,9 @@
 @synthesize icon              = _icon;
 @synthesize likes             = _likes;
 @synthesize commentCount      = _commentCount;
-@synthesize html            = _html;
+@synthesize html              = _html;
+@synthesize canComment        = _canComment;
+@synthesize canLike           = _canLike;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_updated);

@@ -29,6 +29,8 @@
   NSNumber* _commentCount;
   NSString* _html;
   TTStyledText* _styledText;
+  BOOL      _canComment;
+  BOOL      _canLike;
 }
 
 @property (nonatomic, retain) NSDate*   created;
@@ -54,5 +56,7 @@
 @property (nonatomic, readonly, retain) Post*     userInfo;
 @property (nonatomic, retain) NSString* html;
 @property (nonatomic, readonly, retain) TTStyledText* styledText;
+@property (nonatomic)         BOOL      canComment;
+@property (nonatomic)         BOOL      canLike;
 
 @end

@@ -98,11 +98,19 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  UIBarButtonItem* commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
-                                                                      style:UIBarButtonItemStyleBordered
-                                                                     target:self
-                                                                     action:@selector(comment)]autorelease];
-  [self setToolbarItems:[NSArray arrayWithObjects:commentButton, nil] animated:NO];
+  NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:2];
+  if (_post.canComment) {
+    UIBarButtonItem* commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:self
+                                                                      action:@selector(comment)]autorelease];
+    [buttons addObject:commentButton];
+  }
+  if (_post.canLike) {
+    LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
+    [buttons addObject:likeButton];
+  }
+  [self setToolbarItems:[NSArray arrayWithArray:buttons] animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

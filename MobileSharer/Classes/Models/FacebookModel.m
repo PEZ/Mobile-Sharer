@@ -46,6 +46,16 @@
     post.fromName = @"Facebook User";
     post.fromAvatar = @"https://graph.facebook.com/1/picture?type=square";
   }
+  if ([entry objectForKey:@"actions"]) {
+    for (NSMutableDictionary* action in [entry objectForKey:@"actions"]) {
+      if ([action objectForKey:@"name"] && [[action objectForKey:@"name"] isEqual:@"Comment"]) {
+        post.canComment = YES;
+      }
+      if ([action objectForKey:@"name"] && [[action objectForKey:@"name"] isEqual:@"Like"]) {
+        post.canLike = YES;
+      }
+    }
+  }
   if ([entry objectForKey:@"to"] != [NSNull null] &&
       [[[entry objectForKey:@"to"] objectForKey:@"data"] objectAtIndex:0] != [NSNull null]) {
       post.toName = [[[[entry objectForKey:@"to"] objectForKey:@"data"] objectAtIndex:0] objectForKey:@"name"];
