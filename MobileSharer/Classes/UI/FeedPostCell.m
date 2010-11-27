@@ -20,4 +20,9 @@
           [self getLinkHTMLForText:item.linkTitle andURL:nil]];
 }
 
++ (NSString*) getAttachmentPictureHTML:(Post*)item {
+  return [NSString stringWithFormat:@"<img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" />",
+          kPictureImageWidth, kPictureImageHeight, [Etc xmlEscape:item.picture]];
+}
+
 @end

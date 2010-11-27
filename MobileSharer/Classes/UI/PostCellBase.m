@@ -31,6 +31,10 @@
   return nil; //Not inplemented in base class
 }
 
++ (NSString*) getAttachmentPictureHTML:(Post*)item {
+  return nil; //Not implemented in base class
+}
+
 + (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId {
   return [NSString stringWithFormat:@"<span class=\"tableTitleText\">%@</span>",
           [self getLinkHTMLForText:name andURL:[Etc toFeedURLPath:feedId name:name]]];
@@ -45,8 +49,7 @@
     attachmentText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", attachmentText, [Etc xmlEscape:item.linkCaption]];
   }
   if (item.picture) {
-    attachmentText = [NSString stringWithFormat:@"%@<img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" />", attachmentText, kPictureImageWidth,
-                kPictureImageHeight, [Etc xmlEscape:item.picture]];
+    attachmentText = [NSString stringWithFormat:@"%@%@", attachmentText, [self getAttachmentPictureHTML:item]];
   }
   if (item.linkText) {
     attachmentText = [NSString stringWithFormat:@"%@<span class=\"tableSubText\">%@</span>", attachmentText, [Etc xmlEscape:item.linkText]];

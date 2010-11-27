@@ -15,6 +15,10 @@
   return [NSString stringWithFormat:@"<a href=\"%@\">%@</a>", [Etc xmlEscape:url], [Etc xmlEscape:text]];
 }
 
++ (NSString*) getAttachmentPictureHTML:(Post*)item {
+  return [NSString stringWithFormat:@"<a href=\"%@\"><img class=\"tablePostImage\" width=\"%f\" height=\"%f\" src=\"%@\" /></a>",
+          [Etc xmlEscape:item.linkURL], kPictureImageWidth, kPictureImageHeight, [Etc xmlEscape:item.picture]];}
+
 + (NSString*) getAttachmentTitleHTML:(Post*)item {
   return [NSString stringWithFormat:@"<div class=\"tableTitleText\">%@</div>",
           [self getLinkHTMLForText:item.linkTitle andURL:item.linkURL]];
