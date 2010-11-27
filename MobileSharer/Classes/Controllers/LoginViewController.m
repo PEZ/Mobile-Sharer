@@ -38,7 +38,7 @@
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     NSString* html = @"";
     html = [NSString stringWithFormat:@"%@At <a href=\"http://blog.betterthantomorrow.com\">Better Than Tomorrow</a> we are happy \
-that you are using <a href=\"ms://feed/%@/Mobile%%20Sharer\">Mobile Sharer</a>.\n\n\
+that you are using <a href=\"ms://postid/139083852806042_180268271987499\">Mobile Sharer</a>.\n\n\
 Please consider posting about the app on Facebook. (We also get all warm and fuzzzy when someone Likes the app.)",
      html, [FacebookJanitor getAppId]];
     if (_currentUserLoaded) {
@@ -57,7 +57,16 @@ Please consider posting about the app on Facebook. (We also get all warm and fuz
     }
   }
   else {
-    _contentView.infoLabel.text = [TTStyledText textFromXHTML:@"<div class=\"appInfo\">Login and allow everything!</div>" lineBreaks:YES URLs:YES];
+    NSString* welcome = @"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
+Welcome to Mobile Sharer!\n\n\
+To be able to help you follow your Facebook feed and share links Mobile Sharer needs your permission. Please \
+click the login button and grant it.\n\n\
+Rest assured Mobile Sharer will never post in your name without you telling it to. We hope you will use Mobile sharer to tell your \
+friends you are a happy user of the app anyway. Please do!\n\n\
+Read reviews, ask questions, suggest features, whatever on the \
+<a href=\"http://www.facebook.com/apps/application.php?id=139083852806042\">Mobile Sharer Facebook page.</a> \
+(Please Like that page too.)</div>";
+    _contentView.infoLabel.text = [TTStyledText textFromXHTML:welcome lineBreaks:YES URLs:YES];
     _contentView.loginLogoutButton.title = @"Login";
     _contentView.loginLogoutButton.action = @selector(login);
     self.navigationItem.rightBarButtonItem = nil;

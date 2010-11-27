@@ -106,6 +106,14 @@
                        nil];
 }
 
+- (TTBoxStyle*)articleImage {
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, kTableCellSmallMargin, kTableCellSmallMargin, 0)
+                             padding:UIEdgeInsetsZero
+                             minSize:CGSizeZero
+                            position:TTPositionFloatRight
+                                next:nil];
+}
+
 - (TTBoxStyle*)tableAttachmentText {
   return [TTBoxStyle styleWithFloats:TTPositionStatic next:nil];
 }
@@ -146,8 +154,15 @@
   return [TTTextStyle styleWithFont:TTSTYLEVAR(tableFont) color:TTSTYLEVAR(tableTextColor) next:nil];
 }
 
+- (TTBoxStyle*)appInfo {
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, kTableCellSmallMargin, kTableCellSmallMargin, kTableCellSmallMargin)
+                             padding:UIEdgeInsetsZero
+                             minSize:CGSizeZero
+                            position:TTPositionStatic next:nil];
+}
+
 - (TTBoxStyle*)tableMetaText {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, 0, 0, 0) next:
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, kTableCellSmallMargin, kTableCellSmallMargin, kTableCellSmallMargin) next:
           [TTTextStyle styleWithFont:TTSTYLEVAR(tableMetaFont) color:TTSTYLEVAR(tableMetaTextColor) next:
            nil]];
 }
@@ -156,7 +171,7 @@
   return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, -kIconImageWidth -kTableCellSmallMargin, 0, kTableCellSmallMargin)
                              padding:UIEdgeInsetsZero
                              minSize:CGSizeZero
-                            position:TTPositionStatic next:nil];
+                            position:TTPositionAbsolute next:nil];
 }
 
 
