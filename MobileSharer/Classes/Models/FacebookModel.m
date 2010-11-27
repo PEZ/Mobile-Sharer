@@ -19,16 +19,16 @@
       NSArray* nameAndId = [[url arrayOfCaptureComponentsMatchedByRegex:pagesRegex] objectAtIndex:0];
       return [Etc toFeedURLPath:[nameAndId objectAtIndex:2] name:[nameAndId objectAtIndex:1]];
     }
-//    NSString* namedFeedRegex = @"^http://www.facebook.com/([^?/#]+)/?$";
-//    if ([url stringByMatching:namedFeedRegex]) {
-//      NSArray* name = [[url arrayOfCaptureComponentsMatchedByRegex:namedFeedRegex] objectAtIndex:0];
-//      return [Etc toFeedURLPath:[name objectAtIndex:1] name:[name objectAtIndex:1]];
-//    }
+    NSString* namedFeedRegex = @"^http://www.facebook.com/([^?/#]+)/?$";
+    if ([url stringByMatching:namedFeedRegex]) {
+      NSArray* name = [[url arrayOfCaptureComponentsMatchedByRegex:namedFeedRegex] objectAtIndex:0];
+      return [Etc toFeedURLPath:[name objectAtIndex:1] name:[name objectAtIndex:1]];
+    }
   }    
   return url;
 }
 
-- (Post*)postFromEntry:(NSDictionary *)entry {
+- (Post*)createPostFromEntry:(NSDictionary *)entry {
   Post* post = [[Post alloc] init];
   
   NSDate* date = [[FacebookJanitor dateFormatter] dateFromString:[entry objectForKey:@"created_time"]];

@@ -51,8 +51,10 @@ Please consider posting about the app on Facebook. (We also get all warm and fuz
     _contentView.infoLabel.text = [TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES];
     _contentView.loginLogoutButton.title = @"Logout";
     _contentView.loginLogoutButton.action = @selector(logout);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_contentView.showFeedButton];
-    [_contentView.showFeedButton addTarget:self action:@selector(showFeed) forControlEvents:UIControlEventTouchUpInside];
+    if (self.navigationItem.rightBarButtonItem == nil) {
+      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_contentView.showFeedButton];
+      [_contentView.showFeedButton addTarget:self action:@selector(showFeed) forControlEvents:UIControlEventTouchUpInside];
+    }
   }
   else {
     _contentView.infoLabel.text = [TTStyledText textFromXHTML:@"<div class=\"appInfo\">Login and allow everything!</div>" lineBreaks:YES URLs:YES];

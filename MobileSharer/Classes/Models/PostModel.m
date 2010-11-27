@@ -83,7 +83,7 @@ BOOL commentsEmpty(NSArray* comments) {
   }
   else {
     entries = [[feed objectForKey:@"comments"] objectForKey:@"data"];
-    _post = [[self postFromEntry:feed] retain];
+    _post = [[self createPostFromEntry:feed] retain];
   }
 
   NSMutableArray* comments;

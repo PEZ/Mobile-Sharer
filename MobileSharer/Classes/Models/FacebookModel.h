@@ -13,7 +13,7 @@
 
 }
 
-- (Post*) postFromEntry:(NSDictionary*)entry;
+- (Post*) createPostFromEntry:(NSDictionary*)entry;
 - (TTURLRequest*)createRequest:(FBRequest*)fbRequest cachePolicy:(TTURLRequestCachePolicy)cachePolicy;
 
 @end

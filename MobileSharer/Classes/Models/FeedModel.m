@@ -64,7 +64,7 @@
   TT_RELEASE_SAFELY(_posts);
 
   for (NSDictionary* entry in entries) {
-    [posts addObject:[self postFromEntry: entry]];
+    [posts addObject:[self createPostFromEntry: entry]];
   }
   _posts = posts;
 
