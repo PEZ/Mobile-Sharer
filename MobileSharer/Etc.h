@@ -10,6 +10,8 @@
 
 extern CGFloat   kAvatarImageWidth;
 extern CGFloat   kAvatarImageHeight;
+extern CGFloat   kIconImageWidth;
+extern CGFloat   kIconImageHeight;
 
 extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;

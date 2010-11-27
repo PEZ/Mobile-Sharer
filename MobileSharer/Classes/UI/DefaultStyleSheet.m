@@ -74,7 +74,7 @@
 }
 
 - (TTShapeStyle *) avatar {
-  return [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:5] next:
+  return [TTShapeStyle styleWithShape:[TTRectangleShape shape] next:
           [TTSolidBorderStyle styleWithColor:[self darkColor] width:0.5 next:
            [TTContentStyle styleWithNext:nil]]];
   
@@ -123,7 +123,7 @@
 }
 
 - (UIColor*)tableMetaTextColor {
-  return RGBCOLOR(11, 91, 216);
+  return [self tableSubTextColor];
 }
 
 - (UIFont*)tableTitleFont {
@@ -147,10 +147,18 @@
 }
 
 - (TTBoxStyle*)tableMetaText {
-  return [TTBoxStyle styleWithFloats:TTPositionStatic next:
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, 0, 0, 0) next:
           [TTTextStyle styleWithFont:TTSTYLEVAR(tableMetaFont) color:TTSTYLEVAR(tableMetaTextColor) next:
            nil]];
 }
+
+- (TTBoxStyle*)tableMetaIcon {
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, -kIconImageWidth -kTableCellSmallMargin, 0, kTableCellSmallMargin)
+                             padding:UIEdgeInsetsZero
+                             minSize:CGSizeZero
+                            position:TTPositionStatic next:nil];
+}
+
 
 - (TTTextStyle*)tableSubText {
   return [TTTextStyle styleWithFont:TTSTYLEVAR(tableFont) color:TTSTYLEVAR(tableSubTextColor) next:nil];

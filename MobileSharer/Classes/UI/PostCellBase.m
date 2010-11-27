@@ -52,7 +52,7 @@
     attachmentText = [NSString stringWithFormat:@"%@%@", attachmentText, [self getAttachmentPictureHTML:item]];
   }
   if (item.linkText) {
-    attachmentText = [NSString stringWithFormat:@"%@<span class=\"tableSubText\">%@</span>", attachmentText, [Etc xmlEscape:item.linkText]];
+    attachmentText = [NSString stringWithFormat:@"%@<div class=\"tableSubText\">%@</div>", attachmentText, [Etc xmlEscape:item.linkText]];
   }
   return attachmentText;
 }
@@ -60,10 +60,10 @@
 + (NSString*) getMetaHTML:(Post*)item {
   NSString* metaText = @"";
   if (item.icon) {
-    metaText = [NSString stringWithFormat:@"%@<img width=\"16\" height=\"16\" src=\"%@\" /> ",
+    metaText = [NSString stringWithFormat:@"%@<img class=\"tableMetaIcon\" width=\"16\" height=\"16\" src=\"%@\" />",
                    metaText, [Etc xmlEscape:item.icon]];
   }
-  metaText = [NSString stringWithFormat:@"%@%@", metaText, [item.created formatRelativeTime]];
+  metaText = [NSString stringWithFormat:@"<span class=\"tableMetaText\">%@%@", metaText, [item.created formatRelativeTime]];
   if (item.commentCount) {
     metaText = [NSString stringWithFormat:@"%@, %@", metaText,
                    [[self class] textForCount:[item.commentCount intValue] withSingular:@"comment" andPlural:@"comments"]];
@@ -72,7 +72,7 @@
     metaText = [NSString stringWithFormat:@"%@, %@", metaText,
                                [[self class] textForCount:[item.likes intValue] withSingular:@"like" andPlural:@"likes"]];
   }
-  return [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@</div>", metaText];
+  return [NSString stringWithFormat:@"%@</span>", metaText];
 }
 
 + (void) setMessageHTML:(Post*)item {
@@ -88,7 +88,7 @@
       messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, [Etc xmlEscape:item.message]];
     }
     messageText = [NSString stringWithFormat:@"%@<div class=\"tableAttachmentText\">%@</div>", messageText, [self getAttachmentHTML:item]];
-    messageText = [NSString stringWithFormat:@"%@<br />%@</div>", messageText, [self getMetaHTML:item]];
+    messageText = [NSString stringWithFormat:@"%@%@</div>", messageText, [self getMetaHTML:item]];
     
     item.html = messageText;
   }

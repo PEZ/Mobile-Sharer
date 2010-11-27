@@ -10,6 +10,8 @@
 
 CGFloat   kAvatarImageWidth   = 35;
 CGFloat   kAvatarImageHeight  = 35;
+CGFloat   kIconImageWidth   = 16;
+CGFloat   kIconImageHeight  = 16;
 
 NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedId:)/(andName:)";

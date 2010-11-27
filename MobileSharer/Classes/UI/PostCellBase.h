@@ -17,8 +17,6 @@
 #import "Three20UI/TTTableImageItemCell.h"
 
 static const CGFloat    kDiscloureWidth   = 20;
-static const CGFloat    kIconImageWidth   = 16;
-static const CGFloat    kIconImageHeight  = 16;
 static const CGFloat    kPictureImageHeight  = 66;
 static const CGFloat    kPictureImageWidth  = 96;
 
