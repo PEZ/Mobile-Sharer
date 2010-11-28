@@ -123,29 +123,31 @@
 }
 
 - (void)setupView {
-  NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:4];
-  if (_post.canComment) {
-    UIBarButtonItem* commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
-                                                                       style:UIBarButtonItemStyleBordered
-                                                                      target:self
-                                                                      action:@selector(comment)]autorelease];
-    [buttons addObject:commentButton];
+  if ([self.toolbarItems count] < 1) {
+    NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:4];
+    if (_post.canComment) {
+      UIBarButtonItem* commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
+                                                                         style:UIBarButtonItemStyleBordered
+                                                                        target:self
+                                                                        action:@selector(comment)]autorelease];
+      [buttons addObject:commentButton];
+    }
+    if (_post.canLike) {
+      LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
+      [buttons addObject:likeButton];
+    }
+    UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(shareQ)]autorelease];
+    [buttons addObject:shareButtonQ];
+    UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(share)]autorelease];
+    [buttons addObject:shareButton];
+    [self setToolbarItems:[NSArray arrayWithArray:buttons] animated:NO];
   }
-  if (_post.canLike) {
-    LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
-    [buttons addObject:likeButton];
-  }
-  UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
-                                                                    style:UIBarButtonItemStyleBordered
-                                                                   target:self
-                                                                   action:@selector(shareQ)]autorelease];
-  [buttons addObject:shareButtonQ];
-  UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
-                                                                   style:UIBarButtonItemStyleBordered
-                                                                  target:self
-                                                                  action:@selector(share)]autorelease];
-  [buttons addObject:shareButton];
-  [self setToolbarItems:[NSArray arrayWithArray:buttons] animated:NO];
 }
 
 - (void)viewDidLoad {

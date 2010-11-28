@@ -23,6 +23,8 @@ NSString* kAppLoginURLPath = @"ms://login";
 NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = @"ms://comment";
 
+NSString* kAppStoreId = @"406870483";
+
 @implementation Etc
 
 + (NSString*) urlEncode:(NSString*)unencodedString {
@@ -59,7 +61,7 @@ NSString* kCommentPath = @"ms://comment";
 }
 
 + (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title {
-  NSString* url = [NSString stringWithFormat:@"%@/%@/%@", kPostIdPathPrefix, postId, title];
+  NSString* url = [NSString stringWithFormat:@"%@/%@/%@", kPostIdPathPrefix, postId, [self urlEncode:title]];
   //NSLog(@"%@", url);
   return url;
 }

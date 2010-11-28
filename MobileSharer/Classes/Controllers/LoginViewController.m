@@ -36,16 +36,28 @@
 
 - (void)updateView {
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
-    NSString* html = @"";
-    html = [NSString stringWithFormat:@"%@At <a href=\"http://blog.betterthantomorrow.com\">Better Than Tomorrow</a> we are happy \
-that you are using <a href=\"ms://postid/139083852806042_180268271987499/Share!\">Mobile Sharer</a>.\n\n\
-Please consider posting about the app on Facebook. (We also get all warm and fuzzzy when someone Likes the app.)",
-     html, [FacebookJanitor getAppId]];
+    NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
+    NSString* shareItUrl2 = [Etc toPostIdPath:@"152352554796431" andTitle:@"Where ideas come from (TED talk)"];
+    //NSString* appStoreUrl = [NSString stringWithFormat:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", kAppStoreId];
+    //appStoreUrl = [Etc urlEncode:appStoreUrl];
+    //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
+    NSString* html = @"<img class=\"articleImage\" src=\"bundle://Icon75.png\"/>";
+    html = [NSString stringWithFormat:@"%@Thanks for using Mobile Sharer! Re-sharing links and movies on Facebook is now as easy as:\n\n\
+1. tap the post containing the link\n\
+2. tap <b>Share</b>\n\
+3. write a message to go with the link\n\
+4. tap <b>Done</b>\n\n\
+If the post you are sharing already has a message you also want to share then use the <b>“Share”</b> button instead. \
+This will quote the message and attribute it to it's original author.\n\n\
+Please test it by sharing these posts:\n\n\
+• <a href=\"%@\">Mobile Sharer rocks!</a>.\n\
+• <a href=\"%@\">Where ideas come from (TED talk)</a>\n\n\
+Happy mobile sharing!",
+     html, shareItUrl, shareItUrl2];
     if (_currentUserLoaded) {
       FacebookJanitor* janitor = [FacebookJanitor sharedInstance];
-      html = [NSString stringWithFormat:@"%@\n\nYou are logged in as:\
-              <div class=\"userInfo\"><img class=\"avatar\" src=\"%@\" /> <span class=\"tableTitleText\">%@</span></div>",
-              html, [FacebookJanitor avatarForId:janitor.currentUser.userId], janitor.currentUser.userName];
+      html = [NSString stringWithFormat:@"<div class=\"userInfo\">You are logged in as: \
+<span class=\"tableTitleText\">%@</span></div>\n%@", janitor.currentUser.userName, html];
     }
     html = [NSString stringWithFormat:@"<div class=\"appInfo\">%@</div>", html];
     _contentView.infoLabel.text = [TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES];

@@ -23,6 +23,8 @@ extern NSString* kAppLoginURLPath;
 extern NSString* kFacebookLoginPath;
 extern NSString* kCommentPath;
 
+extern NSString* kAppStoreId;
+
 @interface Etc : NSObject {
 }
 
