@@ -45,7 +45,7 @@ BOOL commentsEmpty(NSArray* comments) {
   if (!self.isLoading) {
     FBRequest* fbRequest;
     NSString* path;
-    if (_post != nil) {
+    if (_post) {
       path = [NSString stringWithFormat:@"%@/comments", _post.postId];
       if (more && !commentsEmpty(_comments)) {
         NSString* offset = [NSString stringWithFormat:@"%@",

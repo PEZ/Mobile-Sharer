@@ -12,7 +12,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    self.title = @"Home";
+    self.title = @"Start";
   }
   return self;
 }
@@ -38,7 +38,7 @@
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     NSString* html = @"";
     html = [NSString stringWithFormat:@"%@At <a href=\"http://blog.betterthantomorrow.com\">Better Than Tomorrow</a> we are happy \
-that you are using <a href=\"ms://postid/139083852806042_180268271987499\">Mobile Sharer</a>.\n\n\
+that you are using <a href=\"ms://postid/139083852806042_180268271987499/Share!\">Mobile Sharer</a>.\n\n\
 Please consider posting about the app on Facebook. (We also get all warm and fuzzzy when someone Likes the app.)",
      html, [FacebookJanitor getAppId]];
     if (_currentUserLoaded) {

@@ -31,7 +31,7 @@ extern NSString* kCommentPath;
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
 + (NSString *) toPostPath:(Post*)post;
-+ (NSString *) toPostIdPath:(NSString*)postId;
++ (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title;
 
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key;
 + (NSString*)pictureURL:(NSString*)url;

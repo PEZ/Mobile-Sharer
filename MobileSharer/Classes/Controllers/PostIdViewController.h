@@ -13,6 +13,6 @@
   NSString* _postId;
 }
 
-- (id)initWithPostId:(NSString*)postId;
+- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title;
 
 @end

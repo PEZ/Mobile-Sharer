@@ -17,5 +17,6 @@
 }
 
 - (id)initWithPost:(Post*)post;
+- (id)initWithPostId:(NSString*)postId;
 
 @end

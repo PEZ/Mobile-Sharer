@@ -9,6 +9,7 @@
 #import "PostViewControllerBase.h"
 #import "FacebookJanitor.h"
 #import "CommentsPostController.h"
+#import "SharePostController.h"
 
 @implementation LikeButton
 
@@ -84,8 +85,33 @@
   [super dealloc];
 }
 
+
+- (void) openShareView: (SharePostController *) controller  {
+  _wasShared = YES;
+  controller.originView = self.view;
+  [controller showInView:self.view animated:YES];
+  [controller release];
+  
+}
+
+- (void)share {
+  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
+                                                                        quote:NO
+                                                                  andDelegate:self];
+  [self openShareView: controller];
+}
+
+- (void)shareQ {
+  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
+                                                                        quote:YES
+                                                                  andDelegate:self];
+  [self openShareView: controller];
+}
+
 - (CommentsPostController *) createCommentsPostController {
-  return nil;
+  CommentsPostController* controller = [[CommentsPostController alloc] initWithPostId:_post.postId
+                                                                          andDelegate:self];
+  return controller;
 }
 
 - (void)comment {
@@ -96,9 +122,8 @@
   [controller release];
 }
 
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:2];
+- (void)setupView {
+  NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:4];
   if (_post.canComment) {
     UIBarButtonItem* commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
                                                                        style:UIBarButtonItemStyleBordered
@@ -110,7 +135,26 @@
     LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
     [buttons addObject:likeButton];
   }
+  UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
+                                                                    style:UIBarButtonItemStyleBordered
+                                                                   target:self
+                                                                   action:@selector(shareQ)]autorelease];
+  [buttons addObject:shareButtonQ];
+  UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(share)]autorelease];
+  [buttons addObject:shareButton];
   [self setToolbarItems:[NSArray arrayWithArray:buttons] animated:NO];
+}
+
+- (void)viewDidLoad {
+  [super viewDidLoad];
+}
+
+- (void)modelDidFinishLoad:(PostModel*)postModel {
+  [super modelDidFinishLoad:postModel];
+  [self setupView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -135,7 +179,9 @@
            didPostText: (NSString*)text
             withResult: (id)result {
   if (_wasShared) {
-    TTOpenURL([Etc toPostIdPath:[result objectForKey:@"id"]]);
+    TTOpenURL([Etc toPostIdPath:[NSString stringWithFormat:@"%@_%@",
+                                 [FacebookJanitor sharedInstance].currentUser.userId, [result objectForKey:@"id"]]
+                       andTitle:@"Shared"]);
   }
   else {
     [self reload];

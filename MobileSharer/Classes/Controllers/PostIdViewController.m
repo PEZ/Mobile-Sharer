@@ -11,10 +11,10 @@
 
 @implementation PostIdViewController
 
-- (id)initWithPostId:(NSString *)postId {
+- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title {
 
   if (self = [self init]) {
-    self.title = @"New post";
+    self.title = title;
     _postId = [postId copy];
   }
   return self;
@@ -25,18 +25,17 @@
   [super dealloc];
 }
 
-- (CommentsPostController *) createCommentsPostController {
-  CommentsPostController* controller = [[CommentsPostController alloc] initWithPostId:_postId
-                                                                          andDelegate:self];
-  return controller;
+- (void)modelDidFinishLoad:(PostModel*)postModel {
+  _post = postModel.post;
+  [self setupView];
+  [super modelDidFinishLoad:postModel];
 }
 
 #pragma mark -
 #pragma mark TTTableViewController
 
 - (void)createModel {
-  self.dataSource = [[[PostDataSource alloc]
-                      initWithPostId:_postId] autorelease];
+  self.dataSource = [[[PostDataSource alloc] initWithPostId:_postId] autorelease];
 }
 
 

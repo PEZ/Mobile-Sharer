@@ -7,8 +7,6 @@
 //
 
 #import "PostViewController.h"
-#import "CommentsPostController.h"
-#import "SharePostController.h"
 
 @implementation PostViewController
 
@@ -22,49 +20,6 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_post);
   [super dealloc];
-}
-
-- (CommentsPostController *) createCommentsPostController {
-  CommentsPostController* controller = [[CommentsPostController alloc] initWithPostId:_post.postId
-                                                                          andDelegate:self];
-  return controller;
-}
-
-- (void) openShareView: (SharePostController *) controller  {
-  _wasShared = YES;
-  controller.originView = self.view;
-  [controller showInView:self.view animated:YES];
-  [controller release];
-
-}
-
-- (void)share {
-  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
-                                                                        quote:NO
-                                                                  andDelegate:self];
-  [self openShareView: controller];
-}
-
-- (void)shareQ {
-  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
-                                                                        quote:YES
-                                                                  andDelegate:self];
-  [self openShareView: controller];
-}
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-  UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
-                                                                   style:UIBarButtonItemStyleBordered
-                                                                  target:self
-                                                                  action:@selector(shareQ)]autorelease];
-  UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
-                                                                   style:UIBarButtonItemStyleBordered
-                                                                  target:self
-                                                                  action:@selector(share)]autorelease];
-  [self setToolbarItems:[[self toolbarItems] arrayByAddingObjectsFromArray:
-                         [NSArray arrayWithObjects:shareButtonQ, shareButton, nil]] animated:NO];
-  //[self setToolbarItems:[NSArray arrayWithObjects:commentButton, shareButton, nil] animated:NO];
 }
 
 #pragma mark -

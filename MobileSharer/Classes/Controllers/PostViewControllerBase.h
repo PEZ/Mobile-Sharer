@@ -32,6 +32,7 @@
 @property (nonatomic, retain)   Post* post;
 
 - (CommentsPostController *) createCommentsPostController;
+- (void)setupView;
 
 
 @end
