@@ -162,7 +162,7 @@
 }
 
 - (TTBoxStyle*)tableMetaText {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, kTableCellSmallMargin, kTableCellSmallMargin, kTableCellSmallMargin) next:
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, 0, kTableCellSmallMargin, kTableCellSmallMargin) next:
           [TTTextStyle styleWithFont:TTSTYLEVAR(tableMetaFont) color:TTSTYLEVAR(tableMetaTextColor) next:
            nil]];
 }
@@ -171,7 +171,7 @@
   return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, -kIconImageWidth -kTableCellSmallMargin, 0, kTableCellSmallMargin)
                              padding:UIEdgeInsetsZero
                              minSize:CGSizeZero
-                            position:TTPositionAbsolute next:nil];
+                            position:TTPositionStatic next:nil];
 }
 
 
