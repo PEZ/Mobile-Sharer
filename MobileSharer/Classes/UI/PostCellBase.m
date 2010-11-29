@@ -10,11 +10,17 @@
 
 @implementation PostCellBase
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
-  if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
-  }
-  return self;
+//- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
+//  if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
+//  }
+//  return self;
+//}
+
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_messageLabel);
+  [super dealloc];
 }
+
 
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural {
   return [NSString stringWithFormat:@"%d %@", count, count == 1 ? singular : plural];

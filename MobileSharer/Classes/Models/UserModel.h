@@ -21,7 +21,7 @@
   id<UserRequestDelegate>  _delegate;
 }
 
-@property (nonatomic, copy)    NSString* graphPath;
+@property (nonatomic, retain)    NSString* graphPath;
 @property (nonatomic, retain)  User* user;
 
 - (id)initWithGraphPath:(NSString*)path andDelegate:(id<UserRequestDelegate>)delegate;

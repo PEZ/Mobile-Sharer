@@ -10,6 +10,7 @@
 #import "FacebookJanitor.h"
 #import "CommentsPostController.h"
 #import "SharePostController.h"
+#import "RegexKitLite.h"
 
 @implementation LikeButton
 
@@ -181,9 +182,14 @@
            didPostText: (NSString*)text
             withResult: (id)result {
   if (_wasShared) {
-    TTOpenURL([Etc toPostIdPath:[NSString stringWithFormat:@"%@_%@",
-                                 [FacebookJanitor sharedInstance].currentUser.userId, [result objectForKey:@"id"]]
-                       andTitle:@"Shared"]);
+    NSString* postId = [result objectForKey:@"id"];
+    if ([postId isMatchedByRegex:@"_"]) {
+      TTOpenURL([Etc toPostIdPath:postId andTitle:@"Shared"]);
+    }
+    else {
+      TTOpenURL([Etc toPostIdPath:[NSString stringWithFormat:@"%@_%@", [FacebookJanitor sharedInstance].currentUser.userId, postId]
+                         andTitle:@"Shared"]);
+    }
   }
   else {
     [self reload];

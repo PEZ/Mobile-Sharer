@@ -14,7 +14,7 @@
   NSArray*   _comments;
 }
 
-@property (nonatomic, copy)       NSString*  postId;
+@property (nonatomic, retain)     NSString*  postId;
 @property (nonatomic, retain)     Post*      post;
 @property (nonatomic, readonly)   NSArray*   comments;
 

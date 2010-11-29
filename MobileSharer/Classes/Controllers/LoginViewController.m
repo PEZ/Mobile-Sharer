@@ -37,7 +37,7 @@
 - (void)updateView {
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
-    NSString* shareItUrl2 = [Etc toPostIdPath:@"152352554796431" andTitle:@"Where ideas come from (TED talk)"];
+    //NSString* shareItUrl2 = [Etc toPostIdPath:@"152352554796431" andTitle:@"Where ideas come from (TED talk)"];
     //NSString* appStoreUrl = [NSString stringWithFormat:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", kAppStoreId];
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
@@ -49,11 +49,10 @@
 4. tap <b>Done</b>\n\n\
 If the post you are sharing already has a message you also want to share then use the <b>“Share”</b> button instead. \
 This will quote the message and attribute it to it's original author.\n\n\
-Please test it by sharing these posts:\n\n\
-• <a href=\"%@\">Mobile Sharer rocks!</a>.\n\
-• <a href=\"%@\">Where ideas come from (TED talk)</a>\n\n\
+Please test it by sharing this post:\n\n\
+<a href=\"%@\">Mobile Sharer rocks!</a> Pretty please? =)\n\n\
 Happy mobile sharing!",
-     html, shareItUrl, shareItUrl2];
+     html, shareItUrl];
     if (_currentUserLoaded) {
       FacebookJanitor* janitor = [FacebookJanitor sharedInstance];
       html = [NSString stringWithFormat:@"<div class=\"userInfo\">You are logged in as: \

@@ -13,7 +13,7 @@
   NSArray*  _posts;
 }
 
-@property (nonatomic, copy)     NSString* feedId;
+@property (nonatomic, retain)     NSString* feedId;
 @property (nonatomic, retain)   NSArray*  posts;
 
 - (id)initWithFeedId:(NSString*)feedId;

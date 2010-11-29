@@ -13,7 +13,7 @@
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>CFBundleIdentifier</key>
-	<string>com.betterthantomorrow.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.betterthantomorrow.mobilesharer</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -34,6 +34,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb139083852806042</string>
+				<string>ms</string>
 			</array>
 		</dict>
 	</array>
