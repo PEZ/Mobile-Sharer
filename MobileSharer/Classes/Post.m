@@ -57,49 +57,11 @@
   TT_RELEASE_SAFELY(_commentCount);
   TT_RELEASE_SAFELY(_html);
   TT_RELEASE_SAFELY(_styledText);
-  NSLog(@"post %@ dealloc", self);
   [super dealloc];
 }
 
 - (id)userInfo {
   return self;
-}
-
-- (id)retain {
-  self = [super retain];
-//  NSLog(@"post %@ retained: %d", self, [self retainCount]);
-  return self;
-}
-
-- (void)release {
-  [super release];
-//  NSLog(@"post %@ released: %d", self, [self retainCount]);
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-  Post *newPost = [[Post allocWithZone:zone] init];
-  newPost.created = [_created copyWithZone: zone];
-  newPost.updated = [_updated copyWithZone: zone];
-  newPost.postId = [_postId copyWithZone: zone];
-  newPost.type = [_type copyWithZone: zone];
-  newPost.fromName = [_fromName copyWithZone: zone];
-  newPost.fromId = [_fromId copyWithZone: zone];
-  newPost.toName = [_toName copyWithZone: zone];
-  newPost.toId = [_toId copyWithZone: zone];
-  newPost.message = [_message copyWithZone: zone];
-  newPost.picture = [_picture copyWithZone: zone];
-  newPost.fromAvatar = [_fromAvatar copyWithZone: zone];
-  newPost.linkCaption = [_link copyWithZone: zone];
-  newPost.linkURL = [_linkURL copyWithZone: zone];
-  newPost.shareURL = [_shareURL copyWithZone: zone];
-  newPost.linkTitle = [_linkTitle copyWithZone: zone];
-  newPost.linkText = [_linkText copyWithZone: zone];
-  newPost.source = [_source copyWithZone: zone];
-  newPost.icon = [_icon copyWithZone: zone];
-  newPost.likes = [_likes copyWithZone: zone];
-  newPost.commentCount = [_commentCount copyWithZone: zone];
-  
-  return newPost;
 }
 
 - (TTStyledText*)styledText {

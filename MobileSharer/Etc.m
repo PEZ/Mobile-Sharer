@@ -15,10 +15,8 @@ CGFloat   kIconImageHeight  = 16;
 
 NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedId:)/(andName:)";
-NSString* kPostPathPrefix = @"ms://post";
-NSString* kPostPath = @"ms://post/(initWithNavigatorURL:)";
-NSString* kPostIdPathPrefix = @"ms://postid";
-NSString* kPostIdPath = @"ms://postid/(initWithPostId:)/(andTitle:)";
+NSString* kPostIdPathPrefix = @"ms://post";
+NSString* kPostIdPath = @"ms://post/(initWithPostId:)/(andTitle:)";
 NSString* kAppLoginURLPath = @"ms://login";
 NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = @"ms://comment";
@@ -48,21 +46,11 @@ NSString* kAppStoreId = @"406870483";
                    kNavPathPrefix,
                    feedId,
                    [self urlEncode:name]];
-  //NSLog(@"%@", url);
-  return url;
-}
-
-+ (NSString*) toPostPath:(Post*)post {
-  NSString* url = [NSString stringWithFormat:@"%@/%@",
-                   kPostPathPrefix,
-                   post.postId];
-  //NSLog(@"%@", url);
   return url;
 }
 
 + (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title {
   NSString* url = [NSString stringWithFormat:@"%@/%@/%@", kPostIdPathPrefix, postId, [self urlEncode:title]];
-  //NSLog(@"%@", url);
   return url;
 }
 

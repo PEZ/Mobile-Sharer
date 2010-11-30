@@ -20,7 +20,7 @@
     self.backgroundColor = RGBCOLOR(216, 221, 231);
     _infoLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 0)];
     _loginLogoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    _showFeedButton = [[TTButton buttonWithStyle:@"forwardButton:" title:@"My Feed"] retain];
+    _showFeedButton = [[TTButton buttonWithStyle:@"forwardButton:" title:@"Updates"] retain];
     [_showFeedButton sizeToFit];
     [self addSubview:_infoLabel];
   }

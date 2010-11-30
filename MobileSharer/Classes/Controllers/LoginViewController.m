@@ -23,7 +23,7 @@
 }
 
 - (void) showFeed {
-  TTOpenURL([Etc toFeedURLPath:@"me" name:@"My Feed"]);
+  TTOpenURL([Etc toFeedURLPath:@"me" name:@"Updates"]);
 }
 
 - (void)loadView {
@@ -50,7 +50,7 @@
 If the post you are sharing already has a message you also want to share then use the <b>“Share”</b> button instead. \
 This will quote the message and attribute it to it's original author.\n\n\
 Please test it by sharing this post:\n\n\
-<a href=\"%@\">Mobile Sharer rocks!</a> Pretty please? =)\n\n\
+<a href=\"%@\">Mobile Sharer rocks!</a>\n\n\
 Happy mobile sharing!",
      html, shareItUrl];
     if (_currentUserLoaded) {
@@ -72,7 +72,7 @@ Happy mobile sharing!",
 Welcome to Mobile Sharer!\n\n\
 To be able to help you follow your Facebook feed and share links Mobile Sharer needs your permission. Please \
 click the login button and grant it.\n\n\
-Rest assured Mobile Sharer will never post in your name without you telling it to. We hope you will use Mobile sharer to tell your \
+Mobile Sharer will never post in your name without you telling it to. Hopefull you will use Mobile sharer to tell your \
 friends you are a happy user of the app anyway. Please do!\n\n\
 Read reviews, ask questions, suggest features, whatever on the \
 <a href=\"http://www.facebook.com/apps/application.php?id=139083852806042\">Mobile Sharer Facebook page.</a> \

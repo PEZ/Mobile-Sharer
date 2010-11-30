@@ -16,7 +16,6 @@ extern CGFloat   kIconImageHeight;
 extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;
 extern NSString* kPostPathPrefix;
-extern NSString* kPostPath;
 extern NSString* kPostIdPathPrefix;
 extern NSString* kPostIdPath;
 extern NSString* kAppLoginURLPath;
@@ -32,7 +31,6 @@ extern NSString* kAppStoreId;
 + (NSString*) urlEncode:(NSString*)unencodedString;
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
-+ (NSString *) toPostPath:(Post*)post;
 + (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title;
 
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key;

@@ -45,10 +45,9 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
-  Post* postItem = [_postModel.post copy];
-  postItem.URL = nil;
-  [items addObject:postItem];
-  if ([postItem.commentCount intValue] > [_postModel.comments count]) {
+  _postModel.post.URL = nil;
+  [items addObject:_postModel.post];
+  if ([_postModel.post.commentCount intValue] > [_postModel.comments count]) {
     [items addObject:[TTTableMoreButton itemWithText:@"Load earlier comments..."]];
   }
   for (Comment* comment in _postModel.comments) {

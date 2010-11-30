@@ -3,8 +3,8 @@
 #import "DefaultStyleSheet.h"
 #import "FeedViewController.h"
 #import "PostViewController.h"
-#import "PostIdViewController.h"
 #import "LoginViewController.h"
+#import "WebController.h"
 
 
 @implementation AppDelegate
@@ -17,10 +17,9 @@
   
   TTURLMap* map = navigator.URLMap;
   
-  [map from:@"*" toViewController:[TTWebController class]];
+  [map from:@"*" toViewController:[WebController class]];
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
-  [map from:kPostPath toViewController:[PostViewController class]];
-  [map from:kPostIdPath toViewController:[PostIdViewController class]];
+  [map from:kPostIdPath toViewController:[PostViewController class]];
   [map from:kAppLoginURLPath toViewController:[LoginViewController class]];
   //navigator.persistenceMode = TTNavigatorPersistenceModeAll;
   if (![navigator restoreViewControllers]) {
