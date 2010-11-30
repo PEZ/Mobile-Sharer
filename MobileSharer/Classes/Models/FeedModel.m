@@ -39,7 +39,7 @@
       fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
     }
     
-    [[self createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork] send]; //TODO: use cachePolicy arg
+    [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
   }
 }
 
@@ -64,7 +64,7 @@
   TT_RELEASE_SAFELY(_posts);
 
   for (NSDictionary* entry in entries) {
-    [posts addObject:[self createPostFromEntry: entry]];
+    [posts addObject:[[FacebookModel createPostFromEntry: entry] autorelease]];
   }
   _posts = posts;
 

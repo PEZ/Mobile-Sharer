@@ -15,7 +15,7 @@
 - (void)userRequestDidFinishLoad:(UserModel*)userModel;
 @end
 
-@interface UserModel : FacebookModel {
+@interface UserModel : TTURLRequestModel {
   NSString*                _graphPath;
   User*                    _user;
   id<UserRequestDelegate>  _delegate;

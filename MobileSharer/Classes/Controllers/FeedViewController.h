@@ -10,7 +10,7 @@
   NSString* _feedId;
 }
 
-@property (nonatomic, copy)   NSString* feedId;
+@property (nonatomic, retain)   NSString* feedId;
 
 - (id)initWithFBFeedId:(NSString *)feedId andName:(NSString *)name;
 

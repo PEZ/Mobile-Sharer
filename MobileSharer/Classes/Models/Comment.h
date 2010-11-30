@@ -17,9 +17,9 @@
 
 @property (nonatomic, retain) NSDate*   created;
 @property (nonatomic, retain) NSString* commentId;
-@property (nonatomic, copy)   NSString* fromId;
-@property (nonatomic, copy)   NSString* fromName;
-@property (nonatomic, copy)   NSString* fromAvatar;
-@property (nonatomic, copy)   NSString* message;
+@property (nonatomic, retain) NSString* fromId;
+@property (nonatomic, retain) NSString* fromName;
+@property (nonatomic, retain) NSString* fromAvatar;
+@property (nonatomic, retain) NSString* message;
 
 @end

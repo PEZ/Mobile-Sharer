@@ -13,7 +13,6 @@
 
 @interface PostDataSource : TTListDataSource {
   PostModel* _postModel;
-  Post*      _postItem;
 }
 
 - (id)initWithPost:(Post*)post;

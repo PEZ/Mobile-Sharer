@@ -12,7 +12,7 @@
 
 @implementation FacebookModel
 
-- (NSString*)urlFromURL:(NSString*)url {
++ (NSString*)urlFromURL:(NSString*)url {
   if (url) {
     NSString* pagesRegex = @"^http://www.facebook.com/pages/([^/]+)/([0-9]+)";
     if ([url stringByMatching:pagesRegex]) {
@@ -28,7 +28,7 @@
   return url;
 }
 
-- (Post*)createPostFromEntry:(NSDictionary *)entry {
++ (Post*)createPostFromEntry:(NSDictionary *)entry {
   Post* post = [[Post alloc] init];
   
   NSDate* date = [[FacebookJanitor dateFormatter] dateFromString:[entry objectForKey:@"created_time"]];
@@ -39,7 +39,7 @@
   if ([entry objectForKey:@"from"] != [NSNull null]) {
     post.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
     post.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
-    post.URL = [Etc toPostPath:post];
+    post.URL = [Etc toPostIdPath:post.postId andTitle:[post.type capitalizedString]];
     post.fromAvatar = [FacebookJanitor avatarForId:post.fromId];
   }
   else {
@@ -78,10 +78,10 @@
   return post;
 }
 
-- (TTURLRequest*)createRequest:(FBRequest*)fbRequest cachePolicy:(TTURLRequestCachePolicy)cachePolicy {
++ (TTURLRequest*)createRequest:(FBRequest*)fbRequest cachePolicy:(TTURLRequestCachePolicy)cachePolicy delegate:(id<TTURLRequestDelegate>)delegate {
   TTURLRequest* request = [TTURLRequest
-                           requestWithURL: [fbRequest getConnectURL]
-                           delegate: self];
+                           requestWithURL:[fbRequest getConnectURL]
+                           delegate:delegate];
   
   request.cachePolicy = cachePolicy;
   request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;

@@ -57,12 +57,23 @@
   TT_RELEASE_SAFELY(_commentCount);
   TT_RELEASE_SAFELY(_html);
   TT_RELEASE_SAFELY(_styledText);
-
+  NSLog(@"post %@ dealloc", self);
   [super dealloc];
 }
 
 - (id)userInfo {
   return self;
+}
+
+- (id)retain {
+  self = [super retain];
+//  NSLog(@"post %@ retained: %d", self, [self retainCount]);
+  return self;
+}
+
+- (void)release {
+  [super release];
+//  NSLog(@"post %@ released: %d", self, [self retainCount]);
 }
 
 - (id)copyWithZone:(NSZone *)zone {

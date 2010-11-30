@@ -12,8 +12,8 @@
   NSString* _about;
 }
 
-@property (nonatomic, copy) NSString* userId;
-@property (nonatomic, copy) NSString* userName;
-@property (nonatomic, copy) NSString* about;
+@property (nonatomic, retain) NSString* userId;
+@property (nonatomic, retain) NSString* userName;
+@property (nonatomic, retain) NSString* about;
 
 @end

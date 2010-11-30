@@ -33,7 +33,6 @@
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_postModel);
-  TT_RELEASE_SAFELY(_postItem);
   
   [super dealloc];
 }
@@ -46,10 +45,10 @@
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
   NSMutableArray* items = [[NSMutableArray alloc] init];
-  _postItem = [_postModel.post copy];
-  _postItem.URL = nil;
-  [items addObject:_postItem];
-  if ([_postItem.commentCount intValue] > [_postModel.comments count]) {
+  Post* postItem = [_postModel.post copy];
+  postItem.URL = nil;
+  [items addObject:postItem];
+  if ([postItem.commentCount intValue] > [_postModel.comments count]) {
     [items addObject:[TTTableMoreButton itemWithText:@"Load earlier comments..."]];
   }
   for (Comment* comment in _postModel.comments) {

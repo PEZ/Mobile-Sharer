@@ -12,7 +12,7 @@
   NSString* _postId;
 }
 
-@property (nonatomic, copy) NSString* postId;
+@property (nonatomic, retain) NSString* postId;
 
 - (id)initWithPostId:(NSString *)postId andDelegate:(id<TTPostControllerDelegate>)delegate;
 

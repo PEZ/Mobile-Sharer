@@ -66,7 +66,7 @@ BOOL commentsEmpty(NSArray* comments) {
       fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
     }
     
-    [[self createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork] send]; //TODO: use cachePolicy arg
+    [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
   }
 }
 
@@ -78,12 +78,12 @@ BOOL commentsEmpty(NSArray* comments) {
   
   NSArray* entries;
   
-  if ([feed objectForKey:@"data"] != nil) {
+  if (_post) {
     entries = [feed objectForKey:@"data"];
   }
   else {
     entries = [[feed objectForKey:@"comments"] objectForKey:@"data"];
-    _post = [[self createPostFromEntry:feed] retain];
+    _post = [[FacebookModel createPostFromEntry:feed] retain];
   }
 
   NSMutableArray* comments;
