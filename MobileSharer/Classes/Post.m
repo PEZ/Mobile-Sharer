@@ -64,6 +64,18 @@
   return self;
 }
 
+/*
+- (id)retain {
+  NSLog(@"post %@ retained", self);
+  return [super retain];
+}
+
+- (void)release {
+  NSLog(@"post %@ released", self);
+  [super release];
+}
+*/
+
 - (TTStyledText*)styledText {
   if (!_styledText) {
     _styledText = [[TTStyledText textFromXHTML:_html lineBreaks:YES URLs:(self.URL == nil)] retain];

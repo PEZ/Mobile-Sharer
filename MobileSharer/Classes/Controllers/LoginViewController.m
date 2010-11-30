@@ -108,7 +108,6 @@ Read reviews, ask questions, suggest features, whatever on the \
 #pragma mark FBJSessionDelegate
 
 -(void) fbjDidLogin {
-  NSLog(@"Did login");
   [self updateView];
   [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
   [self showFeed];
@@ -116,7 +115,6 @@ Read reviews, ask questions, suggest features, whatever on the \
 
 
 -(void) fbjDidLogout {
-  NSLog(@"Did logout");
   _currentUserLoaded = NO;
   [self updateView];
 }

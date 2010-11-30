@@ -23,7 +23,7 @@
 }
 
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
-  NSLog(@"Posting failed: %@", error);
+  DLog(@"Posting failed: %@", error);
   [self failWithError:error];
 }
 

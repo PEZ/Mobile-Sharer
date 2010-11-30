@@ -93,11 +93,11 @@
 }
 
 - (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-  NSLog(@"request failed: %@", [error localizedDescription]);
+  DLog(@"request failed: %@", [error localizedDescription]);
 }
 
 - (void)requestDidCancelLoad:(TTURLRequest*)request {
-  NSLog(@"request cancelled");
+  DLog(@"request cancelled");
 }
 
 @end

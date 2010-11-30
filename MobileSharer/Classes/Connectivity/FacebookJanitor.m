@@ -148,7 +148,6 @@ static NSString* kAppId = @"139083852806042";
  * Callback for facebook login
  */ 
 -(void) fbDidLogin {
-  NSLog(@"Logged in");
   _isLoggedIn = YES;
   [self saveSession];
   [_sessionDelegate fbjDidLogin];
@@ -158,7 +157,6 @@ static NSString* kAppId = @"139083852806042";
  * Callback for facebook did not login
  */
 - (void)fbDidNotLogin:(BOOL)cancelled {
-  NSLog(@"did not login");
   _isLoggedIn = NO;
   [_sessionDelegate fbjDidNotLogin:cancelled];
 }
@@ -170,7 +168,6 @@ static NSString* kAppId = @"139083852806042";
   _isLoggedIn = NO;
   [self saveSession];
   [_sessionDelegate fbjDidLogout];
-  NSLog(@"Logged out");
 }
 
 
@@ -181,14 +178,14 @@ static NSString* kAppId = @"139083852806042";
  * Callback when a request receives Response
  */ 
 - (void)request:(FBRequest*)request didReceiveResponse:(NSURLResponse*)response{
-  NSLog(@"received response");
+  DLog(@"received response");
 };
 
 /**
  * Called when an error prevents the request from completing successfully.
  */
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error{
-  NSLog(@"%@", [error localizedDescription]);
+  DLog(@"%@", [error localizedDescription]);
 };
 
 /**
@@ -214,7 +211,7 @@ static NSString* kAppId = @"139083852806042";
  * Called when a UIServer Dialog successfully return
  */
 - (void)dialogDidComplete:(FBDialog*)dialog{
-  NSLog(@"publish successfully");
+  DLog(@"publish successfully");
 }
 
 @end

@@ -53,7 +53,7 @@
 
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
   self.enabled = YES;
-  NSLog(@"Failed posting like: %@", error);
+  DLog(@"Failed posting like: %@", error);
   TTAlert([NSString stringWithFormat:@"Updating likes failed: %@", [error localizedDescription]]);
 }
 
@@ -222,7 +222,7 @@
 }
 
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
-  NSLog(@"Failed posting comment: %@", error);
+  DLog(@"Failed posting comment: %@", error);
   TTAlert([NSString stringWithFormat:@"Posting comment failed: %@", [error localizedDescription]]);
 }
 
