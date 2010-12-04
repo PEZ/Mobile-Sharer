@@ -30,7 +30,6 @@
 @synthesize icon              = _icon;
 @synthesize likes             = _likes;
 @synthesize commentCount      = _commentCount;
-@synthesize html              = _html;
 @synthesize canComment        = _canComment;
 @synthesize canLike           = _canLike;
 
@@ -55,13 +54,7 @@
   TT_RELEASE_SAFELY(_icon);
   TT_RELEASE_SAFELY(_likes);
   TT_RELEASE_SAFELY(_commentCount);
-  TT_RELEASE_SAFELY(_html);
-  TT_RELEASE_SAFELY(_styledText);
   [super dealloc];
-}
-
-- (id)userInfo {
-  return self;
 }
 
 /*
@@ -75,12 +68,5 @@
   [super release];
 }
 */
-
-- (TTStyledText*)styledText {
-  if (!_styledText) {
-    _styledText = [[TTStyledText textFromXHTML:_html lineBreaks:YES URLs:(self.URL == nil)] retain];
-  }
-  return _styledText;
-}
 
 @end

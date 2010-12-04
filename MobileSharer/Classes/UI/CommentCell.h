@@ -14,24 +14,10 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-// UI
-#import "Three20UI/UIViewAdditions.h"
-#import "Three20Style/UIFontAdditions.h"
-
-// Core
-#import "Three20Core/NSDateAdditions.h"
-#import "Three20UI/TTTableImageItemCell.h"
+#import "StyledTextCell.h"
 #import "Comment.h"
 
-@interface CommentCell : TTTableImageItemCell {
-  UILabel*      _titleLabel;
-  UILabel*      _timestampLabel;
+@interface CommentCell : StyledTextCell {
 }
-
-@property (nonatomic, readonly, retain) UILabel*      titleLabel;
-@property (nonatomic, readonly, retain) UILabel*      timestampLabel;
-
-+ (CGFloat)heightForText:(NSString*)_text withFont:(UIFont*)_font andWidth:(CGFloat)_width;
-+ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView;
 
 @end

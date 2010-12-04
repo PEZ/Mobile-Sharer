@@ -6,7 +6,9 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-@interface Post : TTTableLinkedItem {
+#import "StyledTableDataItem.h"
+
+@interface Post : StyledTableDataItem {
   NSDate*   _created;
   NSDate*   _updated;
   NSString* _postId;
@@ -27,8 +29,6 @@
   NSString* _icon;
   NSNumber* _likes;
   NSNumber* _commentCount;
-  NSString* _html;
-  TTStyledText* _styledText;
   BOOL      _canComment;
   BOOL      _canLike;
 }
@@ -54,8 +54,6 @@
 @property (nonatomic, retain) NSNumber* likes;
 @property (nonatomic, retain) NSNumber* commentCount;
 @property (nonatomic, readonly, retain) Post*     userInfo;
-@property (nonatomic, retain) NSString* html;
-@property (nonatomic, readonly, retain) TTStyledText* styledText;
 @property (nonatomic)         BOOL      canComment;
 @property (nonatomic)         BOOL      canLike;
 

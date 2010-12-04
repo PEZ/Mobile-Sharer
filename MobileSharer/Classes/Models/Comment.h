@@ -6,13 +6,16 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-@interface Comment : TTTableImageItem {
+#import "StyledTableDataItem.h"
+
+@interface Comment : StyledTableDataItem {
   NSDate*   _created;
   NSString* _commentId;
   NSString* _fromId;
   NSString* _fromName;
   NSString* _fromAvatar;
   NSString* _message;
+  NSNumber* _likes;
 }
 
 @property (nonatomic, retain) NSDate*   created;
@@ -21,5 +24,6 @@
 @property (nonatomic, retain) NSString* fromName;
 @property (nonatomic, retain) NSString* fromAvatar;
 @property (nonatomic, retain) NSString* message;
+@property (nonatomic, retain) NSNumber* likes;
 
 @end

@@ -46,8 +46,9 @@ BOOL commentsEmpty(NSArray* comments) {
     FBRequest* fbRequest;
     NSString* path;
     if (_post) {
-      path = [NSString stringWithFormat:@"%@/comments", _post.postId];
+      path = [NSString stringWithFormat:@"%@", _post.postId];
       if (more && !commentsEmpty(_comments)) {
+        path = [NSString stringWithFormat:@"%@/comments", path];
         NSString* offset = [NSString stringWithFormat:@"%@",
                             [NSNumber numberWithDouble:[_comments count]]];
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:offset forKey:@"offset"];
@@ -77,8 +78,10 @@ BOOL commentsEmpty(NSArray* comments) {
   NSDictionary* feed = response.rootObject;
   
   NSArray* entries;
+
+  BOOL isCommentsRequest = ([[request urlPath] rangeOfString:@"/comments"].location != NSNotFound);
   
-  if (_post) {
+  if (isCommentsRequest) {
     entries = [feed objectForKey:@"data"];
   }
   else {
@@ -88,9 +91,8 @@ BOOL commentsEmpty(NSArray* comments) {
 
   NSMutableArray* comments;
 
-  BOOL more = ([[request urlPath] rangeOfString:@"offset="].location != NSNotFound);
   NSMutableArray* oldComments;
-  if (more && !commentsEmpty(_comments)) {
+  if (isCommentsRequest && !commentsEmpty(_comments)) {
     oldComments = [[NSMutableArray arrayWithArray:_comments] retain];
   }
   else {
@@ -108,6 +110,7 @@ BOOL commentsEmpty(NSArray* comments) {
     comment.created = date;
     comment.commentId = [entry objectForKey:@"id"];
     comment.message = [entry objectForKey:@"message"];
+    comment.likes = [entry objectForKey:@"likes"];
     if ([entry objectForKey:@"from"] != [NSNull null]) {
       comment.fromName = [[entry objectForKey:@"from"] objectForKey:@"name"];
       comment.fromId = [[entry objectForKey:@"from"] objectForKey:@"id"];
@@ -121,7 +124,7 @@ BOOL commentsEmpty(NSArray* comments) {
     [comments addObject:comment];
     TT_RELEASE_SAFELY(comment);
   }
-  if (more) {
+  if (isCommentsRequest) {
     [comments addObjectsFromArray:oldComments];
   }
     

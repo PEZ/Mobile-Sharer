@@ -16,6 +16,7 @@
 @synthesize fromName          = _fromName;
 @synthesize fromAvatar        = _fromAvatar;
 @synthesize message           = _message;
+@synthesize likes             = _likes;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_created);
@@ -24,6 +25,7 @@
   TT_RELEASE_SAFELY(_fromName);
   TT_RELEASE_SAFELY(_fromAvatar);
   TT_RELEASE_SAFELY(_message);
+  TT_RELEASE_SAFELY(_likes);
   
   [super dealloc];
 }

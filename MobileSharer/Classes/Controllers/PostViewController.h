@@ -23,7 +23,6 @@
 
 @end
 
-
 @interface PostViewController : TTTableViewController <TTPostControllerDelegate, FBRequestDelegate> {
   NSString* _postId;
   BOOL _wasShared;

@@ -61,14 +61,12 @@
   self.enabled = YES;
   self.title = _liked ? @"Unlike" : @"Like";
   self.action = _liked ? @selector(unLikeIt) : @selector(likeIt);
-  if (_controller != nil && _controller.post != nil) {
-    _controller.post.likes = [NSNumber numberWithInt:[_controller.post.likes intValue] + (_liked ? 1 : -1)];
+  if (_controller != nil) {
     [_controller reload];
   }
 }
 
 @end
-
 
 @implementation PostViewController
 
