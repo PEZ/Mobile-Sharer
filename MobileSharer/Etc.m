@@ -34,11 +34,11 @@ NSString* kAppStoreId = @"406870483";
 }
 
 + (NSString*) xmlEscape:(NSString*)unescapedString {
-  return [[[[unescapedString
+  return [[[unescapedString
              stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]
             stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"]
            stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"]
-          stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"];
+  ;//stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"];
 }
 
 + (NSString*) toFeedURLPath:(NSString*)feedId name:(NSString *)name {

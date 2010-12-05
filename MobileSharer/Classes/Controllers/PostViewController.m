@@ -133,11 +133,13 @@
       LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
       [buttons addObject:likeButton];
     }
-    UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
-                                                                      style:UIBarButtonItemStyleBordered
-                                                                     target:self
-                                                                     action:@selector(shareQ)]autorelease];
-    [buttons addObject:shareButtonQ];
+    if (_post.message) {
+      UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
+                                                                        style:UIBarButtonItemStyleBordered
+                                                                       target:self
+                                                                       action:@selector(shareQ)]autorelease];
+      [buttons addObject:shareButtonQ];
+    }
     UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
