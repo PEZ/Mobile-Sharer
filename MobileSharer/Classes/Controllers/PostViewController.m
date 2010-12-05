@@ -25,11 +25,6 @@
   return self;
 }
 
-- (void)dealloc {
-  //TT_RELEASE_SAFELY(_controller);
-  [super dealloc];
-}
-
 - (void) updateLikes:(NSString*)method  {
   NSString* path = [NSString stringWithFormat:@"%@/likes", _controller.post.postId];
   Facebook* fb = [FacebookJanitor sharedInstance].facebook;

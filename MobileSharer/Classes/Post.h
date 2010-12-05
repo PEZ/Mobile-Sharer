@@ -53,7 +53,6 @@
 @property (nonatomic, retain)   NSString* icon;
 @property (nonatomic, retain) NSNumber* likes;
 @property (nonatomic, retain) NSNumber* commentCount;
-@property (nonatomic, readonly, retain) Post*     userInfo;
 @property (nonatomic)         BOOL      canComment;
 @property (nonatomic)         BOOL      canLike;
 

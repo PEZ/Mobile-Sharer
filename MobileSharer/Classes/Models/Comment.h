@@ -16,6 +16,7 @@
   NSString* _fromAvatar;
   NSString* _message;
   NSNumber* _likes;
+  BOOL      _isLiked;
 }
 
 @property (nonatomic, retain) NSDate*   created;
@@ -25,5 +26,6 @@
 @property (nonatomic, retain) NSString* fromAvatar;
 @property (nonatomic, retain) NSString* message;
 @property (nonatomic, retain) NSNumber* likes;
+@property (nonatomic)         BOOL      isLiked;
 
 @end

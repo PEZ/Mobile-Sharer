@@ -37,7 +37,16 @@
 #pragma mark -
 #pragma mark buttons
 
-- (TTStyle*)defaultButton:(UIControlState)state {
+- (UIFont*)commentLikeButtonFont {
+  return [UIFont systemFontOfSize:12];
+}
+
+- (TTTextStyle*)commentLikeButton {
+  return [TTTextStyle styleWithFont:TTSTYLEVAR(commentLikeButtonFont) color:TTSTYLEVAR(linkTextColor) next:
+           nil];
+}
+
+- (TTShapeStyle*)defaultButton:(UIControlState)state {
   if (state == UIControlStateNormal) {
     return
     [TTShapeStyle styleWithShape:[TTRoundedRectangleShape shapeWithRadius:8] next:
@@ -162,7 +171,7 @@
 }
 
 - (TTBoxStyle*)tableMetaText {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, 0, kTableCellSmallMargin, kTableCellSmallMargin) next:
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, 0, 0, kTableCellSmallMargin) next:
           [TTTextStyle styleWithFont:TTSTYLEVAR(tableMetaFont) color:TTSTYLEVAR(tableMetaTextColor) next:
            nil]];
 }

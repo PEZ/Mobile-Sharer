@@ -36,7 +36,8 @@
 - (void) logout:(id<FBJSessionDelegate>)delegate;
 - (void) getCurrentUserInfo:(id<UserRequestDelegate>)delegate;
 - (BOOL) isLoggedIn;
-
+- (void)likeCommentWithId:(NSString*)commentId delegate:(id<FBRequestDelegate>)delegate;
+- (void)unLikeCommentWithId:(NSString*)commentId delegate:(id<FBRequestDelegate>)delegate;
 @end
 
 @protocol FBJSessionDelegate <NSObject>

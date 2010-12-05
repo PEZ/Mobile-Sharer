@@ -11,7 +11,7 @@
 
 @implementation StyledTableDataItem
 
-@synthesize html              = _html;
+@synthesize html = _html;
 
 
 - (void)dealloc {
@@ -27,4 +27,15 @@
   return _styledText;
 }
 
+- (void)setHtml:(NSString *)htmlText {
+  if (_html) {
+    TT_RELEASE_SAFELY(_html);
+  }
+  _html = [htmlText retain];
+  if (_styledText) {
+    TT_RELEASE_SAFELY(_styledText);
+  }
+  _styledText = [[TTStyledText textFromXHTML:_html lineBreaks:YES URLs:(self.URL == nil)] retain];
+}  
+  
 @end

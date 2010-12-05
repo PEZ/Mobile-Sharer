@@ -17,6 +17,7 @@
 @synthesize fromAvatar        = _fromAvatar;
 @synthesize message           = _message;
 @synthesize likes             = _likes;
+@synthesize isLiked           = _isLiked;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_created);

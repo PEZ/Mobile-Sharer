@@ -17,7 +17,25 @@
 #import "StyledTextCell.h"
 #import "Comment.h"
 
-@interface CommentCell : StyledTextCell {
+@class CommentCell;
+
+@interface CommentLikeButton : TTButton <FBRequestDelegate> {
+  CommentCell* _cell;
 }
+
+- (void)likeIt;
+- (void)unLikeIt;
+
+@end
+
+@interface CommentCell : StyledTextCell {
+  TTButton* _likeButton;
+}
+
+@property (nonatomic, readonly, retain) TTButton* likeButton;
+@property (nonatomic, readonly, retain) Comment* comment;
+
++ (void) setMessageHTMLRegardless:(Comment*)item;
+- (void) updateMessageLabel;
 
 @end

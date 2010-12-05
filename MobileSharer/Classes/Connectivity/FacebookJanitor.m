@@ -74,6 +74,15 @@ static NSString* kAppId = @"139083852806042";
 #pragma mark -
 #pragma mark Janitor tasks
 
+
++ (NSString*)avatarForId:(NSString*)fbId {
+  return [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", fbId];
+}
+
++ (NSString*)getAppId {
+  return kAppId;
+}
+
 - (BOOL)isLoggedIn {
   return [_facebook isSessionValid];
 }
@@ -112,12 +121,22 @@ static NSString* kAppId = @"139083852806042";
   return _currentUserModel.user;
 }
 
-+ (NSString*)avatarForId:(NSString*)fbId {
-  return [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square", fbId];
+- (NSString*)graphPathForCommentLikes:(NSString*)commentId {
+  return [NSString stringWithFormat:@"%@/likes", commentId];
 }
 
-+ (NSString*)getAppId {
-  return kAppId;
+- (void)likeCommentWithId:(NSString*)commentId delegate:(id<FBRequestDelegate>)delegate {
+  [_facebook requestWithGraphPath:[self graphPathForCommentLikes:commentId]
+                        andParams:[NSMutableDictionary dictionaryWithCapacity:0]
+                    andHttpMethod:@"POST"
+                      andDelegate:delegate];
+}
+
+- (void)unLikeCommentWithId:(NSString*)commentId delegate:(id<FBRequestDelegate>)delegate {
+  [_facebook requestWithGraphPath:[self graphPathForCommentLikes:commentId]
+                        andParams:[NSMutableDictionary dictionaryWithCapacity:0]
+                    andHttpMethod:@"DELETE"
+                      andDelegate:delegate];
 }
 
 #pragma mark -
