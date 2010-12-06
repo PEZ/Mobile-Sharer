@@ -83,7 +83,7 @@
 }
 
 
-- (void) openShareView: (SharePostController *) controller  {
+- (void) openShareView:(SharePostController*)controller  {
   _wasShared = YES;
   controller.originView = self.view;
   [controller showInView:self.view animated:YES];

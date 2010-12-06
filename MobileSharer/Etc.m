@@ -7,6 +7,7 @@
 //
 
 #import "Etc.h"
+#import "FacebookJanitor.h"
 
 CGFloat   kAvatarImageWidth   = 35;
 CGFloat   kAvatarImageHeight  = 35;
@@ -49,10 +50,17 @@ NSString* kAppStoreId = @"406870483";
   return url;
 }
 
++ (NSString*) toPhotoURLPath:(NSString*)photoId {
+  return [[[FacebookJanitor sharedInstance].facebook
+            getRequestWithGraphPath:[NSString stringWithFormat:@"%@/picture", photoId] andDelegate:nil] getConnectURL];
+}
+
 + (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title {
   NSString* url = [NSString stringWithFormat:@"%@/%@/%@", kPostIdPathPrefix, postId, [self urlEncode:title]];
   return url;
 }
+
+
 
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key {
   if (object) {

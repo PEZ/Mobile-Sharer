@@ -24,6 +24,11 @@
       NSArray* name = [[url arrayOfCaptureComponentsMatchedByRegex:namedFeedRegex] objectAtIndex:0];
       return [Etc toFeedURLPath:[name objectAtIndex:1] name:[name objectAtIndex:1]];
     }
+    NSString* photoRegex = @"http://www.facebook.com/photo.php[?].*?fbid=([0-9]+)";
+    if ([url stringByMatching:photoRegex]) {
+      NSString* photoId = [[[url arrayOfCaptureComponentsMatchedByRegex:photoRegex] objectAtIndex:0] objectAtIndex:1];
+      return [Etc toPhotoURLPath:photoId];
+    }
   }    
   return url;
 }

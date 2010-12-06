@@ -31,7 +31,7 @@
 @property (nonatomic, retain)   Post* post;
 
 - (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title;
-- (CommentsPostController *) createCommentsPostController;
+- (CommentsPostController*)createCommentsPostController;
 - (void)setupView;
 
 

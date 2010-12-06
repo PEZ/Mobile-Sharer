@@ -9,7 +9,6 @@
 #import "Three20UI/TTPostController.h"
 #import "FacebookJanitor.h"
 
-
 @interface PostController : TTPostController <FBRequestDelegate> {
 
 }

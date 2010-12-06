@@ -57,16 +57,4 @@
   [super dealloc];
 }
 
-/*
-- (id)retain {
-  NSLog(@"post %@ retained", self);
-  return [super retain];
-}
-
-- (void)release {
-  NSLog(@"post %@ released", self);
-  [super release];
-}
-*/
-
 @end

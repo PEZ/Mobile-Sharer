@@ -31,6 +31,7 @@ extern NSString* kAppStoreId;
 + (NSString*) urlEncode:(NSString*)unencodedString;
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
++ (NSString *) toPhotoURLPath:(NSString *)photoId;
 + (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title;
 
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key;
