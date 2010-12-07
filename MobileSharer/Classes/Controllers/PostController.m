@@ -12,14 +12,25 @@
 @implementation PostController
 
 #pragma mark -
+#pragma mark TTPostController
+
+- (NSString*)titleForError:(NSError*)error {
+  return [NSString stringWithFormat:@"Posting failed: %@", [error localizedDescription]];
+}
+
+- (NSString*)titleForActivity {
+  return @"Posting ...";
+}
+
+#pragma mark -
 #pragma mark FBRequestDelegate
 
 - (void)requestLoading:(FBRequest*)request {
-  //NSLog(@"request loading");
+  //DLog(@"request loading");
 }
 
 - (void)request:(FBRequest*)request didReceiveResponse:(NSURLResponse*)response {
-  //NSLog(@"response recieved: %@", response);
+  //DLog(@"response recieved: %@", response);
 }
 
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error {

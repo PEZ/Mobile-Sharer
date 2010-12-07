@@ -27,7 +27,7 @@ static NSString* kAppId = @"139083852806042";
 - (id) init {
   if (self = [super init]) {
     _permissions =  [[NSArray arrayWithObjects: 
-                      @"read_stream", @"publish_stream", @"offline_access", nil] retain];
+                      @"read_stream", @"publish_stream", @"offline_access", @"friends_photos", @"user_photos", nil] retain];
     _facebook = [[Facebook alloc] init];
     [self createDateFormatter];
     [self restoreSession];

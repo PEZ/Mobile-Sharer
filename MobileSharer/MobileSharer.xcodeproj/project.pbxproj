@@ -35,6 +35,7 @@
 		323B93D5128559560097E308 /* PostDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D4128559560097E308 /* PostDataSource.m */; };
 		323B93D812855A7E0097E308 /* PostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B93D712855A7E0097E308 /* PostModel.m */; };
 		32425F621291EAC90017A401 /* LoadMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32425F611291EAC90017A401 /* LoadMoreCell.m */; };
+		3242B04F12AECFCC0003F7F3 /* ComposePostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3242B04E12AECFCC0003F7F3 /* ComposePostController.m */; };
 		324A051812A079DC008BCD8F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 324A051712A079DC008BCD8F /* Default.png */; };
 		32633DB51289CFA900D9621E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32633DB41289CFA900D9621E /* CommentCell.m */; };
 		3288C8D9126E216300BF1E3C /* Etc.m in Sources */ = {isa = PBXBuildFile; fileRef = 321F3BCE126CF673008473C8 /* Etc.m */; };
@@ -532,6 +533,8 @@
 		323B93D712855A7E0097E308 /* PostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostModel.m; sourceTree = "<group>"; };
 		32425F601291EAC90017A401 /* LoadMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreCell.h; sourceTree = "<group>"; };
 		32425F611291EAC90017A401 /* LoadMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreCell.m; sourceTree = "<group>"; };
+		3242B04D12AECFCC0003F7F3 /* ComposePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposePostController.h; sourceTree = "<group>"; };
+		3242B04E12AECFCC0003F7F3 /* ComposePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposePostController.m; sourceTree = "<group>"; };
 		324A051712A079DC008BCD8F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		32633DB31289CFA900D9621E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		32633DB41289CFA900D9621E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
@@ -862,6 +865,8 @@
 				322DD445128F1D0400E7D1DA /* PostController.m */,
 				32034E9212A5AC4000879C06 /* WebController.h */,
 				32034E9312A5AC4000879C06 /* WebController.m */,
+				3242B04D12AECFCC0003F7F3 /* ComposePostController.h */,
+				3242B04E12AECFCC0003F7F3 /* ComposePostController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1471,6 +1476,7 @@
 				32034E9412A5AC4000879C06 /* WebController.m in Sources */,
 				32329AAC12AA516100346FB5 /* StyledTableDataItem.m in Sources */,
 				32906DA912AA56B7008C08B1 /* StyledTextCell.m in Sources */,
+				3242B04F12AECFCC0003F7F3 /* ComposePostController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

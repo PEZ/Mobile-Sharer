@@ -38,22 +38,4 @@
   }
 }
 
-#pragma mark -
-#pragma mark TTPostControllerDelegate
-
-- (NSString*)titleForError:(NSError*)error {
-  return [NSString stringWithFormat:@"Posting comment failed: %@", [error localizedDescription]];
-}
-
-- (NSString*)titleForActivity {
-  return @"Posting comment...";
-}
-
-#pragma mark -
-#pragma mark FBRequestDelegate
-
-- (void)request:(FBRequest*)request didReceiveResponse:(NSURLResponse*)response {
-  //NSLog(@"response recieved: %@", response);
-}
-
 @end

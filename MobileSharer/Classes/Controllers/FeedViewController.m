@@ -8,6 +8,7 @@
 
 #import "FeedViewController.h"
 #import "FeedDataSource.h"
+#import "RegexKitLite.h"
 
 @implementation FeedViewController
 
@@ -32,6 +33,27 @@
   return self;
 }
 
+- (void)compose {
+  ComposePostController* controller = [[ComposePostController alloc]
+                                       initWithFeedId:_feedId
+                                       andLink:@""
+                                       andTitle:[_feedId isEqual:@"me"] ? @"New post" : [NSString stringWithFormat:@"Post to: %@", self.title]
+                                       andDelegate:self];
+  controller.originView = self.view;
+  [controller showInView:self.view animated:YES];
+  [controller release];
+}
+
+- (void)loadView {
+  if (self.navigationItem.rightBarButtonItem == nil) {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                              target:self
+                                              action:@selector(compose)];
+  }
+  [super loadView];
+}  
+
 - (void)dealloc {
   TT_RELEASE_SAFELY(_feedId);
   [super dealloc];
@@ -49,5 +71,24 @@
   return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
 
-@end
+#pragma mark -
+#pragma mark TTPostControllerDelegate
 
+- (void)postController: (TTPostController*)postController
+           didPostText: (NSString*)text
+            withResult: (id)result {
+  NSString* postId = [result objectForKey:@"id"];
+  if ([postId isMatchedByRegex:@"_"]) {
+    TTOpenURL([Etc toPostIdPath:postId andTitle:@"Shared"]);
+  }
+  else {
+    TTOpenURL([Etc toPostIdPath:[NSString stringWithFormat:@"%@_%@", [FacebookJanitor sharedInstance].currentUser.userId, postId]
+                       andTitle:@"Shared"]);
+  }
+}
+
+- (BOOL)postController:(TTPostController *)postController willPostText:(NSString *)text {
+  return NO;
+}
+
+@end
