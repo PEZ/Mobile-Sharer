@@ -10,7 +10,7 @@
 #import "ComposePostController.h"
 #import "RegexKitLite.h"
 
-static const CGFloat kLinkFieldHeight = 20;
+static const CGFloat kLinkFieldHeight = 24;
 static const CGFloat kMarginX = 5;
 static const CGFloat kMarginY = 6;
 
@@ -48,9 +48,10 @@ static const CGFloat kMarginY = 6;
   _linkField.font = TTSTYLEVAR(font);
   _linkField.textColor = [UIColor blackColor];
   _linkField.keyboardAppearance = UIKeyboardAppearanceAlert;
-  _linkField.backgroundColor = TTSTYLEVAR(lightColor);
-  _linkField.layer.cornerRadius = 5;
-  _linkField.clipsToBounds = YES;
+  _linkField.backgroundColor = [UIColor clearColor];//TTSTYLEVAR(lightColor);
+  _linkField.borderStyle = UITextBorderStyleRoundedRect;
+  //_linkField.layer.cornerRadius = 5;
+  //_linkField.clipsToBounds = YES;
   _linkField.autocapitalizationType = UITextAutocapitalizationTypeNone;
   _linkField.autocorrectionType = UITextAutocorrectionTypeNo;
   [self.view addSubview:_linkField];
@@ -99,7 +100,7 @@ static const CGFloat kMarginY = 6;
 }
 
 - (void)post {
-  if (!self.textView.text.isEmptyOrWhitespace) {
+  if (!(self.textView.text.isEmptyOrWhitespace && _linkField.text.isEmptyOrWhitespace)) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"];
     if (![_linkField.text isEmptyOrWhitespace]) {
