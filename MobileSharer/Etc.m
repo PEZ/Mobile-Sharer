@@ -79,4 +79,14 @@ NSString* kAppStoreId = @"406870483";
   return nil;
 }
 
++ (NSString*)mobileYouTubeURL:(NSString*)url {
+  if (url) {
+    NSArray* pic = [url componentsSeparatedByString:@"desktop_uri="];
+    if ([pic count] > 1) {
+      return [(NSString*)[pic objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:kCFStringEncodingUTF8];
+    }
+  }
+  return nil;
+}
+
 @end

@@ -36,5 +36,6 @@ extern NSString* kAppStoreId;
 
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key;
 + (NSString*)pictureURL:(NSString*)url;
++ (NSString*)mobileYouTubeURL:(NSString*)url;
 
 @end

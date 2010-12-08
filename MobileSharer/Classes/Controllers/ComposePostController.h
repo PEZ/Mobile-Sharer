@@ -11,10 +11,12 @@
 @interface ComposePostController : PostController {
   NSString* _link;
   NSString* _feedId;
+  UITextField* _linkField;
 }
 
 @property (nonatomic, retain) NSString* link;
 @property (nonatomic, retain) NSString* feedId;
+@property (nonatomic, retain) UITextField* linkField;
 
 - (id)initWithFeedId:(NSString*)feedId andLink:(NSString*)link andTitle:(NSString*)title
          andDelegate:(id<TTPostControllerDelegate>)delegate;
