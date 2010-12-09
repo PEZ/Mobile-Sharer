@@ -16,7 +16,8 @@
 
 - (id)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
-    self.layout = [[[TTLayout alloc] init] autorelease];
+    //self.layout = [[[TTLayout alloc] init] autorelease];
+    //self.scrollEnabled = YES;
     self.backgroundColor = RGBCOLOR(216, 221, 231);
     _infoLabel = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 0)];
     _loginLogoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:nil action:nil];

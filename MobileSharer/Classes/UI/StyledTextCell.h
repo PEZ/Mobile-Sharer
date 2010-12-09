@@ -21,5 +21,5 @@
 + (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(StyledTableDataItem*)item;
 + (NSString*) getLinkHTMLForText:(NSString*)text andURL:(NSString*)url;
 + (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId;
-
++ (NSString*) getAvatarHTML:(NSString*)avatar name:(NSString*)name feedId:(NSString*)feedId;
 @end

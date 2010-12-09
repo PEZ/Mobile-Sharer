@@ -20,6 +20,12 @@
   return [NSString stringWithFormat:@"<a href=\"%@\">%@</a>", [Etc xmlEscape:url], [Etc xmlEscape:text]];
 }
 
++ (NSString*) getAvatarHTML:(NSString*)avatar name:(NSString*)name feedId:(NSString*)feedId {
+  return [NSString stringWithFormat:@"<a href=\"%@\">%@</a>", [Etc toFeedURLPath:feedId name:[Etc xmlEscape:name]],
+          [NSString stringWithFormat:@"<img class=\"feedAvatar\" width=\"%f\" height=\"%f\" src=\"%@\" />",
+           kAvatarImageWidth, kAvatarImageHeight, avatar]];
+}
+
 + (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId {
   return [NSString stringWithFormat:@"<span class=\"tableTitleText\">%@</span>",
           [self getLinkHTMLForText:name andURL:[Etc toFeedURLPath:feedId name:name]]];

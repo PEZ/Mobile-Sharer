@@ -63,9 +63,7 @@
 
 + (void) setMessageHTML:(Post*)item {
   if (item.html == nil) {
-    NSString* messageText = @"";
-    messageText = [NSString stringWithFormat:@"%@<img class=\"feedAvatar\" width=\"%f\" height=\"%f\" src=\"%@\" />",
-                   messageText, kAvatarImageWidth, kAvatarImageHeight, [Etc xmlEscape:item.fromAvatar]];
+    NSString* messageText = [self getAvatarHTML:item.fromAvatar name:item.fromName feedId:item.fromId];
     messageText = [NSString stringWithFormat:@"%@<div class=\"tableMessageContent\">%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
     if (item.toName && ![item.toId isEqualToString:item.fromId]) {
       messageText = [NSString stringWithFormat:@"%@ &gt; %@", messageText, [self getNameHTML:item.toName feedId:item.toId]];

@@ -15,6 +15,11 @@
   return [NSString stringWithFormat:@"%@", [Etc xmlEscape:text]];
 }
 
++ (NSString*) getAvatarHTML:(NSString*)avatar name:(NSString*)name feedId:(NSString*)feedId {
+  return [NSString stringWithFormat:@"<img class=\"feedAvatar\" width=\"%f\" height=\"%f\" src=\"%@\" />",
+          kAvatarImageWidth, kAvatarImageHeight, avatar];
+}
+
 + (NSString*) getAttachmentTitleHTML:(Post*)item {
   return [NSString stringWithFormat:@"<div class=\"tableTitleText\">%@</div>",
           [self getLinkHTMLForText:item.linkTitle andURL:nil]];
