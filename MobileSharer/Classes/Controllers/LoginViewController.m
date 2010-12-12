@@ -42,7 +42,7 @@
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
     NSString* html = @"<img class=\"articleImage\" src=\"bundle://Icon75.png\"/>";
-    html = [NSString stringWithFormat:@"%@Thanks for using Mobile Sharer! Re-sharing links and movies on Facebook is now as easy as:\n\n\
+    html = [NSString stringWithFormat:@"%@Thanks for using Mobile Share! Re-sharing links and movies on Facebook is now as easy as:\n\n\
 1. tap the post containing the link\n\
 2. tap <b>Share</b>\n\
 3. write a message to go with the link\n\
@@ -50,7 +50,7 @@
 If the post you are sharing already has a message you also want to share then use the <b>“Share”</b> button instead. \
 This will quote the message and attribute it to it's original author.\n\n\
 Please test it by sharing this post:\n\n\
-<a href=\"%@\">Mobile Sharer rocks!</a>\n\n\
+<a href=\"%@\">Mobile Share rocks!</a>\n\n\
 Happy mobile sharing!",
      html, shareItUrl];
     if (_currentUserLoaded) {
@@ -69,13 +69,13 @@ Happy mobile sharing!",
   }
   else {
     NSString* welcome = @"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
-Welcome to Mobile Sharer!\n\n\
-To be able to help you follow your Facebook feed and share links Mobile Sharer needs your permission. Please \
+Welcome to Mobile Share!\n\n\
+To be able to help you follow your Facebook feed and share links Mobile Share needs your permission. Please \
 click the login button and grant it.\n\n\
-Mobile Sharer will never post in your name without you telling it to. Hopefull you will use Mobile sharer to tell your \
+Mobile Share will never post in your name without you telling it to. Hopefull you will use Mobile Share to tell your \
 friends you are a happy user of the app anyway. Please do!\n\n\
 Read reviews, ask questions, suggest features, whatever on the \
-<a href=\"http://www.facebook.com/apps/application.php?id=139083852806042\">Mobile Sharer Facebook page.</a> \
+<a href=\"http://www.facebook.com/apps/application.php?id=139083852806042\">Mobile Share Facebook page.</a> \
 (Please Like that page too.)</div>";
     _contentView.infoLabel.text = [TTStyledText textFromXHTML:welcome lineBreaks:YES URLs:YES];
     _contentView.loginLogoutButton.title = @"Login";

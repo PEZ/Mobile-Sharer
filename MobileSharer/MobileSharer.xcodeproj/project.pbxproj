@@ -488,7 +488,7 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* Mobile Sharer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Sharer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Mobile Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Share.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MobileSharer.xcdatamodel; sourceTree = "<group>"; };
@@ -535,7 +535,7 @@
 		32425F611291EAC90017A401 /* LoadMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreCell.m; sourceTree = "<group>"; };
 		3242B04D12AECFCC0003F7F3 /* ComposePostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposePostController.h; sourceTree = "<group>"; };
 		3242B04E12AECFCC0003F7F3 /* ComposePostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposePostController.m; sourceTree = "<group>"; };
-		324A051712A079DC008BCD8F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		324A051712A079DC008BCD8F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Images/Default.png; sourceTree = "<group>"; };
 		32633DB31289CFA900D9621E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		32633DB41289CFA900D9621E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		3288C944126E2F1800BF1E3C /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = "../../facebook-ios-sdk/src/FBDialog.bundle"; sourceTree = SOURCE_ROOT; };
@@ -623,7 +623,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Mobile Sharer.app */,
+				1D6058910D05DD3D006BFB54 /* Mobile Share.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -988,7 +988,7 @@
 			);
 			name = MobileSharer;
 			productName = MobileSharer;
-			productReference = 1D6058910D05DD3D006BFB54 /* Mobile Sharer.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Mobile Share.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1549,7 +1549,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "Mobile Sharer";
+				PRODUCT_NAME = "Mobile Share";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1569,7 +1569,7 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Mobile Sharer";
+				PRODUCT_NAME = "Mobile Share";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F52E7A50-EA8D-4394-A352-66C425C8C253";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1600,7 +1600,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "Mobile Sharer";
+				PRODUCT_NAME = "Mobile Share";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1620,7 +1620,7 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Mobile Sharer";
+				PRODUCT_NAME = "Mobile Share";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4F83FA7B-1FE1-43FA-9CAA-B6EDA6D68577";
 				SDKROOT = iphoneos;
 			};
@@ -1649,7 +1649,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "Mobile Sharer";
+				PRODUCT_NAME = "Mobile Share";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1668,7 +1668,7 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Mobile Sharer";
+				PRODUCT_NAME = "Mobile Share";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74F91047-9437-4734-B499-B45A2B076319";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1699,7 +1699,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "Mobile Sharer";
+				PRODUCT_NAME = "Mobile Share";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1719,7 +1719,7 @@
 				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Mobile Sharer";
+				PRODUCT_NAME = "Mobile Share";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
