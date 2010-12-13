@@ -86,28 +86,27 @@
 - (void) openShareView:(SharePostController*)controller  {
   _wasShared = YES;
   controller.originView = self.view;
-  [controller showInView:self.view animated:YES];
-  [controller release];
-  
+  _shouldRotate = YES;
+  [controller showInView:controller.view animated:YES];
 }
 
 - (void)share {
-  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
+  SharePostController* controller = [[[SharePostController alloc] initWithPost:self.post
                                                                         quote:NO
-                                                                  andDelegate:self];
+                                                                  andDelegate:self] autorelease];
   [self openShareView: controller];
 }
 
 - (void)shareQ {
-  SharePostController* controller = [[SharePostController alloc] initWithPost:self.post
+  SharePostController* controller = [[[SharePostController alloc] initWithPost:self.post
                                                                         quote:YES
-                                                                  andDelegate:self];
+                                                                  andDelegate:self] autorelease];
   [self openShareView: controller];
 }
 
 - (CommentsPostController *) createCommentsPostController {
-  CommentsPostController* controller = [[CommentsPostController alloc] initWithPostId:_post.postId
-                                                                          andDelegate:self];
+  CommentsPostController* controller = [[[CommentsPostController alloc] initWithPostId:_post.postId
+                                                                          andDelegate:self] autorelease];
   return controller;
 }
 
@@ -116,7 +115,6 @@
   CommentsPostController *controller = [self createCommentsPostController];
   controller.originView = self.view;
   [controller showInView:self.view animated:YES];
-  [controller release];
 }
 
 - (void)setupView {
@@ -178,6 +176,9 @@
   self.dataSource = [[[PostDataSource alloc] initWithPostId:_postId] autorelease];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  return _shouldRotate && TTIsSupportedOrientation(interfaceOrientation);
+}
 
 #pragma mark -
 #pragma mark TTPostControllerDelegate
@@ -198,7 +199,7 @@
   else {
     [self reload];
   }
-
+  _shouldRotate = NO;
 }
 
 - (BOOL)postController:(TTPostController *)postController willPostText:(NSString *)text {

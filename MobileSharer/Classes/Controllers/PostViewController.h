@@ -26,6 +26,7 @@
 @interface PostViewController : TTTableViewController <TTPostControllerDelegate, FBRequestDelegate> {
   NSString* _postId;
   BOOL _wasShared;
+  BOOL _shouldRotate;
 }
 
 @property (nonatomic, retain)   Post* post;
