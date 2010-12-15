@@ -62,12 +62,12 @@ static const CGFloat kMarginY = 6;
   _screenView.frame = CGRectMake(0, _navigationBar.bottom,
                                  self.view.orientationWidth,
                                  self.view.orientationHeight - (keyboard+_navigationBar.height) - kLinkFieldHeight - kMarginY);
-  
+
   _textView.frame = CGRectMake(kMarginX, kMarginY+_navigationBar.height,
                                _screenView.width - kMarginX*2,
                                _screenView.height - kMarginY*2);
   _textView.hidden = NO;
-  
+
   _linkField.frame = CGRectMake(kMarginX, _screenView.bottom + kMarginY, _textView.width, kLinkFieldHeight);
   _linkField.hidden = NO;
 }
@@ -121,10 +121,11 @@ static const CGFloat kMarginY = 6;
 #pragma mark -
 #pragma mark TTPostController
 
-- (NSString*)titleForError:(NSError*)error {
-  return [NSString stringWithFormat:@"Posting failed. An invalid URL?\n\
-(Facebooks error message says: %@)", [error localizedDescription]];
-}
+//- (NSString*)titleForError:(NSError*)error {
+//	NSDictionary* userError = [[error userInfo] objectForKey:@"error"];
+//  return [NSString stringWithFormat:@"Posting failed.\n\n%@\n(Type: %@)",
+//					[userError objectForKey:@"message"], [userError objectForKey:@"type"]];
+//}
 
 - (NSString*)titleForActivity {
   return @"Posting ...";

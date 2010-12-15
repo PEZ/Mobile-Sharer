@@ -79,11 +79,11 @@
             withResult: (id)result {
   NSString* postId = [result objectForKey:@"id"];
   if ([postId isMatchedByRegex:@"_"]) {
-    TTOpenURL([Etc toPostIdPath:postId andTitle:@"Shared"]);
+    TTOpenURL([Etc toPostIdPath:postId andTitle:@"New post"]);
   }
   else {
     TTOpenURL([Etc toPostIdPath:[NSString stringWithFormat:@"%@_%@", [FacebookJanitor sharedInstance].currentUser.userId, postId]
-                       andTitle:@"Shared"]);
+                       andTitle:@"New post"]);
   }
 }
 

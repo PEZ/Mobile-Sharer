@@ -15,7 +15,9 @@
 #pragma mark TTPostController
 
 - (NSString*)titleForError:(NSError*)error {
-  return [NSString stringWithFormat:@"Posting failed: %@", [error localizedDescription]];
+	NSDictionary* userError = [[error userInfo] objectForKey:@"error"];
+  return [NSString stringWithFormat:@"Posting failed.\n%@",
+					userError ? [userError objectForKey:@"message"] : [error localizedDescription]];
 }
 
 - (NSString*)titleForActivity {

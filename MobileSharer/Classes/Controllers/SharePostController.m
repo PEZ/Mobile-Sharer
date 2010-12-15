@@ -53,10 +53,6 @@
 #pragma mark -
 #pragma mark TTPostController
 
-- (NSString*)titleForError:(NSError*)error {
-  return [NSString stringWithFormat:@"Posting link failed: %@", [error localizedDescription]];
-}
-
 - (NSString*)titleForActivity {
   return @"Posting link...";
 }

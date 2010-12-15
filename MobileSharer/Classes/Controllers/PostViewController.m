@@ -68,7 +68,7 @@
 @synthesize post = _post;
 
 - (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title {
-  
+
   if (self = [super initWithNibName:nil bundle:nil]) {
     _postId = [postId copy];
     self.title = title;
@@ -131,19 +131,21 @@
       LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
       [buttons addObject:likeButton];
     }
-    if (_post.message) {
-      UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
-                                                                        style:UIBarButtonItemStyleBordered
-                                                                       target:self
-                                                                       action:@selector(shareQ)]autorelease];
-      [buttons addObject:shareButtonQ];
-    }
-    UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
-                                                                     style:UIBarButtonItemStyleBordered
-                                                                    target:self
-                                                                    action:@selector(share)]autorelease];
-    [buttons addObject:shareButton];
-    [self setToolbarItems:[NSArray arrayWithArray:buttons] animated:NO];
+		if (![_post.type isEqualToString:@"photo"]) {
+			if (_post.message) {
+				UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
+																																					style:UIBarButtonItemStyleBordered
+																																				 target:self
+																																				 action:@selector(shareQ)]autorelease];
+				[buttons addObject:shareButtonQ];
+			}
+			UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
+																																			 style:UIBarButtonItemStyleBordered
+																																			target:self
+																																			action:@selector(share)]autorelease];
+			[buttons addObject:shareButton];
+		}
+		[self setToolbarItems:[NSArray arrayWithArray:buttons] animated:NO];
   }
 }
 
@@ -162,7 +164,7 @@
   [super viewWillAppear:animated];
   [self.navigationController setToolbarHidden:NO animated:animated];
 }
-  
+
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   [self.navigationController setToolbarHidden:YES animated:animated];
@@ -224,5 +226,5 @@
 
 - (void)request:(FBRequest*)request didLoad:(id)result {
 }
-   
+
 @end
