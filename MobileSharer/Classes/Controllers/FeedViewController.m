@@ -9,6 +9,7 @@
 #import "FeedViewController.h"
 #import "FeedDataSource.h"
 #import "RegexKitLite.h"
+#import <Three20UICommon/UIViewControllerAdditions.h>
 
 @implementation FeedViewController
 
@@ -39,8 +40,10 @@
                                        andLink:@""
                                        andTitle:[_feedId isEqual:@"me"] ? @"New post" : [NSString stringWithFormat:@"Post to: %@", self.title]
                                        andDelegate:self];
-  controller.originView = self.view;
-  [controller showInView:self.view animated:YES];
+	UIViewController *topController = [TTNavigator navigator].topViewController;
+	topController.popupViewController = controller;
+	controller.superController = topController;
+  [controller showInView:controller.view animated:YES];
   [controller release];
 }
 
@@ -52,7 +55,7 @@
                                               action:@selector(compose)];
   }
   [super loadView];
-}  
+}
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_feedId);

@@ -24,6 +24,16 @@
   return @"Posting ...";
 }
 
+- (void)dismissWithResult:(id)result animated:(BOOL)animated {
+	[[UIDevice currentDevice] setOrientation:UIInterfaceOrientationPortrait];
+	[super dismissWithResult:result animated:animated];
+}
+
+- (void)dismissPopupViewControllerAnimated:(BOOL)animated {
+	[[UIDevice currentDevice] setOrientation:UIInterfaceOrientationPortrait];
+	[super dismissPopupViewControllerAnimated:animated];
+}
+
 #pragma mark -
 #pragma mark FBRequestDelegate
 

@@ -11,6 +11,7 @@
 #import "CommentsPostController.h"
 #import "SharePostController.h"
 #import "RegexKitLite.h"
+#import <Three20UICommon/UIViewControllerAdditions.h>
 
 @implementation LikeButton
 
@@ -85,8 +86,9 @@
 
 - (void) openShareView:(SharePostController*)controller  {
   _wasShared = YES;
-  controller.originView = self.view;
-  _shouldRotate = YES;
+	UIViewController *topController = [TTNavigator navigator].topViewController;
+	topController.popupViewController = controller;
+	controller.superController = topController;
   [controller showInView:controller.view animated:YES];
 }
 
@@ -113,8 +115,10 @@
 - (void)comment {
   _wasShared = NO;
   CommentsPostController *controller = [self createCommentsPostController];
-  controller.originView = self.view;
-  [controller showInView:self.view animated:YES];
+	UIViewController *topController = [TTNavigator navigator].topViewController;
+	topController.popupViewController = controller;
+	controller.superController = topController;
+  [controller showInView:controller.view animated:YES];
 }
 
 - (void)setupView {
@@ -178,10 +182,6 @@
   self.dataSource = [[[PostDataSource alloc] initWithPostId:_postId] autorelease];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  return _shouldRotate && TTIsSupportedOrientation(interfaceOrientation);
-}
-
 #pragma mark -
 #pragma mark TTPostControllerDelegate
 
@@ -201,7 +201,6 @@
   else {
     [self reload];
   }
-  _shouldRotate = NO;
 }
 
 - (BOOL)postController:(TTPostController *)postController willPostText:(NSString *)text {
