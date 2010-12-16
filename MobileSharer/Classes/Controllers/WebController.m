@@ -8,6 +8,8 @@
 
 #import "WebController.h"
 #import "RegexKitLite.h"
+#import "ComposePostController.h"
+#import <Three20UICommon/UIViewControllerAdditions.h>
 
 static NSString* kUrlEncodedEndQuote = @"%22";
 
@@ -30,6 +32,77 @@ static NSString* kUrlEncodedEndQuote = @"%22";
     }
   }
   return self;
+}
+
+- (void)shareAction {
+  if (nil == _actionSheet) {
+    _actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self
+                                      cancelButtonTitle:TTLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil
+                                      otherButtonTitles:
+										TTLocalizedString(@"Share", @""),
+										TTLocalizedString(@"Copy link", @""),
+										TTLocalizedString(@"Open in Safari", @""),
+										nil
+										];
+    if (TTIsPad()) {
+      [_actionSheet showFromBarButtonItem:_actionButton animated:YES];
+    }  else {
+      [_actionSheet showInView:self.view];
+    }
+  } else {
+    [_actionSheet dismissWithClickedButtonIndex:-1 animated:YES];
+    TT_RELEASE_SAFELY(_actionSheet);
+  }
+
+}
+
+- (void)compose:(NSString*)url {
+  ComposePostController* controller = [[ComposePostController alloc]
+                                       initWithFeedId:@"me"
+                                       andLink:url
+                                       andTitle:@"Share link"
+                                       andDelegate:self];
+	UIViewController *topController = [TTNavigator navigator].topViewController;
+	topController.popupViewController = controller;
+	controller.superController = topController;
+  [controller showInView:controller.view animated:YES];
+  [controller release];
+}
+
+#pragma mark -
+#pragma mark UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+  if (buttonIndex == 0) {
+		[self compose:[self.URL absoluteString]];
+  }
+  else if (buttonIndex == 1) {
+		[UIPasteboard generalPasteboard].URL = self.URL;
+		TTAlert([NSString stringWithFormat:@"Link ready to be pasted: %@", self.URL]);
+  }
+	else if (buttonIndex == 2) {
+		[[UIApplication sharedApplication] openURL:self.URL];
+	}
+}
+
+#pragma mark -
+#pragma mark TTPostControllerDelegate
+
+- (void)postController: (TTPostController*)postController
+           didPostText: (NSString*)text
+            withResult: (id)result {
+  NSString* postId = [result objectForKey:@"id"];
+  if ([postId isMatchedByRegex:@"_"]) {
+    TTOpenURL([Etc toPostIdPath:postId andTitle:@"Shared link"]);
+  }
+  else {
+    TTOpenURL([Etc toPostIdPath:[NSString stringWithFormat:@"%@_%@", [FacebookJanitor sharedInstance].currentUser.userId, postId]
+                       andTitle:@"Shared link"]);
+  }
+}
+
+- (BOOL)postController:(TTPostController *)postController willPostText:(NSString *)text {
+  return NO;
 }
 
 @end

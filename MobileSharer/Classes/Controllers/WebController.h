@@ -7,7 +7,7 @@
 //
 
 
-@interface WebController : TTWebController {
+@interface WebController : TTWebController <TTPostControllerDelegate> {
 
 }
 
