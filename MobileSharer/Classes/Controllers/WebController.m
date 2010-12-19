@@ -91,14 +91,9 @@ static NSString* kUrlEncodedEndQuote = @"%22";
 - (void)postController: (TTPostController*)postController
            didPostText: (NSString*)text
             withResult: (id)result {
-  NSString* postId = [result objectForKey:@"id"];
-  if ([postId isMatchedByRegex:@"_"]) {
-    TTOpenURL([Etc toPostIdPath:postId andTitle:@"Shared link"]);
-  }
-  else {
-    TTOpenURL([Etc toPostIdPath:[NSString stringWithFormat:@"%@_%@", [FacebookJanitor sharedInstance].currentUser.userId, postId]
-                       andTitle:@"Shared link"]);
-  }
+	NSString* postId = [result objectForKey:@"id"];
+	TTOpenURL([Etc toPostIdPath:[Etc fullPostId:postId andFeedId:[FacebookJanitor sharedInstance].currentUser.userId]
+										 andTitle:@"Shared link"]);
 }
 
 - (BOOL)postController:(TTPostController *)postController willPostText:(NSString *)text {

@@ -190,13 +190,8 @@
             withResult: (id)result {
   if (_wasShared) {
     NSString* postId = [result objectForKey:@"id"];
-    if ([postId isMatchedByRegex:@"_"]) {
-      TTOpenURL([Etc toPostIdPath:postId andTitle:@"Shared"]);
-    }
-    else {
-      TTOpenURL([Etc toPostIdPath:[NSString stringWithFormat:@"%@_%@", [FacebookJanitor sharedInstance].currentUser.userId, postId]
-                         andTitle:@"Shared"]);
-    }
+		TTOpenURL([Etc toPostIdPath:[Etc fullPostId:postId andFeedId:[FacebookJanitor sharedInstance].currentUser.userId]
+											 andTitle:@"Shared"]);
   }
   else {
     [self reload];

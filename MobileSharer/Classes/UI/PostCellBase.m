@@ -73,7 +73,7 @@
     }
     messageText = [NSString stringWithFormat:@"%@<div class=\"tableAttachmentText\">%@</div>", messageText, [self getAttachmentHTML:item]];
     messageText = [NSString stringWithFormat:@"%@%@</div>", messageText, [self getMetaHTML:item]];
-    
+
     item.html = messageText;
   }
 }

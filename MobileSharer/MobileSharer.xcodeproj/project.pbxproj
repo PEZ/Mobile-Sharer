@@ -966,9 +966,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* MobileSharer */ = {
+		1D6058900D05DD3D006BFB54 /* Share! */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MobileSharer" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Share!" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -986,7 +986,7 @@
 				3288C8CD126E189400BF1E3C /* PBXTargetDependency */,
 				3288C8CF126E189400BF1E3C /* PBXTargetDependency */,
 			);
-			name = MobileSharer;
+			name = "Share!";
 			productName = MobileSharer;
 			productReference = 1D6058910D05DD3D006BFB54 /* Share!.app */;
 			productType = "com.apple.product-type.application";
@@ -1048,7 +1048,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* MobileSharer */,
+				1D6058900D05DD3D006BFB54 /* Share! */,
 			);
 		};
 /* End PBXProject section */
@@ -1728,7 +1728,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "MobileSharer" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Share!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

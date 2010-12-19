@@ -89,4 +89,13 @@ NSString* kAppStoreId = @"406870483";
   return nil;
 }
 
++ (NSString*)fullPostId:(NSString*)postId andFeedId:(NSString*)feedId {
+	if ([postId isMatchedByRegex:@"_"]) {
+		return postId;
+	}
+	else {
+		return [NSString stringWithFormat:@"%@_%@", feedId, postId];
+	}
+}
+
 @end
