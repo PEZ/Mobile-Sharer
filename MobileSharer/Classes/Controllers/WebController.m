@@ -77,8 +77,9 @@ static NSString* kUrlEncodedEndQuote = @"%22";
 		[self compose:[self.URL absoluteString]];
   }
   else if (buttonIndex == 1) {
-		[UIPasteboard generalPasteboard].URL = self.URL;
-		TTAlert([NSString stringWithFormat:@"Link ready to be pasted: %@", self.URL]);
+		NSString* url = [Etc mobileYouTubeURL:[self.URL absoluteString]];
+		[UIPasteboard generalPasteboard].string = url;
+		TTAlert([NSString stringWithFormat:@"Link ready to be pasted: %@", url]);
   }
 	else if (buttonIndex == 2) {
 		[[UIApplication sharedApplication] openURL:self.URL];
