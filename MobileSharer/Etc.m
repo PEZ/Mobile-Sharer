@@ -8,6 +8,7 @@
 
 #import "Etc.h"
 #import "FacebookJanitor.h"
+#import "RegexKitLite.h"
 
 CGFloat   kAvatarImageWidth   = 35;
 CGFloat   kAvatarImageHeight  = 35;
@@ -72,9 +73,7 @@ NSString* kAppStoreId = @"406870483";
 + (NSString*)pictureURL:(NSString*)url {
   if (url) {
     NSArray* pic = [url componentsSeparatedByString:@"url="];
-    if ([pic count] > 1) {
-      return [(NSString*)[pic objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:kCFStringEncodingUTF8];
-    }
+    return [(NSString*)[pic objectAtIndex:[pic count] > 1 ? 1 : 0] stringByReplacingPercentEscapesUsingEncoding:kCFStringEncodingUTF8];
   }
   return nil;
 }
@@ -82,9 +81,7 @@ NSString* kAppStoreId = @"406870483";
 + (NSString*)mobileYouTubeURL:(NSString*)url {
   if (url) {
     NSArray* pic = [url componentsSeparatedByString:@"desktop_uri="];
-    if ([pic count] > 1) {
-      return [(NSString*)[pic objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:kCFStringEncodingUTF8];
-    }
+    return [(NSString*)[pic objectAtIndex:[pic count] > 1 ? 1 : 0] stringByReplacingPercentEscapesUsingEncoding:kCFStringEncodingUTF8];
   }
   return nil;
 }

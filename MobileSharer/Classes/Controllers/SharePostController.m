@@ -31,7 +31,7 @@
 }
 
 - (void)post {
-  if (!self.textView.text.isEmptyOrWhitespace || self.sharePost.shareURL) {
+  if ((TTIsStringWithAnyText(self.textView.text) && !self.textView.text.isWhitespaceAndNewlines) || self.sharePost.shareURL) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"];
     [Etc params:&params addObject:[Etc pictureURL:self.sharePost.picture] forKey:@"picture"];

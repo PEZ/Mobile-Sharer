@@ -28,7 +28,7 @@
 }
 
 - (void)post {
-  if (!self.textView.text.isEmptyOrWhitespace) {
+  if (TTIsStringWithAnyText(self.textView.text) && !self.textView.text.isWhitespaceAndNewlines) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
     [fb requestWithGraphPath:[NSString stringWithFormat:@"%@/comments", _postId]
                    andParams:[NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"]

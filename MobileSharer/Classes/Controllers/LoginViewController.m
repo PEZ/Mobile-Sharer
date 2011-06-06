@@ -11,14 +11,16 @@
 @implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    self.title = @"Start";
+  if ((self = [super initWithNibName:nibNameOrNil	bundle:nibBundleOrNil])) {
+    self.title = @"Share!";
+    self.variableHeightRows = YES;
   }
   return self;
 }
 
 - (void)dealloc {
-  TT_RELEASE_SAFELY(_contentView);
+  TT_RELEASE_SAFELY(_loginLogoutButton);
+  TT_RELEASE_SAFELY(_showFeedButton);
   [super dealloc];
 }
 
@@ -28,20 +30,22 @@
 
 - (void)loadView {
   [super loadView];
-  _contentView = [[LoginView alloc] initWithFrame:self.view.frame];
-  self.navigationItem.leftBarButtonItem = _contentView.loginLogoutButton;
-  _contentView.loginLogoutButton.target = self;
-  [self.view addSubview:_contentView];
+  _loginLogoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil];
+  _showFeedButton = [[TTButton buttonWithStyle:@"forwardButton:" title:@"Updates"] retain];
+  [_showFeedButton sizeToFit];
+  self.navigationItem.leftBarButtonItem = _loginLogoutButton;
 }
 
-- (void)updateView {
+- (void)createModel {
+  TTListDataSource* dataSource = [[[TTListDataSource alloc] init] autorelease];
+  NSString* html = @"";
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
     //NSString* shareItUrl2 = [Etc toPostIdPath:@"152352554796431" andTitle:@"Where ideas come from (TED talk)"];
     //NSString* appStoreUrl = [NSString stringWithFormat:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", kAppStoreId];
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
-    NSString* html = @"<img class=\"articleImage\" src=\"bundle://Icon75.png\"/>";
+    html = @"<img class=\"articleImage\" src=\"bundle://Icon75.png\"/>";
     html = [NSString stringWithFormat:@"%@Thanks for using Share! Re-sharing links and movies on Facebook is now as easy as:\n\n\
 1. tap the post containing the link\n\
 2. tap <b>Share</b>\n\
@@ -59,16 +63,15 @@ Happy sharing!",
 <span class=\"tableTitleText\">%@</span></div>\n%@", janitor.currentUser.userName, html];
     }
     html = [NSString stringWithFormat:@"<div class=\"appInfo\">%@</div>", html];
-    _contentView.infoLabel.text = [TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES];
-    _contentView.loginLogoutButton.title = @"Logout";
-    _contentView.loginLogoutButton.action = @selector(logout);
+    _loginLogoutButton.title = @"Logout";
+    _loginLogoutButton.action = @selector(logout);
     if (self.navigationItem.rightBarButtonItem == nil) {
-      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_contentView.showFeedButton];
-      [_contentView.showFeedButton addTarget:self action:@selector(showFeed) forControlEvents:UIControlEventTouchUpInside];
+      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_showFeedButton];
+      [_showFeedButton addTarget:self action:@selector(showFeed) forControlEvents:UIControlEventTouchUpInside];
     }
   }
   else {
-    NSString* welcome = @"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
+    html = @"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
 Welcome to Share!\n\n\
 To be able to help you follow your Facebook feed and share links Share! needs your permission. Please \
 click the login button and grant it.\n\n\
@@ -77,27 +80,28 @@ friends you are a happy user of the app anyway. Please do!\n\n\
 Read reviews, ask questions, suggest features, whatever on the \
 <a href=\"http://www.facebook.com/apps/application.php?id=139083852806042\">Share! Facebook page.</a> \
 (Please Like that page too.)</div>";
-    _contentView.infoLabel.text = [TTStyledText textFromXHTML:welcome lineBreaks:YES URLs:YES];
-    _contentView.loginLogoutButton.title = @"Login";
-    _contentView.loginLogoutButton.action = @selector(login);
+    _loginLogoutButton.title = @"Login";
+    _loginLogoutButton.action = @selector(login);
     self.navigationItem.rightBarButtonItem = nil;
   }
-  _contentView.loginLogoutButton.enabled = YES;
-  [_contentView layoutSubviews];
+  _loginLogoutButton.enabled = YES;
+  [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
+  self.dataSource = dataSource;
 }
 
 - (void)logout {
-  _contentView.loginLogoutButton.enabled = NO;
+  _loginLogoutButton.enabled = NO;
   [[FacebookJanitor sharedInstance] logout:self];
 }
 
 - (void)login {
-  _contentView.loginLogoutButton.enabled = NO;
+  _loginLogoutButton.enabled = NO;
   [[FacebookJanitor sharedInstance] login:self];
 }
 
 - (void) viewDidLoad {
-  [self updateView];
+  [super viewDidLoad];
+  [self invalidateModel];
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
     [self showFeed];
@@ -108,7 +112,7 @@ Read reviews, ask questions, suggest features, whatever on the \
 #pragma mark FBJSessionDelegate
 
 -(void) fbjDidLogin {
-  [self updateView];
+  [self invalidateModel];
   [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
   [self showFeed];
 }
@@ -116,12 +120,12 @@ Read reviews, ask questions, suggest features, whatever on the \
 
 -(void) fbjDidLogout {
   _currentUserLoaded = NO;
-  [self updateView];
+  [self invalidateModel];
 }
 
 - (void)fbjDidNotLogin:(BOOL)cancelled {
   _currentUserLoaded = NO;
-  [self updateView];
+  [self invalidateModel];
 }
 
 #pragma mark -
@@ -131,7 +135,7 @@ Read reviews, ask questions, suggest features, whatever on the \
  */
 - (void) userRequestDidFinishLoad:(UserModel*)userModel {
   _currentUserLoaded = YES;
-  [self updateView];
+  [self invalidateModel];
 }
 
 @end

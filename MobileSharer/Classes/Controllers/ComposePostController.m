@@ -20,11 +20,11 @@ static const CGFloat kMarginY = 6;
 @synthesize feedId = _feedId;
 @synthesize linkField = _linkField;
 
-- (id)initWithFeedId:(NSString*)feedId andLink:(NSString*)link andTitle:(NSString*)title
+- (id)initWithFeedId:(NSString*)feedId andLink:(NSString*)theLink andTitle:(NSString*)title
          andDelegate:(id<TTPostControllerDelegate>)delegate {
   if (self = [super init]) {
     self.feedId = feedId;
-    self.link = link;
+    self.link = theLink;
     self.title = title;
     self.delegate = delegate;
   }
@@ -42,7 +42,7 @@ static const CGFloat kMarginY = 6;
   [super loadView];
   _linkField = [[UITextField alloc] init];
   _linkField.placeholder = @"Link url (if any)";
-  if (![_link isEmptyOrWhitespace]) {
+  if (TTIsStringWithAnyText(_link) && !_link.isWhitespaceAndNewlines) {
     _linkField.text = _link;
   }
   _linkField.font = TTSTYLEVAR(font);
@@ -100,10 +100,10 @@ static const CGFloat kMarginY = 6;
 }
 
 - (void)post {
-  if (!(self.textView.text.isEmptyOrWhitespace && _linkField.text.isEmptyOrWhitespace)) {
+    if (TTIsStringWithAnyText(self.textView.text) && !self.textView.text.isWhitespaceAndNewlines && TTIsStringWithAnyText(_linkField.text) && !_linkField.text.isWhitespaceAndNewlines) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"];
-    if (![_linkField.text isEmptyOrWhitespace]) {
+    if (TTIsStringWithAnyText(_linkField.text) && !_linkField.text.isWhitespaceAndNewlines) {
       if ([_linkField.text isMatchedByRegex:@"^http://m.youtube.com/"]) {
         _linkField.text = [Etc mobileYouTubeURL:_linkField.text];
       }

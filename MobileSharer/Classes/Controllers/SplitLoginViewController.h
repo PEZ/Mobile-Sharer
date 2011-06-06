@@ -1,5 +1,5 @@
 
-@interface SplitCatalogController : TTSplitViewController {
+@interface SplitLoginViewController : TTSplitViewController {
 }
 
 @end
