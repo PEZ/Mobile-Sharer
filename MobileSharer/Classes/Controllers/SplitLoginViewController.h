@@ -1,5 +1,0 @@
-
-@interface SplitLoginViewController : TTSplitViewController {
-}
-
-@end

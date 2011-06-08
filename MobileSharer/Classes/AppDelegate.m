@@ -3,11 +3,19 @@
 #import "DefaultStyleSheet.h"
 #import "FeedViewController.h"
 #import "PostViewController.h"
-#import "LoginViewController.h"
+#import "StartController.h"
+#import "SplitStartController.h"
 #import "WebController.h"
 
 
 @implementation AppDelegate
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// UIApplicationDelegate
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+  TT_RELEASE_SAFELY(_rootViewController);
+}
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   [TTStyleSheet setGlobalStyleSheet:[[[DefaultStyleSheet 
@@ -16,16 +24,36 @@
   navigator.persistenceMode = TTNavigatorPersistenceModeNone;
   
   TTURLMap* map = navigator.URLMap;
-  
   [map from:@"*" toViewController:[WebController class]];
+  
+  if (NO && TTIsPad()) {
+    [map                    from:kAppStartURLPath
+          toSharedViewController:[SplitStartController class]];
+    
+    SplitStartController* controller =
+    (SplitStartController*)[[TTNavigator navigator] viewControllerForURL:kAppStartURLPath];
+    TTDASSERT([controller isKindOfClass:[SplitStartController class]]);
+    map = controller.primaryNavigator.URLMap;
+    
+  } else {
+    [map                    from:kAppStartURLPath
+          toSharedViewController:[StartController class]];
+  }
+
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
   [map from:kPostIdPath toViewController:[PostViewController class]];
-  [map from:kAppLoginURLPath toViewController:[LoginViewController class]];
-  //navigator.persistenceMode = TTNavigatorPersistenceModeAll;
-  if (![navigator restoreViewControllers]) {
-    //[navigator openURLAction:[TTURLAction actionWithURLPath:@"ms://postid/100001673056780_124381537622572"]];
-    TTOpenURL(kAppLoginURLPath);
+
+  _rootViewController = [[TTRootViewController alloc] init];
+  [[TTNavigator navigator].window addSubview:_rootViewController.view];
+  [TTNavigator navigator].rootContainer = _rootViewController;
+  
+  if (TTIsPad() || ![navigator restoreViewControllers]) {
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kAppStartURLPath]];
   }
+  
+  [_rootViewController showController: navigator.rootViewController
+                           transition: UIViewAnimationTransitionNone
+                             animated: NO];
 }
 
 #pragma mark -
@@ -35,13 +63,13 @@
   return [[URL absoluteString] hasPrefix:kFacebookLoginPath];
 }
 
-- (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
-  return YES;
-}
+//- (BOOL)navigator:(TTNavigator*)navigator shouldOpenURL:(NSURL*)URL {
+//  return YES;
+//}
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
   if (![self isFBAuthenticationURL:URL]) {
-    TTOpenURL([TTURLAction actionWithURLPath:URL.absoluteString]);
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
   }
   else {
     [[FacebookJanitor sharedInstance].facebook handleOpenURL:URL];

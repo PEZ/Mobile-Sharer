@@ -7,13 +7,11 @@
 //
 
 #import <Three20UI/TTTableViewController.h>
-#import "LoginView.h"
 #import "FacebookJanitor.h"
 
-@interface LoginViewController : TTTableViewController <FBJSessionDelegate, UserRequestDelegate> {
+@interface StartController : TTTableViewController <FBJSessionDelegate, UserRequestDelegate> {
   @private
   UIBarButtonItem* _loginLogoutButton;
-  TTButton* _showFeedButton;
   BOOL       _currentUserLoaded;
 }
 

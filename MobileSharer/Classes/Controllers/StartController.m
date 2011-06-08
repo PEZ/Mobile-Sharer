@@ -1,14 +1,14 @@
 //
-//  LoginViewController.m
+//  StartController.m
 //  MobileSharer
 //
 //  Created by PEZ on 2010-10-24.
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "StartController.h"
 
-@implementation LoginViewController
+@implementation StartController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if ((self = [super initWithNibName:nibNameOrNil	bundle:nibBundleOrNil])) {
@@ -20,19 +20,16 @@
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_loginLogoutButton);
-  TT_RELEASE_SAFELY(_showFeedButton);
   [super dealloc];
 }
 
 - (void) showFeed {
-  TTOpenURL([Etc toFeedURLPath:@"me" name:@"Updates"]);
+  TTOpenURL([Etc toFeedURLPath:@"me" name:@"News feed"]);
 }
 
 - (void)loadView {
   [super loadView];
   _loginLogoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil];
-  _showFeedButton = [[TTButton buttonWithStyle:@"forwardButton:" title:@"Updates"] retain];
-  [_showFeedButton sizeToFit];
   self.navigationItem.leftBarButtonItem = _loginLogoutButton;
 }
 
@@ -41,34 +38,26 @@
   NSString* html = @"";
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
-    //NSString* shareItUrl2 = [Etc toPostIdPath:@"152352554796431" andTitle:@"Where ideas come from (TED talk)"];
+    NSString* feedUrl = [Etc toFeedURLPath:@"me" name:@"News feed"];
     //NSString* appStoreUrl = [NSString stringWithFormat:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", kAppStoreId];
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
-    html = @"<img class=\"articleImage\" src=\"bundle://Icon75.png\"/>";
-    html = [NSString stringWithFormat:@"%@Thanks for using Share! Re-sharing links and movies on Facebook is now as easy as:\n\n\
-1. tap the post containing the link\n\
-2. tap <b>Share</b>\n\
-3. write a message to go with the link\n\
-4. tap <b>Done</b>\n\n\
-If the post you are sharing already has a message you also want to share then use the <b>“Share”</b> button instead. \
-This will quote the message and attribute it to it's original author.\n\n\
-Please test it by sharing this post:\n\n\
-<a href=\"%@\">Share! rocks</a>\n\n\
-Happy sharing!",
-     html, shareItUrl];
+    html = [NSString stringWithFormat:@"Thanks for using Share!"];
     if (_currentUserLoaded) {
       FacebookJanitor* janitor = [FacebookJanitor sharedInstance];
-      html = [NSString stringWithFormat:@"<div class=\"userInfo\">You are logged in as: \
-<span class=\"tableTitleText\">%@</span></div>\n%@", janitor.currentUser.userName, html];
+      html = [NSString stringWithFormat:@"%@<div class=\"userInfo\">\
+<span class=\"tableTitleText\"><img width=\"%f\" height=\"%f\" src=\"%@\" /> %@</span></div>",
+              html, kAvatarImageWidth, kAvatarImageHeight,
+              [FacebookJanitor avatarForId:janitor.currentUser.userId],
+              janitor.currentUser.userName];
     }
     html = [NSString stringWithFormat:@"<div class=\"appInfo\">%@</div>", html];
     _loginLogoutButton.title = @"Logout";
     _loginLogoutButton.action = @selector(logout);
-    if (self.navigationItem.rightBarButtonItem == nil) {
-      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_showFeedButton];
-      [_showFeedButton addTarget:self action:@selector(showFeed) forControlEvents:UIControlEventTouchUpInside];
-    }
+
+    [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
+    [dataSource.items addObject:[TTTableTextItem itemWithText:@"News feed" URL:feedUrl]];
+    [dataSource.items addObject:[TTTableTextItem itemWithText:@"Share Share!" URL:shareItUrl]];
   }
   else {
     html = @"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
@@ -83,9 +72,9 @@ Read reviews, ask questions, suggest features, whatever on the \
     _loginLogoutButton.title = @"Login";
     _loginLogoutButton.action = @selector(login);
     self.navigationItem.rightBarButtonItem = nil;
+    [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
   }
   _loginLogoutButton.enabled = YES;
-  [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
   self.dataSource = dataSource;
 }
 

@@ -19,7 +19,7 @@ NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedId:)/(andName:)";
 NSString* kPostIdPathPrefix = @"ms://post";
 NSString* kPostIdPath = @"ms://post/(initWithPostId:)/(andTitle:)";
-NSString* kAppLoginURLPath = @"ms://login";
+NSString* kAppStartURLPath = @"ms://login";
 NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = @"ms://comment";
 

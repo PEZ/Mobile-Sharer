@@ -18,7 +18,7 @@ extern NSString* kFeedURLPath;
 extern NSString* kPostPathPrefix;
 extern NSString* kPostIdPathPrefix;
 extern NSString* kPostIdPath;
-extern NSString* kAppLoginURLPath;
+extern NSString* kAppStartURLPath;
 extern NSString* kFacebookLoginPath;
 extern NSString* kCommentPath;
 

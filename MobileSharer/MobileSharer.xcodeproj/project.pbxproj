@@ -51,11 +51,10 @@
 		3288C966126E2F1800BF1E3C /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C95B126E2F1800BF1E3C /* FBDialog.m */; };
 		32891DB2127F5D6D00786BE7 /* PostCellBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891DB1127F5D6D00786BE7 /* PostCellBase.m */; };
 		32906DA912AA56B7008C08B1 /* StyledTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32906DA812AA56B7008C08B1 /* StyledTextCell.m */; };
-		329079CF12836D95005D193A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329079CE12836D95005D193A /* Icon.png */; };
 		329079ED1284410A005D193A /* FeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EA1284410A005D193A /* FeedDataSource.m */; };
 		329079EE1284410A005D193A /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EC1284410A005D193A /* FeedModel.m */; };
 		329079F312844115005D193A /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F012844115005D193A /* FeedViewController.m */; };
-		329079F412844115005D193A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F212844115005D193A /* LoginViewController.m */; };
+		329079F412844115005D193A /* StartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F212844115005D193A /* StartController.m */; };
 		329079F912844295005D193A /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F812844295005D193A /* PostViewController.m */; };
 		32907BB212854883005D193A /* TTTableViewDelegate+URLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */; };
 		32939FF51278ABD900B07DD5 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 32939FF41278ABD900B07DD5 /* Facebook.m */; };
@@ -68,7 +67,13 @@
 		32D585A712A30EE800E4393A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D585A612A30EE800E4393A /* Entitlements.plist */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
-		EBB605D5139CC9E300A9F46C /* SplitLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB605D4139CC9E300A9F46C /* SplitLoginViewController.m */; };
+		EBB605D5139CC9E300A9F46C /* SplitStartController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB605D4139CC9E300A9F46C /* SplitStartController.m */; };
+		EBB60603139D23C200A9F46C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB60602139D23C200A9F46C /* Icon@2x.png */; };
+		EBB60607139D25E200A9F46C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB60606139D25E100A9F46C /* Default@2x.png */; };
+		EBB60609139D298A00A9F46C /* Icon72.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB60608139D298A00A9F46C /* Icon72.png */; };
+		EBB6060B139D2C3000A9F46C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB6060A139D2C3000A9F46C /* Default-Portrait~ipad.png */; };
+		EBB60610139D68BC00A9F46C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329079CE12836D95005D193A /* Icon.png */; };
+		EBB60611139D691B00A9F46C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB6060E139D2F5500A9F46C /* Default-Landscape~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,8 +338,8 @@
 		329079EC1284410A005D193A /* FeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedModel.m; sourceTree = "<group>"; };
 		329079EF12844115005D193A /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		329079F012844115005D193A /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
-		329079F112844115005D193A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		329079F212844115005D193A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		329079F112844115005D193A /* StartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartController.h; sourceTree = "<group>"; };
+		329079F212844115005D193A /* StartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartController.m; sourceTree = "<group>"; };
 		329079F712844295005D193A /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		329079F812844295005D193A /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		32907BB012854883005D193A /* TTTableViewDelegate+URLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTTableViewDelegate+URLAdditions.h"; sourceTree = "<group>"; };
@@ -358,8 +363,13 @@
 		8D1107310486CEB800E47090 /* MobileSharer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobileSharer-Info.plist"; sourceTree = "<group>"; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB383D1010BBFC630000B2D2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
-		EBB605D3139CC9E300A9F46C /* SplitLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SplitLoginViewController.h; sourceTree = "<group>"; };
-		EBB605D4139CC9E300A9F46C /* SplitLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitLoginViewController.m; sourceTree = "<group>"; };
+		EBB605D3139CC9E300A9F46C /* SplitStartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitStartController.h; sourceTree = "<group>"; };
+		EBB605D4139CC9E300A9F46C /* SplitStartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitStartController.m; sourceTree = "<group>"; };
+		EBB60602139D23C200A9F46C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		EBB60606139D25E100A9F46C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		EBB60608139D298A00A9F46C /* Icon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon72.png; sourceTree = "<group>"; };
+		EBB6060A139D2C3000A9F46C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		EBB6060E139D2F5500A9F46C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +406,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				EBB6060E139D2F5500A9F46C /* Default-Landscape~ipad.png */,
+				EBB6060A139D2C3000A9F46C /* Default-Portrait~ipad.png */,
+				EBB60608139D298A00A9F46C /* Icon72.png */,
+				EBB60606139D25E100A9F46C /* Default@2x.png */,
 				329AE1F4129F179000B9B01A /* RegexKitLite */,
 				3288C943126E2F1800BF1E3C /* FBConnect */,
 				321F3BCF126CF6D2008473C8 /* Classes */,
@@ -424,6 +438,7 @@
 				32AAA92F12A1B3CA0068C789 /* Icon75.png */,
 				324A051712A079DC008BCD8F /* Default.png */,
 				329079CE12836D95005D193A /* Icon.png */,
+				EBB60602139D23C200A9F46C /* Icon@2x.png */,
 				EB383D1010BBFC630000B2D2 /* Three20.bundle */,
 				28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */,
 				8D1107310486CEB800E47090 /* MobileSharer-Info.plist */,
@@ -582,12 +597,12 @@
 		329079DC12843FF6005D193A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EBB605D3139CC9E300A9F46C /* SplitLoginViewController.h */,
-				EBB605D4139CC9E300A9F46C /* SplitLoginViewController.m */,
+				329079F112844115005D193A /* StartController.h */,
+				329079F212844115005D193A /* StartController.m */,
+				EBB605D3139CC9E300A9F46C /* SplitStartController.h */,
+				EBB605D4139CC9E300A9F46C /* SplitStartController.m */,
 				329079EF12844115005D193A /* FeedViewController.h */,
 				329079F012844115005D193A /* FeedViewController.m */,
-				329079F112844115005D193A /* LoginViewController.h */,
-				329079F212844115005D193A /* LoginViewController.m */,
 				329079F712844295005D193A /* PostViewController.h */,
 				329079F812844295005D193A /* PostViewController.m */,
 				322DD286128CA5AF00E7D1DA /* CommentsPostController.h */,
@@ -915,10 +930,15 @@
 			files = (
 				EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */,
 				3288C95C126E2F1800BF1E3C /* FBDialog.bundle in Resources */,
-				329079CF12836D95005D193A /* Icon.png in Resources */,
 				324A051812A079DC008BCD8F /* Default.png in Resources */,
 				32AAA93012A1B3CA0068C789 /* Icon75.png in Resources */,
 				32D585A712A30EE800E4393A /* Entitlements.plist in Resources */,
+				EBB60603139D23C200A9F46C /* Icon@2x.png in Resources */,
+				EBB60607139D25E200A9F46C /* Default@2x.png in Resources */,
+				EBB60609139D298A00A9F46C /* Icon72.png in Resources */,
+				EBB6060B139D2C3000A9F46C /* Default-Portrait~ipad.png in Resources */,
+				EBB60610139D68BC00A9F46C /* Icon.png in Resources */,
+				EBB60611139D691B00A9F46C /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,7 +970,7 @@
 				329079ED1284410A005D193A /* FeedDataSource.m in Sources */,
 				329079EE1284410A005D193A /* FeedModel.m in Sources */,
 				329079F312844115005D193A /* FeedViewController.m in Sources */,
-				329079F412844115005D193A /* LoginViewController.m in Sources */,
+				329079F412844115005D193A /* StartController.m in Sources */,
 				329079F912844295005D193A /* PostViewController.m in Sources */,
 				32907BB212854883005D193A /* TTTableViewDelegate+URLAdditions.m in Sources */,
 				323B93D5128559560097E308 /* PostDataSource.m in Sources */,
@@ -972,7 +992,7 @@
 				32329AAC12AA516100346FB5 /* StyledTableDataItem.m in Sources */,
 				32906DA912AA56B7008C08B1 /* StyledTextCell.m in Sources */,
 				3242B04F12AECFCC0003F7F3 /* ComposePostController.m in Sources */,
-				EBB605D5139CC9E300A9F46C /* SplitLoginViewController.m in Sources */,
+				EBB605D5139CC9E300A9F46C /* SplitStartController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,7 +1047,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1038,13 +1061,14 @@
 					"../../facebook-ios-sdk/src",
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					"$(STDLIB_HEADERS)",
+					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
 				);
 				INFOPLIST_FILE = "MobileSharer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
-					"-licucore",
-					"-all_load",
 					"-ObjC",
+					"-licucore",
 				);
 				PRODUCT_NAME = "Share!";
 				SDKROOT = iphoneos;
@@ -1080,7 +1104,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1091,13 +1118,14 @@
 					"../../facebook-ios-sdk/src",
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					"$(STDLIB_HEADERS)",
+					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
 				);
 				INFOPLIST_FILE = "MobileSharer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
-					"-licucore",
-					"-all_load",
 					"-ObjC",
+					"-licucore",
 				);
 				PRODUCT_NAME = "Share!";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1131,7 +1159,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1142,13 +1173,14 @@
 					"../../facebook-ios-sdk/src",
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					"$(STDLIB_HEADERS)",
+					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
 				);
 				INFOPLIST_FILE = "MobileSharer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
-					"-licucore",
-					"-all_load",
 					"-ObjC",
+					"-licucore",
 				);
 				PRODUCT_NAME = "Share!";
 				SDKROOT = iphoneos;
@@ -1183,7 +1215,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1194,13 +1229,14 @@
 					"../../facebook-ios-sdk/src",
 					"$(BUILT_PRODUCTS_DIR)/../three20",
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					"$(STDLIB_HEADERS)",
+					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
 				);
 				INFOPLIST_FILE = "MobileSharer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
-					"-licucore",
-					"-all_load",
 					"-ObjC",
+					"-licucore",
 				);
 				PRODUCT_NAME = "Share!";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
