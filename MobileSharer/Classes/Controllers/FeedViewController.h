@@ -6,10 +6,11 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
+#import "TableViewController.h"
 #import "FacebookJanitor.h"
 #import "ComposePostController.h"
 
-@interface FeedViewController : TTTableViewController <TTPostControllerDelegate, FBRequestDelegate>{
+@interface FeedViewController : TableViewController <TTPostControllerDelegate, FBRequestDelegate>{
   NSString* _feedId;
 }
 

@@ -23,15 +23,7 @@
 #pragma mark TTTableViewCell class public
 
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
-  CGFloat height = [super tableView:tableView rowHeightForObject:object];
-  CGFloat minHeight = TT_ROW_HEIGHT;
   return 30;
-  if (height < minHeight) {
-    return minHeight;
-    
-  } else {
-    return height;
-  }
 }
 
 

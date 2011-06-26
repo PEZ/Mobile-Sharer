@@ -65,6 +65,7 @@
 		32AAA93012A1B3CA0068C789 /* Icon75.png in Resources */ = {isa = PBXBuildFile; fileRef = 32AAA92F12A1B3CA0068C789 /* Icon75.png */; };
 		32CEF85C128807AD00B2D224 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEF85B128807AD00B2D224 /* Comment.m */; };
 		32D585A712A30EE800E4393A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D585A612A30EE800E4393A /* Entitlements.plist */; };
+		EB03560413B761DC00D5C761 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB03560313B761DC00D5C761 /* TableViewController.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
 		EBB605D5139CC9E300A9F46C /* SplitStartController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB605D4139CC9E300A9F46C /* SplitStartController.m */; };
@@ -361,6 +362,8 @@
 		32D585A612A30EE800E4393A /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		6EF963BD118E96C9003902E7 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* MobileSharer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MobileSharer-Info.plist"; sourceTree = "<group>"; };
+		EB03560313B761DC00D5C761 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		EB03560513B763E200D5C761 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB383D1010BBFC630000B2D2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		EBB605D3139CC9E300A9F46C /* SplitStartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitStartController.h; sourceTree = "<group>"; };
@@ -597,6 +600,8 @@
 		329079DC12843FF6005D193A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EB03560513B763E200D5C761 /* TableViewController.h */,
+				EB03560313B761DC00D5C761 /* TableViewController.m */,
 				329079F112844115005D193A /* StartController.h */,
 				329079F212844115005D193A /* StartController.m */,
 				EBB605D3139CC9E300A9F46C /* SplitStartController.h */,
@@ -624,9 +629,9 @@
 			children = (
 				32907BB012854883005D193A /* TTTableViewDelegate+URLAdditions.h */,
 				32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */,
-				329ADFB8129C50A700B9B01A /* User.h */,
 				32329AAA12AA516100346FB5 /* StyledTableDataItem.h */,
 				32329AAB12AA516100346FB5 /* StyledTableDataItem.m */,
+				329ADFB8129C50A700B9B01A /* User.h */,
 				329ADFB9129C50A700B9B01A /* User.m */,
 				321F3BD2126CF6D2008473C8 /* Post.h */,
 				321F3BD3126CF6D2008473C8 /* Post.m */,
@@ -993,6 +998,7 @@
 				32906DA912AA56B7008C08B1 /* StyledTextCell.m in Sources */,
 				3242B04F12AECFCC0003F7F3 /* ComposePostController.m in Sources */,
 				EBB605D5139CC9E300A9F46C /* SplitStartController.m in Sources */,
+				EB03560413B761DC00D5C761 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1088,11 +1094,17 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(STDLIB_HEADERS)",
+					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
+					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Share!";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F52E7A50-EA8D-4394-A352-66C425C8C253";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1145,11 +1157,17 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(STDLIB_HEADERS)",
+					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
+					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Share!";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4F83FA7B-1FE1-43FA-9CAA-B6EDA6D68577";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1199,11 +1217,17 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(STDLIB_HEADERS)",
+					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
+					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Share!";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74F91047-9437-4734-B499-B45A2B076319";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1256,11 +1280,17 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(STDLIB_HEADERS)",
+					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
+					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Share!";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

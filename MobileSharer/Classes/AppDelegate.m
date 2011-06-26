@@ -14,14 +14,14 @@
 // UIApplicationDelegate
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-  TT_RELEASE_SAFELY(_rootViewController);
+  //TT_RELEASE_SAFELY(_rootViewController);
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   [TTStyleSheet setGlobalStyleSheet:[[[DefaultStyleSheet 
                                        alloc] init] autorelease]];
   TTNavigator* navigator = [TTNavigator navigator];
-  navigator.persistenceMode = TTNavigatorPersistenceModeNone;
+  navigator.persistenceMode = TTNavigatorPersistenceModeAll;
   
   TTURLMap* map = navigator.URLMap;
   [map from:@"*" toViewController:[WebController class]];
@@ -33,7 +33,8 @@
     SplitStartController* controller =
     (SplitStartController*)[[TTNavigator navigator] viewControllerForURL:kAppStartURLPath];
     TTDASSERT([controller isKindOfClass:[SplitStartController class]]);
-    map = controller.primaryNavigator.URLMap;
+    //map = controller.primaryNavigator.URLMap;
+    map = controller.rightNavigator.URLMap;
     
   } else {
     [map                    from:kAppStartURLPath
@@ -43,17 +44,17 @@
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
   [map from:kPostIdPath toViewController:[PostViewController class]];
 
-  _rootViewController = [[TTRootViewController alloc] init];
-  [[TTNavigator navigator].window addSubview:_rootViewController.view];
-  [TTNavigator navigator].rootContainer = _rootViewController;
+  //_rootViewController = [[TTRootViewController alloc] init];
+  //[[TTNavigator navigator].window addSubview:_rootViewController.view];
+  //[TTNavigator navigator].rootContainer = _rootViewController;
   
-  if (TTIsPad() || ![navigator restoreViewControllers]) {
+  if (![navigator restoreViewControllers]) {
     [navigator openURLAction:[TTURLAction actionWithURLPath:kAppStartURLPath]];
   }
   
-  [_rootViewController showController: navigator.rootViewController
-                           transition: UIViewAnimationTransitionNone
-                             animated: NO];
+  //[_rootViewController showController: navigator.rootViewController
+  //                         transition: UIViewAnimationTransitionNone
+  //                           animated: NO];
 }
 
 #pragma mark -

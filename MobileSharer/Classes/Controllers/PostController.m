@@ -24,15 +24,15 @@
   return @"Posting ...";
 }
 
-- (void)dismissWithResult:(id)result animated:(BOOL)animated {
-	[[UIDevice currentDevice] performSelector:@selector(setOrientation:) withObject:(void*)UIDeviceOrientationPortrait];
-	[super dismissWithResult:result animated:animated];
-}
-
-- (void)dismissPopupViewControllerAnimated:(BOOL)animated {
-	[[UIDevice currentDevice] performSelector:@selector(setOrientation:) withObject:(void*)UIDeviceOrientationPortrait];
-	[super dismissPopupViewControllerAnimated:animated];
-}
+//- (void)dismissWithResult:(id)result animated:(BOOL)animated {
+//	[[UIDevice currentDevice] performSelector:@selector(setOrientation:) withObject:(void*)UIDeviceOrientationPortrait];
+//	[super dismissWithResult:result animated:animated];
+//}
+//
+//- (void)dismissPopupViewControllerAnimated:(BOOL)animated {
+//	[[UIDevice currentDevice] performSelector:@selector(setOrientation:) withObject:(void*)UIDeviceOrientationPortrait];
+//	[super dismissPopupViewControllerAnimated:animated];
+//}
 
 #pragma mark -
 #pragma mark FBRequestDelegate

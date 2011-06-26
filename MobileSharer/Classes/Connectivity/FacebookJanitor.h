@@ -6,7 +6,6 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "UserModel.h"
 
 @protocol FBJSessionDelegate;

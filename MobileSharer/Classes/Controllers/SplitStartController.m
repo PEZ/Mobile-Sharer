@@ -4,14 +4,12 @@
 #import "StartController.h"
 #import "WebController.h"
 
-static const CGFloat kBorderWidth = 1;
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @interface SplitStartController()
 
-- (void)setupNavigators;
+- (void)setupURLRouting;
 
 @end
 
@@ -26,7 +24,7 @@ static const CGFloat kBorderWidth = 1;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    [self setupNavigators];
+    [self setupURLRouting];
   }
   
   return self;
@@ -34,78 +32,37 @@ static const CGFloat kBorderWidth = 1;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)updateLayoutWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  [super updateLayoutWithOrientation:interfaceOrientation];
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   
-  _dividerView.height = self.view.height;
-  _dividerView.width = kBorderWidth;
-  _dividerView.right = self.primaryViewController.view.left + _dividerView.width;
-  _dividerView.top = self.primaryViewController.view.top;
-  
-  [self.view bringSubviewToFront:_dividerView];
+  [self.leftNavigator openURLs:kAppStartURLPath, nil];
+  [self.rightNavigator openURLs:@"", nil];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark UIViewController
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)loadView {
-  [super loadView];
+- (id)willOpenUrlPath:(NSURL*)url {
+  [self.rightNavigator openURLAction:[TTURLAction actionWithURLPath:[url absoluteString]]];
   
-  self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth
-                                | UIViewAutoresizingFlexibleHeight);
+  [self.popoverSplitController dismissPopoverAnimated:YES];
   
-  _dividerView = [[UIView alloc] init];
-  _dividerView.backgroundColor = [UIColor lightGrayColor];
+  // We need to do this because the right navigator clobbered the right navigation controller
+  // and our button along with it.
+  [self updateSplitViewButton];
   
-  _dividerView.autoresizingMask = (UIViewAutoresizingFlexibleHeight);
-  [self.view addSubview:_dividerView];
-  
-  [self updateLayoutWithOrientation:TTInterfaceOrientation()];
+  // Don't create a view controller here; we're forwarding the URL routing.
+  return nil;
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)viewDidUnload {
-  [super viewDidUnload];
-  
-  TT_RELEASE_SAFELY(_dividerView);
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark TTSplitViewController
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)primaryViewDidAppear:(BOOL)animated {
-  [super primaryViewDidAppear:animated];
-  
-  [self.view bringSubviewToFront:_dividerView];
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)openSecondaryURLAction:(NSURL*)url {
-  self.primaryNavigator.rootViewController = nil;
-  [self.primaryNavigator openURLAction:[TTURLAction actionWithURLPath:url.absoluteString]];
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)setupSecondaryNavigator {
-  TTURLMap* map = self.secondaryNavigator.URLMap;
+- (void)routeLeftNavigator {
+  TTURLMap* map = self.leftNavigator.URLMap;
   
   // Forward all unhandled URL actions to the right navigator.
-  [map              from: @"*"
-                toObject: self
-                selector: @selector(openSecondaryURLAction:)];
+  [map                    from: @"*"
+                      toObject: self
+                      selector: @selector(willOpenUrlPath:)];
   
   [map                    from: kAppStartURLPath
               toViewController: [StartController class]];
@@ -113,8 +70,9 @@ static const CGFloat kBorderWidth = 1;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)setupPrimaryNavigator {
-  TTURLMap* map = self.primaryNavigator.URLMap;
+- (void)routeRightNavigator {
+  TTURLMap* map = self.rightNavigator.URLMap;
+  
   
   [map                    from: @"*"
               toViewController: [WebController class]];
@@ -122,12 +80,9 @@ static const CGFloat kBorderWidth = 1;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)setupNavigators {
-  [self setupPrimaryNavigator];
-  [self setupSecondaryNavigator];
-  
-  [self.secondaryNavigator openURLs:kAppStartURLPath, nil];
-  [self.primaryNavigator openURLs:@"", nil];
+- (void)setupURLRouting {
+  [self routeLeftNavigator];
+  [self routeRightNavigator];
 }
 
 @end

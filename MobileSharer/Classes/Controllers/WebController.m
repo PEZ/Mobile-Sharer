@@ -34,6 +34,11 @@ static NSString* kUrlEncodedEndQuote = @"%22";
   return self;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation: 
+(UIInterfaceOrientation)interfaceOrientation {
+  return interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
+}
+
 - (void)shareAction {
   if (nil == _actionSheet) {
     _actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self

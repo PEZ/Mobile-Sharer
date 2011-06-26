@@ -6,10 +6,10 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import <Three20UI/TTTableViewController.h>
+#import "TableViewController.h"
 #import "FacebookJanitor.h"
 
-@interface StartController : TTTableViewController <FBJSessionDelegate, UserRequestDelegate> {
+@interface StartController : TableViewController <FBJSessionDelegate, UserRequestDelegate> {
   @private
   UIBarButtonItem* _loginLogoutButton;
   BOOL       _currentUserLoaded;

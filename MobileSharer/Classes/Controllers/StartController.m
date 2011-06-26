@@ -93,7 +93,7 @@ Read reviews, ask questions, suggest features, whatever on the \
   [self invalidateModel];
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
-    [self showFeed];
+    //[self showFeed];
   }
 }
 

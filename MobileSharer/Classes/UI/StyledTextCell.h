@@ -6,8 +6,6 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "Three20UI/UIViewAdditions.h"
-#import "Three20Core/NSDateAdditions.h"
 #import "StyledTableDataItem.h"
 
 @interface StyledTextCell : TTTableLinkedItemCell {

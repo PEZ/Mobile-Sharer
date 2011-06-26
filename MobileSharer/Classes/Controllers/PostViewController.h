@@ -6,6 +6,7 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
+#import "TableViewController.h"
 #import "FacebookJanitor.h"
 #import "PostDataSource.h"
 #import "CommentsPostController.h"
@@ -23,7 +24,7 @@
 
 @end
 
-@interface PostViewController : TTTableViewController <TTPostControllerDelegate, FBRequestDelegate> {
+@interface PostViewController : TableViewController <TTPostControllerDelegate, FBRequestDelegate> {
   NSString* _postId;
   BOOL _wasShared;
 }
