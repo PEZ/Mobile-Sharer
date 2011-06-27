@@ -7,9 +7,8 @@
 //
 
 #import "TableViewController.h"
-#import "FacebookJanitor.h"
 
-@interface ConnectionsViewController : TableViewController <FBRequestDelegate> {
+@interface ConnectionsViewController : TableViewController {
   NSString* _connectionsPath;
 }
 

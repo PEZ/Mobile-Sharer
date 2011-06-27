@@ -1,6 +1,5 @@
 #import "ConnectionsDataSource.h"
 
-#import "ConnectionCell.h"
 #import "LoadMoreCell.h"
 #import "Connection.h"
 

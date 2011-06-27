@@ -6,8 +6,6 @@
 //  Copyright 2011 Better Than Tomorrow. All rights reserved.
 //
 
-#import "FacebookModel.h"
-
 @class ConnectionsModel;
 
 @interface ConnectionsModel : TTURLRequestModel {

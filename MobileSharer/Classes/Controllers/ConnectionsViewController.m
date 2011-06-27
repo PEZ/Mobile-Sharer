@@ -8,8 +8,6 @@
 
 #import "ConnectionsViewController.h"
 #import "ConnectionsDataSource.h"
-#import "RegexKitLite.h"
-#import <Three20UICommon/UIViewControllerAdditions.h>
 
 @implementation ConnectionsViewController
 

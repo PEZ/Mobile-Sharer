@@ -19,7 +19,7 @@
 
 - (id)initWithGraphPath:(NSString*)path {
   if (self = [super init]) {
-    _graphPath = path;
+    self.graphPath = path;
   }
   return self;
 }
@@ -58,7 +58,7 @@
   connection.connectionId = [entry objectForKey:@"id"];
   connection.connectionName = [entry objectForKey:@"name"];
   connection.imageURL = [FacebookJanitor avatarForId:connection.connectionId];
-  connection.defaultImage = TTIMAGE(@"bundle://imageDefault50x50.png");
+  //connection.defaultImage = TTIMAGE(@"bundle://imageDefault50x50.png");
   connection.text = connection.connectionName;
   connection.URL = [Etc toFeedURLPath:connection.connectionId name:connection.connectionName];
   return connection;
