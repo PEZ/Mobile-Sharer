@@ -39,6 +39,7 @@
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
     NSString* feedUrl = [Etc toFeedURLPath:@"me" name:@"News feed"];
+    NSString* friendsUrl = [Etc toConnectionsURLPath:@"friends" andName:@"Friends"];
     //NSString* appStoreUrl = [NSString stringWithFormat:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", kAppStoreId];
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
@@ -57,6 +58,7 @@
 
     [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
     [dataSource.items addObject:[TTTableTextItem itemWithText:@"News feed" URL:feedUrl]];
+    [dataSource.items addObject:[TTTableTextItem itemWithText:@"Friends" URL:friendsUrl]];
     [dataSource.items addObject:[TTTableTextItem itemWithText:@"Share Share!" URL:shareItUrl]];
   }
   else {

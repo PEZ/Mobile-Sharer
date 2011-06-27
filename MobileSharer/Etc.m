@@ -17,6 +17,8 @@ CGFloat   kIconImageHeight  = 16;
 
 NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedId:)/(andName:)";
+NSString* kConnectionsPathPrefix = @"ms://connections";
+NSString* kConnectionsURLPath = @"ms://connections/(initWithFBConnectionsPath:)/(andName:)";
 NSString* kPostIdPathPrefix = @"ms://post";
 NSString* kPostIdPath = @"ms://post/(initWithPostId:)/(andTitle:)";
 NSString* kAppStartURLPath = @"ms://login";
@@ -49,6 +51,10 @@ NSString* kAppStoreId = @"406870483";
                    feedId,
                    [self urlEncode:name]];
   return url;
+}
+
++ (NSString*) toConnectionsURLPath:(NSString*)connectionsPath andName:(NSString*)name {
+  return [NSString stringWithFormat:@"%@/%@/%@", kConnectionsPathPrefix, connectionsPath, [self urlEncode:name]];
 }
 
 + (NSString*) toPhotoURLPath:(NSString*)photoId {

@@ -75,6 +75,11 @@
 		EBB6060B139D2C3000A9F46C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB6060A139D2C3000A9F46C /* Default-Portrait~ipad.png */; };
 		EBB60610139D68BC00A9F46C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329079CE12836D95005D193A /* Icon.png */; };
 		EBB60611139D691B00A9F46C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB6060E139D2F5500A9F46C /* Default-Landscape~ipad.png */; };
+		EBF1655B13B8823700BA0485 /* ConnectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1655A13B8823700BA0485 /* ConnectionsViewController.m */; };
+		EBF1655E13B8854F00BA0485 /* ConnectionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1655D13B8854F00BA0485 /* ConnectionsDataSource.m */; };
+		EBF1656113B888E700BA0485 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1656013B888E700BA0485 /* Connection.m */; };
+		EBF1656413B88A6D00BA0485 /* ConnectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1656313B88A6D00BA0485 /* ConnectionsModel.m */; };
+		EBF1658113B9099C00BA0485 /* imageDefault50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658013B9099C00BA0485 /* imageDefault50x50.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,6 +378,15 @@
 		EBB60608139D298A00A9F46C /* Icon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon72.png; sourceTree = "<group>"; };
 		EBB6060A139D2C3000A9F46C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		EBB6060E139D2F5500A9F46C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		EBF1655913B8823700BA0485 /* ConnectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsViewController.h; sourceTree = "<group>"; };
+		EBF1655A13B8823700BA0485 /* ConnectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsViewController.m; sourceTree = "<group>"; };
+		EBF1655C13B8854F00BA0485 /* ConnectionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsDataSource.h; sourceTree = "<group>"; };
+		EBF1655D13B8854F00BA0485 /* ConnectionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsDataSource.m; sourceTree = "<group>"; };
+		EBF1655F13B888E700BA0485 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
+		EBF1656013B888E700BA0485 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
+		EBF1656213B88A6D00BA0485 /* ConnectionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsModel.h; sourceTree = "<group>"; };
+		EBF1656313B88A6D00BA0485 /* ConnectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsModel.m; sourceTree = "<group>"; };
+		EBF1658013B9099C00BA0485 /* imageDefault50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageDefault50x50.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,6 +451,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EBF1658013B9099C00BA0485 /* imageDefault50x50.png */,
 				32D585A612A30EE800E4393A /* Entitlements.plist */,
 				32AAA92F12A1B3CA0068C789 /* Icon75.png */,
 				324A051712A079DC008BCD8F /* Default.png */,
@@ -606,6 +621,8 @@
 				329079F212844115005D193A /* StartController.m */,
 				EBB605D3139CC9E300A9F46C /* SplitStartController.h */,
 				EBB605D4139CC9E300A9F46C /* SplitStartController.m */,
+				EBF1655913B8823700BA0485 /* ConnectionsViewController.h */,
+				EBF1655A13B8823700BA0485 /* ConnectionsViewController.m */,
 				329079EF12844115005D193A /* FeedViewController.h */,
 				329079F012844115005D193A /* FeedViewController.m */,
 				329079F712844295005D193A /* PostViewController.h */,
@@ -631,24 +648,30 @@
 				32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */,
 				32329AAA12AA516100346FB5 /* StyledTableDataItem.h */,
 				32329AAB12AA516100346FB5 /* StyledTableDataItem.m */,
+				EBF1655F13B888E700BA0485 /* Connection.h */,
+				EBF1656013B888E700BA0485 /* Connection.m */,
 				329ADFB8129C50A700B9B01A /* User.h */,
 				329ADFB9129C50A700B9B01A /* User.m */,
 				321F3BD2126CF6D2008473C8 /* Post.h */,
 				321F3BD3126CF6D2008473C8 /* Post.m */,
 				32CEF85A128807AD00B2D224 /* Comment.h */,
 				32CEF85B128807AD00B2D224 /* Comment.m */,
-				329079E91284410A005D193A /* FeedDataSource.h */,
-				329079EA1284410A005D193A /* FeedDataSource.m */,
-				323B93D3128559560097E308 /* PostDataSource.h */,
-				323B93D4128559560097E308 /* PostDataSource.m */,
+				EBF1656213B88A6D00BA0485 /* ConnectionsModel.h */,
+				EBF1656313B88A6D00BA0485 /* ConnectionsModel.m */,
+				EBF1655C13B8854F00BA0485 /* ConnectionsDataSource.h */,
+				EBF1655D13B8854F00BA0485 /* ConnectionsDataSource.m */,
 				32053B1312931DA2006ABC35 /* FacebookModel.h */,
 				32053B1412931DA2006ABC35 /* FacebookModel.m */,
 				329ADFBB129C53F700B9B01A /* UserModel.h */,
 				329ADFBC129C53F700B9B01A /* UserModel.m */,
 				329079EB1284410A005D193A /* FeedModel.h */,
 				329079EC1284410A005D193A /* FeedModel.m */,
+				329079E91284410A005D193A /* FeedDataSource.h */,
+				329079EA1284410A005D193A /* FeedDataSource.m */,
 				323B93D612855A7E0097E308 /* PostModel.h */,
 				323B93D712855A7E0097E308 /* PostModel.m */,
+				323B93D3128559560097E308 /* PostDataSource.h */,
+				323B93D4128559560097E308 /* PostDataSource.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -944,6 +967,7 @@
 				EBB6060B139D2C3000A9F46C /* Default-Portrait~ipad.png in Resources */,
 				EBB60610139D68BC00A9F46C /* Icon.png in Resources */,
 				EBB60611139D691B00A9F46C /* Default-Landscape~ipad.png in Resources */,
+				EBF1658113B9099C00BA0485 /* imageDefault50x50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -999,6 +1023,10 @@
 				3242B04F12AECFCC0003F7F3 /* ComposePostController.m in Sources */,
 				EBB605D5139CC9E300A9F46C /* SplitStartController.m in Sources */,
 				EB03560413B761DC00D5C761 /* TableViewController.m in Sources */,
+				EBF1655B13B8823700BA0485 /* ConnectionsViewController.m in Sources */,
+				EBF1655E13B8854F00BA0485 /* ConnectionsDataSource.m in Sources */,
+				EBF1656113B888E700BA0485 /* Connection.m in Sources */,
+				EBF1656413B88A6D00BA0485 /* ConnectionsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

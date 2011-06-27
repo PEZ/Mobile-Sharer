@@ -2,6 +2,7 @@
 #import "AppDelegate.h"
 #import "DefaultStyleSheet.h"
 #import "FeedViewController.h"
+#import "ConnectionsViewController.h"
 #import "PostViewController.h"
 #import "StartController.h"
 #import "SplitStartController.h"
@@ -42,6 +43,7 @@
   }
 
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
+  [map from:kConnectionsURLPath toViewController:[ConnectionsViewController class]];
   [map from:kPostIdPath toViewController:[PostViewController class]];
 
   //_rootViewController = [[TTRootViewController alloc] init];
