@@ -44,6 +44,7 @@
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
     NSString* feedUrl = [Etc toFeedURLPath:@"me" name:@"News feed"];
     NSString* friendsUrl = [Etc toConnectionsURLPath:@"friends" andName:@"Friends"];
+
     //NSString* appStoreUrl = [NSString stringWithFormat:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", kAppStoreId];
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
@@ -52,9 +53,6 @@
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"News feed"
                                                       imageURL:@"bundle://newsfeed-50x50.png"
                                                            URL:feedUrl]];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Friends"
-                                                      imageURL:@"bundle://friends-50x50.png"
-                                                           URL:friendsUrl]];
 
     if (_currentUserLoaded) {
       FacebookJanitor* janitor = [FacebookJanitor sharedInstance];
@@ -65,7 +63,20 @@
     else {
       [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading current user..."]];
     }
-
+    
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Friends"
+                                                      imageURL:@"bundle://friends-50x50.png"
+                                                           URL:friendsUrl]];
+/*
+    NSString* pagesUrl = [Etc toConnectionsURLPath:@"likes" andName:@"Pages"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Pages"
+                                                      imageURL:@"bundle://pages-50x50.png"
+                                                           URL:pagesUrl]];
+    NSString* groupsUrl = [Etc toConnectionsURLPath:@"groups" andName:@"Groups"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Groups"
+                                                      imageURL:@"bundle://groups-50x50.png"
+                                                           URL:groupsUrl]];
+ */
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Share Share!"
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:shareItUrl]];
