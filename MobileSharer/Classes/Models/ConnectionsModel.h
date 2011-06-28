@@ -10,12 +10,15 @@
 
 @interface ConnectionsModel : TTURLRequestModel {
   NSString*                _graphPath;
-  NSArray*                 _connections;
+  NSMutableArray*          _connections;
+  NSArray*                 _allConnections;
 }
 
 @property (nonatomic, retain)  NSString* graphPath;
-@property (nonatomic, retain)  NSArray* connections;
+@property (nonatomic, retain)  NSMutableArray* connections;
+@property (nonatomic, retain)  NSArray* allConnections;
 
 - (id)initWithGraphPath:(NSString*)path;
+- (void)search:(NSString*)text;
 
 @end

@@ -11,6 +11,7 @@
 
 @implementation ConnectionsViewController
 
+@synthesize delegate = _delegate;
 @synthesize connectionsPath = _connectionsPath;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +39,33 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+// UIViewController
+
+- (void)loadView {
+  [super loadView];
+  
+  ConnectionsViewController* searchController = [[[ConnectionsViewController alloc] init] autorelease];
+  searchController.dataSource = [[[ConnectionsDataSource alloc] initWithConnectionsPath:self.connectionsPath] autorelease];
+  self.searchViewController = searchController;
+  self.tableView.tableHeaderView = _searchController.searchBar;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTTableViewController
+
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
+  [_delegate searchController:self didSelectObject:object];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// TTSearchTextFieldDelegate
+
+- (void)textField:(TTSearchTextField*)textField didSelectObject:(id)object {
+  [_delegate searchController:self didSelectObject:object];
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
   self.dataSource = [[[ConnectionsDataSource alloc]
                       initWithConnectionsPath:self.connectionsPath] autorelease];
@@ -46,7 +74,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+  return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
 }
 
 @end

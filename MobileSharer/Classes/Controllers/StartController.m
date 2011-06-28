@@ -12,8 +12,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if ((self = [super initWithNibName:nibNameOrNil	bundle:nibBundleOrNil])) {
-    self.title = @"Share!";
-    self.variableHeightRows = YES;
+    self.title = @"Menu";
   }
   return self;
 }
@@ -37,31 +36,42 @@
   TTListDataSource* dataSource = [[[TTListDataSource alloc] init] autorelease];
   NSString* html = @"";
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
+    self.variableHeightRows = NO;
+    self.tableView.rowHeight = 64;
+    _loginLogoutButton.title = @"Logout";
+    _loginLogoutButton.action = @selector(logout);
+
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
     NSString* feedUrl = [Etc toFeedURLPath:@"me" name:@"News feed"];
     NSString* friendsUrl = [Etc toConnectionsURLPath:@"friends" andName:@"Friends"];
     //NSString* appStoreUrl = [NSString stringWithFormat:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", kAppStoreId];
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
-    html = [NSString stringWithFormat:@"Thanks for using Share!"];
+
+
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"News feed"
+                                                      imageURL:@"bundle://newsfeed-50x50.png"
+                                                           URL:feedUrl]];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Friends"
+                                                      imageURL:@"bundle://friends-50x50.png"
+                                                           URL:friendsUrl]];
+
     if (_currentUserLoaded) {
       FacebookJanitor* janitor = [FacebookJanitor sharedInstance];
-      html = [NSString stringWithFormat:@"%@<div class=\"userInfo\">\
-<span class=\"tableTitleText\"><img width=\"%f\" height=\"%f\" src=\"%@\" /> %@</span></div>",
-              html, kAvatarImageWidth, kAvatarImageHeight,
-              [FacebookJanitor avatarForId:janitor.currentUser.userId],
-              janitor.currentUser.userName];
+      [dataSource.items addObject:[TTTableImageItem itemWithText:janitor.currentUser.userName
+                                                        imageURL:[FacebookJanitor avatarForId:janitor.currentUser.userId]
+                                                             URL:[Etc toFeedURLPath:janitor.currentUser.userId name:janitor.currentUser.userName]]];
     }
-    html = [NSString stringWithFormat:@"<div class=\"appInfo\">%@</div>", html];
-    _loginLogoutButton.title = @"Logout";
-    _loginLogoutButton.action = @selector(logout);
+    else {
+      [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading current user..."]];
+    }
 
-    [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
-    [dataSource.items addObject:[TTTableTextItem itemWithText:@"News feed" URL:feedUrl]];
-    [dataSource.items addObject:[TTTableTextItem itemWithText:@"Friends" URL:friendsUrl]];
-    [dataSource.items addObject:[TTTableTextItem itemWithText:@"Share Share!" URL:shareItUrl]];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Share Share!"
+                                                      imageURL:@"bundle://love-50x50.png"
+                                                           URL:shareItUrl]];
   }
   else {
+    self.variableHeightRows = YES;
     html = @"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
 Welcome to Share!\n\n\
 To be able to help you follow your Facebook feed and share links Share! needs your permission. Please \
@@ -76,7 +86,12 @@ Read reviews, ask questions, suggest features, whatever on the \
     self.navigationItem.rightBarButtonItem = nil;
     [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
   }
-  _loginLogoutButton.enabled = YES;
+
+  html = [NSString stringWithFormat:@"Thanks for using Share!"];
+  html = [NSString stringWithFormat:@"<div class=\"appInfo\">%@</div>", html];
+  [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
+  
+ _loginLogoutButton.enabled = YES;
   self.dataSource = dataSource;
 }
 
@@ -103,9 +118,8 @@ Read reviews, ask questions, suggest features, whatever on the \
 #pragma mark FBJSessionDelegate
 
 -(void) fbjDidLogin {
-  [self invalidateModel];
   [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
-  [self showFeed];
+  [self invalidateModel];
 }
 
 

@@ -31,8 +31,17 @@
 }
 
 - (UIColor*)toolbarTintColor {
-  return RGBCOLOR(100, 122, 152);
+  return RGBACOLOR(100, 122, 152, 0.95);
 }
+
+- (UIColor*)navigationBarTintColor {
+  return RGBACOLOR(100, 122, 152, 0.95);
+}
+
+- (UIColor*)tabBarTintColor {
+  return RGBACOLOR(100, 122, 152, 0.95);
+}
+
 
 #pragma mark -
 #pragma mark buttons

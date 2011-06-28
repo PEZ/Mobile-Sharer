@@ -16,6 +16,7 @@
 
 @synthesize graphPath = _graphPath;
 @synthesize connections = _connections;
+@synthesize allConnections = _allConnections;
 
 - (id)initWithGraphPath:(NSString*)path {
   if (self = [super init]) {
@@ -27,9 +28,29 @@
 - (void)dealloc {
   TT_RELEASE_SAFELY(_graphPath);
   TT_RELEASE_SAFELY(_connections);
+  TT_RELEASE_SAFELY(_allConnections);
   [super dealloc];
 }
 
+- (void)search:(NSString*)text {
+  [self cancel];
+  
+  TT_RELEASE_SAFELY(_connections);
+  
+  if (text != nil && text.length) {
+    self.connections = [NSMutableArray array];
+    text = [NSString stringWithFormat:@"*%@*", text];
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"connectionName like[cd] %@", text];
+    for (Connection* c in [_allConnections filteredArrayUsingPredicate:filter]) {
+      [_connections addObject:c];
+    }
+  }
+  else {
+    self.connections = [NSMutableArray arrayWithArray:_allConnections];
+  }
+  
+  [_delegates perform:@selector(modelDidFinishLoad:) withObject:self];
+}
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading && TTIsStringWithAnyText(_graphPath)) {
@@ -83,11 +104,13 @@
     connections = [[NSMutableArray alloc] initWithCapacity:[entries count]];
   }
   TT_RELEASE_SAFELY(_connections);
+  TT_RELEASE_SAFELY(_allConnections);
   
   for (NSDictionary* entry in entries) {
     [connections addObject:[[self createConnectionFromEntry: entry] autorelease]];
   }
   _connections = connections;
+  self.allConnections = [NSArray arrayWithArray:_connections];
   
   [super requestDidFinishLoad:request];
 }

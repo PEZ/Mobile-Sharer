@@ -80,6 +80,14 @@
 		EBF1656113B888E700BA0485 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1656013B888E700BA0485 /* Connection.m */; };
 		EBF1656413B88A6D00BA0485 /* ConnectionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1656313B88A6D00BA0485 /* ConnectionsModel.m */; };
 		EBF1658113B9099C00BA0485 /* imageDefault50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658013B9099C00BA0485 /* imageDefault50x50.png */; };
+		EBF1658513BA0D7800BA0485 /* newsfeed-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658313BA0D7700BA0485 /* newsfeed-50x50.png */; };
+		EBF1658613BA0D7800BA0485 /* newsfeed-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658413BA0D7800BA0485 /* newsfeed-50x50@2x.png */; };
+		EBF1658913BA113700BA0485 /* friends-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658713BA113700BA0485 /* friends-50x50.png */; };
+		EBF1658A13BA113700BA0485 /* friends-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658813BA113700BA0485 /* friends-50x50@2x.png */; };
+		EBF1658F13BA1DAD00BA0485 /* love-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658B13BA1DAD00BA0485 /* love-50x50.png */; };
+		EBF1659013BA1DAD00BA0485 /* love-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658C13BA1DAD00BA0485 /* love-50x50@2x.png */; };
+		EBF1659113BA1DAD00BA0485 /* share-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658D13BA1DAD00BA0485 /* share-50x50.png */; };
+		EBF1659213BA1DAD00BA0485 /* share-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1658E13BA1DAD00BA0485 /* share-50x50@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,6 +395,14 @@
 		EBF1656213B88A6D00BA0485 /* ConnectionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsModel.h; sourceTree = "<group>"; };
 		EBF1656313B88A6D00BA0485 /* ConnectionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsModel.m; sourceTree = "<group>"; };
 		EBF1658013B9099C00BA0485 /* imageDefault50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageDefault50x50.png; sourceTree = "<group>"; };
+		EBF1658313BA0D7700BA0485 /* newsfeed-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsfeed-50x50.png"; sourceTree = "<group>"; };
+		EBF1658413BA0D7800BA0485 /* newsfeed-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsfeed-50x50@2x.png"; sourceTree = "<group>"; };
+		EBF1658713BA113700BA0485 /* friends-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends-50x50.png"; sourceTree = "<group>"; };
+		EBF1658813BA113700BA0485 /* friends-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends-50x50@2x.png"; sourceTree = "<group>"; };
+		EBF1658B13BA1DAD00BA0485 /* love-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "love-50x50.png"; sourceTree = "<group>"; };
+		EBF1658C13BA1DAD00BA0485 /* love-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "love-50x50@2x.png"; sourceTree = "<group>"; };
+		EBF1658D13BA1DAD00BA0485 /* share-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-50x50.png"; sourceTree = "<group>"; };
+		EBF1658E13BA1DAD00BA0485 /* share-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-50x50@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +467,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EBF1658213BA0D3100BA0485 /* Icons */,
 				EBF1658013B9099C00BA0485 /* imageDefault50x50.png */,
 				32D585A612A30EE800E4393A /* Entitlements.plist */,
 				32AAA92F12A1B3CA0068C789 /* Icon75.png */,
@@ -648,14 +665,14 @@
 				32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */,
 				32329AAA12AA516100346FB5 /* StyledTableDataItem.h */,
 				32329AAB12AA516100346FB5 /* StyledTableDataItem.m */,
-				EBF1655F13B888E700BA0485 /* Connection.h */,
-				EBF1656013B888E700BA0485 /* Connection.m */,
 				329ADFB8129C50A700B9B01A /* User.h */,
 				329ADFB9129C50A700B9B01A /* User.m */,
 				321F3BD2126CF6D2008473C8 /* Post.h */,
 				321F3BD3126CF6D2008473C8 /* Post.m */,
 				32CEF85A128807AD00B2D224 /* Comment.h */,
 				32CEF85B128807AD00B2D224 /* Comment.m */,
+				EBF1655F13B888E700BA0485 /* Connection.h */,
+				EBF1656013B888E700BA0485 /* Connection.m */,
 				EBF1656213B88A6D00BA0485 /* ConnectionsModel.h */,
 				EBF1656313B88A6D00BA0485 /* ConnectionsModel.m */,
 				EBF1655C13B8854F00BA0485 /* ConnectionsDataSource.h */,
@@ -737,6 +754,21 @@
 				6E37974811B9BDC10011C497 /* Three20 Extensions */,
 			);
 			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		EBF1658213BA0D3100BA0485 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				EBF1658B13BA1DAD00BA0485 /* love-50x50.png */,
+				EBF1658C13BA1DAD00BA0485 /* love-50x50@2x.png */,
+				EBF1658D13BA1DAD00BA0485 /* share-50x50.png */,
+				EBF1658E13BA1DAD00BA0485 /* share-50x50@2x.png */,
+				EBF1658713BA113700BA0485 /* friends-50x50.png */,
+				EBF1658813BA113700BA0485 /* friends-50x50@2x.png */,
+				EBF1658313BA0D7700BA0485 /* newsfeed-50x50.png */,
+				EBF1658413BA0D7800BA0485 /* newsfeed-50x50@2x.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -968,6 +1000,14 @@
 				EBB60610139D68BC00A9F46C /* Icon.png in Resources */,
 				EBB60611139D691B00A9F46C /* Default-Landscape~ipad.png in Resources */,
 				EBF1658113B9099C00BA0485 /* imageDefault50x50.png in Resources */,
+				EBF1658513BA0D7800BA0485 /* newsfeed-50x50.png in Resources */,
+				EBF1658613BA0D7800BA0485 /* newsfeed-50x50@2x.png in Resources */,
+				EBF1658913BA113700BA0485 /* friends-50x50.png in Resources */,
+				EBF1658A13BA113700BA0485 /* friends-50x50@2x.png in Resources */,
+				EBF1658F13BA1DAD00BA0485 /* love-50x50.png in Resources */,
+				EBF1659013BA1DAD00BA0485 /* love-50x50@2x.png in Resources */,
+				EBF1659113BA1DAD00BA0485 /* share-50x50.png in Resources */,
+				EBF1659213BA1DAD00BA0485 /* share-50x50@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

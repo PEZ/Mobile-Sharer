@@ -38,6 +38,9 @@
   TT_RELEASE_SAFELY(items);
 }
 
+- (void)search:(NSString*)text {
+  [_connectionsModel search:text];
+}
 
 #pragma mark -
 #pragma mark TTTableViewDataSource
