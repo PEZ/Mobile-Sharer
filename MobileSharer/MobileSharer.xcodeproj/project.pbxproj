@@ -92,6 +92,10 @@
 		EBF1659613BA5B2500BA0485 /* pages-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1659413BA5B2500BA0485 /* pages-50x50@2x.png */; };
 		EBF1659913BA6B0000BA0485 /* groups-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1659713BA6B0000BA0485 /* groups-50x50.png */; };
 		EBF1659A13BA6B0000BA0485 /* groups-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1659813BA6B0000BA0485 /* groups-50x50@2x.png */; };
+		EBF1659D13BA816F00BA0485 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1659C13BA813500BA0485 /* KeychainItemWrapper.m */; };
+		EBF1659F13BA892600BA0485 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF1659E13BA892400BA0485 /* Security.framework */; };
+		EBF165A213BB2E4C00BA0485 /* likes-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF165A013BB2E4C00BA0485 /* likes-50x50.png */; };
+		EBF165A313BB2E4C00BA0485 /* likes-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF165A113BB2E4C00BA0485 /* likes-50x50@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,6 +415,11 @@
 		EBF1659413BA5B2500BA0485 /* pages-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pages-50x50@2x.png"; sourceTree = "<group>"; };
 		EBF1659713BA6B0000BA0485 /* groups-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-50x50.png"; sourceTree = "<group>"; };
 		EBF1659813BA6B0000BA0485 /* groups-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-50x50@2x.png"; sourceTree = "<group>"; };
+		EBF1659B13BA811C00BA0485 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		EBF1659C13BA813500BA0485 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		EBF1659E13BA892400BA0485 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EBF165A013BB2E4C00BA0485 /* likes-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "likes-50x50.png"; sourceTree = "<group>"; };
+		EBF165A113BB2E4C00BA0485 /* likes-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "likes-50x50@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +427,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF1659F13BA892600BA0485 /* Security.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -492,6 +502,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBF1659E13BA892400BA0485 /* Security.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -594,6 +605,8 @@
 				321F3BCE126CF673008473C8 /* Etc.m */,
 				321F3BD0126CF6D2008473C8 /* AppDelegate.h */,
 				321F3BD1126CF6D2008473C8 /* AppDelegate.m */,
+				EBF1659B13BA811C00BA0485 /* KeychainItemWrapper.h */,
+				EBF1659C13BA813500BA0485 /* KeychainItemWrapper.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -769,6 +782,8 @@
 			children = (
 				EBF1658B13BA1DAD00BA0485 /* love-50x50.png */,
 				EBF1658C13BA1DAD00BA0485 /* love-50x50@2x.png */,
+				EBF165A013BB2E4C00BA0485 /* likes-50x50.png */,
+				EBF165A113BB2E4C00BA0485 /* likes-50x50@2x.png */,
 				EBF1658D13BA1DAD00BA0485 /* share-50x50.png */,
 				EBF1658E13BA1DAD00BA0485 /* share-50x50@2x.png */,
 				EBF1658713BA113700BA0485 /* friends-50x50.png */,
@@ -1024,6 +1039,8 @@
 				EBF1659613BA5B2500BA0485 /* pages-50x50@2x.png in Resources */,
 				EBF1659913BA6B0000BA0485 /* groups-50x50.png in Resources */,
 				EBF1659A13BA6B0000BA0485 /* groups-50x50@2x.png in Resources */,
+				EBF165A213BB2E4C00BA0485 /* likes-50x50.png in Resources */,
+				EBF165A313BB2E4C00BA0485 /* likes-50x50@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1083,6 +1100,7 @@
 				EBF1655E13B8854F00BA0485 /* ConnectionsDataSource.m in Sources */,
 				EBF1656113B888E700BA0485 /* Connection.m in Sources */,
 				EBF1656413B88A6D00BA0485 /* ConnectionsModel.m in Sources */,
+				EBF1659D13BA816F00BA0485 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

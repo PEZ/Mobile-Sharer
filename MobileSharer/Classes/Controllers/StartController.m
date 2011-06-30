@@ -41,22 +41,16 @@
     _loginLogoutButton.title = @"Logout";
     _loginLogoutButton.action = @selector(logout);
 
-    NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
-    NSString* feedUrl = [Etc toFeedURLPath:@"me" name:@"News feed"];
-    NSString* friendsUrl = [Etc toConnectionsURLPath:@"friends" andName:@"Friends"];
-
-    //NSString* appStoreUrl = [NSString stringWithFormat:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", kAppStoreId];
-    //appStoreUrl = [Etc urlEncode:appStoreUrl];
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
-
-
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"News feed"
+    
+    NSString* feedUrl = [Etc toFeedURLPath:@"me" name:@"News feed"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My news feed"
                                                       imageURL:@"bundle://newsfeed-50x50.png"
                                                            URL:feedUrl]];
 
     if (_currentUserLoaded) {
       FacebookJanitor* janitor = [FacebookJanitor sharedInstance];
-      [dataSource.items addObject:[TTTableImageItem itemWithText:janitor.currentUser.userName
+      [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"My wall (%@)", janitor.currentUser.userName]
                                                         imageURL:[FacebookJanitor avatarForId:janitor.currentUser.userId]
                                                              URL:[Etc toFeedURLPath:janitor.currentUser.userId name:janitor.currentUser.userName]]];
     }
@@ -64,22 +58,33 @@
       [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading current user..."]];
     }
     
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Friends"
+    NSString* friendsUrl = [Etc toConnectionsURLPath:@"friends" andName:@"Friends"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My friends"
                                                       imageURL:@"bundle://friends-50x50.png"
                                                            URL:friendsUrl]];
 /*
-    NSString* pagesUrl = [Etc toConnectionsURLPath:@"likes" andName:@"Pages"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Pages"
-                                                      imageURL:@"bundle://pages-50x50.png"
+    NSString* pagesUrl = [Etc toConnectionsURLPath:@"likes" andName:@"Likes"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My likes (pages etc.)"
+                                                      imageURL:@"bundle://likes-50x50.png"
                                                            URL:pagesUrl]];
+
     NSString* groupsUrl = [Etc toConnectionsURLPath:@"groups" andName:@"Groups"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Groups"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My groups"
                                                       imageURL:@"bundle://groups-50x50.png"
                                                            URL:groupsUrl]];
- */
+*/
+    NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Share Share!"
-                                                      imageURL:@"bundle://love-50x50.png"
+                                                      imageURL:@"bundle://share-50x50.png"
                                                            URL:shareItUrl]];
+
+    NSString* appStoreUrl = [NSString stringWithFormat:
+                             @"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&mt=8",
+                             kAppStoreId];
+    //appStoreUrl = [Etc urlEncode:appStoreUrl];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Rate Share!"
+                                                      imageURL:@"bundle://love-50x50.png"
+                                                           URL:appStoreUrl]];
   }
   else {
     self.variableHeightRows = YES;
@@ -98,10 +103,6 @@ Read reviews, ask questions, suggest features, whatever on the \
     [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
   }
 
-  html = [NSString stringWithFormat:@"Thanks for using Share!"];
-  html = [NSString stringWithFormat:@"<div class=\"appInfo\">%@</div>", html];
-  [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
-  
  _loginLogoutButton.enabled = YES;
   self.dataSource = dataSource;
 }

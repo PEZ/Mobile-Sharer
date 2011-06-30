@@ -7,11 +7,16 @@
 //
 
 #import "FacebookJanitor.h"
+#import "KeychainItemWrapper.h"
 
 static void * volatile sharedInstance = nil;                                                
 static NSString* kAppId = @"139083852806042";
+static NSString* kAccessTokenKey = @"fbAccessToken-1.3";
+static NSString* kExpirationDateKey = @"fbExpirationDate-1.3";
 
 @interface FacebookJanitor(Private)
+
+//KeychainItemWrapper* _keychain;
 
 - (void)restoreSession;
 - (void)createDateFormatter;
@@ -31,6 +36,7 @@ static NSString* kAppId = @"139083852806042";
                       @"friends_photos", @"user_photos", @"user_likes", @"user_groups", nil] retain];
     _facebook = [[Facebook alloc] init];
     [self createDateFormatter];
+    //_keychain = [[[KeychainItemWrapper alloc] initWithIdentifier:@"fbAccess" serviceName:nil accessGroup:nil] retain];
     [self restoreSession];
   }
   return self;
@@ -58,19 +64,31 @@ static NSString* kAppId = @"139083852806042";
 #pragma mark -
 #pragma mark Save/restore session
 
+/*
+- (void)saveSession {
+  [_keychain setObject:_facebook.accessToken forKey:kAccessTokenKey];
+  [_keychain setObject:_facebook.expirationDate forKey:kExpirationDateKey];
+}
+
+- (void)restoreSession {
+  _facebook.accessToken = [_keychain objectForKey:kAccessTokenKey];
+  _facebook.expirationDate = [_keychain objectForKey:kExpirationDateKey];
+}
+*/
 - (void)saveSession {
   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-  [prefs setObject:_facebook.accessToken forKey:@"fbAccessToken"];
-  [prefs setObject:_facebook.expirationDate forKey:@"fbExpirationDate"];
+  [prefs setObject:_facebook.accessToken forKey:kAccessTokenKey];
+  [prefs setObject:_facebook.expirationDate forKey:kExpirationDateKey];
   [prefs synchronize];
 }
 
 - (void)restoreSession {
   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-  _facebook.accessToken = [prefs stringForKey:@"fbAccessToken"];
-  _facebook.expirationDate = [prefs objectForKey:@"fbExpirationDate"];
   [prefs synchronize];
+  _facebook.accessToken = [prefs stringForKey:kAccessTokenKey];
+  _facebook.expirationDate = [prefs objectForKey:kExpirationDateKey];
 }
+
 
 #pragma mark -
 #pragma mark Janitor tasks
@@ -158,6 +176,7 @@ static NSString* kAppId = @"139083852806042";
   TT_RELEASE_SAFELY(_permissions);
   TT_RELEASE_SAFELY(_sessionDelegate);
   TT_RELEASE_SAFELY(_dateFormatter);
+  //  TT_RELEASE_SAFELY(_keychain);
   [super dealloc];
 }
 

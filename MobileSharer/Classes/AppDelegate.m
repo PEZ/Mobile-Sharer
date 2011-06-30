@@ -59,6 +59,13 @@
   //                           animated: NO];
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  UIViewController* controller = [TTNavigator navigator].visibleViewController;
+  if ([controller isKindOfClass:[TTTableViewController class]]) {
+    [((TTTableViewController*)controller).tableView reloadData];
+  }
+}
+
 #pragma mark -
 #pragma mark URL opening
 
