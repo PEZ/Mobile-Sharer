@@ -53,18 +53,18 @@ BOOL commentsEmpty(NSArray* comments) {
                             [NSNumber numberWithDouble:[_comments count]]];
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:offset forKey:@"offset"];
         [params setObject:@"25" forKey:@"limit"];
-        fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path
+        fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path
                                                                              andParams:params
                                                                          andHttpMethod:@"GET"
                                                                            andDelegate:nil];
       }
       else {
-        fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
+        fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path andDelegate:nil];
       }
     }
     else {
       path = [NSString stringWithFormat:@"%@", _postId];
-      fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path andDelegate:nil];
+      fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path andDelegate:nil];
     }
     
     [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg

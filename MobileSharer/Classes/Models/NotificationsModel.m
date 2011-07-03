@@ -1,42 +1,41 @@
+//
+//  NotificationsModel.m
+//  MobileSharer
+//
+//  Created by Peter Stromberg on 2011-07-01.
+//  Copyright 2011 Better Than Tomorrow. All rights reserved.
+//
 
-#import "FeedModel.h"
-#import "Post.h"
+#import "NotificationsModel.h"
 #import "FacebookJanitor.h"
 
-@implementation FeedModel
+@implementation NotificationsModel
 
-@synthesize feedId     = _feedId;
-@synthesize posts      = _posts;
-
-- (id)initWithFeedId:(NSString*)feedId {
-  if (self = [super init]) {
-    self.feedId = feedId;
-  }
-
-  return self;
-}
+@synthesize notifications = _notifications;
 
 - (void) dealloc {
-  TT_RELEASE_SAFELY(_feedId);
-  TT_RELEASE_SAFELY(_posts);
+  TT_RELEASE_SAFELY(_notifications);
   [super dealloc];
 }
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
-  if (!self.isLoading && TTIsStringWithAnyText(_feedId)) {
+  if (!self.isLoading) {
     FBRequest* fbRequest;
-    NSString* path = [NSString stringWithFormat:@"%@/%@", _feedId, [_feedId isEqual:@"me"] ? @"home" : @"feed"];
+    NSString* path = @"";
     if (more) {
+      /*
       NSString* until = [NSString stringWithFormat:@"%@",
                          [NSNumber numberWithDouble:[[[_posts lastObject] created] timeIntervalSince1970]]];
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:until forKey:@"until"];
-      fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path
+      fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path
                                                                            andParams:params
                                                                        andHttpMethod:@"GET"
                                                                          andDelegate:nil];
+       */
     }
     else {
-      fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path andDelegate:nil];
+      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:1 forKey:@"includeRead"];
+      fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithMethodAndParams:@"notifications.getList" andParams:params];
     }
     
     [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
@@ -44,14 +43,15 @@
 }
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
+  /*
   TTURLJSONResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
-
+  
   NSDictionary* feed = response.rootObject;
   TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
-
+  
   NSArray* entries = [feed objectForKey:@"data"];
-
+  
   BOOL more = ([[request urlPath] rangeOfString:@"until="].location != NSNotFound);
   NSMutableArray* posts;
   
@@ -62,14 +62,14 @@
     posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
   }
   TT_RELEASE_SAFELY(_posts);
-
+  
   for (NSDictionary* entry in entries) {
     [posts addObject:[[FacebookModel createPostFromEntry: entry] autorelease]];
   }
   _posts = posts;
-
+  
   [super requestDidFinishLoad:request];
+  */
 }
 
 @end
-

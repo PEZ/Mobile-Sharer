@@ -96,6 +96,9 @@
 		EBF1659F13BA892600BA0485 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF1659E13BA892400BA0485 /* Security.framework */; };
 		EBF165A213BB2E4C00BA0485 /* likes-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF165A013BB2E4C00BA0485 /* likes-50x50.png */; };
 		EBF165A313BB2E4C00BA0485 /* likes-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF165A113BB2E4C00BA0485 /* likes-50x50@2x.png */; };
+		EBF165A613BCCD3700BA0485 /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF165A513BCCD2500BA0485 /* NotificationsViewController.m */; };
+		EBF165A913BD3DEC00BA0485 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF165A813BD3DC900BA0485 /* Notification.m */; };
+		EBF165AC13BDA1F800BA0485 /* NotificationsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF165AB13BDA1F500BA0485 /* NotificationsModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -420,6 +423,12 @@
 		EBF1659E13BA892400BA0485 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EBF165A013BB2E4C00BA0485 /* likes-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "likes-50x50.png"; sourceTree = "<group>"; };
 		EBF165A113BB2E4C00BA0485 /* likes-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "likes-50x50@2x.png"; sourceTree = "<group>"; };
+		EBF165A413BCCD0F00BA0485 /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		EBF165A513BCCD2500BA0485 /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
+		EBF165A713BD3DC400BA0485 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		EBF165A813BD3DC900BA0485 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
+		EBF165AA13BDA1F200BA0485 /* NotificationsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsModel.h; sourceTree = "<group>"; };
+		EBF165AB13BDA1F500BA0485 /* NotificationsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -675,6 +684,8 @@
 				32034E9312A5AC4000879C06 /* WebController.m */,
 				3242B04D12AECFCC0003F7F3 /* ComposePostController.h */,
 				3242B04E12AECFCC0003F7F3 /* ComposePostController.m */,
+				EBF165A413BCCD0F00BA0485 /* NotificationsViewController.h */,
+				EBF165A513BCCD2500BA0485 /* NotificationsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -692,6 +703,10 @@
 				321F3BD3126CF6D2008473C8 /* Post.m */,
 				32CEF85A128807AD00B2D224 /* Comment.h */,
 				32CEF85B128807AD00B2D224 /* Comment.m */,
+				EBF165A713BD3DC400BA0485 /* Notification.h */,
+				EBF165A813BD3DC900BA0485 /* Notification.m */,
+				EBF165AA13BDA1F200BA0485 /* NotificationsModel.h */,
+				EBF165AB13BDA1F500BA0485 /* NotificationsModel.m */,
 				EBF1655F13B888E700BA0485 /* Connection.h */,
 				EBF1656013B888E700BA0485 /* Connection.m */,
 				EBF1656213B88A6D00BA0485 /* ConnectionsModel.h */,
@@ -1101,6 +1116,9 @@
 				EBF1656113B888E700BA0485 /* Connection.m in Sources */,
 				EBF1656413B88A6D00BA0485 /* ConnectionsModel.m in Sources */,
 				EBF1659D13BA816F00BA0485 /* KeychainItemWrapper.m in Sources */,
+				EBF165A613BCCD3700BA0485 /* NotificationsViewController.m in Sources */,
+				EBF165A913BD3DEC00BA0485 /* Notification.m in Sources */,
+				EBF165AC13BDA1F800BA0485 /* NotificationsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

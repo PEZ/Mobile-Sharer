@@ -32,7 +32,7 @@
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading && TTIsStringWithAnyText(_graphPath)) {
     FBRequest* fbRequest;
-    fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:_graphPath andDelegate:nil];
+    fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:_graphPath andDelegate:nil];
     [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
   }
 }

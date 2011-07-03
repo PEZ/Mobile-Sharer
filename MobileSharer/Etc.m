@@ -58,8 +58,8 @@ NSString* kAppStoreId = @"406870483";
 }
 
 + (NSString*) toPhotoURLPath:(NSString*)photoId {
-  return [[[FacebookJanitor sharedInstance].facebook
-            getRequestWithGraphPath:[NSString stringWithFormat:@"%@/picture", photoId] andDelegate:nil] getConnectURL];
+  return [[FacebookJanitor sharedInstance].facebook
+          createRequestWithGraphPath:[NSString stringWithFormat:@"%@/picture", photoId] andDelegate:nil].serializedURL;
 }
 
 + (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title {

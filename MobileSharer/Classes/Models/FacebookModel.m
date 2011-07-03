@@ -85,7 +85,7 @@
 
 + (TTURLRequest*)createRequest:(FBRequest*)fbRequest cachePolicy:(TTURLRequestCachePolicy)cachePolicy delegate:(id<TTURLRequestDelegate>)delegate {
   TTURLRequest* request = [TTURLRequest
-                           requestWithURL:[fbRequest getConnectURL]
+                           requestWithURL:fbRequest.serializedURL
                            delegate:delegate];
   
   request.cachePolicy = cachePolicy;

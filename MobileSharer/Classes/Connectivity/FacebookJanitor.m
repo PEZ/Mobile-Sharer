@@ -34,7 +34,7 @@ static NSString* kExpirationDateKey = @"fbExpirationDate-1.3";
     _permissions =  [[NSArray arrayWithObjects: 
                       @"read_stream", @"publish_stream", @"offline_access",
                       @"friends_photos", @"user_photos", @"user_likes", @"user_groups", nil] retain];
-    _facebook = [[Facebook alloc] init];
+    _facebook = [[Facebook alloc] initWithAppId:kAppId];
     [self createDateFormatter];
     //_keychain = [[[KeychainItemWrapper alloc] initWithIdentifier:@"fbAccess" serviceName:nil accessGroup:nil] retain];
     [self restoreSession];
@@ -111,7 +111,7 @@ static NSString* kExpirationDateKey = @"fbExpirationDate-1.3";
 }
 
 - (void) getPermissions:(NSArray*)permissions delegate:(id<FBSessionDelegate>)delegate {
-  [_facebook authorize:kAppId permissions:permissions delegate:delegate];
+  [_facebook authorize:permissions delegate:delegate];
 }
 
 - (void) login:(id<FBJSessionDelegate>)delegate {
