@@ -55,6 +55,9 @@
   else if ([notification.type isEqualToString:@"event"] ) {
     notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Event"];
   }
+  else if ([notification.type isEqualToString:@"friend"] ) {
+    notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Friend"];
+  }
   return notification;
 }
 

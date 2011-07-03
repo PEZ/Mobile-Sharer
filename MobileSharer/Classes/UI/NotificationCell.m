@@ -11,4 +11,9 @@
 
 @implementation NotificationCell
 
++ (NSString*) getMetaHTML:(StyledTableDataItem*)item {
+  NSString* metaText = [super getMetaHTML:item];
+  return [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@</div>", metaText];
+}
+
 @end

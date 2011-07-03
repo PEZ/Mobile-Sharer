@@ -9,10 +9,6 @@
 #import "MessageCellBase.h"
 #import "Post.h"
 
-static const CGFloat    kDiscloureWidth   = 20;
-static const CGFloat    kPictureImageHeight  = 66;
-static const CGFloat    kPictureImageWidth  = 96;
-
 @interface PostCellBase : MessageCellBase {
 }
 

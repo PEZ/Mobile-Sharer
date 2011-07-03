@@ -13,11 +13,15 @@
 
 @synthesize html = _html;
 @synthesize created = _created;
+@synthesize fromId            = _fromId;
+@synthesize fromAvatar        = _fromAvatar;
 @synthesize message           = _message;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_html);
   TT_RELEASE_SAFELY(_created);
+  TT_RELEASE_SAFELY(_fromId);
+  TT_RELEASE_SAFELY(_fromAvatar);
   TT_RELEASE_SAFELY(_message);
   TT_RELEASE_SAFELY(_styledText);
   [super dealloc];

@@ -13,11 +13,9 @@
   NSString* _postId;
   NSString* _type;
   NSString* _fromName;
-  NSString* _fromId;
   NSString* _toName;
   NSString* _toId;
   NSString* _picture;
-  NSString* _fromAvatar;
   NSString* _link;
   NSString* _linkURL;
   NSString* _shareURL;
@@ -34,11 +32,9 @@
 @property (nonatomic, retain) NSString* postId;
 @property (nonatomic, retain)   NSString* type;
 @property (nonatomic, retain)   NSString* fromName;
-@property (nonatomic, retain)   NSString* fromId;
 @property (nonatomic, retain)   NSString* toId;
 @property (nonatomic, retain)   NSString* toName;
 @property (nonatomic, retain)   NSString* picture;
-@property (nonatomic, retain)   NSString* fromAvatar;
 @property (nonatomic, retain)   NSString* linkCaption;
 @property (nonatomic, retain)   NSString* linkURL;
 @property (nonatomic, retain)   NSString* shareURL;

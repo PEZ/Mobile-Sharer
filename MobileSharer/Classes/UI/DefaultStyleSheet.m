@@ -186,7 +186,7 @@
 }
 
 - (TTBoxStyle*)tableMetaIcon {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, -kIconImageWidth -kTableCellSmallMargin, 0, kTableCellSmallMargin)
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, 0, 0, kTableCellSmallMargin)
                              padding:UIEdgeInsetsZero
                              minSize:CGSizeZero
                             position:TTPositionStatic next:nil];

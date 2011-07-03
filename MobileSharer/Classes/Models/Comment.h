@@ -10,17 +10,13 @@
 
 @interface Comment : StyledTableDataItem {
   NSString* _commentId;
-  NSString* _fromId;
   NSString* _fromName;
-  NSString* _fromAvatar;
   NSNumber* _likes;
   BOOL      _isLiked;
 }
 
 @property (nonatomic, retain) NSString* commentId;
-@property (nonatomic, retain) NSString* fromId;
 @property (nonatomic, retain) NSString* fromName;
-@property (nonatomic, retain) NSString* fromAvatar;
 @property (nonatomic, retain) NSNumber* likes;
 @property (nonatomic)         BOOL      isLiked;
 

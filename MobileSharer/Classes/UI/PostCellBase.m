@@ -18,14 +18,6 @@
   return nil; //Not implemented in base class
 }
 
-+ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView *)tableView item:(Post *)item {
-  CGFloat textWidth = [super getTextWidth:left tableView:tableView item:item];
-  if (item.URL) {
-    textWidth -= kDiscloureWidth;
-  }
-  return textWidth;
-}
-
 + (NSString*) getAttachmentHTML:(Post*)item  {
   NSString* attachmentText = @"";
   if (item.linkTitle) {
@@ -44,12 +36,8 @@
 }
 
 + (NSString*) getMetaHTML:(Post*)item {
-  NSString* metaText = @"";
-  if (item.icon) {
-    metaText = [NSString stringWithFormat:@"%@<img class=\"tableMetaIcon\" width=\"16\" height=\"16\" src=\"%@\" />",
-                   metaText, [Etc xmlEscape:item.icon]];
-  }
-  metaText = [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@%@", metaText, [item.created formatRelativeTime]];
+  NSString* metaText = [super getMetaHTML:item];
+  metaText = [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@", metaText];
   if (item.commentCount) {
     metaText = [NSString stringWithFormat:@"%@, %@", metaText,
                    [[self class] textForCount:[item.commentCount intValue] withSingular:@"comment" andPlural:@"comments"]];

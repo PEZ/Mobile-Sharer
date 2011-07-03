@@ -45,15 +45,15 @@
                   metaText, [Etc xmlEscape:icon_item.icon]];
     }
   }
-  metaText = [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@%@", metaText, [item.created formatRelativeTime]];
-  return metaText;
+  return [NSString stringWithFormat:@"%@%@", metaText, [item.created formatRelativeTime]];
 }
 
 + (void) setMessageHTML:(StyledTableDataItem*)item {
   if (item.html == nil) {
-    NSString* messageText = @"";
+    NSString* messageText = [self getAvatarHTML:item.fromAvatar feedId:item.fromId];
+    messageText = [NSString stringWithFormat:@"%@<div class=\"tableMessageContent\">", messageText];
     if (item.message) {
-      messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, [Etc xmlEscape:item.message]];
+      messageText = [NSString stringWithFormat:@"%@<span class=\"tableText\">%@</span>", messageText, [Etc xmlEscape:item.message]];
     }
     messageText = [NSString stringWithFormat:@"%@%@</div>", messageText, [self getMetaHTML:item]];
     
@@ -79,8 +79,11 @@
   return label;  
 }
 
-+ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(StyledTableDataItem*)item  {
++ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView *)tableView item:(Post *)item {
   CGFloat textWidth = tableView.width - left - kTableCellSmallMargin;
+  if (item.URL) {
+    textWidth -= kDiscloureWidth;
+  }
   return textWidth;
 }
 

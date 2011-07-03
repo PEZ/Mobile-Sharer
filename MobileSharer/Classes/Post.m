@@ -14,11 +14,9 @@
 @synthesize postId            = _postId;
 @synthesize type              = _type;
 @synthesize fromName          = _fromName;
-@synthesize fromId            = _fromId;
 @synthesize toName            = _toName;
 @synthesize toId              = _toId;
 @synthesize picture           = _picture;
-@synthesize fromAvatar        = _fromAvatar;
 @synthesize linkCaption       = _link;
 @synthesize linkURL           = _linkURL;
 @synthesize shareURL          = _shareURL;
@@ -35,11 +33,9 @@
   TT_RELEASE_SAFELY(_postId);
   TT_RELEASE_SAFELY(_type);
   TT_RELEASE_SAFELY(_fromName);
-  TT_RELEASE_SAFELY(_fromId);
   TT_RELEASE_SAFELY(_toName);
   TT_RELEASE_SAFELY(_toId);
   TT_RELEASE_SAFELY(_picture);
-  TT_RELEASE_SAFELY(_fromAvatar);
   TT_RELEASE_SAFELY(_link);
   TT_RELEASE_SAFELY(_linkURL);
   TT_RELEASE_SAFELY(_shareURL);

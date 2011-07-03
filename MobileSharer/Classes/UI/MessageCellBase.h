@@ -6,6 +6,11 @@
 //  Copyright 2011 NA. All rights reserved.
 //
 
+
+static const CGFloat    kDiscloureWidth   = 20;
+static const CGFloat    kPictureImageHeight  = 66;
+static const CGFloat    kPictureImageWidth  = 96;
+
 @interface MessageCellBase : TTTableLinkedItemCell {
   TTStyledTextLabel* _messageLabel;
 }
@@ -15,6 +20,7 @@
 
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural;
 + (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(StyledTableDataItem*)item;
++ (NSString*) getMetaHTML:(StyledTableDataItem*)item;
 + (NSString*) getLinkHTMLForText:(NSString*)text andURL:(NSString*)url;
 + (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId;
 + (void) setMessageHTML:(StyledTableDataItem*)item;

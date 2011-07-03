@@ -11,16 +11,12 @@
   NSString* _notificationId;
   NSString* _type;
   NSString* _objectId;
-  NSString* _fromId;
-  NSString* _fromAvatar;
   BOOL      _isNew;
 }
 
 @property (nonatomic, retain) NSString* notificationId;
 @property (nonatomic, retain) NSString* type;
-@property (nonatomic, retain) NSString* fromId;
 @property (nonatomic, retain) NSString* objectId;
-@property (nonatomic, retain) NSString* fromAvatar;
 @property (nonatomic)         BOOL      isNew;
 
 @end
