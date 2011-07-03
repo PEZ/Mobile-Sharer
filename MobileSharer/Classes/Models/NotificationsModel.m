@@ -7,6 +7,7 @@
 //
 
 #import "NotificationsModel.h"
+#import "Notification.h"
 #import "FacebookJanitor.h"
 
 @implementation NotificationsModel
@@ -20,56 +21,62 @@
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading) {
-    FBRequest* fbRequest;
-    NSString* path = @"";
-    if (more) {
-      /*
-      NSString* until = [NSString stringWithFormat:@"%@",
-                         [NSNumber numberWithDouble:[[[_posts lastObject] created] timeIntervalSince1970]]];
-      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:until forKey:@"until"];
-      fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path
-                                                                           andParams:params
-                                                                       andHttpMethod:@"GET"
-                                                                         andDelegate:nil];
-       */
-    }
-    else {
-      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:1 forKey:@"includeRead"];
-      fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithMethodAndParams:@"notifications.getList" andParams:params];
-    }
-    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:@"1" forKey:@"include_read"];
+    FBRequest* fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithMethodName:@"notifications.getList" andParams:params andHttpMethod:@"GET" andDelegate:nil];
     [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
   }
 }
 
+- (Notification*)createNotificationFromEntry:(NSDictionary *)entry {
+  Notification* notification = [[Notification alloc] init];
+  
+  notification.created = [NSDate dateWithTimeIntervalSince1970:[[entry objectForKey:@"created_time"] intValue]];
+  notification.notificationId = [entry objectForKey:@"notification_id"];
+  notification.type = [entry objectForKey:@"object_type"];
+  notification.objectId = [entry objectForKey:@"object_id"];
+  notification.fromId = [entry objectForKey:@"sender_id"];
+  notification.fromAvatar = [FacebookJanitor avatarForId:notification.fromId];
+  notification.icon = [entry objectForKey:@"icon_url"];
+  notification.message = [entry objectForKey:@"title_text"];
+  notification.isNew = [(NSNumber*)[entry objectForKey:@"is_unread"] boolValue];
+  
+  if ([notification.type isEqualToString:@"stream"] ) {
+    notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Post"];
+  }
+  else if ([notification.type isEqualToString:@"photo"] ) {
+    notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Photo"];
+  }
+  else if ([notification.type isEqualToString:@"note"] ) {
+    notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Note"];
+  }
+  else if ([notification.type isEqualToString:@"group"] ) {
+    notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Group"];
+  }
+  else if ([notification.type isEqualToString:@"event"] ) {
+    notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Event"];
+  }
+  return notification;
+}
+
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
-  /*
   TTURLJSONResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
   
-  NSDictionary* feed = response.rootObject;
-  TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
+  NSDictionary* data = response.rootObject;
+  TTDASSERT([[data objectForKey:@"notifications"] isKindOfClass:[NSArray class]]);
   
-  NSArray* entries = [feed objectForKey:@"data"];
+  NSArray* entries = [data objectForKey:@"notifications"];
   
-  BOOL more = ([[request urlPath] rangeOfString:@"until="].location != NSNotFound);
-  NSMutableArray* posts;
-  
-  if (more) {
-    posts = [[NSMutableArray arrayWithArray:_posts] retain];
-  }
-  else {
-    posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
-  }
-  TT_RELEASE_SAFELY(_posts);
+  NSMutableArray* notifications = [[NSMutableArray alloc] initWithCapacity:[entries count]];
+
+  TT_RELEASE_SAFELY(_notifications);
   
   for (NSDictionary* entry in entries) {
-    [posts addObject:[[FacebookModel createPostFromEntry: entry] autorelease]];
+    [notifications addObject:[[self createNotificationFromEntry: entry] autorelease]];
   }
-  _posts = posts;
+  _notifications = notifications;
   
   [super requestDidFinishLoad:request];
-  */
 }
 
 @end

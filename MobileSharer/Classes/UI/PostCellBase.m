@@ -63,7 +63,7 @@
 
 + (void) setMessageHTML:(Post*)item {
   if (item.html == nil) {
-    NSString* messageText = [self getAvatarHTML:item.fromAvatar name:item.fromName feedId:item.fromId];
+    NSString* messageText = [self getAvatarHTML:item.fromAvatar feedId:item.fromId];
     messageText = [NSString stringWithFormat:@"%@<div class=\"tableMessageContent\">%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
     if (item.toName && ![item.toId isEqualToString:item.fromId]) {
       messageText = [NSString stringWithFormat:@"%@ &gt; %@", messageText, [self getNameHTML:item.toName feedId:item.toId]];

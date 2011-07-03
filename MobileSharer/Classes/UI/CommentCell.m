@@ -84,7 +84,7 @@
 }
 
 + (void) setMessageHTMLRegardless:(Comment*)item {
-  NSString* messageText = [self getAvatarHTML:item.fromAvatar name:item.fromName feedId:item.fromId];
+  NSString* messageText = [self getAvatarHTML:item.fromAvatar feedId:item.fromId];
   messageText = [NSString stringWithFormat:@"%@<div class=\"tableMessageContent\">%@", messageText, [self getNameHTML:item.fromName feedId:item.fromId]];
   if (item.message) {
     messageText = [NSString stringWithFormat:@"%@ <span class=\"tableText\">%@</span>", messageText, [Etc xmlEscape:item.message]];

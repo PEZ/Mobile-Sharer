@@ -43,6 +43,10 @@
 
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
     
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My notifications"
+                                                      imageURL:@"bundle://notifications-50x50.png"
+                                                           URL:kNotificationsURLPath]];
+
     NSString* feedUrl = [Etc toFeedURLPath:@"me" name:@"News feed"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"My news feed"
                                                       imageURL:@"bundle://newsfeed-50x50.png"

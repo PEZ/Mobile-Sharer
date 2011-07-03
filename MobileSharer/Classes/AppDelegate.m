@@ -4,6 +4,7 @@
 #import "FeedViewController.h"
 #import "ConnectionsViewController.h"
 #import "PostViewController.h"
+#import "NotificationsViewController.h"
 #import "StartController.h"
 #import "SplitStartController.h"
 #import "WebController.h"
@@ -45,6 +46,7 @@
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
   [map from:kConnectionsURLPath toViewController:[ConnectionsViewController class]];
   [map from:kPostIdPath toViewController:[PostViewController class]];
+  [map from:kNotificationsURLPath toViewController:[NotificationsViewController class]];
 
   //_rootViewController = [[TTRootViewController alloc] init];
   //[[TTNavigator navigator].window addSubview:_rootViewController.view];

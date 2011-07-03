@@ -50,7 +50,6 @@
 		3288C965126E2F1800BF1E3C /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C959126E2F1800BF1E3C /* FBLoginDialog.m */; };
 		3288C966126E2F1800BF1E3C /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3288C95B126E2F1800BF1E3C /* FBDialog.m */; };
 		32891DB2127F5D6D00786BE7 /* PostCellBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 32891DB1127F5D6D00786BE7 /* PostCellBase.m */; };
-		32906DA912AA56B7008C08B1 /* StyledTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32906DA812AA56B7008C08B1 /* StyledTextCell.m */; };
 		329079ED1284410A005D193A /* FeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EA1284410A005D193A /* FeedDataSource.m */; };
 		329079EE1284410A005D193A /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079EC1284410A005D193A /* FeedModel.m */; };
 		329079F312844115005D193A /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 329079F012844115005D193A /* FeedViewController.m */; };
@@ -75,6 +74,10 @@
 		EBB6060B139D2C3000A9F46C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB6060A139D2C3000A9F46C /* Default-Portrait~ipad.png */; };
 		EBB60610139D68BC00A9F46C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 329079CE12836D95005D193A /* Icon.png */; };
 		EBB60611139D691B00A9F46C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB6060E139D2F5500A9F46C /* Default-Landscape~ipad.png */; };
+		EBEC4F3413C072B800F5731C /* NotificationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEC4F3313C072B800F5731C /* NotificationsDataSource.m */; };
+		EBEC4F3713C0A9A300F5731C /* MessageCellBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEC4F3613C0A9A200F5731C /* MessageCellBase.m */; };
+		EBEC4F3A13C0B0DF00F5731C /* StyledTableIconDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEC4F3913C0B0DD00F5731C /* StyledTableIconDataItem.m */; };
+		EBEC4F3D13C0BB7500F5731C /* NotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEC4F3C13C0BB7500F5731C /* NotificationCell.m */; };
 		EBF1655B13B8823700BA0485 /* ConnectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1655A13B8823700BA0485 /* ConnectionsViewController.m */; };
 		EBF1655E13B8854F00BA0485 /* ConnectionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1655D13B8854F00BA0485 /* ConnectionsDataSource.m */; };
 		EBF1656113B888E700BA0485 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1656013B888E700BA0485 /* Connection.m */; };
@@ -354,8 +357,6 @@
 		3288C95B126E2F1800BF1E3C /* FBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBDialog.m; path = "../../facebook-ios-sdk/src/FBDialog.m"; sourceTree = SOURCE_ROOT; };
 		32891DB0127F5D6C00786BE7 /* PostCellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCellBase.h; sourceTree = "<group>"; };
 		32891DB1127F5D6D00786BE7 /* PostCellBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCellBase.m; sourceTree = "<group>"; };
-		32906DA712AA56B7008C08B1 /* StyledTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledTextCell.h; sourceTree = "<group>"; };
-		32906DA812AA56B7008C08B1 /* StyledTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledTextCell.m; sourceTree = "<group>"; };
 		329079CE12836D95005D193A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Images/Icon.png; sourceTree = SOURCE_ROOT; };
 		329079E91284410A005D193A /* FeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedDataSource.h; sourceTree = "<group>"; };
 		329079EA1284410A005D193A /* FeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedDataSource.m; sourceTree = "<group>"; };
@@ -397,6 +398,14 @@
 		EBB60608139D298A00A9F46C /* Icon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon72.png; sourceTree = "<group>"; };
 		EBB6060A139D2C3000A9F46C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		EBB6060E139D2F5500A9F46C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		EBEC4F3213C072B700F5731C /* NotificationsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsDataSource.h; sourceTree = "<group>"; };
+		EBEC4F3313C072B800F5731C /* NotificationsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsDataSource.m; sourceTree = "<group>"; };
+		EBEC4F3513C0A9A200F5731C /* MessageCellBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = MessageCellBase.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; wrapsLines = 1; };
+		EBEC4F3613C0A9A200F5731C /* MessageCellBase.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = MessageCellBase.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; wrapsLines = 1; };
+		EBEC4F3813C0B0DC00F5731C /* StyledTableIconDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledTableIconDataItem.h; sourceTree = "<group>"; };
+		EBEC4F3913C0B0DD00F5731C /* StyledTableIconDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledTableIconDataItem.m; sourceTree = "<group>"; };
+		EBEC4F3B13C0BB7400F5731C /* NotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCell.h; sourceTree = "<group>"; };
+		EBEC4F3C13C0BB7500F5731C /* NotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCell.m; sourceTree = "<group>"; };
 		EBF1655913B8823700BA0485 /* ConnectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsViewController.h; sourceTree = "<group>"; };
 		EBF1655A13B8823700BA0485 /* ConnectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsViewController.m; sourceTree = "<group>"; };
 		EBF1655C13B8854F00BA0485 /* ConnectionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionsDataSource.h; sourceTree = "<group>"; };
@@ -697,6 +706,8 @@
 				32907BB112854883005D193A /* TTTableViewDelegate+URLAdditions.m */,
 				32329AAA12AA516100346FB5 /* StyledTableDataItem.h */,
 				32329AAB12AA516100346FB5 /* StyledTableDataItem.m */,
+				EBEC4F3813C0B0DC00F5731C /* StyledTableIconDataItem.h */,
+				EBEC4F3913C0B0DD00F5731C /* StyledTableIconDataItem.m */,
 				329ADFB8129C50A700B9B01A /* User.h */,
 				329ADFB9129C50A700B9B01A /* User.m */,
 				321F3BD2126CF6D2008473C8 /* Post.h */,
@@ -707,6 +718,8 @@
 				EBF165A813BD3DC900BA0485 /* Notification.m */,
 				EBF165AA13BDA1F200BA0485 /* NotificationsModel.h */,
 				EBF165AB13BDA1F500BA0485 /* NotificationsModel.m */,
+				EBEC4F3213C072B700F5731C /* NotificationsDataSource.h */,
+				EBEC4F3313C072B800F5731C /* NotificationsDataSource.m */,
 				EBF1655F13B888E700BA0485 /* Connection.h */,
 				EBF1656013B888E700BA0485 /* Connection.m */,
 				EBF1656213B88A6D00BA0485 /* ConnectionsModel.h */,
@@ -734,8 +747,8 @@
 			children = (
 				3293A456127C208B00B07DD5 /* DefaultStyleSheet.h */,
 				3293A457127C208B00B07DD5 /* DefaultStyleSheet.m */,
-				32906DA712AA56B7008C08B1 /* StyledTextCell.h */,
-				32906DA812AA56B7008C08B1 /* StyledTextCell.m */,
+				EBEC4F3513C0A9A200F5731C /* MessageCellBase.h */,
+				EBEC4F3613C0A9A200F5731C /* MessageCellBase.m */,
 				32891DB0127F5D6C00786BE7 /* PostCellBase.h */,
 				32891DB1127F5D6D00786BE7 /* PostCellBase.m */,
 				322DD68C12903E7200E7D1DA /* FeedPostCell.h */,
@@ -744,6 +757,8 @@
 				322DD6A812903FB400E7D1DA /* StandalonePostCell.m */,
 				32633DB31289CFA900D9621E /* CommentCell.h */,
 				32633DB41289CFA900D9621E /* CommentCell.m */,
+				EBEC4F3B13C0BB7400F5731C /* NotificationCell.h */,
+				EBEC4F3C13C0BB7500F5731C /* NotificationCell.m */,
 				32425F601291EAC90017A401 /* LoadMoreCell.h */,
 				32425F611291EAC90017A401 /* LoadMoreCell.m */,
 				3202568E129B028400A9CF49 /* LoginView.h */,
@@ -1107,7 +1122,6 @@
 				329AE1E9129F178800B9B01A /* RegexKitLite.m in Sources */,
 				32034E9412A5AC4000879C06 /* WebController.m in Sources */,
 				32329AAC12AA516100346FB5 /* StyledTableDataItem.m in Sources */,
-				32906DA912AA56B7008C08B1 /* StyledTextCell.m in Sources */,
 				3242B04F12AECFCC0003F7F3 /* ComposePostController.m in Sources */,
 				EBB605D5139CC9E300A9F46C /* SplitStartController.m in Sources */,
 				EB03560413B761DC00D5C761 /* TableViewController.m in Sources */,
@@ -1119,6 +1133,10 @@
 				EBF165A613BCCD3700BA0485 /* NotificationsViewController.m in Sources */,
 				EBF165A913BD3DEC00BA0485 /* Notification.m in Sources */,
 				EBF165AC13BDA1F800BA0485 /* NotificationsModel.m in Sources */,
+				EBEC4F3413C072B800F5731C /* NotificationsDataSource.m in Sources */,
+				EBEC4F3713C0A9A300F5731C /* MessageCellBase.m in Sources */,
+				EBEC4F3A13C0B0DF00F5731C /* StyledTableIconDataItem.m in Sources */,
+				EBEC4F3D13C0BB7500F5731C /* NotificationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

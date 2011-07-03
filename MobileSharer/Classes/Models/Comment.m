@@ -10,22 +10,18 @@
 
 
 @implementation Comment
-@synthesize created           = _created;
 @synthesize commentId         = _commentId;
 @synthesize fromId            = _fromId;
 @synthesize fromName          = _fromName;
 @synthesize fromAvatar        = _fromAvatar;
-@synthesize message           = _message;
 @synthesize likes             = _likes;
 @synthesize isLiked           = _isLiked;
 
 - (void)dealloc {
-  TT_RELEASE_SAFELY(_created);
   TT_RELEASE_SAFELY(_commentId);
   TT_RELEASE_SAFELY(_fromId);
   TT_RELEASE_SAFELY(_fromName);
   TT_RELEASE_SAFELY(_fromAvatar);
-  TT_RELEASE_SAFELY(_message);
   TT_RELEASE_SAFELY(_likes);
   
   [super dealloc];

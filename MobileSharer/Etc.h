@@ -15,6 +15,7 @@ extern CGFloat   kIconImageHeight;
 
 extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;
+extern NSString* kNotificationsURLPath;
 extern NSString* kConnectionsPathPrefix;
 extern NSString* kConnectionsURLPath;
 extern NSString* kPostPathPrefix;

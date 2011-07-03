@@ -6,10 +6,9 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "StyledTableDataItem.h"
+#import "StyledTableIconDataItem.h"
 
-@interface Post : StyledTableDataItem {
-  NSDate*   _created;
+@interface Post : StyledTableIconDataItem {
   NSDate*   _updated;
   NSString* _postId;
   NSString* _type;
@@ -17,7 +16,6 @@
   NSString* _fromId;
   NSString* _toName;
   NSString* _toId;
-  NSString* _message;
   NSString* _picture;
   NSString* _fromAvatar;
   NSString* _link;
@@ -26,14 +24,12 @@
   NSString* _linkTitle;
   NSString* _linkText;
   NSString* _source;
-  NSString* _icon;
   NSNumber* _likes;
   NSNumber* _commentCount;
   BOOL      _canComment;
   BOOL      _canLike;
 }
 
-@property (nonatomic, retain) NSDate*   created;
 @property (nonatomic, retain) NSDate*   updated;
 @property (nonatomic, retain) NSString* postId;
 @property (nonatomic, retain)   NSString* type;
@@ -41,7 +37,6 @@
 @property (nonatomic, retain)   NSString* fromId;
 @property (nonatomic, retain)   NSString* toId;
 @property (nonatomic, retain)   NSString* toName;
-@property (nonatomic, retain)   NSString* message;
 @property (nonatomic, retain)   NSString* picture;
 @property (nonatomic, retain)   NSString* fromAvatar;
 @property (nonatomic, retain)   NSString* linkCaption;
@@ -50,7 +45,6 @@
 @property (nonatomic, retain)   NSString* linkTitle;
 @property (nonatomic, retain)   NSString* linkText;
 @property (nonatomic, retain)   NSString* source;
-@property (nonatomic, retain)   NSString* icon;
 @property (nonatomic, retain) NSNumber* likes;
 @property (nonatomic, retain) NSNumber* commentCount;
 @property (nonatomic)         BOOL      canComment;

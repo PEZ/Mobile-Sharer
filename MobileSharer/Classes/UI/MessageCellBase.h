@@ -1,23 +1,23 @@
 //
-//  StyledTextCell.h
-//  MobileSharer
+//  MessageCellBase.h
+//  
 //
-//  Created by PEZ on 2010-12-04.
-//  Copyright 2010 Better Than Tomorrow. All rights reserved.
+//  Created by Peter Stromberg on 2011-07-03.
+//  Copyright 2011 NA. All rights reserved.
 //
 
-#import "StyledTableDataItem.h"
-
-@interface StyledTextCell : TTTableLinkedItemCell {
+@interface MessageCellBase : TTTableLinkedItemCell {
   TTStyledTextLabel* _messageLabel;
 }
 
 @property (nonatomic, readonly, retain) TTStyledTextLabel*  messageLabel;
 
-+ (void) setMessageHTML:(StyledTableDataItem*)item;
+
 + (NSString*)textForCount:(int)count withSingular:(NSString*)singular andPlural:(NSString*)plural;
 + (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView*)tableView item:(StyledTableDataItem*)item;
 + (NSString*) getLinkHTMLForText:(NSString*)text andURL:(NSString*)url;
 + (NSString*) getNameHTML:(NSString*)name feedId:(NSString*)feedId;
-+ (NSString*) getAvatarHTML:(NSString*)avatar name:(NSString*)name feedId:(NSString*)feedId;
++ (void) setMessageHTML:(StyledTableDataItem*)item;
++ (NSString*) getAvatarHTML:(NSString*)avatar feedId:(NSString*)feedId;
+
 @end

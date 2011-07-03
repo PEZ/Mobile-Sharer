@@ -17,6 +17,7 @@ CGFloat   kIconImageHeight  = 16;
 
 NSString* kNavPathPrefix = @"ms://feed";
 NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedId:)/(andName:)";
+NSString* kNotificationsURLPath = @"ms://notifications";
 NSString* kConnectionsPathPrefix = @"ms://connections";
 NSString* kConnectionsURLPath = @"ms://connections/(initWithFBConnectionsPath:)/(andName:)";
 NSString* kPostIdPathPrefix = @"ms://post";

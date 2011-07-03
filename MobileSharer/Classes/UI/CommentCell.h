@@ -14,7 +14,7 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "StyledTextCell.h"
+#import "MessageCellBase.h"
 #import "Comment.h"
 
 @class CommentCell;
@@ -28,7 +28,7 @@
 
 @end
 
-@interface CommentCell : StyledTextCell {
+@interface CommentCell : MessageCellBase {
   TTButton* _likeButton;
 }
 
