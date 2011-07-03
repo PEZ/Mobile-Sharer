@@ -63,11 +63,14 @@ NSString* kAppStoreId = @"406870483";
           createRequestWithGraphPath:[NSString stringWithFormat:@"%@/picture", photoId] andDelegate:nil].serializedURL;
 }
 
++ (NSString *) toPhotoPostPathFromFBHREF:(NSString *)href {
+  return [self toPostIdPath:[href stringByMatching:@"fbid=([0-9]+)" capture:1] andTitle:@"Photo"];
+}
+
 + (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title {
   NSString* url = [NSString stringWithFormat:@"%@/%@/%@", kPostIdPathPrefix, postId, [self urlEncode:title]];
   return url;
 }
-
 
 
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key {

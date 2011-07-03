@@ -36,6 +36,7 @@ extern NSString* kAppStoreId;
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
 + (NSString*) toConnectionsURLPath:(NSString*)connectionsPath andName:(NSString*)name;
 + (NSString *) toPhotoURLPath:(NSString *)photoId;
++ (NSString *) toPhotoPostPathFromFBHREF:(NSString *)href;
 + (NSString*) toPostIdPath:(NSString*)postId andTitle:(NSString*)title;
 
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key;

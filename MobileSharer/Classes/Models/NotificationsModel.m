@@ -44,7 +44,7 @@
     notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Post"];
   }
   else if ([notification.type isEqualToString:@"photo"] ) {
-    notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Photo"];
+    notification.URL = [Etc toPhotoPostPathFromFBHREF:[entry objectForKey:@"href"]];
   }
   else if ([notification.type isEqualToString:@"note"] ) {
     notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Note"];
