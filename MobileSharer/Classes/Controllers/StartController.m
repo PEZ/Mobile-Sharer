@@ -8,17 +8,55 @@
 
 #import "StartController.h"
 
+@implementation NotificationsCountFetcher
+
+- (id)initWithDelegate:(id<NotificationsCountDelegate>)delegate {
+  if ((self = [super init])) {
+    _delegate = [delegate retain];
+  }
+  return self;
+}
+
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_delegate);
+  [super dealloc];
+}
+
+- (void)fetch {
+  [[FacebookJanitor sharedInstance].facebook
+   requestWithParams:[NSMutableDictionary dictionaryWithObject:@"notifications.get"
+                                                        forKey:@"method"]
+   andDelegate:self];
+}
+
+#pragma mark -
+#pragma mark FBRequestDelegate
+
+- (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
+  DLog(@"Failed getting notification counts: %@", error);
+}
+
+- (void)request:(FBRequest*)request didLoad:(id)result {
+  TTDASSERT([result isKindOfClass:[NSDictionary class]]);
+  NSDictionary* data = result;
+  [_delegate setNewNotificationsCount:[[data objectForKey:@"notification_counts"] objectForKey:@"unseen"]];
+}
+
+@end
+
 @implementation StartController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if ((self = [super initWithNibName:nibNameOrNil	bundle:nibBundleOrNil])) {
     self.title = @"Menu";
+    _numNewNotifications = [[NSNumber numberWithInt:-1] retain];
   }
   return self;
 }
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_loginLogoutButton);
+  TT_RELEASE_SAFELY(_numNewNotifications);
   [super dealloc];
 }
 
@@ -42,8 +80,11 @@
     _loginLogoutButton.action = @selector(logout);
 
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
-    
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My notifications"
+    NSString* newNotificationsString = [_numNewNotifications intValue] < 0 ? @"..." : [NSString stringWithFormat:@"(%@)", _numNewNotifications];
+    if ([_numNewNotifications intValue] == 0) {
+      newNotificationsString = @"";
+    }
+    [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"Notifications %@", newNotificationsString]
                                                       imageURL:@"bundle://notifications-50x50.png"
                                                            URL:kNotificationsURLPath]];
 
@@ -157,6 +198,13 @@ Read reviews, ask questions, suggest features, whatever on the \
 - (void) userRequestDidFinishLoad:(UserModel*)userModel {
   _currentUserLoaded = YES;
   [self invalidateModel];
+  [[[NotificationsCountFetcher alloc] initWithDelegate:self] fetch];
 }
 
+#pragma mark -
+#pragma mark NotificationsCountDelegate
+- (void)setNewNotificationsCount:(NSNumber*)count {
+  _numNewNotifications = count;
+  [self invalidateModel];
+}
 @end
