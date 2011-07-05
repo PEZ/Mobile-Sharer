@@ -42,6 +42,9 @@
   return RGBACOLOR(100, 122, 152, 0.95);
 }
 
+- (UIColor*)notificationColor {
+  return RGBACOLOR(220, 230, 230, 1.0);
+}
 
 #pragma mark -
 #pragma mark buttons
@@ -115,6 +118,15 @@
                                           minSize:CGSizeZero
                                          position:TTPositionStatic
                                              next:nil];
+}
+
+- (TTStyle*)tableNewNotificationContent {
+  return [TTLinearGradientFillStyle styleWithColor1:[self notificationColor] color2:[UIColor whiteColor] next:
+          [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(-kAvatarImageWidth, -kAvatarImageWidth, -kAvatarImageWidth, -kAvatarImageWidth)
+                             padding:UIEdgeInsetsMake(kAvatarImageWidth, kAvatarImageWidth, kAvatarImageWidth, kAvatarImageWidth)
+                             minSize:CGSizeZero
+                            position:TTPositionStatic
+                                next:nil]];
 }
 
 - (TTBoxStyle*)tablePostImage {

@@ -144,7 +144,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 30;
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Friends"
                                                       imageURL:@"bundle://friends-50x50.png"
                                                            URL:friendsUrl]];
-/*
+
     NSString* pagesUrl = [Etc toConnectionsURLPath:@"likes" andName:@"Likes"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Likes (pages etc.)"
                                                       imageURL:@"bundle://likes-50x50.png"
@@ -154,7 +154,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 30;
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Groups"
                                                       imageURL:@"bundle://groups-50x50.png"
                                                            URL:groupsUrl]];
-*/
+
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Share Share!"
                                                       imageURL:@"bundle://share-50x50.png"

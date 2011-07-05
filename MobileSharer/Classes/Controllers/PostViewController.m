@@ -17,13 +17,18 @@
 
 - (id)initWithController:(PostViewController*)controller {
   if (self = [super init]) {
-    _controller = controller;
+    _controller = [controller retain];
     self.title = @"Like";
     self.style = UIBarButtonItemStyleBordered;
     self.target = self;
     self.action = @selector(likeIt);
   }
   return self;
+}
+
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_controller);
+  [super dealloc];
 }
 
 - (void) updateLikes:(NSString*)method  {

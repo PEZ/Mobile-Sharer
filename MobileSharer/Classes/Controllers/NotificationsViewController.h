@@ -9,7 +9,7 @@
 #import "TableViewController.h"
 
 
-@interface NotificationsViewController : TableViewController {
+@interface NotificationsViewController : TableViewController <FBRequestDelegate> {
     
 }
 
