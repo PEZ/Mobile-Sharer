@@ -8,6 +8,8 @@
 
 #import "StartController.h"
 
+static const NSTimeInterval kNotificationsCountFetchInterval = 30;
+
 @implementation NotificationsCountFetcher
 
 - (id)initWithDelegate:(id<NotificationsCountDelegate>)delegate {
@@ -34,6 +36,7 @@
 
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
   DLog(@"Failed getting notification counts: %@", error);
+  [_delegate fetchingNotificationsCountError:error];
 }
 
 - (void)request:(FBRequest*)request didLoad:(id)result {
@@ -49,14 +52,17 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if ((self = [super initWithNibName:nibNameOrNil	bundle:nibBundleOrNil])) {
     self.title = @"Menu";
-    _numNewNotifications = [[NSNumber numberWithInt:-1] retain];
+    _newNotificationsCountString = @"...";
+    _notificationsCountFetcher = [[[NotificationsCountFetcher alloc] initWithDelegate:self] retain];
   }
   return self;
 }
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_loginLogoutButton);
-  TT_RELEASE_SAFELY(_numNewNotifications);
+  TT_RELEASE_SAFELY(_refreshButton);
+  TT_RELEASE_SAFELY(_newNotificationsCountString);
+  TT_RELEASE_SAFELY(_notificationsCountFetcher)
   [super dealloc];
 }
 
@@ -66,8 +72,25 @@
 
 - (void)loadView {
   [super loadView];
-  _loginLogoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil];
-  self.navigationItem.leftBarButtonItem = _loginLogoutButton;
+  _loginLogoutButton = self.navigationItem.leftBarButtonItem =
+  [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil];
+  _refreshButton = self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
+  _refreshButton.enabled = NO;
+}
+
+- (void)refreshData {
+  _currentUserLoadFailed = NO;
+  if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
+    _refreshButton.enabled = NO;
+    if (_currentUserLoaded) {
+      [_notificationsCountFetcher fetch];
+    }
+    else {
+      [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
+    }
+  }
+  [self invalidateModel];
 }
 
 - (void)createModel {
@@ -80,41 +103,41 @@
     _loginLogoutButton.action = @selector(logout);
 
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
-    NSString* newNotificationsString = [_numNewNotifications intValue] < 0 ? @"..." : [NSString stringWithFormat:@"(%@)", _numNewNotifications];
-    if ([_numNewNotifications intValue] == 0) {
-      newNotificationsString = @"";
-    }
-    [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"Notifications %@", newNotificationsString]
+    
+    [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"Notifications %@", _newNotificationsCountString]
                                                       imageURL:@"bundle://notifications-50x50.png"
                                                            URL:kNotificationsURLPath]];
-
+    
     NSString* feedUrl = [Etc toFeedURLPath:@"me" name:@"News feed"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My news feed"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"News feed"
                                                       imageURL:@"bundle://newsfeed-50x50.png"
                                                            URL:feedUrl]];
-
     if (_currentUserLoaded) {
       FacebookJanitor* janitor = [FacebookJanitor sharedInstance];
-      [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"My wall (%@)", janitor.currentUser.userName]
+      [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"%@", janitor.currentUser.userName]
                                                         imageURL:[FacebookJanitor avatarForId:janitor.currentUser.userId]
                                                              URL:[Etc toFeedURLPath:janitor.currentUser.userId name:janitor.currentUser.userName]]];
+    }
+    else if (_currentUserLoadFailed) {
+      [dataSource.items addObject:[TTTableTextItem itemWithText:@"Error loading user info"]];
     }
     else {
       [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading current user..."]];
     }
+
     
     NSString* friendsUrl = [Etc toConnectionsURLPath:@"friends" andName:@"Friends"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My friends"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Friends"
                                                       imageURL:@"bundle://friends-50x50.png"
                                                            URL:friendsUrl]];
 /*
     NSString* pagesUrl = [Etc toConnectionsURLPath:@"likes" andName:@"Likes"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My likes (pages etc.)"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Likes (pages etc.)"
                                                       imageURL:@"bundle://likes-50x50.png"
                                                            URL:pagesUrl]];
 
     NSString* groupsUrl = [Etc toConnectionsURLPath:@"groups" andName:@"Groups"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"My groups"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Groups"
                                                       imageURL:@"bundle://groups-50x50.png"
                                                            URL:groupsUrl]];
 */
@@ -164,11 +187,21 @@ Read reviews, ask questions, suggest features, whatever on the \
 
 - (void) viewDidLoad {
   [super viewDidLoad];
-  [self invalidateModel];
-  if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
-    [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
-    //[self showFeed];
-  }
+  [self refreshData];
+}
+
+- (void)fetchNotificationsCountTimerFired:(NSTimer*)timer {
+  [_notificationsCountFetcher fetch];
+}
+
+- (void) scheduleNotificationsCountTimer {
+  NSTimer* timer = [NSTimer timerWithTimeInterval:kNotificationsCountFetchInterval
+                                           target:self
+                                         selector:@selector(fetchNotificationsCountTimerFired:)
+                                         userInfo:nil
+                                          repeats:NO];
+  [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+  
 }
 
 #pragma mark -
@@ -197,14 +230,31 @@ Read reviews, ask questions, suggest features, whatever on the \
  */
 - (void) userRequestDidFinishLoad:(UserModel*)userModel {
   _currentUserLoaded = YES;
+  _currentUserLoadFailed = NO;
   [self invalidateModel];
-  [[[NotificationsCountFetcher alloc] initWithDelegate:self] fetch];
+  [_notificationsCountFetcher fetch];
+}
+
+- (void)userRequestDidFailWithError:(NSError*)error {
+  _currentUserLoadFailed = YES;
+  _refreshButton.enabled = YES;
+  TTAlert([NSString stringWithFormat:@"Error getting user info: %@", [error localizedDescription]]);
+  [self invalidateModel];
 }
 
 #pragma mark -
 #pragma mark NotificationsCountDelegate
+
 - (void)setNewNotificationsCount:(NSNumber*)count {
-  _numNewNotifications = count;
+  _newNotificationsCountString = [count intValue] == 0 ? @"" : [NSString stringWithFormat:@"(%@)", count];
+  _refreshButton.enabled = YES;
   [self invalidateModel];
 }
+
+- (void)fetchingNotificationsCountError:(NSError*)error {
+  _newNotificationsCountString = @"(Error when loading)";
+  _refreshButton.enabled = YES;
+  [self invalidateModel];
+}
+
 @end

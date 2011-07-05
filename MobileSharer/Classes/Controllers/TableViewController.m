@@ -31,6 +31,17 @@
                             animated:NO]; 
 } 
 
+- (void)didSelectObject:(id)object atIndexPath:(NSIndexPath*)indexPath {
+  if ([object respondsToSelector:@selector(URLValue)]) {
+    NSString* URL = [object URLValue];
+    if (URL) {
+      TTOpenURLFromView(URL, self.view);
+    }
+    else if ([object delegate] != nil) {
+      [[object delegate] performSelector:[object selector]];
+    }
+  }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation: 
 (UIInterfaceOrientation)interfaceOrientation {

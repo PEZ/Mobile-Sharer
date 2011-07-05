@@ -37,6 +37,11 @@
   }
 }
 
+- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
+  DLog(@"Failed getting user info: %@", error);
+  [_delegate userRequestDidFailWithError:error];
+  [super request:request didFailLoadWithError:error];
+}
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
   TTURLJSONResponse* response = request.response;
