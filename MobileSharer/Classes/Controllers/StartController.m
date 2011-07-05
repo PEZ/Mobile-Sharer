@@ -112,7 +112,6 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 30;
     _loginLogoutButton.action = @selector(logout);
 
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
-
     if (_notificationsCountFetcher.isLoading) {
       [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading notification counts..."]];
     }
