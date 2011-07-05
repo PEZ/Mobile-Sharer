@@ -12,13 +12,19 @@
 @protocol NotificationsCountDelegate <NSObject>
 
 - (void)setNewNotificationsCount:(NSNumber*)count;
+- (void)fetchingNotificationsCountError:(NSError*)error;
 
 @end
 
 @interface NotificationsCountFetcher : NSObject <FBRequestDelegate> {
 @private
+  BOOL _isLoading;
+  BOOL _failedLoading;
   id<NotificationsCountDelegate> _delegate;
 }
+
+@property (readonly) BOOL isLoading;
+@property (readonly) BOOL failedLoading;
 
 - (id)initWithDelegate:(id<NotificationsCountDelegate>)delegate;
 - (void)fetch;
@@ -29,8 +35,13 @@
 @interface StartController : TableViewController <FBJSessionDelegate, UserRequestDelegate, NotificationsCountDelegate> {
   @private
   UIBarButtonItem* _loginLogoutButton;
-  NSNumber*  _numNewNotifications;
+  UIBarButtonItem* _refreshButton;
+  NSString*  _newNotificationsCountString;
   BOOL       _currentUserLoaded;
+  BOOL       _currentUserLoadFailed;
+  NotificationsCountFetcher* _notificationsCountFetcher;
 }
+
+- (void)refreshData;
 
 @end

@@ -13,6 +13,7 @@
 
 @protocol UserRequestDelegate
 - (void)userRequestDidFinishLoad:(UserModel*)userModel;
+- (void)userRequestDidFailWithError:(NSError*)error;
 @end
 
 @interface UserModel : TTURLRequestModel {

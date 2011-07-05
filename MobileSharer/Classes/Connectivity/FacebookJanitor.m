@@ -168,6 +168,10 @@ static NSString* kExpirationDateKey = @"fbExpirationDate-1.3";
   [_userRequestDelegate userRequestDidFinishLoad:userModel];
 }
 
+- (void)userRequestDidFailWithError:(NSError*)error {
+  [_userRequestDelegate userRequestDidFailWithError:error];
+}
+
 #pragma mark -
 #pragma mark NSObject
 
