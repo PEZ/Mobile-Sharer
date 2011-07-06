@@ -11,16 +11,16 @@
 #ifdef __OBJC__
 //#import <Foundation/Foundation.h>
 //#import <UIKit/UIKit.h>
-  #import <CoreData/CoreData.h>
+//#import <CoreData/CoreData.h>
   #import "Three20/Three20.h"
-  #import "Three20UI/UINSStringAdditions.h"
-  #import "Three20Core/NSStringAdditions.h"
-  #import "Three20UI/UIViewAdditions.h"
-  #import "Three20Core/NSDateAdditions.h"
+//#import "Three20UI/UINSStringAdditions.h"
+//#import "Three20Core/NSStringAdditions.h"
+//#import "Three20UI/UIViewAdditions.h"
+//#import <Three20UICommon/UIViewControllerAdditions.h>
+//#import "Three20Core/NSDateAdditions.h"
   #import <Three20/Three20+Additions.h>
-  #import "FBConnect.h"
   #import "Etc.h"
-  #import "DefaultStyleSheet.h"
+//#import "DefaultStyleSheet.h"
 #endif
 
 #ifdef DEBUG

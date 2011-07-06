@@ -6,7 +6,6 @@
 //  Copyright 2011 Better Than Tomorrow. All rights reserved.
 //
 
-#import "Etc.h"
 #import "NotificationsViewController.h"
 #import "NotificationsDataSource.h"
 #import "Notification.h"

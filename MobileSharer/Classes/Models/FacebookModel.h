@@ -7,6 +7,7 @@
 //
 
 #import "Post.h"
+#import "FBConnect.h"
 #import <extThree20JSON/extThree20JSON.h>
 
 @interface FacebookModel : TTURLRequestModel {

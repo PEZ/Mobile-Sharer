@@ -6,9 +6,6 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "Three20UI/TTTableLinkedItem.h"
-
-
 @interface StyledTableDataItem : TTTableLinkedItem {
   NSString* _html;
   NSDate*   _created;

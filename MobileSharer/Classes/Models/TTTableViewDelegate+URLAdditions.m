@@ -6,7 +6,6 @@
 
 #import "TTTableViewDelegate+URLAdditions.h"
 
-
 @implementation TTTableViewDelegate(URLAdditions)
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {

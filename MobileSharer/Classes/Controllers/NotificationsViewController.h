@@ -7,7 +7,7 @@
 //
 
 #import "TableViewController.h"
-
+#import "FBConnect.h"
 
 @interface NotificationsViewController : TableViewController <FBRequestDelegate> {
     

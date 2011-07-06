@@ -10,6 +10,8 @@
 #import "StyledTableDataItem.h"
 #import "StyledTableIconDataItem.h"
 
+#import "DefaultStyleSheet.h"
+
 
 @implementation MessageCellBase
 

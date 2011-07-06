@@ -7,6 +7,7 @@
 //
 
 #import "UserModel.h"
+#import "FBConnect.h"
 
 @protocol FBJSessionDelegate;
 

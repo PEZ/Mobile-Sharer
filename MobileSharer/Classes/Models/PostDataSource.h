@@ -8,7 +8,6 @@
 
 #import "PostModel.h"
 #import "Post.h"
-#import "Comment.h"
 
 
 @interface PostDataSource : TTListDataSource {

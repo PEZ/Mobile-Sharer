@@ -7,7 +7,6 @@
 //
 
 #import "FacebookJanitor.h"
-#import "KeychainItemWrapper.h"
 
 static void * volatile sharedInstance = nil;                                                
 static NSString* kAppId = @"139083852806042";

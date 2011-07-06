@@ -9,7 +9,6 @@
 #import "WebController.h"
 #import "RegexKitLite.h"
 #import "ComposePostController.h"
-#import <Three20UICommon/UIViewControllerAdditions.h>
 
 static NSString* kUrlEncodedEndQuote = @"%22";
 

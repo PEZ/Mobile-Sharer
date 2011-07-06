@@ -7,7 +7,6 @@
 //
 
 #import "StartController.h"
-#import "AppDelegate.h"
 
 static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 

@@ -13,7 +13,6 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28C3AD8A0F43EF2300507BA6 /* MobileSharer.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
-		32025690129B028400A9CF49 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3202568F129B028400A9CF49 /* LoginView.m */; };
 		32034E9412A5AC4000879C06 /* WebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32034E9312A5AC4000879C06 /* WebController.m */; };
 		32053B1512931DA2006ABC35 /* FacebookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32053B1412931DA2006ABC35 /* FacebookModel.m */; };
 		3215B0521272E15C005580D5 /* FacebookJanitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3215B0511272E15C005580D5 /* FacebookJanitor.m */; };
@@ -97,7 +96,6 @@
 		EBF1659613BA5B2500BA0485 /* pages-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1659413BA5B2500BA0485 /* pages-50x50@2x.png */; };
 		EBF1659913BA6B0000BA0485 /* groups-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1659713BA6B0000BA0485 /* groups-50x50.png */; };
 		EBF1659A13BA6B0000BA0485 /* groups-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF1659813BA6B0000BA0485 /* groups-50x50@2x.png */; };
-		EBF1659D13BA816F00BA0485 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF1659C13BA813500BA0485 /* KeychainItemWrapper.m */; };
 		EBF1659F13BA892600BA0485 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF1659E13BA892400BA0485 /* Security.framework */; };
 		EBF165A213BB2E4C00BA0485 /* likes-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF165A013BB2E4C00BA0485 /* likes-50x50.png */; };
 		EBF165A313BB2E4C00BA0485 /* likes-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF165A113BB2E4C00BA0485 /* likes-50x50@2x.png */; };
@@ -292,8 +290,6 @@
 		28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MobileSharer.xcdatamodel; sourceTree = "<group>"; };
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3202568E129B028400A9CF49 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
-		3202568F129B028400A9CF49 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		32034E9212A5AC4000879C06 /* WebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebController.h; sourceTree = "<group>"; };
 		32034E9312A5AC4000879C06 /* WebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebController.m; sourceTree = "<group>"; };
 		32053B1312931DA2006ABC35 /* FacebookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookModel.h; sourceTree = "<group>"; };
@@ -431,8 +427,6 @@
 		EBF1659413BA5B2500BA0485 /* pages-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pages-50x50@2x.png"; sourceTree = "<group>"; };
 		EBF1659713BA6B0000BA0485 /* groups-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-50x50.png"; sourceTree = "<group>"; };
 		EBF1659813BA6B0000BA0485 /* groups-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-50x50@2x.png"; sourceTree = "<group>"; };
-		EBF1659B13BA811C00BA0485 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
-		EBF1659C13BA813500BA0485 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		EBF1659E13BA892400BA0485 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EBF165A013BB2E4C00BA0485 /* likes-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "likes-50x50.png"; sourceTree = "<group>"; };
 		EBF165A113BB2E4C00BA0485 /* likes-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "likes-50x50@2x.png"; sourceTree = "<group>"; };
@@ -627,8 +621,6 @@
 				321F3BCE126CF673008473C8 /* Etc.m */,
 				321F3BD0126CF6D2008473C8 /* AppDelegate.h */,
 				321F3BD1126CF6D2008473C8 /* AppDelegate.m */,
-				EBF1659B13BA811C00BA0485 /* KeychainItemWrapper.h */,
-				EBF1659C13BA813500BA0485 /* KeychainItemWrapper.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -765,8 +757,6 @@
 				EBEC4F3C13C0BB7500F5731C /* NotificationCell.m */,
 				32425F601291EAC90017A401 /* LoadMoreCell.h */,
 				32425F611291EAC90017A401 /* LoadMoreCell.m */,
-				3202568E129B028400A9CF49 /* LoginView.h */,
-				3202568F129B028400A9CF49 /* LoginView.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1124,7 +1114,6 @@
 				322DD6A912903FB400E7D1DA /* StandalonePostCell.m in Sources */,
 				32425F621291EAC90017A401 /* LoadMoreCell.m in Sources */,
 				32053B1512931DA2006ABC35 /* FacebookModel.m in Sources */,
-				32025690129B028400A9CF49 /* LoginView.m in Sources */,
 				329ADFBA129C50A700B9B01A /* User.m in Sources */,
 				329ADFBD129C53F700B9B01A /* UserModel.m in Sources */,
 				329AE1E9129F178800B9B01A /* RegexKitLite.m in Sources */,
@@ -1137,7 +1126,6 @@
 				EBF1655E13B8854F00BA0485 /* ConnectionsDataSource.m in Sources */,
 				EBF1656113B888E700BA0485 /* Connection.m in Sources */,
 				EBF1656413B88A6D00BA0485 /* ConnectionsModel.m in Sources */,
-				EBF1659D13BA816F00BA0485 /* KeychainItemWrapper.m in Sources */,
 				EBF165A613BCCD3700BA0485 /* NotificationsViewController.m in Sources */,
 				EBF165A913BD3DEC00BA0485 /* Notification.m in Sources */,
 				EBF165AC13BDA1F800BA0485 /* NotificationsModel.m in Sources */,

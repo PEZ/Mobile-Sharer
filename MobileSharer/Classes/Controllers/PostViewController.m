@@ -11,7 +11,6 @@
 #import "CommentsPostController.h"
 #import "SharePostController.h"
 #import "RegexKitLite.h"
-#import <Three20UICommon/UIViewControllerAdditions.h>
 
 @implementation LikeButton
 

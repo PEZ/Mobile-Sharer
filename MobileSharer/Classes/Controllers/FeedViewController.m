@@ -9,7 +9,6 @@
 #import "FeedViewController.h"
 #import "FeedDataSource.h"
 #import "RegexKitLite.h"
-#import <Three20UICommon/UIViewControllerAdditions.h>
 
 @implementation FeedViewController
 

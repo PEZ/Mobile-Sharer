@@ -9,7 +9,6 @@
 #import "ConnectionsModel.h"
 #import "Connection.h"
 #import "FacebookJanitor.h"
-#import "Etc.h"
 
 
 @implementation ConnectionsModel

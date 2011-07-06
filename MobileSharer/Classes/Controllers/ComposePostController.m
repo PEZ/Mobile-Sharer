@@ -6,7 +6,6 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "Three20UI/UIViewAdditions.h"
 #import "ComposePostController.h"
 #import "RegexKitLite.h"
 
