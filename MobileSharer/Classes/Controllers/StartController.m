@@ -9,7 +9,7 @@
 #import "StartController.h"
 #import "AppDelegate.h"
 
-static const NSTimeInterval kNotificationsCountFetchInterval = 30;
+static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 
 @implementation NotificationsCountFetcher
 
@@ -214,6 +214,20 @@ Read reviews, ask questions, suggest features, whatever on the \
   [self refreshData];
 }
 
+- (void)fetchNotificationsCountTimerFired:(NSTimer*)timer {
+  [self refreshData];
+}
+
+- (void) scheduleNotificationsCountTimer {
+  NSTimer* timer = [NSTimer timerWithTimeInterval:kNotificationsCountFetchInterval
+                                           target:self
+                                         selector:@selector(fetchNotificationsCountTimerFired:)
+                                         userInfo:nil
+                                          repeats:NO];
+  [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+  
+}
+
 #pragma mark -
 #pragma mark FBJSessionDelegate
 
@@ -260,12 +274,14 @@ Read reviews, ask questions, suggest features, whatever on the \
   _newNotificationsCountString = [count intValue] == 0 ? @"" : [NSString stringWithFormat:@"(%@)", count];
   _refreshButton.enabled = YES;
   [self invalidateModel];
+  [self scheduleNotificationsCountTimer];
 }
 
 - (void)fetchingNotificationsCountError:(NSError*)error {
   _newNotificationsCountString = @"(Error when loading)";
   _refreshButton.enabled = YES;
   [self invalidateModel];
+  [self scheduleNotificationsCountTimer];
 }
 
 @end

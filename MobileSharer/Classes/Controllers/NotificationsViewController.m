@@ -45,8 +45,13 @@
   NSArray* items = ((NotificationsDataSource*)self.dataSource).items;
   NSMutableArray* newIds = [NSMutableArray arrayWithCapacity:[items count]];
   for (Notification* notification in items) {
-    if (notification.isNew) {
-      [newIds addObject:notification.notificationId];
+    @try {
+      if (notification.isNew) {
+        [newIds addObject:notification.notificationId];
+      }
+    }
+    @catch (NSException *exception) {
+      DLog(@"Error checking isNew: %@", exception)
     }
   }
   if ([newIds count] > 0) {

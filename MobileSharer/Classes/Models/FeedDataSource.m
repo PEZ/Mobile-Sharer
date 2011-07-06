@@ -60,14 +60,14 @@
 
 - (NSString*)titleForLoading:(BOOL)reloading {
   if (reloading) {
-    return NSLocalizedString(@"Updating Facebook feed...", @"Facebook feed updating text");
+    return NSLocalizedString(@"Updating feed...", @"Feed updating text");
   } else {
-    return NSLocalizedString(@"Loading Facebook feed...", @"Facebook feed loading text");
+    return NSLocalizedString(@"Loading feed...", @"Feed loading text");
   }
 }
 
 - (NSString*)titleForEmpty {
-  return NSLocalizedString(@"No posts found.", @"Facebook feed no results");
+  return NSLocalizedString(@"No posts found.", @"Feed no results");
 }
 
 - (NSString*)subtitleForError:(NSError*)error {

@@ -29,34 +29,40 @@
 
 - (Notification*)createNotificationFromEntry:(NSDictionary *)entry {
   Notification* notification = [[Notification alloc] init];
-  
-  notification.created = [NSDate dateWithTimeIntervalSince1970:[[entry objectForKey:@"created_time"] intValue]];
-  notification.notificationId = [entry objectForKey:@"notification_id"];
-  notification.type = [entry objectForKey:@"object_type"];
-  notification.objectId = [entry objectForKey:@"object_id"];
-  notification.fromId = [entry objectForKey:@"sender_id"];
-  notification.fromAvatar = [FacebookJanitor avatarForId:notification.fromId];
-  notification.icon = [entry objectForKey:@"icon_url"];
-  notification.message = [entry objectForKey:@"title_text"];
-  notification.isNew = [(NSNumber*)[entry objectForKey:@"is_unread"] boolValue];
-  
-  if ([notification.type isEqualToString:@"stream"] ) {
-    notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Post"];
+  @try {
+    notification.notificationId = [entry objectForKey:@"notification_id"];
+    notification.type = [entry objectForKey:@"object_type"];
+    notification.objectId = [entry objectForKey:@"object_id"];
+    notification.fromId = [entry objectForKey:@"sender_id"];
+    notification.icon = [entry objectForKey:@"icon_url"];
+    notification.message = [entry objectForKey:@"title_text"];
+    notification.created = [NSDate dateWithTimeIntervalSince1970:[[entry objectForKey:@"created_time"] intValue]];
+    notification.fromAvatar = [FacebookJanitor avatarForId:notification.fromId];
+    notification.isNew = [(NSNumber*)[entry objectForKey:@"is_unread"] boolValue];
+    
+    if (notification.type != nil && ![notification.type isKindOfClass:[NSNull class]]) {
+      if ([notification.type isEqualToString:@"stream"] ) {
+        notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Post"];
+      }
+      else if ([notification.type isEqualToString:@"photo"] ) {
+        notification.URL = [Etc toPhotoPostPathFromFBHREF:[entry objectForKey:@"href"]];
+      }
+      else if ([notification.type isEqualToString:@"note"] ) {
+        notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Note"];
+      }
+      else if ([notification.type isEqualToString:@"group"] ) {
+        notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Group"];
+      }
+      else if ([notification.type isEqualToString:@"event"] ) {
+        notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Event"];
+      }
+      else if ([notification.type isEqualToString:@"friend"] ) {
+        notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Friend"];
+      }
+    }
   }
-  else if ([notification.type isEqualToString:@"photo"] ) {
-    notification.URL = [Etc toPhotoPostPathFromFBHREF:[entry objectForKey:@"href"]];
-  }
-  else if ([notification.type isEqualToString:@"note"] ) {
-    notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Note"];
-  }
-  else if ([notification.type isEqualToString:@"group"] ) {
-    notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Group"];
-  }
-  else if ([notification.type isEqualToString:@"event"] ) {
-    notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Event"];
-  }
-  else if ([notification.type isEqualToString:@"friend"] ) {
-    notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Friend"];
+  @catch (NSException *exception) {
+    DLog(@"Error converting entry to notification: %@", exception)
   }
   return notification;
 }
