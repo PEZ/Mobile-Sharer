@@ -7,6 +7,7 @@
 //
 
 #import "StartController.h"
+#import "AppDelegate.h"
 
 static const NSTimeInterval kNotificationsCountFetchInterval = 30;
 
@@ -14,6 +15,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 30;
 
 @synthesize isLoading = _isLoading;
 @synthesize failedLoading = _failedLoading;
+@synthesize newCount = _newCount;
 
 - (id)initWithDelegate:(id<NotificationsCountDelegate>)delegate {
   if ((self = [super init])) {
@@ -24,6 +26,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 30;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_delegate);
+  TT_RELEASE_SAFELY(_newCount);
   [super dealloc];
 }
 
@@ -51,7 +54,15 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 30;
   _failedLoading = NO;
   TTDASSERT([result isKindOfClass:[NSDictionary class]]);
   NSDictionary* data = result;
-  [_delegate setNewNotificationsCount:[[data objectForKey:@"notification_counts"] objectForKey:@"unseen"]];
+  self.newCount = [[data objectForKey:@"notification_counts"] objectForKey:@"unseen"];
+  [_delegate fetchingNotificationsCountDone:self]; 
+  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_newCount intValue]];
+  //UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+  //if (localNotif) {
+  //  localNotif.applicationIconBadgeNumber = 1;
+  //  [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+  //  [localNotif release];
+  //}
 }
 
 @end
@@ -244,7 +255,8 @@ Read reviews, ask questions, suggest features, whatever on the \
 #pragma mark -
 #pragma mark NotificationsCountDelegate
 
-- (void)setNewNotificationsCount:(NSNumber*)count {
+- (void)fetchingNotificationsCountDone:(NotificationsCountFetcher*)fetcher {
+  NSNumber* count = fetcher.newCount;
   _newNotificationsCountString = [count intValue] == 0 ? @"" : [NSString stringWithFormat:@"(%@)", count];
   _refreshButton.enabled = YES;
   [self invalidateModel];

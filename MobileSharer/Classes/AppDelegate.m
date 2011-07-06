@@ -66,6 +66,7 @@
   if ([controller isKindOfClass:[TTTableViewController class]]) {
     [((TTTableViewController*)controller).tableView reloadData];
   }
+  [(StartController*)[[TTNavigator navigator] viewControllerForURL:kAppStartURLPath] refreshData];
 }
 
 #pragma mark -

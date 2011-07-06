@@ -9,9 +9,11 @@
 #import "TableViewController.h"
 #import "FacebookJanitor.h"
 
+@class NotificationsCountFetcher;
+
 @protocol NotificationsCountDelegate <NSObject>
 
-- (void)setNewNotificationsCount:(NSNumber*)count;
+- (void)fetchingNotificationsCountDone:(NotificationsCountFetcher*)fetcher;
 - (void)fetchingNotificationsCountError:(NSError*)error;
 
 @end
@@ -20,11 +22,13 @@
 @private
   BOOL _isLoading;
   BOOL _failedLoading;
+  NSNumber* _newCount;
   id<NotificationsCountDelegate> _delegate;
 }
 
 @property (readonly) BOOL isLoading;
 @property (readonly) BOOL failedLoading;
+@property (nonatomic, retain) NSNumber* newCount;
 
 - (id)initWithDelegate:(id<NotificationsCountDelegate>)delegate;
 - (void)fetch;
