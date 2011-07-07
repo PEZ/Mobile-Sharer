@@ -43,7 +43,7 @@
 }
 
 - (UIColor*)notificationColor {
-  return RGBACOLOR(210, 210, 220, 1.0);
+  return RGBACOLOR(10, 20, 40, 0.07);
 }
 
 #pragma mark -
@@ -105,28 +105,37 @@
 #pragma mark table cells
 
 - (TTStyle*)feedAvatar {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsZero
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, kTableCellSmallMargin, kTableCellSmallMargin, 0)
                              padding:UIEdgeInsetsZero
                              minSize:CGSizeZero
                             position:TTPositionAbsolute
                                 next:[self avatar]];
 }
 
-- (TTStyle*)tableMessageContent {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, kAvatarImageWidth + kTableCellSmallMargin, 0, 0)
-                                          padding:UIEdgeInsetsZero
-                                          minSize:CGSizeZero
-                                         position:TTPositionStatic
-                                             next:nil];
-}
-
-- (TTStyle*)tableNewNotificationContent {
-  return [TTLinearGradientFillStyle styleWithColor1:[self notificationColor] color2:[UIColor whiteColor] next:
-          [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(-kAvatarImageWidth, -kAvatarImageWidth, -kAvatarImageWidth, -kAvatarImageWidth)
-                             padding:UIEdgeInsetsMake(kAvatarImageWidth, kAvatarImageWidth, kAvatarImageWidth, kAvatarImageWidth)
+- (TTStyle*)tableMessageContentStyle:(BOOL)hasDisclosure {
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin,
+                                                      kAvatarImageWidth + kTableCellSmallMargin * 2,
+                                                      kTableCellSmallMargin,
+                                                      kTableCellSmallMargin + hasDisclosure ? kDisclosureWidth : 0)
+                             padding:UIEdgeInsetsZero
                              minSize:CGSizeZero
                             position:TTPositionStatic
-                                next:nil]];
+                                next:nil];
+}
+
+- (TTStyle*)tableMessageContent {
+  return [self tableMessageContentStyle:NO];
+}
+
+- (TTStyle*)tableMessageContentWithDisclosure {
+  return [self tableMessageContentStyle:YES];
+}
+
+
+- (TTStyle*)tableCellNewNotification {
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsZero next:
+          [TTSolidFillStyle styleWithColor:[self notificationColor] next:
+           nil]];
 }
 
 - (TTBoxStyle*)tablePostImage {

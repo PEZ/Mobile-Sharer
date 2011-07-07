@@ -9,6 +9,7 @@
 #import "NotificationsModel.h"
 #import "Notification.h"
 #import "FacebookJanitor.h"
+#import "RegexKitLite.h"
 
 @implementation NotificationsModel
 
@@ -39,10 +40,16 @@
     notification.created = [NSDate dateWithTimeIntervalSince1970:[[entry objectForKey:@"created_time"] intValue]];
     notification.fromAvatar = [FacebookJanitor avatarForId:notification.fromId];
     notification.isNew = [(NSNumber*)[entry objectForKey:@"is_unread"] boolValue];
-    
+    NSString* href = [entry objectForKey:@"href"]; 
     if (notification.type != nil && ![notification.type isKindOfClass:[NSNull class]]) {
       if ([notification.type isEqualToString:@"stream"] ) {
-        notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Post"];
+        if (href && [href isKindOfClass:[NSString class]] && [href rangeOfString:@"sk=wall"].location != NSNotFound) {
+          notification.URL = [Etc toFeedURLPath:[FacebookJanitor sharedInstance].currentUser.userId
+                                           name:[FacebookJanitor sharedInstance].currentUser.userName];
+        }
+        else {
+          notification.URL = [Etc toPostIdPath:notification.objectId andTitle:@"Post"];
+        }
       }
       else if ([notification.type isEqualToString:@"photo"] ) {
         notification.URL = [Etc toPhotoPostPathFromFBHREF:[entry objectForKey:@"href"]];

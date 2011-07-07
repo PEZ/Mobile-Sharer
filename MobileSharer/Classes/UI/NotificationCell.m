@@ -17,21 +17,11 @@
   return [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@</div>", metaText];
 }
 
-+ (void) setMessageHTML:(StyledTableDataItem*)item {
-  Notification* notificationItem = (Notification*)item;
-  if (notificationItem.html == nil) {
-    NSString* messageText = [self getAvatarHTML:notificationItem.fromAvatar feedId:notificationItem.fromId];
-    messageText = [NSString stringWithFormat:@"%@<div class=\"%@\">", messageText, @"tableMessageContent"];
-    if (notificationItem.message) {
-      messageText = [NSString stringWithFormat:@"%@<span class=\"tableText\">%@</span>", messageText,
-                     [Etc xmlEscape:notificationItem.message]];
-    }
-    messageText = [NSString stringWithFormat:@"%@%@</div>", messageText, [self getMetaHTML:notificationItem]];
-    if (notificationItem.isNew) {
-      messageText = [NSString stringWithFormat:@"<div class=\"tableNewNotificationContent\">%@</div>", messageText];
-    }
-    notificationItem.html = messageText;
++ (NSString*) wrapMessageHTML:(NSString*)messageHTML item:(StyledTableDataItem*)item {
+  if (((Notification*)item).isNew) {
+    messageHTML = [NSString stringWithFormat:@"<div class=\"tableCellNewNotification\">%@</div>", messageHTML];
   }
+  return messageHTML;
 }
 
 @end

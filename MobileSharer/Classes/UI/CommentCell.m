@@ -7,7 +7,7 @@
 //
 
 #import "CommentCell.h"
-#import "DefaultStyleSheet.h"
+//#import "DefaultStyleSheet.h"
 #import "FacebookJanitor.h"
 
 @implementation CommentLikeButton

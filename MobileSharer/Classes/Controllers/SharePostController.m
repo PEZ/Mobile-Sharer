@@ -34,7 +34,7 @@
   if ((TTIsStringWithAnyText(self.textView.text) && !self.textView.text.isWhitespaceAndNewlines) || self.sharePost.shareURL) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"];
-    [Etc params:&params addObject:[Etc pictureURL:self.sharePost.picture] forKey:@"picture"];
+    //[Etc params:&params addObject:[Etc pictureURL:self.sharePost.picture] forKey:@"picture"];
     [Etc params:&params addObject:self.sharePost.shareURL forKey:@"link"];
     [Etc params:&params addObject:self.sharePost.linkTitle forKey:@"name"];
     [Etc params:&params addObject:self.sharePost.linkCaption forKey:@"caption"];

@@ -8,6 +8,8 @@
 
 #import "Post.h"
 
+extern CGFloat    kDisclosureWidth;
+
 extern CGFloat   kAvatarImageWidth;
 extern CGFloat   kAvatarImageHeight;
 extern CGFloat   kIconImageWidth;

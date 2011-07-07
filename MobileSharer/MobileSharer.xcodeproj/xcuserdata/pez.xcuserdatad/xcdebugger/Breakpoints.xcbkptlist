@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/UI/MessageCellBase.m"
-         timestampString = "331418560.795607"
+         timestampString = "331691811.993462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "60"
-         endingLineNumber = "60"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
          landmarkName = "+setMessageHTML:"
          landmarkType = "5">
       </FileBreakpoint>

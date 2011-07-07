@@ -51,17 +51,15 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 - (void)request:(FBRequest*)request didLoad:(id)result {
   _isLoading = NO;
   _failedLoading = NO;
-  TTDASSERT([result isKindOfClass:[NSDictionary class]]);
+  if ([result isKindOfClass:[NSDictionary class]]) {
   NSDictionary* data = result;
-  self.newCount = [[data objectForKey:@"notification_counts"] objectForKey:@"unseen"];
-  [_delegate fetchingNotificationsCountDone:self]; 
-  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_newCount intValue]];
-  //UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-  //if (localNotif) {
-  //  localNotif.applicationIconBadgeNumber = 1;
-  //  [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
-  //  [localNotif release];
-  //}
+    self.newCount = [[data objectForKey:@"notification_counts"] objectForKey:@"unseen"];
+    [_delegate fetchingNotificationsCountDone:self]; 
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[_newCount intValue]];
+  }
+  else {
+    [self request:request didFailWithError:[NSError errorWithDomain:@"Facebook API returned garbage instead of notification counts" code:0 userInfo:nil]];
+  }
 }
 
 @end
@@ -163,7 +161,12 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Groups"
                                                       imageURL:@"bundle://groups-50x50.png"
                                                            URL:groupsUrl]];
-
+    
+    NSString* shareAppUrl = [Etc toFeedURLPath:@"139083852806042" name:@"Feedback"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"The Share! feedback wall"
+                                                      imageURL:[FacebookJanitor avatarForId:@"139083852806042"]
+                                                           URL:shareAppUrl]];
+    
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Share Share!"
                                                       imageURL:@"bundle://share-50x50.png"

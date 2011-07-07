@@ -50,15 +50,22 @@
   return [NSString stringWithFormat:@"%@%@", metaText, [item.created formatRelativeTime]];
 }
 
++ (NSString*) wrapMessageHTML:(NSString*)messageHTML item:(StyledTableDataItem*)item {
+  return messageHTML;
+}
+
 + (void) setMessageHTML:(StyledTableDataItem*)item {
   if (item.html == nil) {
     NSString* messageText = [self getAvatarHTML:item.fromAvatar feedId:item.fromId];
-    messageText = [NSString stringWithFormat:@"%@<div class=\"tableMessageContent\">", messageText];
+    messageText = [NSString stringWithFormat:@"%@<div class=\"%@\">",
+                   messageText, (item.URL != nil) ? @"tableMessageContentWithDisclosure" : @"tableMessageContent"];
     if (item.message) {
       messageText = [NSString stringWithFormat:@"%@<span class=\"tableText\">%@</span>", messageText, [Etc xmlEscape:item.message]];
     }
     messageText = [NSString stringWithFormat:@"%@%@</div>", messageText, [self getMetaHTML:item]];
-    
+
+    messageText = [self wrapMessageHTML:messageText item:item];
+
     item.html = messageText;
   }
 }
@@ -67,13 +74,13 @@
 + (CGFloat)tableView:(UITableView*)tableView rowHeightForObject:(id)object {
   StyledTableDataItem* item = object;
   [self setMessageHTML:item];
-  item.styledText.width = [self getTextWidth:kTableCellSmallMargin tableView:tableView item:item];
-  return kTableCellSmallMargin + MAX(kAvatarImageHeight, item.styledText.height) + kTableCellSmallMargin;
+  item.styledText.width = [self getTextWidth:tableView item:item];
+  return MAX(kAvatarImageHeight, item.styledText.height);
 }
 
 
 + (TTStyledTextLabel*)createStyledLabel {
-  TTStyledTextLabel* label = [[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
+  TTStyledTextLabel* label = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
   label.textColor = TTSTYLEVAR(tableTextColor);
   label.highlightedTextColor = [UIColor whiteColor];
   label.font = TTSTYLEVAR(tableFont);
@@ -81,10 +88,10 @@
   return label;  
 }
 
-+ (CGFloat) getTextWidth:(CGFloat)left tableView:(UITableView *)tableView item:(Post *)item {
-  CGFloat textWidth = tableView.width - left - kTableCellSmallMargin;
++ (CGFloat) getTextWidth:(UITableView*)tableView item:(StyledTableDataItem*)item; {
+  CGFloat textWidth = tableView.width;
   if (item.URL) {
-    textWidth -= kDiscloureWidth;
+    textWidth -= kDisclosureWidth;
   }
   return textWidth;
 }
@@ -111,8 +118,7 @@
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  CGFloat width = self.contentView.width - kTableCellSmallMargin - kTableCellSmallMargin;  
-  _messageLabel.frame = CGRectMake(kTableCellSmallMargin, kTableCellSmallMargin, width, 0);
+  _messageLabel.frame = CGRectMake(0, 0, self.contentView.width, 0);
   [_messageLabel sizeToFit];
 }
 
