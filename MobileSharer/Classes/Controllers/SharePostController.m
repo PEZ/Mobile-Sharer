@@ -14,7 +14,7 @@
 @synthesize sharePost = _post;
 
 - (id)initWithPost:(Post *)post quote:(BOOL)quote andDelegate:(id<TTPostControllerDelegate>)delegate {
-  if (self = [super init]) {
+  if ((self = [super init])) {
     self.sharePost = post;
     self.title = quote ? @"“Share”" : @"Share";
     if (quote && post.message != NULL) {
@@ -34,7 +34,10 @@
   if ((TTIsStringWithAnyText(self.textView.text) && !self.textView.text.isWhitespaceAndNewlines) || self.sharePost.shareURL) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"];
-    //[Etc params:&params addObject:[Etc pictureURL:self.sharePost.picture] forKey:@"picture"];
+    NSString* pictureURL = [Etc pictureURL:self.sharePost.picture];
+    if ([pictureURL rangeOfString:@"fbcdn."].location == NSNotFound) {
+      [Etc params:&params addObject:pictureURL forKey:@"picture"];
+    }
     [Etc params:&params addObject:self.sharePost.shareURL forKey:@"link"];
     [Etc params:&params addObject:self.sharePost.linkTitle forKey:@"name"];
     [Etc params:&params addObject:self.sharePost.linkCaption forKey:@"caption"];

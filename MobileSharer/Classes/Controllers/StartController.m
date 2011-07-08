@@ -162,13 +162,13 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
                                                       imageURL:@"bundle://groups-50x50.png"
                                                            URL:groupsUrl]];
     
-    NSString* shareAppUrl = [Etc toFeedURLPath:@"139083852806042" name:@"Feedback"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"The Share! feedback wall"
+    NSString* shareAppUrl = [Etc toFeedURLPath:@"139083852806042" name:@"Share! for iOS"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Feedback"
                                                       imageURL:[FacebookJanitor avatarForId:@"139083852806042"]
                                                            URL:shareAppUrl]];
     
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Share Share!"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please share this"
                                                       imageURL:@"bundle://share-50x50.png"
                                                            URL:shareItUrl]];
 
@@ -176,7 +176,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
                              @"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&mt=8",
                              kAppStoreId];
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Rate Share!"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate Share!"
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:appStoreUrl]];
   }
