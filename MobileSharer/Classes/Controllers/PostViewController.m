@@ -15,7 +15,7 @@
 @implementation LikeButton
 
 - (id)initWithController:(PostViewController*)controller {
-  if (self = [super init]) {
+  if ((self = [super init])) {
     _controller = [controller retain];
     self.title = @"Like";
     self.style = UIBarButtonItemStyleBordered;
@@ -68,13 +68,33 @@
 
 @end
 
+static NSString* kShareStr = @"Share link";
+static NSString* kShareURLStr = @"ms://postviewcontroller/share";
+static NSString* kQuoteStr = @"Quote and share";
+static NSString* kQuoteURLStr = @"ms://postviewcontroller/quote";
+static NSString* kCopyMessageStr = @"Copy message text";
+static NSString* kCoppyMessageURLStr = @"ms://postviewcontroller/copy";
+
 @implementation PostViewController
 
 @synthesize post = _post;
 
-- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title {
+- (void)setupNavigation {
+  TTURLMap* map = [TTNavigator navigator].URLMap;
+  [map from:kShareURLStr toObject:self selector:@selector(share)];
+  [map from:kQuoteURLStr toObject:self selector:@selector(shareQ)];
+  [map from:kCoppyMessageURLStr toObject:self selector:@selector(copyMessage)];
+}
 
-  if (self = [super initWithNibName:nil bundle:nil]) {
+- (void)tearDownNavigation {
+  TTURLMap* map = [TTNavigator navigator].URLMap;
+  [map removeURL:kShareURLStr];
+  [map removeURL:kQuoteURLStr];
+  [map removeURL:kCoppyMessageURLStr];
+}
+
+- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title {
+  if ((self = [super initWithNibName:nil bundle:nil])) {
     _postId = [postId copy];
     self.title = title;
     self.variableHeightRows = YES;
@@ -83,7 +103,9 @@
 }
 
 - (void)dealloc {
+  [self tearDownNavigation];
   TT_RELEASE_SAFELY(_postId);
+  TT_RELEASE_SAFELY(_actionSheet);
   [super dealloc];
 }
 
@@ -97,17 +119,32 @@
 }
 
 - (void)share {
-  SharePostController* controller = [[[SharePostController alloc] initWithPost:self.post
-                                                                        quote:NO
-                                                                  andDelegate:self] autorelease];
-  [self openShareView: controller];
+  if (![_post.type isEqualToString:@"photo"]) {
+    SharePostController* controller = [[[SharePostController alloc] initWithPost:self.post
+                                                                           quote:NO
+                                                                     andDelegate:self] autorelease];
+    [self openShareView: controller];
+  }
+  else {
+    TTAlertNoTitle(@"Sorry, photo's can't be shared.");
+  }
 }
 
 - (void)shareQ {
-  SharePostController* controller = [[[SharePostController alloc] initWithPost:self.post
-                                                                        quote:YES
-                                                                  andDelegate:self] autorelease];
-  [self openShareView: controller];
+  if (![_post.type isEqualToString:@"photo"]) {
+    SharePostController* controller = [[[SharePostController alloc] initWithPost:self.post
+                                                                           quote:YES
+                                                                     andDelegate:self] autorelease];
+    [self openShareView: controller];
+  }
+  else {
+    TTAlertNoTitle(@"Sorry, photo's can't be shared.");    
+  }
+}
+
+- (void)copyMessage {
+  [UIPasteboard generalPasteboard].string = _post.message;
+  TTAlertNoTitle([NSString stringWithFormat:@"Message ready to be pasted:\n %@", _post.message]);
 }
 
 - (CommentsPostController *) createCommentsPostController {
@@ -125,6 +162,31 @@
   [controller showInView:controller.view animated:YES];
 }
 
+
+- (void)shareAction {
+  [self tearDownNavigation];
+  [self setupNavigation];
+  if (_actionSheet == nil) {
+    _actionSheet = [[[TTActionSheetController alloc] initWithTitle:nil] retain];
+    if (_post.message) {
+      [_actionSheet addButtonWithTitle:kQuoteStr URL:kQuoteURLStr];
+    }
+    if (_post.shareURL) {
+      [_actionSheet addButtonWithTitle:kShareStr URL:kShareURLStr];
+    }
+    if (_post.message) {
+      [_actionSheet addButtonWithTitle:kCopyMessageStr URL:kCoppyMessageURLStr];
+    }
+    [_actionSheet addCancelButtonWithTitle:@"Cancel" URL:nil];
+  }
+
+  if (TTIsPad()) {
+    [_actionSheet showFromBarButtonItem:_shareButton animated:YES];
+  }  else {
+    [_actionSheet showInView:self.view animated:YES];
+  }
+}
+
 - (void)setupView {
   if ([self.toolbarItems count] < 1) {
     NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:4];
@@ -139,20 +201,11 @@
       LikeButton* likeButton = [[[LikeButton alloc] initWithController:self] autorelease];
       [buttons addObject:likeButton];
     }
-		if (![_post.type isEqualToString:@"photo"]) {
-			if (_post.message) {
-				UIBarButtonItem* shareButtonQ = [[[UIBarButtonItem alloc] initWithTitle:@"“Share”"
-																																					style:UIBarButtonItemStyleBordered
-																																				 target:self
-																																				 action:@selector(shareQ)]autorelease];
-				[buttons addObject:shareButtonQ];
-			}
-			UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
-																																			 style:UIBarButtonItemStyleBordered
-																																			target:self
-																																			action:@selector(share)]autorelease];
-			[buttons addObject:shareButton];
-		}
+    UIBarButtonItem* shareButton = [[[UIBarButtonItem alloc] initWithTitle:@"Share"
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(shareAction)]autorelease];
+    [buttons addObject:shareButton];
 		[self setToolbarItems:[NSArray arrayWithArray:buttons] animated:NO];
   }
 }

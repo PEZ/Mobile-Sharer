@@ -21,7 +21,7 @@ static const CGFloat kMarginY = 6;
 
 - (id)initWithFeedId:(NSString*)feedId andLink:(NSString*)theLink andTitle:(NSString*)title
          andDelegate:(id<TTPostControllerDelegate>)delegate {
-  if (self = [super init]) {
+  if ((self = [super init])) {
     self.feedId = feedId;
     self.link = theLink;
     self.title = title;

@@ -15,7 +15,7 @@ static NSString* kUrlEncodedEndQuote = @"%22";
 @implementation WebController
 
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
-  if (self = [self initWithNibName:nil bundle:nil]) {
+  if ((self = [self initWithNibName:nil bundle:nil])) {
     NSURLRequest* request = [query objectForKey:@"request"];
     if (nil != request) {
       [self openRequest:request];
@@ -83,7 +83,7 @@ static NSString* kUrlEncodedEndQuote = @"%22";
   else if (buttonIndex == 1) {
 		NSString* url = [Etc mobileYouTubeURL:[self.URL absoluteString]];
 		[UIPasteboard generalPasteboard].string = url;
-		TTAlert([NSString stringWithFormat:@"Link ready to be pasted: %@", url]);
+		TTAlertNoTitle([NSString stringWithFormat:@"Link ready to be pasted: %@", url]);
   }
 	else if (buttonIndex == 2) {
 		[[UIApplication sharedApplication] openURL:self.URL];
