@@ -24,9 +24,12 @@
 
 @end
 
-@interface PostViewController : TableViewController <TTPostControllerDelegate, FBRequestDelegate> {
+@interface PostViewController : TableViewController <TTPostControllerDelegate, FBRequestDelegate, UIActionSheetDelegate> {
+  @protected
   NSString* _postId;
   BOOL _wasShared;
+  TTActionSheetController* _actionSheet;
+  UIBarButtonItem*  _shareButton;
 }
 
 @property (nonatomic, retain)   Post* post;
