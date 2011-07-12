@@ -14,6 +14,7 @@
 @synthesize fromName          = _fromName;
 @synthesize likes             = _likes;
 @synthesize isLiked           = _isLiked;
+@synthesize isUpdatingLikes   = _isUpdatingLikes;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_commentId);

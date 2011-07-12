@@ -10,57 +10,74 @@
 //#import "DefaultStyleSheet.h"
 #import "FacebookJanitor.h"
 
-@implementation CommentLikeButton
+static NSString* kLikeCommentURLStr = @"ms://like_comment";
+static NSString* kUnLikeCommentURLStr = @"ms://unlike_comment";
+
+@implementation CommentLikesUpdater
+
+
+- (void)tearDownNavigation {
+  TTURLMap* map = [TTNavigator navigator].URLMap;
+  [map removeURL:[NSString stringWithFormat:@"%@/%@", kLikeCommentURLStr, _cell.comment.commentId]];
+  [map removeURL:[NSString stringWithFormat:@"%@/%@", kUnLikeCommentURLStr, _cell.comment.commentId]];
+}
+
+- (void)setUpNavigation {
+  [self tearDownNavigation];
+  TTURLMap* map = [TTNavigator navigator].URLMap;
+  [map from:[NSString stringWithFormat:@"%@/%@", kLikeCommentURLStr, _cell.comment.commentId]
+   toObject:self selector:@selector(likeIt)];
+  [map from:[NSString stringWithFormat:@"%@/%@", kUnLikeCommentURLStr, _cell.comment.commentId]
+   toObject:self selector:@selector(unLikeIt)];
+}
 
 - (id)initWithCommentCell:(CommentCell*)cell {
-  if (self = [super initWithFrame:CGRectMake(0, 0, 40, 20)]) {
-    _cell = cell;
-    [self setTitle:@"Like" forState:UIControlStateNormal];
-    [self setStyle:TTSTYLE(commentLikeButton) forState:UIControlStateNormal];
-    [self addTarget:self action:@selector(likeIt) forControlEvents:UIControlEventTouchUpInside];
+  if ((self = [super init])) {
+    _cell = [cell retain];
+    [self setUpNavigation];
   }
   return self;
 }
 
+- (void)dealloc {
+  [self tearDownNavigation];
+  TT_RELEASE_SAFELY(_cell);
+  [super dealloc];
+}
+
 - (void)likeIt {
-  self.enabled = NO;
+  _cell.comment.isUpdatingLikes = YES;
   _cell.comment.isLiked = YES;
-  [self setTitle:@"..." forState:UIControlStateNormal];
   [[FacebookJanitor sharedInstance] likeCommentWithId:_cell.comment.commentId delegate:self];
+  [_cell updateMessageLabel];
 }
 
 - (void)unLikeIt {
-  self.enabled = NO;
+  _cell.comment.isUpdatingLikes = YES;
   _cell.comment.isLiked = NO;
-  [self setTitle:@"..." forState:UIControlStateNormal];
   [[FacebookJanitor sharedInstance] unLikeCommentWithId:_cell.comment.commentId delegate:self];
+  [_cell updateMessageLabel];
 }
 
 #pragma mark -
 #pragma mark FBRequestDelegate
 
 - (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
-  self.enabled = YES;
+  _cell.comment.isUpdatingLikes = NO;
   _cell.comment.isLiked = !_cell.comment.isLiked;
-  [self setTitle:_cell.comment.isLiked ? @"Unlike" : @"Like" forState:UIControlStateNormal];
   DLog(@"Failed posting like: %@", error);
   TTAlert([NSString stringWithFormat:@"Updating likes failed: %@", [error localizedDescription]]);
 }
 
 - (void)request:(FBRequest*)request didLoad:(id)result {
-  self.enabled = YES;
-  [self setTitle:_cell.comment.isLiked ? @"Unlike" : @"Like" forState:UIControlStateNormal];
+  _cell.comment.isUpdatingLikes = NO;
   if (_cell.comment.isLiked) {
     _cell.comment.likes = [NSNumber numberWithInt:[_cell.comment.likes intValue] + 1];
   }
   else {
     _cell.comment.likes = [NSNumber numberWithInt:[_cell.comment.likes intValue] - 1];
   }
-  [self removeTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-  [self addTarget:self action:_cell.comment.isLiked ? @selector(unLikeIt) : @selector(likeIt) forControlEvents:UIControlEventTouchUpInside];
-  if (_cell != nil) {
-    [_cell updateMessageLabel];
-  }
+  [_cell updateMessageLabel];
 }
 
 @end
@@ -69,8 +86,23 @@
 @implementation CommentCell
 
 - (void)dealloc {
-  TT_RELEASE_SAFELY(_likeButton);
+  TT_RELEASE_SAFELY(_likeUpdater);
   [super dealloc];
+}
+
++ (NSString*) getButtonsHTML:(Comment*)item {
+  NSString* html = @"<div class=\"actionLinks\">";
+  if (!item.isUpdatingLikes) {
+    html = [NSString stringWithFormat:@"%@<a href=\"%@/%@\">%@</a>", html,
+            item.isLiked ? kUnLikeCommentURLStr : kLikeCommentURLStr,
+            item.commentId,
+            item.isLiked ? @"Unlike" : @"Like"];
+  }
+  else {
+    html = [NSString stringWithFormat:@"%@...", html];
+  }
+  html = [NSString stringWithFormat:@"%@</div>", html];
+  return html;
 }
 
 + (NSString*) getMetaHTML:(Comment*)item {
@@ -80,6 +112,7 @@
     metaText = [NSString stringWithFormat:@"%@, %@", metaText,
                 [[self class] textForCount:[item.likes intValue] withSingular:@"like" andPlural:@"likes"]];
   }
+  metaText = [NSString stringWithFormat:@"%@%@", metaText, [self getButtonsHTML:item]];
   return [NSString stringWithFormat:@"%@</div>", metaText];
 }
 
@@ -95,7 +128,7 @@
 }
 
 + (void) setMessageHTML:(Comment*)item {
-  if (item.html == nil) {
+  if (item != nil && item.html == nil) {
     [self setMessageHTMLRegardless:item];
  }
 }
@@ -106,33 +139,18 @@
   self.messageLabel.text = comment.styledText;
 }
 
-- (TTButton*)likeButton {
-  if (!_likeButton) {
-    _likeButton = [[CommentLikeButton alloc] initWithCommentCell:self];
-    [self.contentView addSubview:_likeButton];
-    return _likeButton;
+- (CommentLikesUpdater*)likeUpdater {
+  if (!_likeUpdater) {
+    _likeUpdater = [[CommentLikesUpdater alloc] initWithCommentCell:self];
+    return _likeUpdater;
   }
   else {
-    return _likeButton;
+    return _likeUpdater;
   }
 }
 
 - (Comment*)comment {
   return (Comment*)_item;
-}
-
-#pragma mark -
-#pragma mark UIView
-
-- (void)prepareForReuse {
-  [super prepareForReuse];
-  [_likeButton setTitle:@"Like" forState:UIControlStateNormal];
-}
-
-- (void)layoutSubviews {
-  [super layoutSubviews];
-  _likeButton.right = _messageLabel.right;
-  _likeButton.bottom = _messageLabel.bottom;
 }
 
 #pragma mark -
@@ -142,8 +160,7 @@
   if (_item != object) {
     [super setObject:object];
   }
-  Comment* item = (Comment*)_item;
-  [self.likeButton setTitle:item.isLiked ? @"Unlike" : @"Like" forState:UIControlStateNormal];
+  [self.likeUpdater setUpNavigation];
 }
 
 @end

@@ -20,20 +20,21 @@
 
 @class CommentCell;
 
-@interface CommentLikeButton : TTButton <FBRequestDelegate> {
+@interface CommentLikesUpdater : NSObject <FBRequestDelegate> {
   CommentCell* _cell;
 }
 
+- (void)setUpNavigation;
 - (void)likeIt;
 - (void)unLikeIt;
 
 @end
 
 @interface CommentCell : MessageCellBase {
-  TTButton* _likeButton;
+  CommentLikesUpdater* _likeUpdater;
 }
 
-@property (nonatomic, readonly, retain) TTButton* likeButton;
+@property (nonatomic, readonly, retain) CommentLikesUpdater* likeUpdater;
 @property (nonatomic, readonly, retain) Comment* comment;
 
 + (void) setMessageHTMLRegardless:(Comment*)item;

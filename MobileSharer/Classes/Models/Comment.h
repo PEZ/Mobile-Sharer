@@ -13,11 +13,13 @@
   NSString* _fromName;
   NSNumber* _likes;
   BOOL      _isLiked;
+  BOOL      _isUpdatingLikes;
 }
 
 @property (nonatomic, retain) NSString* commentId;
 @property (nonatomic, retain) NSString* fromName;
 @property (nonatomic, retain) NSNumber* likes;
 @property (nonatomic)         BOOL      isLiked;
+@property (nonatomic)         BOOL      isUpdatingLikes;
 
 @end

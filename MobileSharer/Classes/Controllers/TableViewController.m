@@ -11,7 +11,7 @@
 
 @implementation TableViewController
 
-- (void)viewWillAppear:(BOOL)animated { 
+ - (void)viewWillAppear:(BOOL)animated { 
   [super viewWillAppear:animated]; 
   if (_lastInterfaceOrientation != self.interfaceOrientation) { 
     _lastInterfaceOrientation = self.interfaceOrientation; 

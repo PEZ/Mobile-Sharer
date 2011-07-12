@@ -64,7 +64,10 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   UIViewController* controller = [TTNavigator navigator].visibleViewController;
   if ([controller isKindOfClass:[TTTableViewController class]]) {
-    [((TTTableViewController*)controller).tableView reloadData];
+    TTTableViewController* tableController = (TTTableViewController*)controller;
+    //[((TTTableViewController*)controller).tableView reloadData];
+    [tableController.tableView deselectRowAtIndexPath:[tableController.tableView indexPathForSelectedRow] 
+                                             animated:NO];
   }
   [(StartController*)[[TTNavigator navigator] viewControllerForURL:kAppStartURLPath] refreshData];
 }

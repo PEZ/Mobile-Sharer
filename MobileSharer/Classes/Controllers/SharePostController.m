@@ -57,7 +57,7 @@
 #pragma mark TTPostController
 
 - (NSString*)titleForActivity {
-  return @"Posting link...";
+  return @"Posting ...";
 }
 
 #pragma mark -
