@@ -16,7 +16,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+  if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
     self.title = @"Facebook feed";
     self.variableHeightRows = YES;
   }
@@ -25,7 +25,7 @@
 }
 
 - (id)initWithFBFeedId:(NSString *)feedId andName:(NSString *)name {
-  if (self = [super initWithNibName:nil bundle:nil]) {
+  if ((self = [super initWithNibName:nil bundle:nil])) {
     self.feedId = feedId;
     self.title = name;
     self.variableHeightRows = YES;

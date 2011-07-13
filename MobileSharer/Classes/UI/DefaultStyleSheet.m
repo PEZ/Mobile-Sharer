@@ -49,15 +49,6 @@
 #pragma mark -
 #pragma mark buttons
 
-- (UIFont*)commentLikeButtonFont {
-  return [UIFont systemFontOfSize:12];
-}
-
-- (TTTextStyle*)commentLikeButton {
-  return [TTTextStyle styleWithFont:TTSTYLEVAR(commentLikeButtonFont) color:TTSTYLEVAR(linkTextColor) next:
-           nil];
-}
-
 - (TTShapeStyle*)defaultButton:(UIControlState)state {
   if (state == UIControlStateNormal) {
     return
@@ -94,7 +85,7 @@
   return [TTSTYLESHEET toolbarButtonForState:state shape:shape tintColor:TTSTYLEVAR(toolbarTintColor) font:nil];
 }
 
-- (TTShapeStyle *) avatar {
+- (TTShapeStyle*)avatar {
   return [TTShapeStyle styleWithShape:[TTRectangleShape shape] next:
           [TTSolidBorderStyle styleWithColor:[self darkColor] width:0.5 next:
            [TTContentStyle styleWithNext:nil]]];
@@ -151,6 +142,15 @@
                              minSize:CGSizeZero
                             position:TTPositionFloatRight
                                 next:nil];
+}
+
+- (UIFont*)actionLinksFont {
+  return [UIFont systemFontOfSize:12];
+}
+
+- (TTTextStyle*)actionLinks {
+  return [TTTextStyle styleWithFont:TTSTYLEVAR(actionLinksFont) color:TTSTYLEVAR(linkTextColor) next:
+          nil];
 }
 
 - (TTBoxStyle*)tableAttachmentText {

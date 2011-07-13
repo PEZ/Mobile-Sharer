@@ -27,22 +27,30 @@
   [super dealloc];
 }
 
-- (TTStyledText*)styledText {
-  if (!_styledText) {
-    _styledText = [[TTStyledText textFromXHTML:_html lineBreaks:YES URLs:(self.URL == nil)] retain];
+- (TTStyledText*)styledText:(TTStyledText**)styledText fromHtml:(NSString*)html {
+  if (!*styledText) {
+    *styledText = [[TTStyledText textFromXHTML:html lineBreaks:YES URLs:(self.URL == nil)] retain];
   }
-  return _styledText;
+  return *styledText;
 }
 
-- (void)setHtml:(NSString *)htmlText {
-  if (_html) {
-    TT_RELEASE_SAFELY(_html);
+- (TTStyledText*)styledText {
+  return [self styledText:&_styledText fromHtml:_html];
+}
+
+- (void)setHtml:(NSString*)html forIVar:(NSString**)iVar andStyledText:(TTStyledText**)styledText {
+  if (*iVar) {
+    TT_RELEASE_SAFELY(*iVar);
   }
-  _html = [htmlText retain];
-  if (_styledText) {
-    TT_RELEASE_SAFELY(_styledText);
+  *iVar = [html retain];
+  if (*styledText) {
+    TT_RELEASE_SAFELY(*styledText);
   }
-  _styledText = [[TTStyledText textFromXHTML:_html lineBreaks:YES URLs:(self.URL == nil)] retain];
+  *styledText = [[TTStyledText textFromXHTML:html lineBreaks:YES URLs:(self.URL == nil)] retain];
 }  
-  
+
+- (void)setHtml:(NSString*)htmlText {
+  [self setHtml:htmlText forIVar:&_html andStyledText:&_styledText];
+}  
+
 @end

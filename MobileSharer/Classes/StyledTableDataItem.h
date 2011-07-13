@@ -22,4 +22,7 @@
 @property (nonatomic, retain)   NSString* message;
 @property (nonatomic, readonly, retain) TTStyledText* styledText;
 
+- (TTStyledText*)styledText:(TTStyledText**)styledText fromHtml:(NSString*)html;
+- (void)setHtml:(NSString*)html forIVar:(NSString**)iVar andStyledText:(TTStyledText**)styledText;
+
 @end

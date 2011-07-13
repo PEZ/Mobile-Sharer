@@ -20,7 +20,7 @@
 
 @class CommentCell;
 
-@interface CommentLikesUpdater : NSObject <FBRequestDelegate> {
+@interface CommentLikesUpdater : TTButton <FBRequestDelegate> {
   CommentCell* _cell;
 }
 
@@ -30,12 +30,25 @@
 
 @end
 
-@interface CommentCell : MessageCellBase {
-  CommentLikesUpdater* _likeUpdater;
+@interface CommentSharer : TTButton <UIActionSheetDelegate, TTPostControllerDelegate> {
+  CommentCell* _cell;
+  BOOL _wasShared;
+  TTActionSheetController* _actionSheet;
 }
 
-@property (nonatomic, readonly, retain) CommentLikesUpdater* likeUpdater;
+- (void)setUpNavigation;
+- (void)showShareOptions;
+
+@end
+
+@interface CommentCell : MessageCellBase {
+  CommentLikesUpdater* _likeUpdater;
+  CommentSharer* _commentSharer;
+  TTView* _actionButtonsPanel;
+}
+
 @property (nonatomic, readonly, retain) Comment* comment;
+@property (nonatomic, readonly, retain) TTView* actionButtonsPanel;
 
 + (void) setMessageHTMLRegardless:(Comment*)item;
 - (void) updateMessageLabel;

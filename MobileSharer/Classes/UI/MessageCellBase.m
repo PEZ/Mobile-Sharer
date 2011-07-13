@@ -101,11 +101,8 @@
     _messageLabel = [[self class] createStyledLabel];
     _messageLabel.highlightedTextColor = TTSTYLEVAR(lightColor); //TODO: This doesn't do what I want it to do.
     [self.contentView addSubview:_messageLabel];
-    return _messageLabel;
   }
-  else {
-    return _messageLabel;
-  }
+  return _messageLabel;
 }
 
 #pragma mark -
