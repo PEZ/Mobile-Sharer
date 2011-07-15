@@ -20,7 +20,7 @@
 
 @class CommentCell;
 
-@interface CommentLikesUpdater : TTButton <FBRequestDelegate> {
+@interface CommentLikesUpdater : TTButton <UpdatingLikesObserver> {
   CommentCell* _cell;
 }
 

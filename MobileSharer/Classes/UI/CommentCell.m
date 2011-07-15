@@ -106,16 +106,12 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
 }
 
 - (void)likeIt {
-  _cell.comment.isUpdatingLikes = YES;
-  _cell.comment.isLiked = YES;
-  [[FacebookJanitor sharedInstance] likeCommentWithId:_cell.comment.commentId delegate:self];
+  [_cell.comment likeIt:self];
   [_cell updateMessageLabel];
 }
 
 - (void)unLikeIt {
-  _cell.comment.isUpdatingLikes = YES;
-  _cell.comment.isLiked = NO;
-  [[FacebookJanitor sharedInstance] unLikeCommentWithId:_cell.comment.commentId delegate:self];
+  [_cell.comment unLikeIt:self];
   [_cell updateMessageLabel];
 }
 
@@ -134,25 +130,13 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
   [self setTitle:likeButtonTitle forState:UIControlStateNormal];
 }
 
-#pragma mark -
-#pragma mark FBRequestDelegate
-
-- (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
-  _cell.comment.isUpdatingLikes = NO;
-  _cell.comment.isLiked = !_cell.comment.isLiked;
-  DLog(@"Failed posting like: %@", error);
-  TTAlert([NSString stringWithFormat:@"Updating likes failed: %@", [error localizedDescription]]);
+- (void)likesUpdatedForComment:(Comment *)comment {
+  [(TTTableView*)_cell.superview reloadData];
 }
 
-- (void)request:(FBRequest*)request didLoad:(id)result {
-  _cell.comment.isUpdatingLikes = NO;
-  if (_cell.comment.isLiked) {
-    _cell.comment.likes = [NSNumber numberWithInt:[_cell.comment.likes intValue] + 1];
-  }
-  else {
-    _cell.comment.likes = [NSNumber numberWithInt:[_cell.comment.likes intValue] - 1];
-  }
-  [_cell updateMessageLabel];
+- (void)failedUpdatingLikesForComment:(Comment *)comment withError:(NSError *)error {
+  [(TTTableView*)_cell.superview reloadData];
+  TTAlert([NSString stringWithFormat:@"Updating likes failed: %@", [error localizedDescription]]);
 }
 
 @end
