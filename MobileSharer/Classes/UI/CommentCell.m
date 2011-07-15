@@ -10,9 +10,6 @@
 //#import "DefaultStyleSheet.h"
 #import "FacebookJanitor.h"
 
-static NSString* kLikeCommentURLStr = @"ms://like_comment";
-static NSString* kUnLikeCommentURLStr = @"ms://unlike_comment";
-static NSString* kShowShareCommentOptionsURLStr = @"ms://show_comment_share_options";
 static NSString* kShareCommentURLStr = @"ms://share_comment";
 static NSString* kCopyCommentURLStr = @"ms://copy_comment";
 
@@ -20,15 +17,12 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
 
 - (void)tearDownNavigation {
   TTURLMap* map = [TTNavigator navigator].URLMap;
-  [map removeURL:[NSString stringWithFormat:@"%@/%@", kShowShareCommentOptionsURLStr, _cell.comment.commentId]];
   [map removeURL:[NSString stringWithFormat:@"%@/%@", kShareCommentURLStr, _cell.comment.commentId]];
   [map removeURL:[NSString stringWithFormat:@"%@/%@", kCopyCommentURLStr, _cell.comment.commentId]];
 }
 
 - (void)setUpNavigation {
   TTURLMap* map = [TTNavigator navigator].URLMap;
-  [map from:[NSString stringWithFormat:@"%@/%@", kShowShareCommentOptionsURLStr, _cell.comment.commentId]
-   toObject:self selector:@selector(showShareOptions)];
   [map from:[NSString stringWithFormat:@"%@/%@", kShareCommentURLStr, _cell.comment.commentId]
    toObject:self selector:@selector(shareComment)];
   [map from:[NSString stringWithFormat:@"%@/%@", kCopyCommentURLStr, _cell.comment.commentId]
@@ -47,7 +41,7 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
     _actionSheet = [[[TTActionSheetController alloc] initWithTitle:nil] retain];
     [_actionSheet addButtonWithTitle:@"Quote and share"
                                  URL:[NSString stringWithFormat:@"%@/%@", kShareCommentURLStr, _cell.comment.commentId]];
-    [_actionSheet addButtonWithTitle:@"Copyy comment text"
+    [_actionSheet addButtonWithTitle:@"Copy comment text"
                                  URL:[NSString stringWithFormat:@"%@/%@", kCopyCommentURLStr, _cell.comment.commentId]];
     [_actionSheet addCancelButtonWithTitle:@"Cancel" URL:nil];
     [self setUpNavigation];
@@ -97,40 +91,18 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
 
 @implementation CommentLikesUpdater
 
-
-- (void)tearDownNavigation {
-  TTURLMap* map = [TTNavigator navigator].URLMap;
-  [map removeURL:[NSString stringWithFormat:@"%@/%@", kLikeCommentURLStr, _cell.comment.commentId]];
-  [map removeURL:[NSString stringWithFormat:@"%@/%@", kUnLikeCommentURLStr, _cell.comment.commentId]];
-}
-
-- (void)setUpNavigation {
-  [self tearDownNavigation];
-  TTURLMap* map = [TTNavigator navigator].URLMap;
-  [map from:[NSString stringWithFormat:@"%@/%@", kLikeCommentURLStr, _cell.comment.commentId]
-   toObject:self selector:@selector(likeIt)];
-  [map from:[NSString stringWithFormat:@"%@/%@", kUnLikeCommentURLStr, _cell.comment.commentId]
-   toObject:self selector:@selector(unLikeIt)];
-}
-
 - (id)initWithCommentCell:(CommentCell*)cell {
   if ((self = [super init])) {
-    [self setTitle:cell.comment.isLiked ? @"Unlike" : @"Like" forState:UIControlStateNormal];
+    [self setTitle:@"Unlike" forState:UIControlStateNormal];
     [self setStyle:TTSTYLE(actionLinks) forState:UIControlStateNormal];
     [self sizeToFit];
+    [self setTitle:cell.comment.isLiked ? @"Unlike" : @"Like" forState:UIControlStateNormal];
     [self addTarget:self
              action:(cell.comment.isLiked ? @selector(unLikeIt) : @selector(likeIt))
    forControlEvents:UIControlEventTouchUpInside];
-    _cell = [cell retain];
-    [self setUpNavigation];
+    _cell = cell;
   }
   return self;
-}
-
-- (void)dealloc {
-  [self tearDownNavigation];
-  TT_RELEASE_SAFELY(_cell);
-  [super dealloc];
 }
 
 - (void)likeIt {
@@ -145,6 +117,21 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
   _cell.comment.isLiked = NO;
   [[FacebookJanitor sharedInstance] unLikeCommentWithId:_cell.comment.commentId delegate:self];
   [_cell updateMessageLabel];
+}
+
+- (void)update {
+  NSString* likeButtonTitle = @"...";
+  if (!_cell.comment.isUpdatingLikes) {
+    self.enabled = YES;
+    [self removeTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    likeButtonTitle = _cell.comment.isLiked ? @"Unlike" : @"Like";
+    [self addTarget:self action:(_cell.comment.isLiked ? @selector(unLikeIt) : @selector(likeIt))
+   forControlEvents:UIControlEventTouchUpInside];
+  }
+  else {
+    self.enabled = NO;
+  }
+  [self setTitle:likeButtonTitle forState:UIControlStateNormal];
 }
 
 #pragma mark -
@@ -180,23 +167,6 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
   [super dealloc];
 }
 
-+ (NSString*) getButtonsHTML:(Comment*)item {
-  NSString* html = @" - <span class=\"actionLinks\">";
-  html = [NSString stringWithFormat:@"%@<a class=\"actionLinks\" href=\"%@/%@\">%@</a>", html,
-          kShowShareCommentOptionsURLStr, item.commentId, @"Share"];
-  if (!item.isUpdatingLikes) {
-    html = [NSString stringWithFormat:@"%@ - <a class=\"actionLinks\" href=\"%@/%@\">%@</a>", html,
-            item.isLiked ? kUnLikeCommentURLStr : kLikeCommentURLStr,
-            item.commentId,
-            item.isLiked ? @"Unlike" : @"Like"];
-  }
-  else {
-    html = [NSString stringWithFormat:@"%@...", html];
-  }
-  html = [NSString stringWithFormat:@"%@</span>", html];
-  return html;
-}
-
 + (NSString*) getMetaHTML:(Comment*)item {
   NSString* metaText = @"";
   metaText = [NSString stringWithFormat:@"<div class=\"tableMetaText\">%@%@", metaText, [item.created formatRelativeTime]];
@@ -204,7 +174,6 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
     metaText = [NSString stringWithFormat:@"%@, %@", metaText,
                 [[self class] textForCount:[item.likes intValue] withSingular:@"like" andPlural:@"likes"]];
   }
-  metaText = [NSString stringWithFormat:@"%@%@", metaText, [self getButtonsHTML:item]];
   return [NSString stringWithFormat:@"%@</div>", metaText];
 }
 
@@ -229,17 +198,7 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
   Comment* comment = (Comment*)_item;
   [[self class] setMessageHTMLRegardless:comment];
   self.messageLabel.text = comment.styledText;
-  NSString* likeButtonTitle = @"...";
-  if (!comment.isUpdatingLikes) {
-    likeButtonTitle = comment.isLiked ? @"Unlike" : @"Like";
-  }
-  else {
-    [_likeUpdater addTarget:_likeUpdater
-             action:(comment.isLiked ? @selector(unLikeIt) : @selector(likeIt))
-   forControlEvents:UIControlEventTouchUpInside];
-  }
-  _likeUpdater.enabled = comment.isUpdatingLikes ? NO : YES;
-  [_likeUpdater setTitle:likeButtonTitle forState:UIControlStateNormal];
+  [_likeUpdater update];
 }
 
 - (Comment*)comment {
@@ -264,10 +223,6 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
 #pragma mark -
 #pragma mark UIView
 
-- (void)prepareForReuse {
-  [super prepareForReuse];
-}
-
 - (void)layoutSubviews {
   [super layoutSubviews];
   _actionButtonsPanel.bottom = _messageLabel.bottom - kTableCellSmallMargin;
@@ -289,6 +244,7 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
     [super setObject:object];
     [self.actionButtonsPanel setStyle:TTSTYLE(actionLinks)];
   }
+  [_likeUpdater update];
 }
 
 @end

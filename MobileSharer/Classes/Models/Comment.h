@@ -14,8 +14,6 @@
   NSNumber* _likes;
   BOOL      _isLiked;
   BOOL      _isUpdatingLikes;
-  NSString* _actionsButtonsHTML;
-  TTStyledText* _actionButtonsStyledText;
 }
 
 @property (nonatomic, retain) NSString* commentId;
@@ -23,7 +21,5 @@
 @property (nonatomic, retain) NSNumber* likes;
 @property (nonatomic)         BOOL      isLiked;
 @property (nonatomic)         BOOL      isUpdatingLikes;
-@property (nonatomic, retain) NSString* actionsButtonsHTML;
-@property (nonatomic, readonly, retain) TTStyledText* actionButtonsStyledText;
 
 @end

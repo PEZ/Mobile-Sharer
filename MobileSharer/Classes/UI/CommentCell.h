@@ -24,7 +24,6 @@
   CommentCell* _cell;
 }
 
-- (void)setUpNavigation;
 - (void)likeIt;
 - (void)unLikeIt;
 

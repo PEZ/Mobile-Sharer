@@ -15,24 +15,14 @@
 @synthesize likes              = _likes;
 @synthesize isLiked            = _isLiked;
 @synthesize isUpdatingLikes    = _isUpdatingLikes;
-@synthesize actionsButtonsHTML = _actionsButtonsHTML;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_commentId);
   TT_RELEASE_SAFELY(_fromName);
   TT_RELEASE_SAFELY(_likes);
-  TT_RELEASE_SAFELY(_actionsButtonsHTML);
-  TT_RELEASE_SAFELY(_actionButtonsStyledText)
   [super dealloc];
 }
 
-- (TTStyledText*)actionButtonsStyledText {
-  return [self styledText:&_actionButtonsStyledText fromHtml:_actionsButtonsHTML];
-}
-
-- (void)setActionsButtonsHTML:(NSString *)actionsButtonsHTML {
-  [self setHtml:actionsButtonsHTML forIVar:&_actionsButtonsHTML andStyledText:&_actionButtonsStyledText];
-}  
 @end
 
 
