@@ -157,19 +157,24 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   [self copyText:[Etc quotedMessage:_post.message quoting:_post.fromName]];
 }
 
-- (CommentsPostController *) createCommentsPostController {
+- (CommentsPostController*)createCommentsPostController:(NSString*)text {
   CommentsPostController* controller = [[[CommentsPostController alloc] initWithPostId:_post.postId
+                                                                            andMessage:text
                                                                           andDelegate:self] autorelease];
   return controller;
 }
 
-- (void)comment {
+- (void)comment:(NSString*)text {
   _wasShared = NO;
-  CommentsPostController *controller = [self createCommentsPostController];
+  CommentsPostController *controller = [self createCommentsPostController:text];
 	UIViewController *topController = [TTNavigator navigator].topViewController;
 	topController.popupViewController = controller;
 	controller.superController = topController;
   [controller showInView:controller.view animated:YES];
+}
+
+- (void)comment {
+  [self comment:@""];
 }
 
 - (void)shareAction {

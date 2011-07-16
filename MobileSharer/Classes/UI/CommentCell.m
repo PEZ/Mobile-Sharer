@@ -8,12 +8,15 @@
 
 #import "CommentCell.h"
 #import "ComposePostController.h"
+#import "PostViewController.h"
+#import "RegexKitLite.h"
 #import "Etc.h"
 
 static NSString* kShareCommentURLStr = @"ms://commentcell/share_comment";
 static NSString* kShareQuotedCommentURLStr = @"ms://commentcell/share_quoted_comment";
 static NSString* kCopyCommentURLStr = @"ms://commentcell/copy_comment";
 static NSString* kCopyQuotedCommentURLStr = @"ms://commentcell/copy_quoted_comment";
+static NSString* kReplyToCommentURLStr = @"ms://commentcell/comment_reply";
 
 #define commentActionURL(prefix) [NSString stringWithFormat:@"%@/%@", prefix, _cell.comment.commentId]
 
@@ -25,6 +28,7 @@ static NSString* kCopyQuotedCommentURLStr = @"ms://commentcell/copy_quoted_comme
   [map removeURL:commentActionURL(kShareQuotedCommentURLStr)];
   [map removeURL:commentActionURL(kCopyCommentURLStr)];
   [map removeURL:commentActionURL(kCopyQuotedCommentURLStr)];
+  [map removeURL:commentActionURL(kReplyToCommentURLStr)];
 }
 
 - (void)setUpNavigation {
@@ -37,6 +41,8 @@ static NSString* kCopyQuotedCommentURLStr = @"ms://commentcell/copy_quoted_comme
    toObject:self selector:@selector(copyComment)];
   [map from:commentActionURL(kCopyQuotedCommentURLStr)
    toObject:self selector:@selector(copyQuotedComment)];
+  [map from:commentActionURL(kReplyToCommentURLStr)
+   toObject:self selector:@selector(replyToComment)];
 }
 
 - (id)initWithCommentCell:(CommentCell*)cell {
@@ -49,6 +55,8 @@ static NSString* kCopyQuotedCommentURLStr = @"ms://commentcell/copy_quoted_comme
    forControlEvents:UIControlEventTouchUpInside];
     _cell = [cell retain];
     _actionSheet = [[[TTActionSheetController alloc] initWithTitle:@"Comment"] retain];
+    [_actionSheet addButtonWithTitle:@"Reply"
+                                 URL:commentActionURL(kReplyToCommentURLStr)];
     [_actionSheet addButtonWithTitle:@"Share"
                                  URL:commentActionURL(kShareCommentURLStr)];
     [_actionSheet addButtonWithTitle:@"Share quoted"
@@ -67,6 +75,16 @@ static NSString* kCopyQuotedCommentURLStr = @"ms://commentcell/copy_quoted_comme
   [self tearDownNavigation];
   TT_RELEASE_SAFELY(_cell);
   [super dealloc];
+}
+
+- (void)replyToComment {
+  /*
+  NSString* postId = [_cell.comment.commentId stringByMatching:@"^[0-9]+_[0-9]+"];
+  NSString* postURL = [Etc toPostIdPath:postId andTitle:<#(NSString *)#>
+  PostViewController* controller = (PostViewController*)[[TTNavigator navigator] controllerForURL:postURL];
+   */
+  PostViewController* controller = (PostViewController*)[[TTNavigator navigator] visibleViewController];
+  [controller comment:[NSString stringWithFormat:@"%@, ", _cell.comment.fromName]];
 }
 
 - (void)shareComment:(NSString*)text {

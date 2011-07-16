@@ -22,6 +22,14 @@
   return self;
 }
 
+- (id)initWithPostId:(NSString*)postId andMessage:(NSString*)message
+         andDelegate:(id<TTPostControllerDelegate>)delegate {
+  if ((self = [self initWithPostId:postId andDelegate:delegate])) {
+    self.textView.text = message;
+  }
+  return self;
+}
+
 - (void)dealloc {
   TT_RELEASE_SAFELY(_postId);
   [super dealloc];

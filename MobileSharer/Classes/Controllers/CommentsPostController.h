@@ -15,5 +15,6 @@
 @property (nonatomic, retain) NSString* postId;
 
 - (id)initWithPostId:(NSString *)postId andDelegate:(id<TTPostControllerDelegate>)delegate;
-
+- (id)initWithPostId:(NSString*)postId andMessage:(NSString*)message
+         andDelegate:(id<TTPostControllerDelegate>)delegate;
 @end
