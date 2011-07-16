@@ -18,6 +18,7 @@ static const CGFloat kMarginY = 6;
 @synthesize link = _link;
 @synthesize feedId = _feedId;
 @synthesize linkField = _linkField;
+@synthesize message = _message;
 
 - (id)initWithFeedId:(NSString*)feedId andLink:(NSString*)theLink andTitle:(NSString*)title
          andDelegate:(id<TTPostControllerDelegate>)delegate {
@@ -30,15 +31,27 @@ static const CGFloat kMarginY = 6;
   return self;
 }
 
+- (id)initWithFeedId:(NSString*)feedId andMessage:(NSString*)message andLink:(NSString*)theLink andTitle:(NSString*)title
+         andDelegate:(id<TTPostControllerDelegate>)delegate {
+  if ((self = [self initWithFeedId:feedId andLink:theLink andTitle:title andDelegate:delegate])) {
+    self.message = message;
+  }
+  return self;
+}
+
 - (void)dealloc {
   TT_RELEASE_SAFELY(_feedId);
   TT_RELEASE_SAFELY(_link);
   TT_RELEASE_SAFELY(_linkField);
+  TT_RELEASE_SAFELY(_message);
   [super dealloc];
 }
 
 - (void)loadView {
   [super loadView];
+  if (_message != nil) {
+    self.textView.text = _message;
+  }
   _linkField = [[UITextField alloc] init];
   _linkField.placeholder = @"Link url (if any)";
   if (TTIsStringWithAnyText(_link) && !_link.isWhitespaceAndNewlines) {

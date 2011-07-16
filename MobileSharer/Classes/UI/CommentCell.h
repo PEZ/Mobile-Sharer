@@ -16,7 +16,6 @@
 
 #import "MessageCellBase.h"
 #import "Comment.h"
-#import "FBConnect.h"
 
 @class CommentCell;
 

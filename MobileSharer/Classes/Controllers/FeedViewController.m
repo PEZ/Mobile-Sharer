@@ -80,7 +80,7 @@
            didPostText: (NSString*)text
             withResult: (id)result {
 	NSString* postId = [result objectForKey:@"id"];
-	TTOpenURL([Etc toPostIdPath:[Etc fullPostId:postId andFeedId:[FacebookJanitor sharedInstance].currentUser.userId]
+	TTOpenURL([Etc toPostIdPath:[Post fullPostId:postId andFeedId:[FacebookJanitor sharedInstance].currentUser.userId]
 										 andTitle:@"New post"]);
 }
 

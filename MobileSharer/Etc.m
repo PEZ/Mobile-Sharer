@@ -97,13 +97,22 @@ NSString* kAppStoreId = @"406870483";
   return nil;
 }
 
-+ (NSString*)fullPostId:(NSString*)postId andFeedId:(NSString*)feedId {
-	if ([postId isMatchedByRegex:@"_"]) {
-		return postId;
-	}
-	else {
-		return [NSString stringWithFormat:@"%@_%@", feedId, postId];
-	}
++ (NSString*)quotedMessage:(NSString*)message quoting:(NSString*)name {
+  return [NSString stringWithFormat:@"“%@” (via %@)", message, name];
+}
+
++ (void)alert:(NSString*)message withTitle:(NSString*)title {
+  UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:title
+                                                   message:message
+                                                  delegate:nil
+                                         cancelButtonTitle:TTLocalizedString(@"OK", @"")
+                                         otherButtonTitles:nil] autorelease];
+  [alert show];
+}
+
++ (void)copyText:(NSString*)text {
+  [UIPasteboard generalPasteboard].string = text;
+  [Etc alert:text withTitle:@"Ready to paste:"];  
 }
 
 @end

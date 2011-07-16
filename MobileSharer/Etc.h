@@ -6,8 +6,6 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "Post.h"
-
 extern CGFloat    kDisclosureWidth;
 
 extern CGFloat   kAvatarImageWidth;
@@ -44,6 +42,9 @@ extern NSString* kAppStoreId;
 + (NSMutableDictionary*)params:(NSMutableDictionary**)params addObject:(id)object forKey:(id)key;
 + (NSString*)pictureURL:(NSString*)url;
 + (NSString*)mobileYouTubeURL:(NSString*)url;
-+ (NSString*)fullPostId:(NSString*)postId andFeedId:(NSString*)feedId;
++ (NSString*)quotedMessage:(NSString*)message quoting:(NSString*)name;
+
++ (void)alert:(NSString*)message withTitle:(NSString*)title;
++ (void)copyText:(NSString*)text;
 
 @end

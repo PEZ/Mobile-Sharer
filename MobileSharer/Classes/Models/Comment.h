@@ -7,7 +7,7 @@
 //
 
 #import "StyledTableDataItem.h"
-#import "FBConnect.h"
+#import "FacebookJanitor.h"
 
 @class Comment;
 

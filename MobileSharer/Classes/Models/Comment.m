@@ -7,7 +7,6 @@
 //
 
 #import "Comment.h"
-#import "FacebookJanitor.h"
 
 
 @implementation Comment

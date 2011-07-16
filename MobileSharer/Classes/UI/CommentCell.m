@@ -7,42 +7,56 @@
 //
 
 #import "CommentCell.h"
-//#import "DefaultStyleSheet.h"
-#import "FacebookJanitor.h"
+#import "ComposePostController.h"
+#import "Etc.h"
 
-static NSString* kShareCommentURLStr = @"ms://share_comment";
-static NSString* kCopyCommentURLStr = @"ms://copy_comment";
+static NSString* kShareCommentURLStr = @"ms://commentcell/share_comment";
+static NSString* kShareQuotedCommentURLStr = @"ms://commentcell/share_quoted_comment";
+static NSString* kCopyCommentURLStr = @"ms://commentcell/copy_comment";
+static NSString* kCopyQuotedCommentURLStr = @"ms://commentcell/copy_quoted_comment";
+
+#define commentActionURL(prefix) [NSString stringWithFormat:@"%@/%@", prefix, _cell.comment.commentId]
 
 @implementation CommentSharer
 
 - (void)tearDownNavigation {
   TTURLMap* map = [TTNavigator navigator].URLMap;
-  [map removeURL:[NSString stringWithFormat:@"%@/%@", kShareCommentURLStr, _cell.comment.commentId]];
-  [map removeURL:[NSString stringWithFormat:@"%@/%@", kCopyCommentURLStr, _cell.comment.commentId]];
+  [map removeURL:commentActionURL(kShareCommentURLStr)];
+  [map removeURL:commentActionURL(kShareQuotedCommentURLStr)];
+  [map removeURL:commentActionURL(kCopyCommentURLStr)];
+  [map removeURL:commentActionURL(kCopyQuotedCommentURLStr)];
 }
 
 - (void)setUpNavigation {
   TTURLMap* map = [TTNavigator navigator].URLMap;
-  [map from:[NSString stringWithFormat:@"%@/%@", kShareCommentURLStr, _cell.comment.commentId]
+  [map from:commentActionURL(kShareCommentURLStr)
    toObject:self selector:@selector(shareComment)];
-  [map from:[NSString stringWithFormat:@"%@/%@", kCopyCommentURLStr, _cell.comment.commentId]
+  [map from:commentActionURL(kShareQuotedCommentURLStr)
+   toObject:self selector:@selector(shareQuotedComment)];
+  [map from:commentActionURL(kCopyCommentURLStr)
    toObject:self selector:@selector(copyComment)];
+  [map from:commentActionURL(kCopyQuotedCommentURLStr)
+   toObject:self selector:@selector(copyQuotedComment)];
 }
 
 - (id)initWithCommentCell:(CommentCell*)cell {
   if ((self = [super init])) {
-    [self setTitle:@"Share" forState:UIControlStateNormal];
+    [self setTitle:@"More..." forState:UIControlStateNormal];
     [self setStyle:TTSTYLE(actionLinks) forState:UIControlStateNormal];
     [self sizeToFit];
     [self addTarget:self
              action:@selector(showShareOptions)
    forControlEvents:UIControlEventTouchUpInside];
     _cell = [cell retain];
-    _actionSheet = [[[TTActionSheetController alloc] initWithTitle:nil] retain];
-    [_actionSheet addButtonWithTitle:@"Quote and share"
-                                 URL:[NSString stringWithFormat:@"%@/%@", kShareCommentURLStr, _cell.comment.commentId]];
-    [_actionSheet addButtonWithTitle:@"Copy comment text"
-                                 URL:[NSString stringWithFormat:@"%@/%@", kCopyCommentURLStr, _cell.comment.commentId]];
+    _actionSheet = [[[TTActionSheetController alloc] initWithTitle:@"Comment"] retain];
+    [_actionSheet addButtonWithTitle:@"Share"
+                                 URL:commentActionURL(kShareCommentURLStr)];
+    [_actionSheet addButtonWithTitle:@"Share quoted"
+                                 URL:commentActionURL(kShareQuotedCommentURLStr)];
+    [_actionSheet addButtonWithTitle:@"Copy"
+                                 URL:commentActionURL(kCopyCommentURLStr)];
+    [_actionSheet addButtonWithTitle:@"Copy quoted"
+                                 URL:commentActionURL(kCopyQuotedCommentURLStr)];
     [_actionSheet addCancelButtonWithTitle:@"Cancel" URL:nil];
     [self setUpNavigation];
   }
@@ -55,19 +69,44 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
   [super dealloc];
 }
 
+- (void)shareComment:(NSString*)text {
+  ComposePostController* controller = [[ComposePostController alloc]
+                                       initWithFeedId:@"me"
+                                       andMessage:text
+                                       andLink:@""
+                                       andTitle:@"New post"
+                                       andDelegate:self];
+	UIViewController *topController = [TTNavigator navigator].topViewController;
+	topController.popupViewController = controller;
+	controller.superController = topController;
+  [controller showInView:controller.view animated:YES];
+  [controller release];
+}
+
+- (void)shareComment {
+  [self shareComment:_cell.comment.message];
+}
+
+- (void)shareQuotedComment {
+  [self shareComment:[Etc quotedMessage:_cell.comment.message quoting:_cell.comment.fromName]];
+}
+
 - (void)copyComment {
-  [UIPasteboard generalPasteboard].string = _cell.comment.message;
-  TTAlertNoTitle([NSString stringWithFormat:@"Message ready to be pasted:\n %@", _cell.comment.message]);
+  [Etc copyText:_cell.comment.message];
+}
+
+- (void)copyQuotedComment {
+  [Etc copyText:[Etc quotedMessage:_cell.comment.message quoting: _cell.comment.fromName]];
 }
 
 - (void)showShareOptions {
   [self setUpNavigation];
   if (TTIsPad()) {
-    [_actionSheet showFromRect:CGRectMake(_cell.left, _cell.top, _cell.width, _cell.height)
-                        inView:[TTNavigator navigator].visibleViewController.view animated:YES];
+    [_actionSheet showFromRect:self.frame
+                        inView:self.superview animated:YES];
   }
   else {
-    [_actionSheet showInView:_cell.contentView.superview animated:YES];
+    [_actionSheet showInView:[TTNavigator navigator].visibleViewController.view animated:YES];
   }
   [_cell updateMessageLabel];
 }
@@ -79,7 +118,7 @@ static NSString* kCopyCommentURLStr = @"ms://copy_comment";
            didPostText:(NSString*)text
             withResult:(id)result {
 	NSString* postId = [result objectForKey:@"id"];
-	TTOpenURL([Etc toPostIdPath:[Etc fullPostId:postId andFeedId:[FacebookJanitor sharedInstance].currentUser.userId]
+	TTOpenURL([Etc toPostIdPath:[Post fullPostId:postId andFeedId:[FacebookJanitor sharedInstance].currentUser.userId]
 										 andTitle:@"New post"]);
 }
 

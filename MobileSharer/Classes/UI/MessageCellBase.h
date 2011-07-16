@@ -6,6 +6,8 @@
 //  Copyright 2011 NA. All rights reserved.
 //
 
+#import "StyledTableDataItem.h"
+
 static const CGFloat    kPictureImageHeight  = 66;
 static const CGFloat    kPictureImageWidth  = 96;
 

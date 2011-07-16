@@ -46,4 +46,6 @@
 @property (nonatomic)         BOOL      canComment;
 @property (nonatomic)         BOOL      canLike;
 
++ (NSString*)fullPostId:(NSString*)postId andFeedId:(NSString*)feedId;
+
 @end

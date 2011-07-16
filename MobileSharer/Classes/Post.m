@@ -7,6 +7,7 @@
 //
 
 #import "Post.h"
+#import "RegexKitLite.h"
 
 @implementation Post
 
@@ -45,6 +46,16 @@
   TT_RELEASE_SAFELY(_likes);
   TT_RELEASE_SAFELY(_commentCount);
   [super dealloc];
+}
+
+
++ (NSString*)fullPostId:(NSString*)postId andFeedId:(NSString*)feedId {
+	if ([postId isMatchedByRegex:@"_"]) {
+		return postId;
+	}
+	else {
+		return [NSString stringWithFormat:@"%@_%@", feedId, postId];
+	}
 }
 
 @end

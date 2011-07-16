@@ -10,7 +10,7 @@
 #import "FacebookJanitor.h"
 #import "CommentsPostController.h"
 #import "SharePostController.h"
-#import "RegexKitLite.h"
+#import "Etc.h"
 
 @implementation LikeButton
 
@@ -68,12 +68,14 @@
 
 @end
 
-static NSString* kShareStr = @"Share link";
+static NSString* kShareStr = @"Share";
 static NSString* kShareURLStr = @"ms://postviewcontroller/share";
-static NSString* kQuoteStr = @"Quote and share";
+static NSString* kQuoteStr = @"Share quoted";
 static NSString* kQuoteURLStr = @"ms://postviewcontroller/quote";
-static NSString* kCopyMessageStr = @"Copy message text";
-static NSString* kCoppyMessageURLStr = @"ms://postviewcontroller/copy";
+static NSString* kCopyMessageStr = @"Copy";
+static NSString* kCopyMessageURLStr = @"ms://postviewcontroller/copy";
+static NSString* kCopyMessageQuotingStr = @"Copy quoted";
+static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quoting";
 
 @implementation PostViewController
 
@@ -83,14 +85,16 @@ static NSString* kCoppyMessageURLStr = @"ms://postviewcontroller/copy";
   TTURLMap* map = [TTNavigator navigator].URLMap;
   [map from:kShareURLStr toObject:self selector:@selector(share)];
   [map from:kQuoteURLStr toObject:self selector:@selector(shareQ)];
-  [map from:kCoppyMessageURLStr toObject:self selector:@selector(copyMessage)];
+  [map from:kCopyMessageURLStr toObject:self selector:@selector(copyMessage)];
+  [map from:kCopyMessageQuotingURLStr toObject:self selector:@selector(copyQuotedMessage)];
 }
 
 - (void)tearDownNavigation {
   TTURLMap* map = [TTNavigator navigator].URLMap;
   [map removeURL:kShareURLStr];
   [map removeURL:kQuoteURLStr];
-  [map removeURL:kCoppyMessageURLStr];
+  [map removeURL:kCopyMessageURLStr];
+  [map removeURL:kCopyMessageQuotingURLStr];
 }
 
 - (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title {
@@ -118,10 +122,10 @@ static NSString* kCoppyMessageURLStr = @"ms://postviewcontroller/copy";
   [controller showInView:controller.view animated:YES];
 }
 
-- (void)share {
+- (void)share:(NSString*)text {
   if (![_post.type isEqualToString:@"photo"]) {
     SharePostController* controller = [[[SharePostController alloc] initWithPost:self.post
-                                                                           quote:NO
+                                                                         andText:text
                                                                      andDelegate:self] autorelease];
     [self openShareView: controller];
   }
@@ -130,21 +134,27 @@ static NSString* kCoppyMessageURLStr = @"ms://postviewcontroller/copy";
   }
 }
 
+- (void)share {
+  [self share:nil];
+}
+
 - (void)shareQ {
-  if (![_post.type isEqualToString:@"photo"]) {
-    SharePostController* controller = [[[SharePostController alloc] initWithPost:self.post
-                                                                           quote:YES
-                                                                     andDelegate:self] autorelease];
-    [self openShareView: controller];
+  [self share:[Etc quotedMessage:self.post.message quoting:self.post.fromName]];
+}
+
+- (void)copyText:(NSString*)text {
+  if (_post.shareURL) {
+    text = [NSString stringWithFormat:@"%@\n%@", _post.shareURL, text];
   }
-  else {
-    TTAlertNoTitle(@"Sorry, photo's can't be shared.");    
-  }
+  [Etc copyText:text];
 }
 
 - (void)copyMessage {
-  [UIPasteboard generalPasteboard].string = _post.message;
-  TTAlertNoTitle([NSString stringWithFormat:@"Message ready to be pasted:\n %@", _post.message]);
+  [self copyText:_post.message];
+}
+
+- (void)copyQuotedMessage {
+  [self copyText:[Etc quotedMessage:_post.message quoting:_post.fromName]];
 }
 
 - (CommentsPostController *) createCommentsPostController {
@@ -162,20 +172,20 @@ static NSString* kCoppyMessageURLStr = @"ms://postviewcontroller/copy";
   [controller showInView:controller.view animated:YES];
 }
 
-
 - (void)shareAction {
   [self tearDownNavigation];
   [self setupNavigation];
   if (_actionSheet == nil) {
     _actionSheet = [[[TTActionSheetController alloc] initWithTitle:nil] retain];
-    if (_post.message) {
-      [_actionSheet addButtonWithTitle:kQuoteStr URL:kQuoteURLStr];
-    }
     if (_post.shareURL) {
       [_actionSheet addButtonWithTitle:kShareStr URL:kShareURLStr];
     }
     if (_post.message) {
-      [_actionSheet addButtonWithTitle:kCopyMessageStr URL:kCoppyMessageURLStr];
+      [_actionSheet addButtonWithTitle:kQuoteStr URL:kQuoteURLStr];
+    }
+    if (_post.message) {
+      [_actionSheet addButtonWithTitle:kCopyMessageStr URL:kCopyMessageURLStr];
+      [_actionSheet addButtonWithTitle:kCopyMessageQuotingStr URL:kCopyMessageQuotingURLStr];
     }
     [_actionSheet addCancelButtonWithTitle:@"Cancel" URL:nil];
   }
@@ -247,7 +257,7 @@ static NSString* kCoppyMessageURLStr = @"ms://postviewcontroller/copy";
             withResult: (id)result {
   if (_wasShared) {
     NSString* postId = [result objectForKey:@"id"];
-		TTOpenURL([Etc toPostIdPath:[Etc fullPostId:postId andFeedId:[FacebookJanitor sharedInstance].currentUser.userId]
+		TTOpenURL([Etc toPostIdPath:[Post fullPostId:postId andFeedId:[FacebookJanitor sharedInstance].currentUser.userId]
 											 andTitle:@"Shared"]);
   }
   else {
