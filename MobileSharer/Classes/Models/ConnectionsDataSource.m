@@ -1,12 +1,13 @@
 #import "ConnectionsDataSource.h"
 
+#import "SpecialTableImageItemCell.h"
 #import "LoadMoreCell.h"
 #import "Connection.h"
 
 @implementation ConnectionsDataSource
 
 - (id)initWithConnectionsPath:(NSString*)connectionsPath {
-  if (self = [super init]) {
+  if ((self = [super init])) {
     _connectionsModel = [[ConnectionsModel alloc] initWithGraphPath:connectionsPath];
   }
 
@@ -46,7 +47,12 @@
 #pragma mark TTTableViewDataSource
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
 	if ([object isKindOfClass:[Connection class]]) {
-    return [TTTableImageItemCell class];
+    if (((Connection*)object).connectionId == nil) {
+      return [SpecialTableImageItemCell class];
+    }
+    else {
+      return [TTTableImageItemCell class];
+    } 
 	}
   else if ([object isKindOfClass:[TTTableMoreButton class]]) {
     return [LoadMoreCell class];

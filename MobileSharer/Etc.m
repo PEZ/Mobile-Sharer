@@ -28,6 +28,7 @@ NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = @"ms://comment";
 
 NSString* kAppStoreId = @"406870483";
+NSString* kSharePageId = @"181951418534610";
 
 @implementation Etc
 

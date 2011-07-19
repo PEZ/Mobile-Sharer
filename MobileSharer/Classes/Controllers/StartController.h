@@ -12,10 +12,8 @@
 @class NotificationsCountFetcher;
 
 @protocol NotificationsCountDelegate <NSObject>
-
 - (void)fetchingNotificationsCountDone:(NotificationsCountFetcher*)fetcher;
 - (void)fetchingNotificationsCountError:(NSError*)error;
-
 @end
 
 @interface NotificationsCountFetcher : NSObject <FBRequestDelegate> {
@@ -35,8 +33,29 @@
 
 @end
 
+@class HasLikedChecker;
 
-@interface StartController : TableViewController <FBJSessionDelegate, UserRequestDelegate, NotificationsCountDelegate> {
+@protocol HasLikedDelegate <NSObject>
+- (void)hasLikedCheckDone:(HasLikedChecker*)checker;
+@end
+
+@interface HasLikedChecker : NSObject <FBRequestDelegate> {
+@private
+  NSString*            _pageId;
+  id<HasLikedDelegate> _delegate;
+}
+
+@property (readonly) BOOL hasChecked;
+@property (readonly) BOOL hasLiked;
+
++ (HasLikedChecker*)checkerWithPageId:(NSString*)pageId andDelegate:(id<HasLikedDelegate>)delegate;
+- (void)check;
+
+@end
+
+
+@interface StartController : TableViewController
+<FBJSessionDelegate, UserRequestDelegate, NotificationsCountDelegate, HasLikedDelegate> {
   @private
   UIBarButtonItem* _loginLogoutButton;
   UIBarButtonItem* _refreshButton;
@@ -44,6 +63,7 @@
   BOOL       _currentUserLoaded;
   BOOL       _currentUserLoadFailed;
   NotificationsCountFetcher* _notificationsCountFetcher;
+  HasLikedChecker* _hasLikedChecker;
 }
 
 - (void)refreshData;

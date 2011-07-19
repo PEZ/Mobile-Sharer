@@ -43,7 +43,7 @@
 }
 
 - (UIColor*)notificationColor {
-  return RGBACOLOR(10, 20, 50, 0.09);
+  return RGBACOLOR(10, 20, 150, 0.09);
 }
 
 #pragma mark -

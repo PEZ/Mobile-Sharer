@@ -64,6 +64,60 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 
 @end
 
+@implementation HasLikedChecker
+
+@synthesize hasChecked = _hasChecked;
+@synthesize hasLiked = _hasLiked;
+
+- (id)initWithPageId:(NSString*)pageId andDelegate:(id<HasLikedDelegate>)delagate {
+  if ((self = [self init])) {
+    _hasChecked = NO;
+    _hasLiked = NO;
+    _pageId = [pageId retain];
+    _delegate = [delagate retain];
+  }
+  return self;
+}
+
+- (void)dealloc {
+  TT_RELEASE_SAFELY(_pageId);
+  TT_RELEASE_SAFELY(_delegate);
+  [super dealloc];
+}
+
++ (HasLikedChecker*)checkerWithPageId:(NSString*)pageId andDelegate:(id<HasLikedDelegate>)delegate {
+  HasLikedChecker* checker = [[[HasLikedChecker alloc] initWithPageId:pageId andDelegate:delegate] autorelease];
+  return checker;
+}
+
+- (void)check {
+  [[FacebookJanitor sharedInstance].facebook
+   requestWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"pages.isFan", @"method", _pageId, @"page_id", nil]
+   andDelegate:self];
+}
+
+#pragma mark -
+#pragma mark FBRequestDelegate
+
+- (void)request:(FBRequest*)request didFailWithError:(NSError*)error {
+  DLog(@"Failed checking has liked: %@", error);
+  DLog(@"Details: %@", [error description]);
+  DLog(@"More details: %@", [error userInfo]);
+}
+
+- (void)request:(FBRequest*)request didLoad:(id)result {
+  _hasChecked = YES;
+  if ([result isKindOfClass:[NSDictionary class]]) {
+    _hasLiked = [[result objectForKey:@"result"] boolValue];
+  }
+  else {
+    [self request:request didFailWithError:[NSError errorWithDomain:@"Facebook API returned garbage instead of isFan results" code:0 userInfo:nil]];
+  }
+  [_delegate hasLikedCheckDone:self];
+}
+
+@end
+
 @implementation StartController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -71,6 +125,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     self.title = @"Menu";
     _newNotificationsCountString = @"";
     _notificationsCountFetcher = [[[NotificationsCountFetcher alloc] initWithDelegate:self] retain];
+    _hasLikedChecker = [[HasLikedChecker checkerWithPageId:kSharePageId andDelegate:self] retain];
   }
   return self;
 }
@@ -102,6 +157,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     _refreshButton.enabled = NO;
     if (_currentUserLoaded) {
       [_notificationsCountFetcher fetch];
+      [_hasLikedChecker check];
     }
     else {
       [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
@@ -120,6 +176,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     _loginLogoutButton.action = @selector(logout);
 
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
+
     if (_notificationsCountFetcher.isLoading) {
       [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading notification counts..."]];
     }
@@ -162,23 +219,31 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
                                                       imageURL:@"bundle://groups-50x50.png"
                                                            URL:groupsUrl]];
     
-    NSString* shareAppUrl = [Etc toFeedURLPath:@"139083852806042" name:@"Share! for iOS"];
+    NSString* shareAppUrl = [Etc toFeedURLPath:kSharePageId name:@"Share! for iOS"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Feedback"
-                                                      imageURL:[FacebookJanitor avatarForId:@"139083852806042"]
+                                                      imageURL:[FacebookJanitor avatarForId:kSharePageId]
                                                            URL:shareAppUrl]];
     
-    NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please share this"
-                                                      imageURL:@"bundle://share-50x50.png"
-                                                           URL:shareItUrl]];
-
+    if (_hasLikedChecker.hasChecked && !_hasLikedChecker.hasLiked) {
+      NSString* fbShareURL = [NSString stringWithFormat:@"fb://profile/%@", kSharePageId];
+      [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please like Share! on Facebook"
+                                                        imageURL:@"bundle://love-50x50.png"
+                                                             URL:fbShareURL]];
+    }
+    
     NSString* appStoreUrl = [NSString stringWithFormat:
                              @"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&mt=8",
                              kAppStoreId];
     //appStoreUrl = [Etc urlEncode:appStoreUrl];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate Share!"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate Share! on the App Store"
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:appStoreUrl]];
+
+    NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please share this"
+                                                      imageURL:@"bundle://love-50x50.png"
+                                                           URL:shareItUrl]];
+    
   }
   else {
     self.variableHeightRows = YES;
@@ -211,10 +276,12 @@ Read reviews, ask questions, suggest features, whatever on the \
   [[FacebookJanitor sharedInstance] login:self];
 }
 
+/*
 - (void) viewDidLoad {
   [super viewDidLoad];
   [self refreshData];
 }
+*/
 
 - (void)fetchNotificationsCountTimerFired:(NSTimer*)timer {
   [self refreshData];
@@ -257,8 +324,7 @@ Read reviews, ask questions, suggest features, whatever on the \
 - (void) userRequestDidFinishLoad:(UserModel*)userModel {
   _currentUserLoaded = YES;
   _currentUserLoadFailed = NO;
-  [_notificationsCountFetcher fetch];
-  [self invalidateModel];
+  [self refreshData];
 }
 
 - (void)userRequestDidFailWithError:(NSError*)error {
@@ -284,6 +350,13 @@ Read reviews, ask questions, suggest features, whatever on the \
   _refreshButton.enabled = YES;
   [self invalidateModel];
   [self scheduleNotificationsCountTimer];
+}
+
+#pragma mark -
+#pragma mark HasLikedDelegate
+
+- (void)hasLikedCheckDone:(HasLikedChecker *)checker {
+  [self invalidateModel];
 }
 
 @end

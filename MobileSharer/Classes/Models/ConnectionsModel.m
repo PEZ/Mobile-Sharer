@@ -18,7 +18,7 @@
 @synthesize allConnections = _allConnections;
 
 - (id)initWithGraphPath:(NSString*)path {
-  if (self = [super init]) {
+  if ((self = [super init])) {
     self.graphPath = path;
   }
   return self;
@@ -74,13 +74,21 @@
 
 - (Connection*)createConnectionFromEntry:(NSDictionary *)entry {
   Connection* connection = [[Connection alloc] init];
-  
   connection.connectionId = [entry objectForKey:@"id"];
   connection.connectionName = [entry objectForKey:@"name"];
   connection.imageURL = [FacebookJanitor avatarForId:connection.connectionId];
-  //connection.defaultImage = TTIMAGE(@"bundle://imageDefault50x50.png");
   connection.text = connection.connectionName;
   connection.URL = [Etc toFeedURLPath:connection.connectionId name:connection.connectionName];
+  return connection;
+}
+
+- (Connection*)createLikeAppConnection {
+  Connection* connection = [[Connection alloc] init];
+  connection.connectionId = nil;
+  connection.connectionName = @"Please Like Share! too";
+  connection.imageURL = @"bundle://love-50x50.png";
+  connection.text = connection.connectionName;
+  connection.URL = [NSString stringWithFormat:@"fb://profile/%@", kSharePageId];
   return connection;
 }
 
@@ -105,9 +113,17 @@
   TT_RELEASE_SAFELY(_connections);
   TT_RELEASE_SAFELY(_allConnections);
   
+  BOOL hasLikedApp = NO;
   for (NSDictionary* entry in entries) {
     [connections addObject:[[self createConnectionFromEntry: entry] autorelease]];
+    if ([kSharePageId isEqualToString:[entry objectForKey:@"id"]]) {
+      hasLikedApp = YES;
+    }
   }
+  if ([self.graphPath isEqualToString:@"me/likes"] && !hasLikedApp) {
+    [connections insertObject:[[self createLikeAppConnection] autorelease] atIndex:0];
+  }
+  
   _connections = connections;
   self.allConnections = [NSArray arrayWithArray:_connections];
   
