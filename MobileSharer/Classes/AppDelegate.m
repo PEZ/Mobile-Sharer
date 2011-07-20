@@ -19,6 +19,10 @@
   //TT_RELEASE_SAFELY(_rootViewController);
 }
 
+- (void)openSharePageInSafari {
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kSharePageFacebookURL]];
+}
+                                              
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   [TTStyleSheet setGlobalStyleSheet:[[[DefaultStyleSheet 
                                        alloc] init] autorelease]];
@@ -27,6 +31,7 @@
   
   TTURLMap* map = navigator.URLMap;
   [map from:@"*" toViewController:[WebController class]];
+  //[map from:kSharePageFacebookURL toObject:self selector:@selector(openSharePageInSafari)];
   
   if (NO && TTIsPad()) {
     [map                    from:kAppStartURLPath
@@ -69,7 +74,7 @@
     [tableController.tableView deselectRowAtIndexPath:[tableController.tableView indexPathForSelectedRow] 
                                              animated:NO];
   }
-  [(StartController*)[[TTNavigator navigator] viewControllerForURL:kAppStartURLPath] refreshData];
+  //[(StartController*)[[TTNavigator navigator] viewControllerForURL:kAppStartURLPath] refreshData];
 }
 
 #pragma mark -

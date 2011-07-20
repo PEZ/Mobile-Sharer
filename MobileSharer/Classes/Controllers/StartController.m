@@ -142,19 +142,37 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
   TTOpenURL([Etc toFeedURLPath:@"me" name:@"News feed"]);
 }
 
+- (void) createLoginLogoutButton {
+  if (_loginLogoutButton != nil) {
+    TT_RELEASE_SAFELY(_loginLogoutButton);
+  }
+  _loginLogoutButton = self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil];
+}
+
+- (void) createRefreshButton {
+  if (_refreshButton != nil) {
+    TT_RELEASE_SAFELY(_refreshButton);
+  }
+  _refreshButton = self.navigationItem.leftBarButtonItem =
+  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
+}
+
 - (void)loadView {
   [super loadView];
-  _loginLogoutButton = self.navigationItem.leftBarButtonItem =
-  [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil];
-  _refreshButton = self.navigationItem.rightBarButtonItem =
-  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
+  [self createLoginLogoutButton];
+  [self createRefreshButton];
   _refreshButton.enabled = NO;
+  [self refreshData];
 }
 
 - (void)refreshData {
   _currentUserLoadFailed = NO;
+  if (_refreshButton == nil) {
+    [self createRefreshButton];
+  }
+  _refreshButton.enabled = NO;
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
-    _refreshButton.enabled = NO;
     if (_currentUserLoaded) {
       [_notificationsCountFetcher fetch];
       [_hasLikedChecker check];
@@ -219,46 +237,46 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
                                                       imageURL:@"bundle://groups-50x50.png"
                                                            URL:groupsUrl]];
     
-    NSString* shareAppUrl = [Etc toFeedURLPath:kSharePageId name:@"Share! for iOS"];
+    NSString* shareAppUrl = [Etc toFeedURLPath:kSharePageId name:@"Share!"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Feedback"
                                                       imageURL:[FacebookJanitor avatarForId:kSharePageId]
                                                            URL:shareAppUrl]];
     
-    if (_hasLikedChecker.hasChecked && !_hasLikedChecker.hasLiked) {
-      NSString* fbShareURL = [NSString stringWithFormat:@"fb://profile/%@", kSharePageId];
-      [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please like Share! on Facebook"
-                                                        imageURL:@"bundle://love-50x50.png"
-                                                             URL:fbShareURL]];
-    }
-    
-    NSString* appStoreUrl = [NSString stringWithFormat:
-                             @"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&mt=8",
-                             kAppStoreId];
-    //appStoreUrl = [Etc urlEncode:appStoreUrl];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate Share! on the App Store"
-                                                      imageURL:@"bundle://love-50x50.png"
-                                                           URL:appStoreUrl]];
-
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please share this"
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:shareItUrl]];
     
+    NSString* appStoreUrl = [NSString stringWithFormat:
+                             @"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&mt=8",
+                             kAppStoreId];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate Share! on the App Store"
+                                                      imageURL:@"bundle://love-50x50.png"
+                                                           URL:appStoreUrl]];
+    if (_hasLikedChecker.hasChecked && !_hasLikedChecker.hasLiked) {
+      NSString* fbShareURL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kSharePageUsername];
+      [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please like the Share! page"
+                                                        imageURL:@"bundle://love-50x50.png"
+                                                             URL:fbShareURL]];
+    }
   }
   else {
     self.variableHeightRows = YES;
-    html = @"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
+    html = [NSString stringWithFormat:@"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
 Welcome to Share!\n\n\
-To be able to help you follow your Facebook feed and share links Share! needs your permission. Please \
+To be able to help you follow your Facebook feed and share links <b>Share!</b> needs your permission. Please \
 click the login button and grant it.\n\n\
 Share! will never post in your name without you telling it to. Hopefull you will use Share! to tell your \
 friends you are a happy user of the app anyway. Please do!\n\n\
 Read reviews, ask questions, suggest features, whatever on the \
-<a href=\"http://www.facebook.com/apps/application.php?id=139083852806042\">Share! Facebook page.</a> \
-(Please Like that page too.)</div>";
+<a href=\"%@\">Share! Facebook page.</a> \
+(Please Like that page too.)</div>", kSharePageFacebookURL];
     _loginLogoutButton.title = @"Login";
     _loginLogoutButton.action = @selector(login);
-    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = nil;
+    if (_refreshButton != nil) {
+      TT_RELEASE_SAFELY(_refreshButton);
+    }
     [dataSource.items addObject:[TTTableStyledTextItem itemWithText:[TTStyledText textFromXHTML:html lineBreaks:YES URLs:YES] URL:nil]];
   }
 

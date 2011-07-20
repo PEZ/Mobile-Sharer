@@ -26,7 +26,9 @@ extern NSString* kFacebookLoginPath;
 extern NSString* kCommentPath;
 
 extern NSString* kAppStoreId;
+extern NSString* kSharePageUsername;
 extern NSString* kSharePageId;
+extern NSString* kSharePageFacebookURL;
 
 @interface Etc : NSObject {
 }

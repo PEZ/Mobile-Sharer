@@ -28,7 +28,9 @@ NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = @"ms://comment";
 
 NSString* kAppStoreId = @"406870483";
+NSString* kSharePageUsername = @"sharebutton";
 NSString* kSharePageId = @"181951418534610";
+NSString* kSharePageFacebookURL = @"https://www.facebook.com/sharebutton";
 
 @implementation Etc
 

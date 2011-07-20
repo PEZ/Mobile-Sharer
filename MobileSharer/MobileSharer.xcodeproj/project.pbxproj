@@ -1400,6 +1400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Stromberg";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1425,6 +1426,7 @@
 					"-licucore",
 				);
 				PRODUCT_NAME = "Share!";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8CFC7DC1-CFC1-4A40-9F7F-EDFBD86C96AB";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";

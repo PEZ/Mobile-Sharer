@@ -88,7 +88,7 @@
   connection.connectionName = @"Please Like Share! too";
   connection.imageURL = @"bundle://love-50x50.png";
   connection.text = connection.connectionName;
-  connection.URL = [NSString stringWithFormat:@"fb://profile/%@", kSharePageId];
+  connection.URL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kSharePageUsername];
   return connection;
 }
 
