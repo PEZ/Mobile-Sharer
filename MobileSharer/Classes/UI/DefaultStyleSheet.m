@@ -42,7 +42,7 @@
   return RGBACOLOR(100, 122, 152, 0.95);
 }
 
-- (UIColor*)notificationColor {
+- (UIColor*)highlightedColor {
   return RGBACOLOR(10, 20, 150, 0.09);
 }
 
@@ -125,7 +125,7 @@
 
 - (TTStyle*)tableCellNewNotification {
   return [TTBoxStyle styleWithMargin:UIEdgeInsetsZero next:
-          [TTSolidFillStyle styleWithColor:[self notificationColor] next:
+          [TTSolidFillStyle styleWithColor:[self highlightedColor] next:
            nil]];
 }
 

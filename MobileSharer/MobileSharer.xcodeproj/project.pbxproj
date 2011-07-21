@@ -66,7 +66,7 @@
 		EB03560413B761DC00D5C761 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB03560313B761DC00D5C761 /* TableViewController.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
-		EBA9556213D389C300AE581C /* SpecialTableImageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9556113D389C300AE581C /* SpecialTableImageItemCell.m */; };
+		EBA9556213D389C300AE581C /* HighlightedTableImageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9556113D389C300AE581C /* HighlightedTableImageItemCell.m */; };
 		EBB605D5139CC9E300A9F46C /* SplitStartController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB605D4139CC9E300A9F46C /* SplitStartController.m */; };
 		EBB60603139D23C200A9F46C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB60602139D23C200A9F46C /* Icon@2x.png */; };
 		EBB60607139D25E200A9F46C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB60606139D25E100A9F46C /* Default@2x.png */; };
@@ -390,8 +390,8 @@
 		EB03560513B763E200D5C761 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB383D1010BBFC630000B2D2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
-		EBA9556013D389C300AE581C /* SpecialTableImageItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialTableImageItemCell.h; sourceTree = "<group>"; };
-		EBA9556113D389C300AE581C /* SpecialTableImageItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialTableImageItemCell.m; sourceTree = "<group>"; };
+		EBA9556013D389C300AE581C /* HighlightedTableImageItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightedTableImageItemCell.h; sourceTree = "<group>"; };
+		EBA9556113D389C300AE581C /* HighlightedTableImageItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightedTableImageItemCell.m; sourceTree = "<group>"; };
 		EBB605D3139CC9E300A9F46C /* SplitStartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitStartController.h; sourceTree = "<group>"; };
 		EBB605D4139CC9E300A9F46C /* SplitStartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitStartController.m; sourceTree = "<group>"; };
 		EBB60602139D23C200A9F46C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -760,8 +760,8 @@
 				EBEC4F3C13C0BB7500F5731C /* NotificationCell.m */,
 				32425F601291EAC90017A401 /* LoadMoreCell.h */,
 				32425F611291EAC90017A401 /* LoadMoreCell.m */,
-				EBA9556013D389C300AE581C /* SpecialTableImageItemCell.h */,
-				EBA9556113D389C300AE581C /* SpecialTableImageItemCell.m */,
+				EBA9556013D389C300AE581C /* HighlightedTableImageItemCell.h */,
+				EBA9556113D389C300AE581C /* HighlightedTableImageItemCell.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1138,7 +1138,7 @@
 				EBEC4F3713C0A9A300F5731C /* MessageCellBase.m in Sources */,
 				EBEC4F3A13C0B0DF00F5731C /* StyledTableIconDataItem.m in Sources */,
 				EBEC4F3D13C0BB7500F5731C /* NotificationCell.m in Sources */,
-				EBA9556213D389C300AE581C /* SpecialTableImageItemCell.m in Sources */,
+				EBA9556213D389C300AE581C /* HighlightedTableImageItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

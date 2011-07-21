@@ -6,16 +6,17 @@
 //  Copyright 2011 Better Than Tomorrow. All rights reserved.
 //
 
-#import "SpecialTableImageItemCell.h"
+#import "HighlightedTableImageItemCell.h"
 #import "DefaultStyleSheet.h"
 
-@implementation SpecialTableImageItemCell
+@implementation HighlightedTableImageItemCell
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
   if ((self = [super initWithStyle:style reuseIdentifier:identifier])) {
-    self.contentView.backgroundColor = TTSTYLEVAR(notificationColor);
-    self.textLabel.backgroundColor = TTSTYLEVAR(notificationColor);
+    //self.backgroundColor = TTSTYLEVAR(highlightedColor);
+    self.contentView.backgroundColor = TTSTYLEVAR(highlightedColor);
+    self.textLabel.backgroundColor = TTSTYLEVAR(highlightedColor);
   }
   return self;
 }

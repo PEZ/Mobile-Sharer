@@ -15,7 +15,7 @@
 - (UIColor*)darkColor;
 - (UIColor*)mediumColor;
 - (UIColor*)lightColor;
-- (UIColor*)notificationColor;
+- (UIColor*)highlightedColor;
 
 @end
 

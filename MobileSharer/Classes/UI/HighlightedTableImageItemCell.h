@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface SpecialTableImageItemCell : TTTableImageItemCell {
+@interface HighlightedTableImageItemCell : TTTableImageItemCell {
     
 }
 

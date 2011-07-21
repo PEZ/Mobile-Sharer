@@ -8,6 +8,7 @@
 
 #import "Notification.h"
 #import "NotificationCell.h"
+#import "DefaultStyleSheet.h"
 
 
 @implementation NotificationCell
@@ -23,5 +24,13 @@
   }
   return messageHTML;
 }
+
+- (void)setObject:(id)object {
+  if (_item != object) {
+    [super setObject:object];
+    self.backgroundColor = TTSTYLEVAR(highlightedColor);
+  }
+}
+
 
 @end

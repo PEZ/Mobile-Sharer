@@ -1,6 +1,6 @@
 #import "ConnectionsDataSource.h"
 
-#import "SpecialTableImageItemCell.h"
+#import "HighlightedTableImageItemCell.h"
 #import "LoadMoreCell.h"
 #import "Connection.h"
 
@@ -48,7 +48,7 @@
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
 	if ([object isKindOfClass:[Connection class]]) {
     if (((Connection*)object).connectionId == nil) {
-      return [SpecialTableImageItemCell class];
+      return [HighlightedTableImageItemCell class];
     }
     else {
       return [TTTableImageItemCell class];
