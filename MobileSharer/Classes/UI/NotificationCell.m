@@ -25,12 +25,16 @@
   return messageHTML;
 }
 
-- (void)setObject:(id)object {
-  if (_item != object) {
-    [super setObject:object];
-    self.backgroundColor = TTSTYLEVAR(highlightedColor);
-  }
-}
+@end
 
+@implementation HighLightedNotificationCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
+  if ((self = [super initWithStyle:style reuseIdentifier:identifier])) {
+    self.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+    self.backgroundView.backgroundColor = TTSTYLEVAR(highlightedColor);
+  }
+  return self;
+}
 
 @end

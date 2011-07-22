@@ -9,7 +9,12 @@
 #import "MessageCellBase.h"
 
 @interface NotificationCell : MessageCellBase {
-    
+@private
 }
+@end
 
+
+@interface HighLightedNotificationCell : NotificationCell {
+@private
+}
 @end

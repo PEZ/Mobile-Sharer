@@ -11,11 +11,10 @@
 
 @implementation HighlightedTableImageItemCell
 
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
   if ((self = [super initWithStyle:style reuseIdentifier:identifier])) {
-    //self.backgroundColor = TTSTYLEVAR(highlightedColor);
-    self.contentView.backgroundColor = TTSTYLEVAR(highlightedColor);
+    self.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+    self.backgroundView.backgroundColor = TTSTYLEVAR(highlightedColor);
     self.textLabel.backgroundColor = TTSTYLEVAR(highlightedColor);
   }
   return self;

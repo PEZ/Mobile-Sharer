@@ -46,7 +46,12 @@
 #pragma mark TTTableViewDataSource
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
 	if ([object isKindOfClass:[Notification class]]) {
-    return [NotificationCell class];
+    if (((Notification*)object).isNew) {
+      return [HighLightedNotificationCell class];
+    }
+    else {
+      return [NotificationCell class];
+    }
 	}
   else {
 		return [super tableView:tableView cellClassForObject:object];
