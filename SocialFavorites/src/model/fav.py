@@ -50,7 +50,7 @@ class Fav(db.Model):
         if favs != []:
             return ([fav.fav_id for fav in favs], favs[-1].created_at)
         else:
-            return ([], start_time)
+            return ([], None)
     
     @classmethod
     def _fav_set_enabled(cls, fav_id, user_id, enabled):

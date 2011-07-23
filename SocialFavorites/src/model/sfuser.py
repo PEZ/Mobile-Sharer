@@ -21,16 +21,27 @@ class SFUser(db.Model):
         return user
 
     @classmethod
+    def user_by_id(cls, user_id):
+        user_q = cls.all().filter('user_id =', user_id)
+        return user_q.get()
+
+    @classmethod
     def validate_user(cls, user_id, secret):
         key = "%s:%s" % (user_id, secret)
         user_count = memcache.get(key)
         if user_count is not None:
-            #logging.warning("Memcache hit")
             return user_count
         else:
-            #logging.warning("Memcache miss")
             user_count = cls.all().filter('user_id =', user_id).filter('secret =', secret).count(1)
             memcache.set(key, user_count)
             if user_count > 0:
                 return True
         return False
+
+    @classmethod
+    def create_secret(cls):
+        import random
+        import sha
+        
+        random.seed()
+        return sha.sha("Psst! %f" % random.random()).hexdigest()

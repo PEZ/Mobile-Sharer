@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from test import ModelTestCase
 from model.sfuser import SFUser
 
@@ -24,3 +21,15 @@ class TestSFUser(ModelTestCase):
         '''User validation'''
         self.assertTrue(SFUser.validate_user(self.user_id, self.secret))
         self.assertFalse(SFUser.validate_user(self.user_id, "a" + self.secret))
+
+    def test_create_secret(self):
+        '''Creating a secret'''
+        secret1 = SFUser.create_secret()
+        self.assertNotNone(secret1)
+        secret2 = SFUser.create_secret()
+        self.assertNotEqual(secret1, secret2)
+        
+    def test_user_by_id(self):
+        '''Get use by id'''
+        self.assertEqual(self.user.key(), SFUser.user_by_id(self.user_id).key())
+        self.assertNone(SFUser.user_by_id("a" + self.user_id))

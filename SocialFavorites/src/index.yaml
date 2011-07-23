@@ -25,6 +25,13 @@ indexes:
   properties:
   - name: is_enabled
   - name: user_id
+  - name: created_at
+    direction: desc
+
+- kind: Fav
+  properties:
+  - name: is_enabled
+  - name: user_id
   - name: user_secret
   - name: created_at
 
