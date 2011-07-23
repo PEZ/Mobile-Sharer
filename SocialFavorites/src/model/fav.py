@@ -3,6 +3,7 @@ Created on July 21, 2011
 
 @author: cobpez
 '''
+
 from google.appengine.ext import db
 import datetime
 import logging #@UnusedImport
@@ -11,16 +12,14 @@ class Fav(db.Model):
     created_at        = db.DateTimeProperty(auto_now_add=True)
     fav_id            = db.StringProperty(required=True)
     user_id           = db.StringProperty(required=True)
-    user_secret       = db.StringProperty(required=True)
     author_id         = db.StringProperty(required=True)
     is_enabled        = db.BooleanProperty(default=True)
 
     @classmethod
-    def get_fav(cls, fav_id, user_id, user_secret):
+    def get_fav(cls, fav_id, user_id):
         q = cls.all()
         q.filter('fav_id =', fav_id)
         q.filter('user_id =', user_id)
-        q.filter('user_secret', user_secret)
         favs_list = q.fetch(1)
         if favs_list != []:
             return favs_list[0]
@@ -28,10 +27,10 @@ class Fav(db.Model):
             return None
 
     @classmethod
-    def create(cls, fav_id, user_id, user_secret, author_id):
-        fav = cls.get_fav(fav_id, user_id, user_secret)
+    def create(cls, fav_id, user_id, author_id):
+        fav = cls.get_fav(fav_id, user_id)
         if fav == None:
-            fav = cls(fav_id=fav_id, user_id=user_id, user_secret=user_secret, author_id=author_id)
+            fav = cls(fav_id=fav_id, user_id=user_id, author_id=author_id)
             fav.put()
         elif not fav.is_enabled:
             fav.is_enabled = True
@@ -39,10 +38,9 @@ class Fav(db.Model):
         return fav
     
     @classmethod
-    def fav_ids_for_user(cls, user_id, user_secret, limit, start_time=None):
+    def fav_ids_for_user(cls, user_id, limit, start_time=None):
         favs_q = cls.all()
         favs_q.filter('user_id =', str(user_id))
-        favs_q.filter('user_secret =', str(user_secret))
         favs_q.filter('is_enabled =', True)
         if start_time == None:
             start_time = datetime.datetime.now()
@@ -55,17 +53,17 @@ class Fav(db.Model):
             return ([], start_time)
     
     @classmethod
-    def _fav_set_enabled(cls, fav_id, user_id, user_secret, enabled):
-        fav = cls.get_fav(fav_id, user_id, user_secret)
+    def _fav_set_enabled(cls, fav_id, user_id, enabled):
+        fav = cls.get_fav(fav_id, user_id)
         if fav != None:
             fav.is_enabled = enabled
             fav.put()
         return fav
 
     @classmethod
-    def enable_fav(cls, fav_id, user_id, user_secret):
-        return cls._fav_set_enabled(fav_id, user_id, user_secret, True)
+    def enable_fav(cls, fav_id, user_id):
+        return cls._fav_set_enabled(fav_id, user_id, True)
 
     @classmethod
-    def disable_fav(cls, fav_id, user_id, user_secret):
-        return cls._fav_set_enabled(fav_id, user_id, user_secret, False)
+    def disable_fav(cls, fav_id, user_id):
+        return cls._fav_set_enabled(fav_id, user_id, False)

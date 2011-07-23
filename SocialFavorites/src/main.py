@@ -16,6 +16,7 @@ from django.utils.simplejson.encoder import JSONEncoder
 import datetime
 
 from model.fav import Fav
+from model.sfuser import SFUser
 
 class WebHandler(webapp.RequestHandler):
 
@@ -33,23 +34,35 @@ class WebHandler(webapp.RequestHandler):
         if code == 404:
             self.Render("404.html", {})
 
+def valid_api_user_required(handler_method):
+    """Validate the user_id + secret"""
+    def validate_user_credentials(self, *args, **kw):
+        user_id = self.request.get('user_id')
+        secret = self.request.get('secret')
+        if SFUser.validate_user(user_id, secret):
+            handler_method(self, *args, **kw)
+        else:
+            self.bail_with_message(None, {'status': False}, 403)
+            return
+
+    return valid_api_user_required
+
 class APIHandler(webapp.RequestHandler):
     def respond(self, message_dict):
         self.response.headers['Content-Type'] = 'text/plain'
         self.response.out.write(JSONEncoder().encode(message_dict))
 
-    def bail_with_message(self, err, message_dict):
-        self.error(500)
+    def bail_with_message(self, err, message_dict, code=500):
+        self.error(code)
         logging.warning("%s\n%s" % (err.message, traceback.format_exc()))
         self.respond(message_dict)
     
 class CreateFavAPIHandler(APIHandler):
     def post(self, fav_id):
         user_id = self.request.get('user_id')
-        user_secret = self.request.get('secret')
         author_id = self.request.get('author_id')
         try:
-            fav = Fav.create(fav_id, user_id, user_secret, author_id)
+            fav = Fav.create(fav_id, user_id, author_id)
             self.respond({'fav_id': fav.fav_id, 'created_at': fav.created_at.isoformat(), 'status': True})
         except Exception, err:
             self.bail_with_message(err, {'status': False})
@@ -57,9 +70,8 @@ class CreateFavAPIHandler(APIHandler):
 class DeleteFavAPIHandler(APIHandler):
     def post(self, fav_id):
         user_id = self.request.get('user_id')
-        user_secret = self.request.get('secret')
         try:
-            fav = Fav.disable_fav(fav_id, user_id, user_secret)
+            fav = Fav.disable_fav(fav_id, user_id)
             self.respond({'fav_id': fav.fav_id, 'created_at': fav.created_at.isoformat(), 'status': True})
         except Exception, err:
             self.bail_with_message(err, {'status': False})
@@ -82,11 +94,10 @@ class GetFavsAPIHandler(APIHandler):
     def get(self):
         try:
             user_id = self.request.get('user_id')
-            user_secret = self.request.get('secret')
             limit = int(self.request.get('limit', DEFAULT_FAVS_LIMIT))
             start_time = self.request.get('older_than', default_value=datetime.datetime.now().isoformat())
             start_time = fromisoformat(start_time)
-            fav_ids, oldest = Fav.fav_ids_for_user(user_id, user_secret, limit, start_time)
+            fav_ids, oldest = Fav.fav_ids_for_user(user_id, limit, start_time)
             self.respond({'favorites': fav_ids,
                           'oldest': oldest.isoformat(),
                           'status': True})

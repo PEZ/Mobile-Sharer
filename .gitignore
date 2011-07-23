@@ -26,6 +26,10 @@ build/
 .svn
 CVS
 
+# Python object files
+*.pyc
+*.pyo
+
 # automatic backup files
 *~.nib
 *.swp
