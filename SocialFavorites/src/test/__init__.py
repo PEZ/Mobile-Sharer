@@ -80,13 +80,6 @@ class SFTestCase(unittest.TestCase):
             raise self.failureException('%r in %r' % (value, container))
 
 
-def old_clear_datastore():
-    '''Use a fresh stub datastore.'''
-    from google.appengine.api import apiproxy_stub_map, datastore_file_stub
-    apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
-    stub = datastore_file_stub.DatastoreFileStub('dev~social-favorites', '/dev/null', '/dev/null')
-    apiproxy_stub_map.apiproxy.RegisterStub('datastore_v3', stub)
-
 def clear_datastore():
     from google.appengine.api import apiproxy_stub_map, datastore_file_stub
     

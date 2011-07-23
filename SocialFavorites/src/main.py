@@ -20,6 +20,8 @@ import datetime
 from model.fav import Fav
 from model.sfuser import SFUser
 
+from utils import sfdatetime
+
 class WebHandler(webapp.RequestHandler):
 
     def Render(self, template_file, template_values, layout='main.html'):
@@ -106,18 +108,6 @@ class DeleteFavAPIHandler(APIHandler):
         except Exception, err:
             self.bail_with_message(err, {'status': False})
 
-
-def fromisoformat(val):
-    if '.' not in val:
-        return datetime.datetime.strptime(val, "%Y-%m-%dT%H:%M:%S")
-
-    nofrag, frag = val.split(".")
-    date = datetime.datetime.strptime(nofrag, "%Y-%m-%dT%H:%M:%S")
-
-    frag = frag[:6]  # truncate to microseconds
-    frag += (6 - len(frag)) * '0'  # add 0s
-    return date.replace(microsecond=int(frag))
-
 DEFAULT_FAVS_LIMIT=20
 
 class GetFavsAPIHandler(APIHandler):
@@ -127,7 +117,7 @@ class GetFavsAPIHandler(APIHandler):
             user_id = self.request.get('user_id')
             limit = int(self.request.get('limit', DEFAULT_FAVS_LIMIT))
             start_time = self.request.get('older_than', default_value=datetime.datetime.now().isoformat())
-            start_time = fromisoformat(start_time)
+            start_time = sfdatetime.fromisoformat(start_time)
             fav_ids, oldest = Fav.fav_ids_for_user(user_id, limit, start_time)
             result = {'favorites': fav_ids, 'status': True}
             if oldest is not None:
