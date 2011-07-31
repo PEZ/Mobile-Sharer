@@ -6,6 +6,14 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
+#define SHARE_APP 1
+#define FAVORITES_APP 2
+#if APP==SHARE_APP
+  #define kUrlScheme @"ms"
+#elif APP==FAVORITES_APP
+  #define kUrlScheme @"favs"
+#endif
+
 extern CGFloat    kDisclosureWidth;
 
 extern CGFloat   kAvatarImageWidth;

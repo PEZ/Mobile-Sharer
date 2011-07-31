@@ -16,16 +16,17 @@ CGFloat   kIconImageWidth   = 16;
 CGFloat   kIconImageHeight  = 16;
 CGFloat   kDisclosureWidth  = 23;
 
-NSString* kNavPathPrefix = @"ms://feed";
-NSString* kFeedURLPath = @"ms://feed/(initWithFBFeedId:)/(andName:)";
-NSString* kNotificationsURLPath = @"ms://notifications";
-NSString* kConnectionsPathPrefix = @"ms://connections";
-NSString* kConnectionsURLPath = @"ms://connections/(initWithFBConnectionsPath:)/(andName:)";
-NSString* kPostIdPathPrefix = @"ms://post";
-NSString* kPostIdPath = @"ms://post/(initWithPostId:)/(andTitle:)";
-NSString* kAppStartURLPath = @"ms://login";
+NSString* kNavPathPrefix = kUrlScheme @"://feed";
+NSString* kFeedURLPath = kUrlScheme @"://feed/(initWithFBFeedId:)/(andName:)";
+NSString* kNotificationsURLPath = kUrlScheme @"://notifications";
+NSString* kConnectionsPathPrefix = kUrlScheme @"://connections";
+NSString* kConnectionsURLPath = kUrlScheme @"://connections/(initWithFBConnectionsPath:)/(andName:)";
+NSString* kPostIdPathPrefix = kUrlScheme @"://post";
+NSString* kPostIdPath = kUrlScheme @"://post/(initWithPostId:)/(andTitle:)";
+//NSString* kAppStartURLPath = kUrlScheme @"://login";
+NSString* kAppStartURLPath = kUrlScheme @"://login";
 NSString* kFacebookLoginPath = @"fb139083852806042://";
-NSString* kCommentPath = @"ms://comment";
+NSString* kCommentPath = kUrlScheme @"://comment";
 
 NSString* kAppStoreId = @"406870483";
 NSString* kSharePageUsername = @"sharebutton";
