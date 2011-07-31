@@ -11,6 +11,6 @@
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_OTHER_WORKING_DIRECTORY" value="${project_loc}/src"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="--nologcapture --with-gae --all-modules ${resource_loc}"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${project_loc}/src"/>
-<stringAttribute key="org.python.pydev.debug.ATTR_INTERPRETER" value="python brewed"/>
+<stringAttribute key="org.python.pydev.debug.ATTR_INTERPRETER" value="python"/>
 <stringAttribute key="org.python.pydev.debug.ATTR_PROJECT" value="SocialFavorites"/>
 </launchConfiguration>

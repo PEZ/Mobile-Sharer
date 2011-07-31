@@ -20,6 +20,7 @@ class TestSFUser(ModelTestCase):
     def test_validate_user(self):
         '''User validation'''
         self.assertTrue(SFUser.validate_user(self.user_id, self.secret))
+        self.assertTrue(SFUser.validate_user(self.user_id, self.secret))
         self.assertFalse(SFUser.validate_user(self.user_id, "a" + self.secret))
 
     def test_create_secret(self):

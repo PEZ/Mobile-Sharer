@@ -30,10 +30,12 @@ class SFUser(db.Model):
         key = "%s:%s" % (user_id, secret)
         user_count = memcache.get(key)
         if user_count is not None:
+            logging.warning("memcache HIT")
             return user_count
         else:
+            logging.warning("memcache MISS")
             user_count = cls.all().filter('user_id =', user_id).filter('secret =', secret).count(1)
-            memcache.set(key, user_count)
+            memcache.add(key, user_count)
             if user_count > 0:
                 return True
         return False
