@@ -545,7 +545,7 @@
 		EBA9556013D389C300AE581C /* HighlightedTableImageItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightedTableImageItemCell.h; sourceTree = "<group>"; };
 		EBA9556113D389C300AE581C /* HighlightedTableImageItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightedTableImageItemCell.m; sourceTree = "<group>"; };
 		EBB0D03713DC2A5900304A82 /* Favorites.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Favorites.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBB0D03913DC2A5B00304A82 /* Favorites.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Favorites.plist; path = "/Users/pez/Documents/Projects/Mobile-Sharer/MobileSharer/Favorites.plist"; sourceTree = "<absolute>"; };
+		EBB0D03913DC2A5B00304A82 /* Favorites-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Favorites-Info.plist"; path = "/Users/pez/Documents/Projects/Mobile-Sharer/MobileSharer/Favorites-Info.plist"; sourceTree = "<absolute>"; };
 		EBB605D3139CC9E300A9F46C /* SplitStartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitStartController.h; sourceTree = "<group>"; };
 		EBB605D4139CC9E300A9F46C /* SplitStartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitStartController.m; sourceTree = "<group>"; };
 		EBB60602139D23C200A9F46C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -689,7 +689,7 @@
 				EB383D1010BBFC630000B2D2 /* Three20.bundle */,
 				28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */,
 				8D1107310486CEB800E47090 /* MobileSharer-Info.plist */,
-				EBB0D03913DC2A5B00304A82 /* Favorites.plist */,
+				EBB0D03913DC2A5B00304A82 /* Favorites-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1531,7 +1531,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				APP_URL_SCHEME = ms;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1596,7 +1595,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				APP_URL_SCHEME = ms;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1662,7 +1660,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				APP_URL_SCHEME = ms;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Stromberg";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1735,6 +1732,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileSharer_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"APP=2",
+					DEBUG,
+				);
 				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1744,7 +1745,7 @@
 					"$(STDLIB_HEADERS)",
 					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
 				);
-				INFOPLIST_FILE = "Share! copy-Info.plist";
+				INFOPLIST_FILE = "Favorites-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1771,6 +1772,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileSharer_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"APP=2",
+					DEBUG,
+				);
 				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1780,7 +1785,7 @@
 					"$(STDLIB_HEADERS)",
 					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
 				);
-				INFOPLIST_FILE = "Share! copy-Info.plist";
+				INFOPLIST_FILE = "Favorites-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1807,6 +1812,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileSharer_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"APP=2",
+					DEBUG,
+				);
 				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1816,7 +1825,7 @@
 					"$(STDLIB_HEADERS)",
 					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
 				);
-				INFOPLIST_FILE = "Share! copy-Info.plist";
+				INFOPLIST_FILE = "Favorites-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1843,6 +1852,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MobileSharer_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "APP=2";
 				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1852,7 +1862,7 @@
 					"$(STDLIB_HEADERS)",
 					"\"$(CONFIGURATION_BUILD_DIR)/../../three20\"",
 				);
-				INFOPLIST_FILE = "Share! copy-Info.plist";
+				INFOPLIST_FILE = "Favorites-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1895,7 +1905,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				APP_URL_SCHEME = ms;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Stromberg";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -125,7 +125,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     self.title = @"Menu";
     _newNotificationsCountString = @"";
     _notificationsCountFetcher = [[[NotificationsCountFetcher alloc] initWithDelegate:self] retain];
-    _hasLikedChecker = [[HasLikedChecker checkerWithPageId:kSharePageId andDelegate:self] retain];
+    _hasLikedChecker = [[HasLikedChecker checkerWithPageId:kFeedbackPageId andDelegate:self] retain];
   }
   return self;
 }
@@ -237,9 +237,9 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
                                                       imageURL:@"bundle://groups-50x50.png"
                                                            URL:groupsUrl]];
     
-    NSString* shareAppUrl = [Etc toFeedURLPath:kSharePageId name:@"Share!"];
+    NSString* shareAppUrl = [Etc toFeedURLPath:kFeedbackPageId name:kAppTitle];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Feedback"
-                                                      imageURL:[FacebookJanitor avatarForId:kSharePageId]
+                                                      imageURL:[FacebookJanitor avatarForId:kFeedbackPageId]
                                                            URL:shareAppUrl]];
     
     NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
@@ -254,7 +254,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:appStoreUrl]];
     if (_hasLikedChecker.hasChecked && !_hasLikedChecker.hasLiked) {
-      NSString* fbShareURL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kSharePageUsername];
+      NSString* fbShareURL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kFeedbackPageUsername];
       [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please like the Share! page"
                                                         imageURL:@"bundle://love-50x50.png"
                                                              URL:fbShareURL]];
@@ -270,7 +270,7 @@ Share! will never post in your name without you telling it to. Hopefull you will
 friends you are a happy user of the app anyway. Please do!\n\n\
 Read reviews, ask questions, suggest features, whatever on the \
 <a href=\"%@\">Share! Facebook page.</a> \
-(Please Like that page too.)</div>", kSharePageFacebookURL];
+(Please Like that page too.)</div>", kFeedbackPageURL];
     _loginLogoutButton.title = @"Login";
     _loginLogoutButton.action = @selector(login);
     self.navigationItem.leftBarButtonItem = nil;

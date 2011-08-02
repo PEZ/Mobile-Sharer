@@ -88,7 +88,7 @@
   connection.connectionName = @"Please Like Share! too";
   connection.imageURL = @"bundle://love-50x50.png";
   connection.text = connection.connectionName;
-  connection.URL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kSharePageUsername];
+  connection.URL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kFeedbackPageUsername];
   return connection;
 }
 
@@ -116,7 +116,7 @@
   BOOL hasLikedApp = NO;
   for (NSDictionary* entry in entries) {
     [connections addObject:[[self createConnectionFromEntry: entry] autorelease]];
-    if ([kSharePageId isEqualToString:[entry objectForKey:@"id"]]) {
+    if ([kFeedbackPageId isEqualToString:[entry objectForKey:@"id"]]) {
       hasLikedApp = YES;
     }
   }

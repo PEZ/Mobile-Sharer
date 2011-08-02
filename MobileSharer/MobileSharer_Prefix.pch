@@ -28,3 +28,30 @@
 #else
 #   define DLog(...)
 #endif
+
+
+#define SHARE_APP 1
+#define FAVORITES_APP 2
+
+#if APP==SHARE_APP
+  #define kUrlScheme @"ms"
+  #define kFacebookAppId @"139083852806042"
+  #define kFacebookAccessTokenKey @"fbAccessToken-1.3"
+  #define kFacebookExpirationDateKey @"fbExpirationDate-1.3"
+  #define kAppStoreId @"406870483"
+  #define kFeedbackPageUsername @"sharebutton"
+  #define kFeedbackPageId @"181951418534610"
+  #define kAppTitle @"Share!"
+#elif APP==FAVORITES_APP
+  #define kUrlScheme @"favs"
+  #define kFacebookAppId @"249849508367878"
+  #define kFacebookAccessTokenKey @"fbAccessToken-Favorites"
+  #define kFacebookExpirationDateKey kFacebookAccessTokenKey @"-expires"
+  #define kAppStoreId @"454057589"
+  #define kFeedbackPageUsername @"favorites"
+  #define kFeedbackPageId @"245161295504531"
+  #define kAppTitle @"Favorites"
+#endif
+
+#define kFeedbackPageURL @"https://www.facebook.com/" kFeedbackPageUsername
+#define kFacebookLoginPath @"fb" kFacebookAppId @"://"

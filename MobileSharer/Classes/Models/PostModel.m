@@ -49,9 +49,8 @@ BOOL commentsEmpty(NSArray* comments) {
       path = [NSString stringWithFormat:@"%@", _post.postId];
       if (more && !commentsEmpty(_comments)) {
         path = [NSString stringWithFormat:@"%@/comments", path];
-        NSString* offset = [NSString stringWithFormat:@"%@",
-                            [NSNumber numberWithDouble:[_comments count]]];
-        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:offset forKey:@"offset"];
+        NSString* until = [[FacebookJanitor dateFormatter] stringFromDate:[((Comment*)[_comments objectAtIndex:0]).created addTimeInterval:-1]];
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:until forKey:@"until"];
         [params setObject:@"25" forKey:@"limit"];
         fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path
                                                                              andParams:params

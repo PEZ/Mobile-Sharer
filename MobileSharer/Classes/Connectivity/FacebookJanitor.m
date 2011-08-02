@@ -9,9 +9,6 @@
 #import "FacebookJanitor.h"
 
 static void * volatile sharedInstance = nil;                                                
-static NSString* kAppId = @"139083852806042";
-static NSString* kAccessTokenKey = @"fbAccessToken-1.3";
-static NSString* kExpirationDateKey = @"fbExpirationDate-1.3";
 
 @interface FacebookJanitor(Private)
 
@@ -31,9 +28,9 @@ static NSString* kExpirationDateKey = @"fbExpirationDate-1.3";
 - (id) init {
   if (self = [super init]) {
     _permissions =  [[NSArray arrayWithObjects: 
-                      @"read_stream", @"publish_stream", @"offline_access",
+                      @"read_stream", @"publish_stream", @"offline_access", @"manage_notifications",
                       @"friends_photos", @"user_photos", @"user_likes", @"user_groups", nil] retain];
-    _facebook = [[Facebook alloc] initWithAppId:kAppId];
+    _facebook = [[Facebook alloc] initWithAppId:kFacebookAppId];
     [self createDateFormatter];
     //_keychain = [[[KeychainItemWrapper alloc] initWithIdentifier:@"fbAccess" serviceName:nil accessGroup:nil] retain];
     [self restoreSession];
@@ -76,16 +73,16 @@ static NSString* kExpirationDateKey = @"fbExpirationDate-1.3";
 */
 - (void)saveSession {
   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-  [prefs setObject:_facebook.accessToken forKey:kAccessTokenKey];
-  [prefs setObject:_facebook.expirationDate forKey:kExpirationDateKey];
+  [prefs setObject:_facebook.accessToken forKey:kFacebookAccessTokenKey];
+  [prefs setObject:_facebook.expirationDate forKey:kFacebookExpirationDateKey];
   [prefs synchronize];
 }
 
 - (void)restoreSession {
   NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
   [prefs synchronize];
-  _facebook.accessToken = [prefs stringForKey:kAccessTokenKey];
-  _facebook.expirationDate = [prefs objectForKey:kExpirationDateKey];
+  _facebook.accessToken = [prefs stringForKey:kFacebookAccessTokenKey];
+  _facebook.expirationDate = [prefs objectForKey:kFacebookExpirationDateKey];
 }
 
 
@@ -98,7 +95,7 @@ static NSString* kExpirationDateKey = @"fbExpirationDate-1.3";
 }
 
 + (NSString*)getAppId {
-  return kAppId;
+  return kFacebookAppId;
 }
 
 - (BOOL)isLoggedIn {

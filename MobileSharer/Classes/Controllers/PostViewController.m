@@ -10,7 +10,6 @@
 #import "FacebookJanitor.h"
 #import "CommentsPostController.h"
 #import "SharePostController.h"
-#import "Etc.h"
 
 @implementation LikeButton
 

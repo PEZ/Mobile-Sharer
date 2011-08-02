@@ -20,7 +20,7 @@
 }
 
 - (void)openSharePageInSafari {
-  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kSharePageFacebookURL]];
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kFeedbackPageURL]];
 }
                                               
 - (void)applicationDidFinishLaunching:(UIApplication *)application {

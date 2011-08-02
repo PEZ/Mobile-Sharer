@@ -10,7 +10,6 @@
 #import "ComposePostController.h"
 #import "PostViewController.h"
 #import "RegexKitLite.h"
-#import "Etc.h"
 
 static NSString* kShareCommentURLStr = @"ms://commentcell/share_comment";
 static NSString* kShareQuotedCommentURLStr = @"ms://commentcell/share_quoted_comment";

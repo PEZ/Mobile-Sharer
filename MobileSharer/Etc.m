@@ -6,7 +6,6 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "Etc.h"
 #import "FacebookJanitor.h"
 #import "RegexKitLite.h"
 
@@ -25,13 +24,7 @@ NSString* kPostIdPathPrefix = kUrlScheme @"://post";
 NSString* kPostIdPath = kUrlScheme @"://post/(initWithPostId:)/(andTitle:)";
 //NSString* kAppStartURLPath = kUrlScheme @"://login";
 NSString* kAppStartURLPath = kUrlScheme @"://login";
-NSString* kFacebookLoginPath = @"fb139083852806042://";
 NSString* kCommentPath = kUrlScheme @"://comment";
-
-NSString* kAppStoreId = @"406870483";
-NSString* kSharePageUsername = @"sharebutton";
-NSString* kSharePageId = @"181951418534610";
-NSString* kSharePageFacebookURL = @"https://www.facebook.com/sharebutton";
 
 @implementation Etc
 
