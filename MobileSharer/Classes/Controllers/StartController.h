@@ -59,7 +59,6 @@
   @private
   UIBarButtonItem* _loginLogoutButton;
   UIBarButtonItem* _refreshButton;
-  NSString*  _newNotificationsCountString;
   BOOL       _currentUserLoaded;
   BOOL       _currentUserLoadFailed;
   NotificationsCountFetcher* _notificationsCountFetcher;

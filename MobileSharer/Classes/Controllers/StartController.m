@@ -123,7 +123,6 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   if ((self = [super initWithNibName:nibNameOrNil	bundle:nibBundleOrNil])) {
     self.title = @"Menu";
-    _newNotificationsCountString = @"";
     _notificationsCountFetcher = [[[NotificationsCountFetcher alloc] initWithDelegate:self] retain];
     _hasLikedChecker = [[HasLikedChecker checkerWithPageId:kFeedbackPageId andDelegate:self] retain];
   }
@@ -133,7 +132,6 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 - (void)dealloc {
   TT_RELEASE_SAFELY(_loginLogoutButton);
   TT_RELEASE_SAFELY(_refreshButton);
-  TT_RELEASE_SAFELY(_newNotificationsCountString);
   TT_RELEASE_SAFELY(_notificationsCountFetcher)
   [super dealloc];
 }
@@ -196,10 +194,17 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     //NSString* facebookPageUrl = [Etc urlEncode:@"http://www.facebook.com/apps/application.php?id=139083852806042&v=app_6261817190"];
 
     if (_notificationsCountFetcher.isLoading) {
-      [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading notification counts..."]];
+      [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Fetching..."]];
     }
     else {
-      [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"Notifications %@", _newNotificationsCountString]
+      NSString* newCountString = @"";
+      if (_notificationsCountFetcher.failedLoading) {
+        newCountString = @"(Fetch failed)";
+      }
+      else if ([_notificationsCountFetcher.newCount intValue] > 0) {
+        newCountString = [NSString stringWithFormat:@"(%@)", _notificationsCountFetcher.newCount];
+      }
+      [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"Notifications %@", newCountString]
                                                         imageURL:@"bundle://notifications-50x50.png"
                                                              URL:kNotificationsURLPath]];
     }
@@ -357,14 +362,12 @@ Read reviews, ask questions, suggest features, whatever on the \
 
 - (void)fetchingNotificationsCountDone:(NotificationsCountFetcher*)fetcher {
   NSNumber* count = fetcher.newCount;
-  _newNotificationsCountString = [count intValue] == 0 ? @"" : [NSString stringWithFormat:@"(%@)", count];
   _refreshButton.enabled = YES;
   [self invalidateModel];
   [self scheduleNotificationsCountTimer];
 }
 
 - (void)fetchingNotificationsCountError:(NSError*)error {
-  _newNotificationsCountString = @"(Error when loading)";
   _refreshButton.enabled = YES;
   [self invalidateModel];
   [self scheduleNotificationsCountTimer];

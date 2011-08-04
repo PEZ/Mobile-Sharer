@@ -51,7 +51,7 @@ BOOL commentsEmpty(NSArray* comments) {
         path = [NSString stringWithFormat:@"%@/comments", path];
         NSString* until = [[FacebookJanitor dateFormatter] stringFromDate:[((Comment*)[_comments objectAtIndex:0]).created addTimeInterval:-1]];
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:until forKey:@"until"];
-        [params setObject:@"25" forKey:@"limit"];
+        [params setObject:@"500" forKey:@"limit"];
         fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path
                                                                              andParams:params
                                                                          andHttpMethod:@"GET"

@@ -74,7 +74,7 @@
     [tableController.tableView deselectRowAtIndexPath:[tableController.tableView indexPathForSelectedRow] 
                                              animated:NO];
   }
-  //[(StartController*)[[TTNavigator navigator] viewControllerForURL:kAppStartURLPath] refreshData];
+  [(StartController*)[[TTNavigator navigator] viewControllerForURL:kAppStartURLPath] refreshData];
 }
 
 #pragma mark -
