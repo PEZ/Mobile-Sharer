@@ -48,10 +48,10 @@
 
 - (void)loadView {
   if (self.navigationItem.rightBarButtonItem == nil) {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                               target:self
-                                              action:@selector(compose)];
+                                              action:@selector(compose)] autorelease];
   }
   [super loadView];
 }

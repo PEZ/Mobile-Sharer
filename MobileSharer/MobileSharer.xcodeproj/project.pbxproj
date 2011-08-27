@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28C3AD8A0F43EF2300507BA6 /* MobileSharer.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* MobileSharer.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
@@ -1687,7 +1687,7 @@
 					"-licucore",
 				);
 				PRODUCT_NAME = "Share!";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74F91047-9437-4734-B499-B45A2B076319";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69E206AB-F645-4871-AF42-D7E76576E06B";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1935,7 +1935,7 @@
 					"-licucore",
 				);
 				PRODUCT_NAME = "Share!";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8CFC7DC1-CFC1-4A40-9F7F-EDFBD86C96AB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "65DF3515-B25A-4AF9-BD62-E2E9B539F977";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";

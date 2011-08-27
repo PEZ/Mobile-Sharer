@@ -29,7 +29,7 @@
 }
 
 - (Notification*)createNotificationFromEntry:(NSDictionary *)entry {
-  Notification* notification = [[Notification alloc] init];
+  Notification* notification = [[[Notification alloc] init] autorelease];
   @try {
     notification.notificationId = [entry objectForKey:@"notification_id"];
     notification.type = [entry objectForKey:@"object_type"];
@@ -88,7 +88,7 @@
   TT_RELEASE_SAFELY(_notifications);
   
   for (NSDictionary* entry in entries) {
-    [notifications addObject:[[self createNotificationFromEntry: entry] autorelease]];
+    [notifications addObject:[self createNotificationFromEntry: entry]];
   }
   _notifications = notifications;
   

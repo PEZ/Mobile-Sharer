@@ -34,7 +34,7 @@
 }
 
 + (Post*)createPostFromEntry:(NSDictionary *)entry {
-  Post* post = [[Post alloc] init];
+  Post* post = [[[Post alloc] init] autorelease];
   
   NSDate* date = [[FacebookJanitor dateFormatter] dateFromString:[entry objectForKey:@"created_time"]];
   post.created = date;

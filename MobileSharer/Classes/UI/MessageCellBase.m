@@ -80,7 +80,7 @@
 
 
 + (TTStyledTextLabel*)createStyledLabel {
-  TTStyledTextLabel* label = [[TTStyledTextLabel alloc] initWithFrame:CGRectZero];
+  TTStyledTextLabel* label = [[[TTStyledTextLabel alloc] initWithFrame:CGRectZero] autorelease];
   label.textColor = TTSTYLEVAR(tableTextColor);
   label.highlightedTextColor = [UIColor whiteColor];
   label.font = TTSTYLEVAR(tableFont);
@@ -98,7 +98,7 @@
 
 - (TTStyledTextLabel*)messageLabel {
   if (!_messageLabel) {
-    _messageLabel = [[self class] createStyledLabel];
+    _messageLabel = [[[self class] createStyledLabel] retain];
     _messageLabel.highlightedTextColor = TTSTYLEVAR(lightColor); //TODO: This doesn't do what I want it to do.
     [self.contentView addSubview:_messageLabel];
   }

@@ -115,7 +115,7 @@ static const CGFloat kMarginY = 6;
 }
 
 - (void)post {
-    if (TTIsStringWithAnyText(self.textView.text) && !self.textView.text.isWhitespaceAndNewlines || TTIsStringWithAnyText(_linkField.text) && !_linkField.text.isWhitespaceAndNewlines) {
+    if ((TTIsStringWithAnyText(self.textView.text) && !self.textView.text.isWhitespaceAndNewlines) || (TTIsStringWithAnyText(_linkField.text) && !_linkField.text.isWhitespaceAndNewlines)) {
     Facebook* fb = [FacebookJanitor sharedInstance].facebook;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:self.textView.text forKey:@"message"];
     if (TTIsStringWithAnyText(_linkField.text) && !_linkField.text.isWhitespaceAndNewlines) {

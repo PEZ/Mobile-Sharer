@@ -55,25 +55,14 @@
   if (!self.isLoading && TTIsStringWithAnyText(_graphPath)) {
     FBRequest* fbRequest;
     NSString* path = [NSString stringWithFormat:@"%@", _graphPath];
-    if (more) {
-//      NSString* until = [NSString stringWithFormat:@"%@",
-//                         [NSNumber numberWithDouble:[[[_connections lastObject] created] timeIntervalSince1970]]];
-//      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:until forKey:@"until"];
-//      fbRequest = [[FacebookJanitor sharedInstance].facebook getRequestWithGraphPath:path
-//                                                                           andParams:params
-//                                                                       andHttpMethod:@"GET"
-//                                                                         andDelegate:nil];
-    }
-    else {
-      fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path andDelegate:nil];
-    }
-    
+    fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path andDelegate:nil];
+
     [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
   }
 }
 
 - (Connection*)createConnectionFromEntry:(NSDictionary *)entry {
-  Connection* connection = [[Connection alloc] init];
+  Connection* connection = [[[Connection alloc] init] autorelease];
   connection.connectionId = [entry objectForKey:@"id"];
   connection.connectionName = [entry objectForKey:@"name"];
   connection.imageURL = [FacebookJanitor avatarForId:connection.connectionId];
@@ -83,7 +72,7 @@
 }
 
 - (Connection*)createLikeAppConnection {
-  Connection* connection = [[Connection alloc] init];
+  Connection* connection = [[[Connection alloc] init] autorelease];
   connection.connectionId = nil;
   connection.connectionName = @"Please Like Share! too";
   connection.imageURL = @"bundle://love-50x50.png";
@@ -115,13 +104,13 @@
   
   BOOL hasLikedApp = NO;
   for (NSDictionary* entry in entries) {
-    [connections addObject:[[self createConnectionFromEntry: entry] autorelease]];
+    [connections addObject:[self createConnectionFromEntry: entry]];
     if ([kFeedbackPageId isEqualToString:[entry objectForKey:@"id"]]) {
       hasLikedApp = YES;
     }
   }
   if ([self.graphPath isEqualToString:@"me/likes"] && !hasLikedApp) {
-    [connections insertObject:[[self createLikeAppConnection] autorelease] atIndex:0];
+    [connections insertObject:[self createLikeAppConnection] atIndex:0];
   }
   
   _connections = connections;

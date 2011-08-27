@@ -64,7 +64,7 @@
   TT_RELEASE_SAFELY(_posts);
 
   for (NSDictionary* entry in entries) {
-    [posts addObject:[[FacebookModel createPostFromEntry: entry] autorelease]];
+    [posts addObject:[FacebookModel createPostFromEntry: entry]];
   }
   _posts = posts;
 

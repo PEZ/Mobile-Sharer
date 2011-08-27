@@ -145,7 +145,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     TT_RELEASE_SAFELY(_loginLogoutButton);
   }
   _loginLogoutButton = self.navigationItem.rightBarButtonItem =
-  [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil];
+  [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil] autorelease];
 }
 
 - (void) createRefreshButton {
@@ -153,7 +153,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     TT_RELEASE_SAFELY(_refreshButton);
   }
   _refreshButton = self.navigationItem.leftBarButtonItem =
-  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)];
+  [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)] autorelease];
 }
 
 - (void)loadView {
@@ -361,7 +361,6 @@ Read reviews, ask questions, suggest features, whatever on the \
 #pragma mark NotificationsCountDelegate
 
 - (void)fetchingNotificationsCountDone:(NotificationsCountFetcher*)fetcher {
-  NSNumber* count = fetcher.newCount;
   _refreshButton.enabled = YES;
   [self invalidateModel];
   [self scheduleNotificationsCountTimer];
