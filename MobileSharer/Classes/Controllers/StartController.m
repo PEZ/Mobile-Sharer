@@ -8,7 +8,7 @@
 
 #import "StartController.h"
 
-static const NSTimeInterval kNotificationsCountFetchInterval = 120;
+static const NSTimeInterval kNotificationsCountFetchInterval = 5;
 
 @implementation NotificationsCountFetcher
 
@@ -307,6 +307,7 @@ Read reviews, ask questions, suggest features, whatever on the \
 */
 
 - (void)fetchNotificationsCountTimerFired:(NSTimer*)timer {
+  [timer invalidate];
   [self refreshData];
 }
 
@@ -315,7 +316,7 @@ Read reviews, ask questions, suggest features, whatever on the \
                                            target:self
                                          selector:@selector(fetchNotificationsCountTimerFired:)
                                          userInfo:nil
-                                          repeats:NO];
+                                          repeats:YES];
   [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
   
 }
