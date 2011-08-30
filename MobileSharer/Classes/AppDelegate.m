@@ -24,6 +24,11 @@
 }
                                               
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+  if([[UIApplication sharedApplication] respondsToSelector:@selector(setStatusBarHidden: withAnimation:)])
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+  else 
+    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
+
   [TTStyleSheet setGlobalStyleSheet:[[[DefaultStyleSheet 
                                        alloc] init] autorelease]];
   TTNavigator* navigator = [TTNavigator navigator];

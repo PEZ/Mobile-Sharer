@@ -63,5 +63,7 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>

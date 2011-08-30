@@ -29,7 +29,7 @@ static void * volatile sharedInstance = nil;
   if (self = [super init]) {
     _permissions =  [[NSArray arrayWithObjects: 
                       @"read_stream", @"publish_stream", @"offline_access", @"manage_notifications",
-                      @"friends_photos", @"user_photos", @"user_likes", @"user_groups", nil] retain];
+                      @"friends_photos", @"user_photos", @"user_likes", @"user_groups", @"share_item", nil] retain];
     _facebook = [[Facebook alloc] initWithAppId:kFacebookAppId];
     [self createDateFormatter];
     //_keychain = [[[KeychainItemWrapper alloc] initWithIdentifier:@"fbAccess" serviceName:nil accessGroup:nil] retain];

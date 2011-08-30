@@ -10,7 +10,9 @@
 #import "FacebookJanitor.h"
 #import "ComposePostController.h"
 
-@interface FeedViewController : TableViewController <TTPostControllerDelegate, FBRequestDelegate>{
+#import "FeedViewControllerBase.h"
+
+@interface FeedViewController : FeedViewControllerBase <TTPostControllerDelegate, FBRequestDelegate>{
   NSString* _feedId;
 }
 

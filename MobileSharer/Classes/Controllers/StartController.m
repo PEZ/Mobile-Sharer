@@ -8,7 +8,7 @@
 
 #import "StartController.h"
 
-static const NSTimeInterval kNotificationsCountFetchInterval = 5;
+static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 
 @implementation NotificationsCountFetcher
 
@@ -145,7 +145,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 5;
     TT_RELEASE_SAFELY(_loginLogoutButton);
   }
   _loginLogoutButton = self.navigationItem.rightBarButtonItem =
-  [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil] autorelease];
+  [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil] retain];
 }
 
 - (void) createRefreshButton {
@@ -153,7 +153,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 5;
     TT_RELEASE_SAFELY(_refreshButton);
   }
   _refreshButton = self.navigationItem.leftBarButtonItem =
-  [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)] autorelease];
+  [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)] retain];
 }
 
 - (void)loadView {
@@ -183,7 +183,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 5;
 }
 
 - (void)createModel {
-  TTListDataSource* dataSource = [[[TTListDataSource alloc] init] autorelease];
+  TTListDataSource* dataSource = [[[TTListDataSource alloc] init] retain];
   NSString* html = @"";
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     self.variableHeightRows = NO;
@@ -287,6 +287,7 @@ Read reviews, ask questions, suggest features, whatever on the \
 
  _loginLogoutButton.enabled = YES;
   self.dataSource = dataSource;
+  TT_RELEASE_SAFELY(dataSource);
 }
 
 - (void)logout {

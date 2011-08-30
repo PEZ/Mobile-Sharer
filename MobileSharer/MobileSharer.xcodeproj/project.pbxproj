@@ -66,6 +66,8 @@
 		EB03560413B761DC00D5C761 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB03560313B761DC00D5C761 /* TableViewController.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
+		EB6F8F2E140CFB490028516D /* FeedViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F2D140CFB480028516D /* FeedViewControllerBase.m */; };
+		EB6F8F2F140CFB490028516D /* FeedViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F2D140CFB480028516D /* FeedViewControllerBase.m */; };
 		EBA9556213D389C300AE581C /* HighlightedTableImageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9556113D389C300AE581C /* HighlightedTableImageItemCell.m */; };
 		EBB0CFD013DC2A5900304A82 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
 		EBB0CFD113DC2A5900304A82 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3288C944126E2F1800BF1E3C /* FBDialog.bundle */; };
@@ -542,6 +544,8 @@
 		EB03560513B763E200D5C761 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB383D1010BBFC630000B2D2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
+		EB6F8F2C140CFB480028516D /* FeedViewControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = FeedViewControllerBase.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; wrapsLines = 1; };
+		EB6F8F2D140CFB480028516D /* FeedViewControllerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = FeedViewControllerBase.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; wrapsLines = 1; };
 		EBA9556013D389C300AE581C /* HighlightedTableImageItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightedTableImageItemCell.h; sourceTree = "<group>"; };
 		EBA9556113D389C300AE581C /* HighlightedTableImageItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightedTableImageItemCell.m; sourceTree = "<group>"; };
 		EBB0D03713DC2A5900304A82 /* Favorites.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Favorites.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -854,6 +858,8 @@
 				EBB605D4139CC9E300A9F46C /* SplitStartController.m */,
 				EBF1655913B8823700BA0485 /* ConnectionsViewController.h */,
 				EBF1655A13B8823700BA0485 /* ConnectionsViewController.m */,
+				EB6F8F2C140CFB480028516D /* FeedViewControllerBase.h */,
+				EB6F8F2D140CFB480028516D /* FeedViewControllerBase.m */,
 				329079EF12844115005D193A /* FeedViewController.h */,
 				329079F012844115005D193A /* FeedViewController.m */,
 				329079F712844295005D193A /* PostViewController.h */,
@@ -1376,6 +1382,7 @@
 				EBEC4F3A13C0B0DF00F5731C /* StyledTableIconDataItem.m in Sources */,
 				EBEC4F3D13C0BB7500F5731C /* NotificationCell.m in Sources */,
 				EBA9556213D389C300AE581C /* HighlightedTableImageItemCell.m in Sources */,
+				EB6F8F2E140CFB490028516D /* FeedViewControllerBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1438,6 +1445,7 @@
 				EBB0D02113DC2A5900304A82 /* StyledTableIconDataItem.m in Sources */,
 				EBB0D02213DC2A5900304A82 /* NotificationCell.m in Sources */,
 				EBB0D02313DC2A5900304A82 /* HighlightedTableImageItemCell.m in Sources */,
+				EB6F8F2F140CFB490028516D /* FeedViewControllerBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
