@@ -8,13 +8,12 @@
 
 #import "FacebookModel.h"
 
-@interface FeedModel : TTURLRequestModel {
-  NSString* _feedId;
-  NSArray*  _posts;
+#import "FeedModelBase.h"
+
+@interface FeedModel : FeedModelBase {
 }
 
 @property (nonatomic, retain)   NSString* feedId;
-@property (nonatomic, retain)   NSArray*  posts;
 
 - (id)initWithFeedId:(NSString*)feedId;
 

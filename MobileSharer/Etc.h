@@ -15,6 +15,9 @@ extern CGFloat   kIconImageHeight;
 
 extern NSString* kNavPathPrefix;
 extern NSString* kFeedURLPath;
+extern NSString* kFavoritesFeedPrefix;
+extern NSString* kFavoritesFeedURLPath;
+
 extern NSString* kNotificationsURLPath;
 extern NSString* kConnectionsPathPrefix;
 extern NSString* kConnectionsURLPath;
@@ -37,6 +40,7 @@ extern NSString* kFeedbackPageURL;
 + (NSString*) urlEncode:(NSString*)unencodedString;
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
++ (NSString*) toFavoritesFeedURLPath:(NSString *)name;
 + (NSString*) toConnectionsURLPath:(NSString*)connectionsPath andName:(NSString*)name;
 + (NSString *) toPhotoURLPath:(NSString *)photoId;
 + (NSString *) toPhotoPostPathFromFBHREF:(NSString *)href;

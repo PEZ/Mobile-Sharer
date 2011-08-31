@@ -7,6 +7,7 @@
 //
 
 #import "StartController.h"
+#import "FavoritesFeedModel.h"
 
 static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 
@@ -226,6 +227,13 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
       [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading current user..."]];
     }
 
+#if APP==FAVORITES_APP
+    [FavoritesFeedModel setFavoriteIds:[NSArray arrayWithObjects:@"10150269957447003", nil]];
+    NSString* favoritesUrl = [Etc toFavoritesFeedURLPath:@"Bookmarks"];
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Bookmarked posts"
+                                                      imageURL:@"bundle://favorites-50x50.png"
+                                                           URL:favoritesUrl]];    
+#endif
     
     NSString* friendsUrl = [Etc toConnectionsURLPath:@"friends" andName:@"Friends"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Friends"
@@ -258,6 +266,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate Share! on the App Store"
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:appStoreUrl]];
+
     if (_hasLikedChecker.hasChecked && !_hasLikedChecker.hasLiked) {
       NSString* fbShareURL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kFeedbackPageUsername];
       [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please like the Share! page"

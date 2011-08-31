@@ -8,6 +8,7 @@
 #import "StartController.h"
 #import "SplitStartController.h"
 #import "WebController.h"
+#import "FavoritesViewController.h"
 
 
 @implementation AppDelegate
@@ -54,6 +55,9 @@
   }
 
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
+#if APP==FAVORITES_APP
+  [map from:kFavoritesFeedURLPath toViewController:[FavoritesViewController class]];
+#endif
   [map from:kConnectionsURLPath toViewController:[ConnectionsViewController class]];
   [map from:kPostIdPath toViewController:[PostViewController class]];
   [map from:kNotificationsURLPath toViewController:[NotificationsViewController class]];

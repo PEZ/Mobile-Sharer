@@ -29,6 +29,7 @@
 #   define DLog(...)
 #endif
 
+#define N(x) [NSNumber numberWithInt: x]
 
 #define SHARE_APP 1
 #define FAVORITES_APP 2
