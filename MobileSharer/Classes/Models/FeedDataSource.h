@@ -1,8 +1,9 @@
 
 #import "FeedModel.h"
 
-@interface FeedDataSource : TTListDataSource {
-  FeedModel* _feedModel;
+#import "FeedDataSourceBase.h"
+
+@interface FeedDataSource : FeedDataSourceBase {
 }
 
 - (id)initWithFeedId:(NSString*)feedId;

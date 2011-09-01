@@ -7,7 +7,7 @@
 //
 
 #import "StartController.h"
-#import "FavoritesFeedModel.h"
+#import "FavoritesViewController.h"
 
 static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 
@@ -228,7 +228,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     }
 
 #if APP==FAVORITES_APP
-    [FavoritesFeedModel setFavoriteIds:[NSArray arrayWithObjects:@"10150269957447003", nil]];
+    [FavoritesViewController setFavoriteIds:[NSArray arrayWithObjects:@"151679248226347_207737659287172", @"632222693_10150276506552694", nil]];
     NSString* favoritesUrl = [Etc toFavoritesFeedURLPath:@"Bookmarks"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Bookmarked posts"
                                                       imageURL:@"bundle://favorites-50x50.png"

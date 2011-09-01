@@ -6,8 +6,12 @@
 //  Copyright 2011 NA. All rights reserved.
 //
 
+#import "FacebookModel.h"
+
 @interface FeedModelBase : TTURLRequestModel
 
 @property (nonatomic, retain)   NSArray*  posts;
+
+- (NSArray*)entriesFromResponse:(TTURLJSONResponse*)response;
 
 @end

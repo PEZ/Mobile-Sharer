@@ -19,33 +19,34 @@
   [super dealloc];
 }
 
+- (NSArray*)entriesFromResponse:(TTURLJSONResponse*)response {
+  @throw [NSException exceptionWithName:@"NotImplentedException" reason:@"Method not implemented" userInfo:nil];
+}
 
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
   TTURLJSONResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
   
-  NSDictionary* feed = response.rootObject;
-  TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
-  
-  NSArray* entries = [feed objectForKey:@"data"];
+  NSArray *entries = [self entriesFromResponse:response];
   
   BOOL more = ([[request urlPath] rangeOfString:@"until="].location != NSNotFound);
   NSMutableArray* posts;
   
   if (more) {
-    posts = [[NSMutableArray arrayWithArray:_posts] retain];
+    posts = [[NSMutableArray arrayWithArray:self.posts] retain];
   }
   else {
     posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
   }
-  TT_RELEASE_SAFELY(_posts);
+  TT_RELEASE_SAFELY(self.posts);
   
   for (NSDictionary* entry in entries) {
     [posts addObject:[FacebookModel createPostFromEntry: entry]];
   }
-  _posts = posts;
+  self.posts = posts;
   
   [super requestDidFinishLoad:request];
 }
+
 
 @end

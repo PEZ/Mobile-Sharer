@@ -7,9 +7,11 @@
 //
 
 #import "FavoritesViewController.h"
+#import "FavoritesFeedDataSource.h"
 
 @implementation FavoritesViewController
 
+static NSArray* _favoriteIds;
 
 - (id)initWithName:(NSString *)name {
   if ((self = [super initWithNibName:nil bundle:nil])) {
@@ -18,5 +20,15 @@
   }
   return self;
 }
+
++ (void)setFavoriteIds:(NSArray *)ids {
+  _favoriteIds = [ids retain];
+}
+
+- (void)createModel {
+  self.dataSource = [[[FavoritesFeedDataSource alloc]
+                      initWithFavoriteIds:_favoriteIds] autorelease];
+}
+
 
 @end

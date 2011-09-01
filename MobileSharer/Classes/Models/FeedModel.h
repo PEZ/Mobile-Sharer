@@ -6,8 +6,6 @@
 //  Copyright 2010 Better Than Tomorrow. All rights reserved.
 //
 
-#import "FacebookModel.h"
-
 #import "FeedModelBase.h"
 
 @interface FeedModel : FeedModelBase {

@@ -10,9 +10,10 @@
 
 static const NSInteger kIdsPerPage = 20;
 
-static NSArray* _favoriteIds;
-
 @interface FavoritesFeedModel : FeedModelBase
 
-+ (void)setFavoriteIds:(NSArray*)ids;
+@property (nonatomic, retain) NSArray* favoriteIds;
+
+- (id)initWithFavoriteIds:(NSArray*)ids;
+
 @end

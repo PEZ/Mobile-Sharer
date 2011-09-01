@@ -28,7 +28,6 @@
   if ((self = [super initWithNibName:nil bundle:nil])) {
     self.feedId = feedId;
     self.title = name;
-    self.variableHeightRows = YES;
   }
   return self;
 }
@@ -65,12 +64,6 @@
 - (void)createModel {
   self.dataSource = [[[FeedDataSource alloc]
                       initWithFeedId:self.feedId] autorelease];
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
 
 #pragma mark -

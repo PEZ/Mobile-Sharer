@@ -10,4 +10,6 @@
 
 @interface FavoritesViewController : FeedViewControllerBase
 
++ (void)setFavoriteIds:(NSArray*)ids;
+
 @end

@@ -11,11 +11,12 @@
 
 @implementation FavoritesFeedModel
 
-- (id)init {
+@synthesize favoriteIds = _favoriteIds;
+
+- (id)initWithFavoriteIds:(NSArray*)ids {
     if ((self = [super init])) {
-        // Initialization code here.
-    }
-    
+      self.favoriteIds = ids;
+    }    
     return self;
 }
 
@@ -24,27 +25,33 @@
   [super dealloc];
 }
 
-+ (void)setFavoriteIds:(NSArray *)ids {
-  _favoriteIds = [ids retain];
-}
-
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading) {
     FBRequest* fbRequest;
     NSString* path = @"";
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:[_favoriteIds componentsJoinedByString:@","] forKey:@"ids"];
     if (more) {
-      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:[_favoriteIds componentsJoinedByString:@","] forKey:@"ids"];
-      fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path
-                                                                              andParams:params
-                                                                          andHttpMethod:@"GET"
-                                                                            andDelegate:nil];
     }
     else {
-      fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path andDelegate:nil];
-    }
-    
+    }      
+    fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path
+                                                                            andParams:params
+                                                                        andHttpMethod:@"GET"
+                                                                          andDelegate:nil];
+
     [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
   }
+}
+
+- (NSArray *)entriesFromResponse:(TTURLJSONResponse*)response  {
+  NSMutableArray* entries = [[NSMutableArray arrayWithCapacity:[_favoriteIds count]] retain];
+  for (NSString* favId in _favoriteIds) {
+    NSObject* obj = [response.rootObject objectForKey:favId];
+    if (obj != nil) {
+      [entries addObject:obj];
+    }
+  }
+  return [NSArray arrayWithArray:entries];
 }
 
 @end

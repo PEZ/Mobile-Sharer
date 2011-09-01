@@ -10,4 +10,10 @@
 
 @implementation FeedViewControllerBase
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id<UITableViewDelegate>)createDelegate {
+  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+}
+
 @end

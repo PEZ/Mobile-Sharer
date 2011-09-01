@@ -66,6 +66,10 @@
 		EB03560413B761DC00D5C761 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB03560313B761DC00D5C761 /* TableViewController.m */; };
 		EB0FFA41140E41120072F21D /* FavoritesFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA40140E41120072F21D /* FavoritesFeedModel.m */; };
 		EB0FFA42140E41120072F21D /* FavoritesFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA40140E41120072F21D /* FavoritesFeedModel.m */; };
+		EB0FFA5B140F816C0072F21D /* FeedDataSourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5A140F816B0072F21D /* FeedDataSourceBase.m */; };
+		EB0FFA5C140F816C0072F21D /* FeedDataSourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5A140F816B0072F21D /* FeedDataSourceBase.m */; };
+		EB0FFA5F140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5E140F81A40072F21D /* FavoritesFeedDataSource.m */; };
+		EB0FFA60140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5E140F81A40072F21D /* FavoritesFeedDataSource.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
 		EB6F8F2E140CFB490028516D /* FeedViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F2D140CFB480028516D /* FeedViewControllerBase.m */; };
@@ -550,6 +554,10 @@
 		EB03560513B763E200D5C761 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		EB0FFA3F140E41120072F21D /* FavoritesFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesFeedModel.h; sourceTree = "<group>"; };
 		EB0FFA40140E41120072F21D /* FavoritesFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesFeedModel.m; sourceTree = "<group>"; };
+		EB0FFA59140F816B0072F21D /* FeedDataSourceBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = FeedDataSourceBase.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; wrapsLines = 1; };
+		EB0FFA5A140F816B0072F21D /* FeedDataSourceBase.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = FeedDataSourceBase.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; wrapsLines = 1; };
+		EB0FFA5D140F81A30072F21D /* FavoritesFeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesFeedDataSource.h; sourceTree = "<group>"; };
+		EB0FFA5E140F81A40072F21D /* FavoritesFeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesFeedDataSource.m; sourceTree = "<group>"; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB383D1010BBFC630000B2D2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		EB6F8F2C140CFB480028516D /* FeedViewControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = FeedViewControllerBase.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; wrapsLines = 1; };
@@ -927,12 +935,16 @@
 				329ADFBC129C53F700B9B01A /* UserModel.m */,
 				EB6F8F34140D06CB0028516D /* FeedModelBase.h */,
 				EB6F8F35140D06CB0028516D /* FeedModelBase.m */,
+				EB0FFA59140F816B0072F21D /* FeedDataSourceBase.h */,
+				EB0FFA5A140F816B0072F21D /* FeedDataSourceBase.m */,
 				329079EB1284410A005D193A /* FeedModel.h */,
 				329079EC1284410A005D193A /* FeedModel.m */,
-				EB0FFA3F140E41120072F21D /* FavoritesFeedModel.h */,
-				EB0FFA40140E41120072F21D /* FavoritesFeedModel.m */,
 				329079E91284410A005D193A /* FeedDataSource.h */,
 				329079EA1284410A005D193A /* FeedDataSource.m */,
+				EB0FFA3F140E41120072F21D /* FavoritesFeedModel.h */,
+				EB0FFA40140E41120072F21D /* FavoritesFeedModel.m */,
+				EB0FFA5D140F81A30072F21D /* FavoritesFeedDataSource.h */,
+				EB0FFA5E140F81A40072F21D /* FavoritesFeedDataSource.m */,
 				323B93D612855A7E0097E308 /* PostModel.h */,
 				323B93D712855A7E0097E308 /* PostModel.m */,
 				323B93D3128559560097E308 /* PostDataSource.h */,
@@ -1404,6 +1416,8 @@
 				EB6F8F32140D04FB0028516D /* FavoritesViewController.m in Sources */,
 				EB6F8F36140D06CB0028516D /* FeedModelBase.m in Sources */,
 				EB0FFA41140E41120072F21D /* FavoritesFeedModel.m in Sources */,
+				EB0FFA5B140F816C0072F21D /* FeedDataSourceBase.m in Sources */,
+				EB0FFA5F140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1470,6 +1484,8 @@
 				EB6F8F33140D04FB0028516D /* FavoritesViewController.m in Sources */,
 				EB6F8F37140D06CB0028516D /* FeedModelBase.m in Sources */,
 				EB0FFA42140E41120072F21D /* FavoritesFeedModel.m in Sources */,
+				EB0FFA5C140F816C0072F21D /* FeedDataSourceBase.m in Sources */,
+				EB0FFA60140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

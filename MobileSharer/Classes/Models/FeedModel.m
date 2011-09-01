@@ -40,6 +40,11 @@
   }
 }
 
+- (NSArray *)entriesFromResponse:(TTURLJSONResponse*)response  {
+  NSDictionary* feed = response.rootObject;
+  TTDASSERT([[feed objectForKey:@"data"] isKindOfClass:[NSArray class]]);
+  return [feed objectForKey:@"data"];
+}
 
 @end
 
