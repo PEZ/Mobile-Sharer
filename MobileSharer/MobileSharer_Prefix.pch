@@ -56,3 +56,4 @@
 
 #define kFeedbackPageURL @"https://www.facebook.com/" kFeedbackPageUsername
 #define kFacebookLoginPath @"fb" kFacebookAppId @"://"
+#define kFavoritesBlankSlatePost @"245161295504531_261435917210402"

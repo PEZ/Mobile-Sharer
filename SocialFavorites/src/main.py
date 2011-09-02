@@ -21,6 +21,8 @@ from model.sfuser import SFUser
 
 from utils import sfdatetime
 
+BLANK_SLATE_POST_ID = "245161295504531_261435917210402"
+
 class WebHandler(webapp.RequestHandler):
 
     def Render(self, template_file, template_values, layout='main.html'):
@@ -121,6 +123,8 @@ class GetFavsAPIHandler(APIHandler):
             result = {'favorites': fav_ids, 'status': True}
             if oldest is not None:
                 result['oldest_created_at'] = oldest.isoformat()
+            else:
+                result['favorites'] = [BLANK_SLATE_POST_ID]
             self.respond(result)
         except Exception, err:
             self.bail_with_message(err, {'favorites': [], 'status': False})
