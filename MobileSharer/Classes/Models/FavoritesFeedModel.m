@@ -51,6 +51,7 @@
     
     TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
     request.response = response;
+    [_delegate performSelector:@selector(requestDidStartLoad:) withObject:request];
     [request send];
   }
 }
@@ -98,6 +99,7 @@
   if (!self.isLoading) {
     [_favoriteIdsFetcher load:cachePolicy more:more];
   }
+  [super load:cachePolicy more:more];
 }
 
 - (void)fetchingFavoriteIdsDone:(NSArray*)ids {
