@@ -33,17 +33,18 @@
   NSMutableArray* posts;
   
   if (more) {
-    posts = [[NSMutableArray arrayWithArray:self.posts] retain];
+    posts = [[NSMutableArray arrayWithArray:_posts] retain];
   }
   else {
     posts = [[NSMutableArray alloc] initWithCapacity:[entries count]];
   }
-  TT_RELEASE_SAFELY(self.posts);
+  TT_RELEASE_SAFELY(_posts);
   
   for (NSDictionary* entry in entries) {
     [posts addObject:[FacebookModel createPostFromEntry: entry]];
   }
   self.posts = posts;
+  TT_RELEASE_SAFELY(posts)
   
   [super requestDidFinishLoad:request];
 }

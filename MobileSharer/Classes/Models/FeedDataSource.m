@@ -6,7 +6,7 @@
 
 - (id)initWithFeedId:(NSString*)feedId {
   if (self = [super init]) {
-    self.feedModel = [[FeedModel alloc] initWithFeedId:feedId];
+    self.feedModel = [[[FeedModel alloc] initWithFeedId:feedId] autorelease];
   }
 
   return self;

@@ -8,12 +8,36 @@
 
 #import "FeedModelBase.h"
 
-static const NSInteger kIdsPerPage = 20;
+#pragma mark -
+#pragma mark Helpers
 
-@interface FavoritesFeedModel : FeedModelBase
+@protocol FavoriteIdsFetcherDelegate <NSObject>
+- (void)fetchingFavoriteIdsDone:(NSArray*)ids;
+- (void)request:(TTURLRequest*)request fetchingFavoriteIdsError:(NSError*)error;
+@end
 
-@property (nonatomic, retain) NSArray* favoriteIds;
+@interface FavoriteIdsFetcher : TTURLRequestModel <TTURLRequestDelegate> {
+@private
+  NSString* _secret;
+  id<FavoriteIdsFetcherDelegate> _delegate;
+}
 
-- (id)initWithFavoriteIds:(NSArray*)ids;
+@property (readonly, retain) NSDate* lastFavCreatedAt;
+
+- (id)initWithSecret:(NSString*)secret andDelegate:(id<FavoriteIdsFetcherDelegate>)delegate;
+
+@end
+
+#pragma mark -
+#pragma FavoritesFeedModel
+
+@interface FavoritesFeedModel : FeedModelBase <FavoriteIdsFetcherDelegate> {
+  @private
+  FavoriteIdsFetcher* _favoriteIdsFetcher;
+}
+
+@property (readonly, retain) NSArray* favoriteIds;
+
+- (id)initWithSecret:(NSString*)secret;
 
 @end

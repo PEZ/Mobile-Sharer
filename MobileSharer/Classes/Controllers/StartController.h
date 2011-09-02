@@ -18,9 +18,6 @@
 
 @interface NotificationsCountFetcher : NSObject <FBRequestDelegate> {
 @private
-  BOOL _isLoading;
-  BOOL _failedLoading;
-  NSNumber* _newCount;
   id<NotificationsCountDelegate> _delegate;
 }
 

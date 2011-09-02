@@ -11,9 +11,9 @@
 
 @implementation FavoritesViewController
 
-static NSArray* _favoriteIds;
+static NSString* _secret;
 
-- (id)initWithName:(NSString *)name {
+- (id)initWithName:(NSString*)name {
   if ((self = [super initWithNibName:nil bundle:nil])) {
     self.title = name;
     self.variableHeightRows = YES;
@@ -21,13 +21,14 @@ static NSArray* _favoriteIds;
   return self;
 }
 
-+ (void)setFavoriteIds:(NSArray *)ids {
-  _favoriteIds = [ids retain];
++ (void)setSecret:(NSString*)secret {
+  TT_RELEASE_SAFELY(_secret);
+  _secret = [secret retain];
 }
 
 - (void)createModel {
   self.dataSource = [[[FavoritesFeedDataSource alloc]
-                      initWithFavoriteIds:_favoriteIds] autorelease];
+                      initWithSecret:_secret] autorelease];
 }
 
 

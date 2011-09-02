@@ -145,16 +145,21 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
   if (_loginLogoutButton != nil) {
     TT_RELEASE_SAFELY(_loginLogoutButton);
   }
-  _loginLogoutButton = self.navigationItem.rightBarButtonItem =
-  [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:nil] retain];
+  _loginLogoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Login"
+                                                        style:UIBarButtonItemStyleBordered
+                                                       target:self
+                                                       action:nil];
+  self.navigationItem.rightBarButtonItem = _loginLogoutButton;
 }
 
 - (void) createRefreshButton {
   if (_refreshButton != nil) {
     TT_RELEASE_SAFELY(_refreshButton);
   }
-  _refreshButton = self.navigationItem.leftBarButtonItem =
-  [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshData)] retain];
+  _refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                 target:self
+                                                                 action:@selector(refreshData)];
+  self.navigationItem.leftBarButtonItem = _refreshButton;
 }
 
 - (void)loadView {
@@ -184,7 +189,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 }
 
 - (void)createModel {
-  TTListDataSource* dataSource = [[[TTListDataSource alloc] init] retain];
+  TTListDataSource* dataSource = [[TTListDataSource alloc] init];
   NSString* html = @"";
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
     self.variableHeightRows = NO;
@@ -228,7 +233,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     }
 
 #if APP==FAVORITES_APP
-    [FavoritesViewController setFavoriteIds:[NSArray arrayWithObjects:@"151679248226347_207737659287172", @"632222693_10150276506552694", nil]];
+    [FavoritesViewController setSecret:@"6ae8a11b0d34a5028296ef11e3bb45cd2b9279d2"];
     NSString* favoritesUrl = [Etc toFavoritesFeedURLPath:@"Bookmarks"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Bookmarked posts"
                                                       imageURL:@"bundle://favorites-50x50.png"

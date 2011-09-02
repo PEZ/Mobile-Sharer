@@ -10,6 +10,6 @@
 
 @interface FavoritesFeedDataSource : FeedDataSourceBase
 
-- (id)initWithFavoriteIds:(NSArray*)ids;
+- (id)initWithSecret:(NSString*)secret;
 
 @end

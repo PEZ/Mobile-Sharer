@@ -1,5 +1,5 @@
 import os
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'social-favorites.settings'
 from google.appengine.dist import use_library
 use_library('django', '1.2')
 
@@ -120,7 +120,7 @@ class GetFavsAPIHandler(APIHandler):
             fav_ids, oldest = Fav.fav_ids_for_user(user_id, limit, start_time)
             result = {'favorites': fav_ids, 'status': True}
             if oldest is not None:
-                result[''] = oldest.isoformat()
+                result['oldest_created_at'] = oldest.isoformat()
             self.respond(result)
         except Exception, err:
             self.bail_with_message(err, {'favorites': [], 'status': False})
