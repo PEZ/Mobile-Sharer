@@ -13,9 +13,9 @@
 @implementation FavoritesFeedDataSource
 
 
-- (id)initWithSecret:(NSString*)secret {
+- (id)initWithSecret:(NSString*)secret andUserId:(NSString*)userId {
   if ((self = [super init])) {
-    self.feedModel = [[[FavoritesFeedModel alloc] initWithSecret:secret] autorelease];
+    self.feedModel = [[[FavoritesFeedModel alloc] initWithSecret:secret andUserId:userId] autorelease];
   }
   
   return self;

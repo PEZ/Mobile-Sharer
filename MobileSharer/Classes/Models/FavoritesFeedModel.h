@@ -9,7 +9,26 @@
 #import "FeedModelBase.h"
 
 #pragma mark -
-#pragma mark Helpers
+#pragma mark SecretFetcher
+
+@protocol SecretFetcherDelegate <NSObject>
+- (void)fetchingSecretDone:(NSString*)secret;
+- (void)request:(TTURLRequest*)request fetchingSecretError:(NSError*)error;
+@end
+
+@interface SecretFetcher : TTURLRequestModel <TTURLRequestDelegate> {
+@private
+  NSString* _userId;
+  NSString* _accessToken;
+  id<SecretFetcherDelegate> _delegate;
+}
+
+- (id)initWithUserId:(NSString*)userId andAccessToken:(NSString*)accessToken andDelegate:(id<SecretFetcherDelegate>)delegate;
+
+@end
+
+#pragma mark -
+#pragma mark FavoriteIdsFetcher
 
 @protocol FavoriteIdsFetcherDelegate <NSObject>
 - (void)fetchingFavoriteIdsDone:(NSArray*)ids;
@@ -19,12 +38,13 @@
 @interface FavoriteIdsFetcher : TTURLRequestModel <TTURLRequestDelegate> {
 @private
   NSString* _secret;
+  NSString* _userId;
   id<FavoriteIdsFetcherDelegate> _delegate;
 }
 
 @property (readonly, retain) NSDate* lastFavCreatedAt;
 
-- (id)initWithSecret:(NSString*)secret andDelegate:(id<FavoriteIdsFetcherDelegate>)delegate;
+- (id)initWithSecret:(NSString*)secret andUserId:(NSString*)userId andDelegate:(id<FavoriteIdsFetcherDelegate>)delegate;
 
 @end
 
@@ -38,6 +58,6 @@
 
 @property (readonly, retain) NSArray* favoriteIds;
 
-- (id)initWithSecret:(NSString*)secret;
+- (id)initWithSecret:(NSString*)secret andUserId:(NSString*)userId;
 
 @end

@@ -224,21 +224,36 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
       [dataSource.items addObject:[TTTableImageItem itemWithText:[NSString stringWithFormat:@"%@", janitor.currentUser.userName]
                                                         imageURL:[FacebookJanitor avatarForId:janitor.currentUser.userId]
                                                              URL:[Etc toFeedURLPath:janitor.currentUser.userId name:janitor.currentUser.userName]]];
+
+#if APP==FAVORITES_APP
+      if (_favoritesSecret != nil) {
+        [FavoritesViewController setSecret:_favoritesSecret andUserId:janitor.currentUser.userId];
+        NSString* favoritesUrl = [Etc toFavoritesFeedURLPath:@"Favorites"];
+        [dataSource.items addObject:[TTTableImageItem itemWithText:@"Favorited posts"
+                                                          imageURL:@"bundle://favorites-50x50.png"
+                                                               URL:favoritesUrl]];    
+      }
+      else if (_fetchingSecretFailed) {
+        [dataSource.items addObject:[TTTableImageItem itemWithText:@"Error fetching Favorites credentials" imageURL:@"bundle://favorites-50x50.png"]];        
+      }
+      else {
+        [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Fetching Favorites credentials..."]];        
+      }
+#endif
     }
     else if (_currentUserLoadFailed) {
       [dataSource.items addObject:[TTTableTextItem itemWithText:@"Error loading user info"]];
+#if APP==FAVORITES_APP
+      [dataSource.items addObject:[TTTableImageItem itemWithText:@"(Requires user info)" imageURL:@"bundle://favorites-50x50.png"]];
+#endif
     }
     else {
       [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Loading current user..."]];
+#if APP==FAVORITES_APP
+      [dataSource.items addObject:[TTTableActivityItem itemWithText:@"Waiting for user info..."]];
+#endif
     }
 
-#if APP==FAVORITES_APP
-    [FavoritesViewController setSecret:@"6ae8a11b0d34a5028296ef11e3bb45cd2b9279d2"];
-    NSString* favoritesUrl = [Etc toFavoritesFeedURLPath:@"Bookmarks"];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Bookmarked posts"
-                                                      imageURL:@"bundle://favorites-50x50.png"
-                                                           URL:favoritesUrl]];    
-#endif
     
     NSString* friendsUrl = [Etc toConnectionsURLPath:@"friends" andName:@"Friends"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Friends"
@@ -363,6 +378,9 @@ Read reviews, ask questions, suggest features, whatever on the \
 - (void) userRequestDidFinishLoad:(UserModel*)userModel {
   _currentUserLoaded = YES;
   _currentUserLoadFailed = NO;
+  [[[SecretFetcher alloc] initWithUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                         andAccessToken:[FacebookJanitor sharedInstance].facebook.accessToken
+                             andDelegate:self] load:TTURLRequestCachePolicyNetwork more:NO];
   [self refreshData];
 }
 
@@ -392,6 +410,21 @@ Read reviews, ask questions, suggest features, whatever on the \
 #pragma mark HasLikedDelegate
 
 - (void)hasLikedCheckDone:(HasLikedChecker *)checker {
+  [self invalidateModel];
+}
+
+#pragma mark -
+#pragma mark SecretFetcherDelegate
+
+- (void)fetchingSecretDone:(NSString *)secret {
+  _fetchingSecretFailed = NO;
+  _favoritesSecret = [secret retain];
+  [self invalidateModel];
+}
+
+- (void)request:(TTURLRequest *)request fetchingSecretError:(NSError *)error {
+  DLog(@"Fetching secret failed: %@", error);
+  _fetchingSecretFailed = YES;
   [self invalidateModel];
 }
 

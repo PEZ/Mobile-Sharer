@@ -8,6 +8,7 @@
 
 #import "TableViewController.h"
 #import "FacebookJanitor.h"
+#import "FavoritesFeedModel.h"
 
 @class NotificationsCountFetcher;
 
@@ -52,14 +53,16 @@
 
 
 @interface StartController : TableViewController
-<FBJSessionDelegate, UserRequestDelegate, NotificationsCountDelegate, HasLikedDelegate> {
+<FBJSessionDelegate, UserRequestDelegate, NotificationsCountDelegate, HasLikedDelegate, SecretFetcherDelegate> {
   @private
   UIBarButtonItem* _loginLogoutButton;
   UIBarButtonItem* _refreshButton;
   BOOL       _currentUserLoaded;
   BOOL       _currentUserLoadFailed;
+  BOOL       _fetchingSecretFailed;
   NotificationsCountFetcher* _notificationsCountFetcher;
   HasLikedChecker* _hasLikedChecker;
+  NSString* _favoritesSecret;
 }
 
 - (void)refreshData;

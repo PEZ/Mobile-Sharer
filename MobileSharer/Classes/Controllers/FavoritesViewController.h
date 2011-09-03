@@ -10,6 +10,6 @@
 
 @interface FavoritesViewController : FeedViewControllerBase
 
-+ (void)setSecret:(NSString*)secret;
++ (void)setSecret:(NSString*)secret andUserId:(NSString*)userId;
 
 @end

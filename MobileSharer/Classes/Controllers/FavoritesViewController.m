@@ -12,6 +12,7 @@
 @implementation FavoritesViewController
 
 static NSString* _secret;
+static NSString* _userId;
 
 - (id)initWithName:(NSString*)name {
   if ((self = [super initWithNibName:nil bundle:nil])) {
@@ -21,14 +22,16 @@ static NSString* _secret;
   return self;
 }
 
-+ (void)setSecret:(NSString*)secret {
++ (void)setSecret:(NSString*)secret andUserId:(NSString*)userId {
   TT_RELEASE_SAFELY(_secret);
+  TT_RELEASE_SAFELY(_userId);
   _secret = [secret retain];
+  _userId = [userId retain];
 }
 
 - (void)createModel {
   self.dataSource = [[[FavoritesFeedDataSource alloc]
-                      initWithSecret:_secret] autorelease];
+                      initWithSecret:_secret andUserId:_userId] autorelease];
 }
 
 
