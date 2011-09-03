@@ -123,8 +123,8 @@ static const CGFloat kMarginY = 6;
         _linkField.text = [Etc mobileYouTubeURL:_linkField.text];
       }
       [Etc params:&params addObject:_linkField.text forKey:@"link"];
+      [Etc params:&params addObject:@"http://dl.dropbox.com/u/3259215/img/Share/share-picture.png" forKey:@"picture"];
     }
-    [Etc params:&params addObject:@"http://dl.dropbox.com/u/3259215/img/Share/share-picture.png" forKey:@"picture"];
     NSString* path = [NSString stringWithFormat:@"%@/%@", _feedId, [_linkField.text isMatchedByRegex:@"^http://(www[.])?youtube[.]com"] ? @"links" : @"feed"];
     [fb requestWithGraphPath:path
                    andParams:params
