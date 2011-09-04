@@ -11,22 +11,20 @@
 
 @implementation FavoritesViewController
 
-static NSString* _secret;
-static NSString* _userId;
-
-- (id)initWithName:(NSString*)name {
+- (id)initWithName:(NSString*)name andSecret:(NSString*)secret andUserId:(NSString*)userId {
   if ((self = [super initWithNibName:nil bundle:nil])) {
+    _secret = [secret retain];
+    _userId = [userId retain];
     self.title = name;
     self.variableHeightRows = YES;
   }
   return self;
 }
 
-+ (void)setSecret:(NSString*)secret andUserId:(NSString*)userId {
+- (void)dealloc {
   TT_RELEASE_SAFELY(_secret);
   TT_RELEASE_SAFELY(_userId);
-  _secret = [secret retain];
-  _userId = [userId retain];
+  [super dealloc];
 }
 
 - (void)createModel {

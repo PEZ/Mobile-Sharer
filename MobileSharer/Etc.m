@@ -18,7 +18,7 @@ CGFloat   kDisclosureWidth  = 23;
 NSString* kNavPathPrefix = kUrlScheme @"://feed";
 NSString* kFeedURLPath = kUrlScheme @"://feed/(initWithFBFeedId:)/(andName:)";
 NSString* kFavoritesFeedPrefix = kUrlScheme @"://favorites";
-NSString* kFavoritesFeedURLPath = kUrlScheme @"://favorites/(initWithName:)";
+NSString* kFavoritesFeedURLPath = kUrlScheme @"://favorites/(initWithName:)/(andSecret:)/(andUserId:)";
 NSString* kNotificationsURLPath = kUrlScheme @"://notifications";
 NSString* kConnectionsPathPrefix = kUrlScheme @"://connections";
 NSString* kConnectionsURLPath = kUrlScheme @"://connections/(initWithFBConnectionsPath:)/(andName:)";
@@ -54,10 +54,12 @@ NSString* kCommentPath = kUrlScheme @"://comment";
   return url;
 }
 
-+ (NSString*) toFavoritesFeedURLPath:(NSString *)name {
-  NSString* url = [NSString stringWithFormat:@"%@/%@",
++ (NSString*) toFavoritesFeedURLPath:(NSString *)name andSecret:(NSString*)secret andUserId:(NSString*)userId {
+  NSString* url = [NSString stringWithFormat:@"%@/%@/%@/%@",
                    kFavoritesFeedPrefix,
-                   [self urlEncode:name]];
+                   [self urlEncode:name],
+                   secret,
+                   userId];
   return url;
 }
 

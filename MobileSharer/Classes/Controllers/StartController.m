@@ -227,8 +227,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 
 #if APP==FAVORITES_APP
       if (_favoritesSecret != nil) {
-        [FavoritesViewController setSecret:_favoritesSecret andUserId:janitor.currentUser.userId];
-        NSString* favoritesUrl = [Etc toFavoritesFeedURLPath:@"Favorites"];
+        NSString* favoritesUrl = [Etc toFavoritesFeedURLPath:@"Favorites" andSecret:_favoritesSecret andUserId:janitor.currentUser.userId];
         [dataSource.items addObject:[TTTableImageItem itemWithText:@"Favorited posts"
                                                           imageURL:@"bundle://favorites-50x50.png"
                                                                URL:favoritesUrl]];    

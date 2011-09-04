@@ -8,8 +8,10 @@
 
 #import "FeedViewControllerBase.h"
 
-@interface FavoritesViewController : FeedViewControllerBase
-
-+ (void)setSecret:(NSString*)secret andUserId:(NSString*)userId;
+@interface FavoritesViewController : FeedViewControllerBase {
+  @private
+  NSString* _secret;
+  NSString* _userId;
+}
 
 @end

@@ -40,7 +40,7 @@ extern NSString* kFeedbackPageURL;
 + (NSString*) urlEncode:(NSString*)unencodedString;
 
 + (NSString *) toFeedURLPath:(NSString *)feedId name:(NSString *)name;
-+ (NSString*) toFavoritesFeedURLPath:(NSString *)name;
++ (NSString*) toFavoritesFeedURLPath:(NSString *)name andSecret:(NSString*)secret andUserId:(NSString*)userId;
 + (NSString*) toConnectionsURLPath:(NSString*)connectionsPath andName:(NSString*)name;
 + (NSString *) toPhotoURLPath:(NSString *)photoId;
 + (NSString *) toPhotoPostPathFromFBHREF:(NSString *)href;
