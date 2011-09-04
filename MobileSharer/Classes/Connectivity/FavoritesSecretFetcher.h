@@ -18,6 +18,7 @@
   id<FavoritesSecretFetcherDelegate> _delegate;
 }
 
++ (NSString*)getSecret;
 - (id)initWithUserId:(NSString*)userId andAccessToken:(NSString*)accessToken andDelegate:(id<FavoritesSecretFetcherDelegate>)delegate;
 
 @end

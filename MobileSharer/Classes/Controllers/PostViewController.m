@@ -10,6 +10,7 @@
 #import "FacebookJanitor.h"
 #import "CommentsPostController.h"
 #import "SharePostController.h"
+#import "FavoritesSecretFetcher.h"
 
 @implementation LikeButton
 
@@ -117,6 +118,7 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   [self tearDownNavigation];
   TT_RELEASE_SAFELY(_postId);
   TT_RELEASE_SAFELY(_actionSheet);
+  TT_RELEASE_SAFELY(_favoriteAdder);
   [super dealloc];
 }
 
@@ -210,7 +212,14 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
 }
 
 - (void)addFavorite {
-  TTAlert([NSString stringWithFormat:@"Add %@", _postId]);
+  self.navigationItem.rightBarButtonItem.enabled = NO;
+  TT_RELEASE_SAFELY(_favoriteAdder);
+  _favoriteAdder = [[FavoriteAdder alloc] initWithPostId:_postId
+                                               andUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                                             andAuthorId:_post.fromId
+                                               andSecret:[FavoritesSecretFetcher getSecret]
+                                             andDelegate:self];
+  [_favoriteAdder add];
 }
 
 - (void)removeFavorite {
@@ -222,7 +231,8 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
 #if APP==FAVORITES_APP
     if (self.navigationItem.rightBarButtonItem == nil) {
       self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
-                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                 initWithImage:[UIImage imageNamed:@"add-favorite.png"]
+                                                 style:UIBarButtonItemStylePlain
                                                  target:self
                                                  action:_isFavoritePost ? @selector(removeFavorite) : @selector(addFavorite)] autorelease];
     }
@@ -313,6 +323,21 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
 }
 
 - (void)request:(FBRequest*)request didLoad:(id)result {
+}
+
+#pragma mark -
+#pragma mark FavoriteAdderDelegate
+
+- (void)addingFavoriteDone {
+  _isFavoritePost = NO;
+  self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"bundle://remove-favorite.png"];
+  self.navigationItem.rightBarButtonItem.action = @selector(removeFavorite);
+  self.navigationItem.rightBarButtonItem.enabled = TRUE;
+}
+
+- (void)request:(TTURLRequest*)request addingFavoriteError:(NSError*)error {
+  self.navigationItem.rightBarButtonItem.enabled = TRUE;
+  TTAlert([NSString stringWithFormat:@"Failed adding favorite.\n\n(%@)", error]);
 }
 
 @end

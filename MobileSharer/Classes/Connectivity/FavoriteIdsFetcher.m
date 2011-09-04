@@ -8,9 +8,6 @@
 
 #import "FavoriteIdsFetcher.h"
 
-#pragma mark -
-#pragma mark FavoriteIdsFetcher
-
 @implementation FavoriteIdsFetcher
 
 @synthesize lastFavCreatedAt = _lastFavCreatedAt;

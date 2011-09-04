@@ -11,6 +11,8 @@
 
 @implementation FavoritesSecretFetcher
 
+static NSString* _secret;
+
 - (id)initWithUserId:(NSString*)userId andAccessToken:(NSString*)accessToken andDelegate:(id<FavoritesSecretFetcherDelegate>)delegate {
   if ((self = [self init])) {
     _userId = [userId retain];
@@ -25,6 +27,10 @@
   TT_RELEASE_SAFELY(_accessToken);
   TT_RELEASE_SAFELY(_delegate);
   [super dealloc];
+}
+
++ (NSString*)getSecret {
+  return _secret;
 }
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
@@ -62,7 +68,8 @@
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);  
   NSDictionary* info = response.rootObject;
   
-  [_delegate fetchingSecretDone:[info objectForKey:@"secret"]];
+  _secret = [[info objectForKey:@"secret"] retain];
+  [_delegate fetchingSecretDone:_secret];
   
   [super requestDidFinishLoad:request];
 }

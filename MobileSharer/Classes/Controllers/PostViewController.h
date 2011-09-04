@@ -11,6 +11,7 @@
 #import "PostDataSource.h"
 #import "CommentsPostController.h"
 #import "Post.h"
+#import "FavoriteAdder.h"
 
 @class PostViewController;
 
@@ -24,13 +25,15 @@
 
 @end
 
-@interface PostViewController : TableViewController <TTPostControllerDelegate, FBRequestDelegate, UIActionSheetDelegate> {
+@interface PostViewController : TableViewController
+<TTPostControllerDelegate, FBRequestDelegate, UIActionSheetDelegate, FavoriteAdderDelegate> {
   @protected
   NSString* _postId;
   BOOL _wasShared;
   BOOL _isFavoritePost;
   TTActionSheetController* _actionSheet;
   UIBarButtonItem*  _shareButton;
+  FavoriteAdder* _favoriteAdder;
 }
 
 @property (nonatomic, retain)   Post* post;
