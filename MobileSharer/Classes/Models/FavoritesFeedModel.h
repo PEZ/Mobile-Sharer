@@ -7,30 +7,7 @@
 //
 
 #import "FeedModelBase.h"
-
-#pragma mark -
-#pragma mark FavoriteIdsFetcher
-
-@protocol FavoriteIdsFetcherDelegate <NSObject>
-- (void)fetchingFavoriteIdsDone:(NSArray*)ids;
-- (void)request:(TTURLRequest*)request fetchingFavoriteIdsError:(NSError*)error;
-@end
-
-@interface FavoriteIdsFetcher : TTURLRequestModel <TTURLRequestDelegate> {
-@private
-  NSString* _secret;
-  NSString* _userId;
-  id<FavoriteIdsFetcherDelegate> _delegate;
-}
-
-@property (readonly, retain) NSDate* lastFavCreatedAt;
-
-- (id)initWithSecret:(NSString*)secret andUserId:(NSString*)userId andDelegate:(id<FavoriteIdsFetcherDelegate>)delegate;
-
-@end
-
-#pragma mark -
-#pragma FavoritesFeedModel
+#import "FavoriteIdsFetcher.h"
 
 @interface FavoritesFeedModel : FeedModelBase <FavoriteIdsFetcherDelegate> {
   @private
