@@ -377,9 +377,10 @@ Read reviews, ask questions, suggest features, whatever on the \
 - (void) userRequestDidFinishLoad:(UserModel*)userModel {
   _currentUserLoaded = YES;
   _currentUserLoadFailed = NO;
-  [[[SecretFetcher alloc] initWithUserId:[FacebookJanitor sharedInstance].currentUser.userId
-                         andAccessToken:[FacebookJanitor sharedInstance].facebook.accessToken
-                             andDelegate:self] load:TTURLRequestCachePolicyNetwork more:NO];
+  _secretFetcher = [[[SecretFetcher alloc] initWithUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                                           andAccessToken:[FacebookJanitor sharedInstance].facebook.accessToken
+                                              andDelegate:self] retain];
+  [_secretFetcher load:TTURLRequestCachePolicyNetwork more:NO];
   [self refreshData];
 }
 
@@ -418,6 +419,7 @@ Read reviews, ask questions, suggest features, whatever on the \
 - (void)fetchingSecretDone:(NSString *)secret {
   _fetchingSecretFailed = NO;
   _favoritesSecret = [secret retain];
+  TT_RELEASE_SAFELY(_secretFetcher);
   [self invalidateModel];
 }
 

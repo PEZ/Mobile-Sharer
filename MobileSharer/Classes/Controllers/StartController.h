@@ -62,6 +62,7 @@
   BOOL       _fetchingSecretFailed;
   NotificationsCountFetcher* _notificationsCountFetcher;
   HasLikedChecker* _hasLikedChecker;
+  SecretFetcher* _secretFetcher;
   NSString* _favoritesSecret;
 }
 
