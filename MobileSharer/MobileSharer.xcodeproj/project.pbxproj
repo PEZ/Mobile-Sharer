@@ -75,6 +75,7 @@
 		EB0FFAC0141383370072F21D /* Favorite-AppIcon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFABF141383370072F21D /* Favorite-AppIcon~ipad.png */; };
 		EB0FFAC3141384530072F21D /* favorites-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFAC1141384530072F21D /* favorites-50x50.png */; };
 		EB0FFAC4141384530072F21D /* favorites-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFAC2141384530072F21D /* favorites-50x50@2x.png */; };
+		EB0FFAC7141389070072F21D /* FavoritesSecretFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFAC6141389070072F21D /* FavoritesSecretFetcher.m */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
 		EB6F8F2E140CFB490028516D /* FeedViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F2D140CFB480028516D /* FeedViewControllerBase.m */; };
@@ -566,6 +567,9 @@
 		EB0FFABF141383370072F21D /* Favorite-AppIcon~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favorite-AppIcon~ipad.png"; sourceTree = "<group>"; };
 		EB0FFAC1141384530072F21D /* favorites-50x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-50x50.png"; sourceTree = "<group>"; };
 		EB0FFAC2141384530072F21D /* favorites-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-50x50@2x.png"; sourceTree = "<group>"; };
+		EB0FFAC5141389060072F21D /* FavoritesSecretFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritesSecretFetcher.h; path = ../Models/FavoritesSecretFetcher.h; sourceTree = "<group>"; };
+		EB0FFAC6141389070072F21D /* FavoritesSecretFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritesSecretFetcher.m; path = ../Models/FavoritesSecretFetcher.m; sourceTree = "<group>"; };
+		EB0FFAC814138ABA0072F21D /* FavoritesSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesSettings.h; sourceTree = "<group>"; };
 		EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB383D1010BBFC630000B2D2 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = ../../three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
 		EB6F8F2C140CFB480028516D /* FeedViewControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = FeedViewControllerBase.h; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; wrapsLines = 1; };
@@ -747,6 +751,9 @@
 			children = (
 				3215B0501272E15C005580D5 /* FacebookJanitor.h */,
 				3215B0511272E15C005580D5 /* FacebookJanitor.m */,
+				EB0FFAC814138ABA0072F21D /* FavoritesSettings.h */,
+				EB0FFAC5141389060072F21D /* FavoritesSecretFetcher.h */,
+				EB0FFAC6141389070072F21D /* FavoritesSecretFetcher.m */,
 			);
 			path = Connectivity;
 			sourceTree = "<group>";
@@ -1502,6 +1509,7 @@
 				EB0FFA42140E41120072F21D /* FavoritesFeedModel.m in Sources */,
 				EB0FFA5C140F816C0072F21D /* FeedDataSourceBase.m in Sources */,
 				EB0FFA60140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */,
+				EB0FFAC7141389070072F21D /* FavoritesSecretFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

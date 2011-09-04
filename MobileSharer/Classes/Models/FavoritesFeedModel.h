@@ -9,25 +9,6 @@
 #import "FeedModelBase.h"
 
 #pragma mark -
-#pragma mark SecretFetcher
-
-@protocol SecretFetcherDelegate <NSObject>
-- (void)fetchingSecretDone:(NSString*)secret;
-- (void)request:(TTURLRequest*)request fetchingSecretError:(NSError*)error;
-@end
-
-@interface SecretFetcher : TTURLRequestModel <TTURLRequestDelegate> {
-@private
-  NSString* _userId;
-  NSString* _accessToken;
-  id<SecretFetcherDelegate> _delegate;
-}
-
-- (id)initWithUserId:(NSString*)userId andAccessToken:(NSString*)accessToken andDelegate:(id<SecretFetcherDelegate>)delegate;
-
-@end
-
-#pragma mark -
 #pragma mark FavoriteIdsFetcher
 
 @protocol FavoriteIdsFetcherDelegate <NSObject>

@@ -19,6 +19,7 @@
 //#import <Three20UICommon/UIViewControllerAdditions.h>
 //#import "Three20Core/NSDateAdditions.h"
   #import <Three20/Three20+Additions.h>
+  #import <extThree20JSON/extThree20JSON.h>
   #import "Etc.h"
 //#import "DefaultStyleSheet.h"
 #endif

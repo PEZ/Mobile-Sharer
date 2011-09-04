@@ -378,9 +378,9 @@ Read reviews, ask questions, suggest features, whatever on the \
   _currentUserLoaded = YES;
   _currentUserLoadFailed = NO;
 #if APP==FAVORITES_APP
-  _secretFetcher = [[[SecretFetcher alloc] initWithUserId:[FacebookJanitor sharedInstance].currentUser.userId
-                                           andAccessToken:[FacebookJanitor sharedInstance].facebook.accessToken
-                                              andDelegate:self] retain];
+  _secretFetcher = [[[FavoritesSecretFetcher alloc] initWithUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                                                    andAccessToken:[FacebookJanitor sharedInstance].facebook.accessToken
+                                                       andDelegate:self] retain];
   [_secretFetcher load:TTURLRequestCachePolicyNetwork more:NO];
 #endif
   [self refreshData];

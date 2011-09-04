@@ -8,75 +8,7 @@
 
 #import "FavoritesFeedModel.h"
 #import "FacebookJanitor.h"
-
-#define kFavsServerBase @"http://localhost:8080/api"
-//#define kFavsServerBase @"http://social-favorites.appspot.com/api"
-
-#define kIdsPerPage 25
-#define secretForUserIdKey @"favSecret" userId 
-
-#pragma mark -
-#pragma mark SecretFetcher
-
-@implementation SecretFetcher
-
-- (id)initWithUserId:(NSString*)userId andAccessToken:(NSString*)accessToken andDelegate:(id<SecretFetcherDelegate>)delegate {
-  if ((self = [self init])) {
-    _userId = [userId retain];
-    _accessToken = [accessToken retain];
-    _delegate = [delegate retain];
-  }
-  return self;
-}
-
-- (void)dealloc {
-  TT_RELEASE_SAFELY(_userId);
-  TT_RELEASE_SAFELY(_accessToken);
-  TT_RELEASE_SAFELY(_delegate);
-  [super dealloc];
-}
-
-- (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
-  if (!self.isLoading) {
-    
-    TTURLRequest* request = [TTURLRequest
-                             requestWithURL:[NSString stringWithFormat:@"%@/fbuser/%@/token?fb_token=%@",
-                                             kFavsServerBase,
-                                             _userId,
-                                             _accessToken]
-                             delegate:self];
-    
-    request.cachePolicy = TTURLRequestCachePolicyNetwork;
-    request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
-    request.httpMethod = @"GET";
-    
-    TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
-    request.response = response;
-    if ([_delegate respondsToSelector:@selector(requestDidStartLoad:)]) {
-      [_delegate performSelector:@selector(requestDidStartLoad:) withObject:request];
-    }
-    [response release];
-    [request send];
-  }
-}
-
-- (void)request:(TTURLRequest*)request didFailLoadWithError:(NSError*)error {
-  DLog(@"Failed fetching secret: %@", error);
-  [_delegate request:request fetchingSecretError:error];
-  [super request:request didFailLoadWithError:error];
-}
-
-- (void)requestDidFinishLoad:(TTURLRequest*)request {
-  TTURLJSONResponse* response = request.response;
-  TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);  
-  NSDictionary* info = response.rootObject;
-  
-  [_delegate fetchingSecretDone:[info objectForKey:@"secret"]];
-  
-  [super requestDidFinishLoad:request];
-}
-
-@end
+#import "FavoritesSettings.h"
 
 #pragma mark -
 #pragma mark FavoriteIdsFetcher
