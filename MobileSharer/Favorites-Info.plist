@@ -11,13 +11,12 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>Icon.png</string>
+	<string>Favorite-AppIcon.png</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon@2x.png</string>
-		<string>Icon72.png</string>
-		<string>Icon72.png</string>
-		<string>Icon.png</string>
+		<string>Favorite-AppIcon.png</string>
+		<string>Favorite-AppIcon~iphone@2x.png</string>
+		<string>Favorite-AppIcon~ipad.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.betterthantomorrow.favorites</string>
@@ -47,6 +46,8 @@
 	<true/>
 	<key>UIPrerenderedIcon</key>
 	<true/>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -63,7 +64,5 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
-	<key>UIStatusBarHidden</key>
-	<true/>
 </dict>
 </plist>
