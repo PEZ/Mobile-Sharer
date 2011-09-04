@@ -9,23 +9,6 @@
 #import "StyledTableIconDataItem.h"
 
 @interface Post : StyledTableIconDataItem {
-  NSDate*   _updated;
-  NSString* _postId;
-  NSString* _type;
-  NSString* _fromName;
-  NSString* _toName;
-  NSString* _toId;
-  NSString* _picture;
-  NSString* _link;
-  NSString* _linkURL;
-  NSString* _shareURL;
-  NSString* _linkTitle;
-  NSString* _linkText;
-  NSString* _source;
-  NSNumber* _likes;
-  NSNumber* _commentCount;
-  BOOL      _canComment;
-  BOOL      _canLike;
 }
 
 @property (nonatomic, retain) NSDate*   updated;
@@ -45,6 +28,7 @@
 @property (nonatomic, retain) NSNumber* commentCount;
 @property (nonatomic)         BOOL      canComment;
 @property (nonatomic)         BOOL      canLike;
+@property (nonatomic)         BOOL      isFavorite;
 
 + (NSString*)fullPostId:(NSString*)postId andFeedId:(NSString*)feedId;
 

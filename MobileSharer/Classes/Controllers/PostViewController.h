@@ -28,6 +28,7 @@
   @protected
   NSString* _postId;
   BOOL _wasShared;
+  BOOL _isFavoritePost;
   TTActionSheetController* _actionSheet;
   UIBarButtonItem*  _shareButton;
 }
@@ -35,6 +36,7 @@
 @property (nonatomic, retain)   Post* post;
 
 - (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title;
+- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title isFavorite:(BOOL)isFavorite;
 - (void)setupView;
 - (void)comment:(NSString*)text;
 

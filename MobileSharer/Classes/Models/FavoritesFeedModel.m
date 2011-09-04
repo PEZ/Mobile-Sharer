@@ -66,4 +66,11 @@
   return result;
 }
 
+- (void)addEntry:(NSDictionary*)entry toPosts:(NSMutableArray*)posts  {
+  Post* post = [FacebookModel createPostFromEntry:entry];
+  post.URL = [NSString stringWithFormat:@"%@/%d", post.URL, YES];
+  [posts addObject:post];
+}
+
+
 @end

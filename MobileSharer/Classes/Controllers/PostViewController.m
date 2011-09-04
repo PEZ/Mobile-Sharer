@@ -105,6 +105,14 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   return self;
 }
 
+- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title isFavorite:(BOOL)isFavorite {
+  if ((self = [self initWithPostId:postId andTitle:title])) {
+    _isFavoritePost = isFavorite;
+  }
+  return self;
+}
+
+
 - (void)dealloc {
   [self tearDownNavigation];
   TT_RELEASE_SAFELY(_postId);
@@ -201,8 +209,24 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   }
 }
 
+- (void)addFavorite {
+  TTAlert([NSString stringWithFormat:@"Add %@", _postId]);
+}
+
+- (void)removeFavorite {
+  TTAlert([NSString stringWithFormat:@"Remove %@", _postId]);
+}
+
 - (void)setupView {
   if ([self.toolbarItems count] < 1) {
+#if APP==FAVORITES_APP
+    if (self.navigationItem.rightBarButtonItem == nil) {
+      self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
+                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                 target:self
+                                                 action:_isFavoritePost ? @selector(removeFavorite) : @selector(addFavorite)] autorelease];
+    }
+#endif
     NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:4];
     if (_post.canComment) {
       UIBarButtonItem* commentButton = [[[UIBarButtonItem alloc] initWithTitle:@"Comment"
@@ -229,7 +253,6 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   [super modelDidFinishLoad:postModel];
   [self setupView];
 }
-
 
 - (void)viewDidLoad {
   [super viewDidLoad];

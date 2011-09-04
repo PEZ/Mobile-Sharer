@@ -57,6 +57,7 @@
   [map from:kFeedURLPath toViewController:[FeedViewController class]];
 #if APP==FAVORITES_APP
   [map from:kFavoritesFeedURLPath toViewController:[FavoritesViewController class]];
+  [map from:kFavoritePostIdPath toViewController:[PostViewController class]];
 #endif
   [map from:kConnectionsURLPath toViewController:[ConnectionsViewController class]];
   [map from:kPostIdPath toViewController:[PostViewController class]];

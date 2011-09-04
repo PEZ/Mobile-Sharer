@@ -23,6 +23,10 @@
   @throw [NSException exceptionWithName:@"NotImplentedException" reason:@"Method not implemented" userInfo:nil];
 }
 
+- (void)addEntry:(NSDictionary*)entry toPosts:(NSMutableArray*)posts  {
+  [posts addObject:[FacebookModel createPostFromEntry:entry]];
+}
+
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
   TTURLJSONResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
@@ -41,7 +45,7 @@
   TT_RELEASE_SAFELY(_posts);
   
   for (NSDictionary* entry in entries) {
-    [posts addObject:[FacebookModel createPostFromEntry: entry]];
+    [self addEntry:entry toPosts:posts];
   }
   self.posts = posts;
   TT_RELEASE_SAFELY(posts)

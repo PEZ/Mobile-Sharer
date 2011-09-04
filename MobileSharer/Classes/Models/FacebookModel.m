@@ -33,9 +33,7 @@
   return url;
 }
 
-+ (Post*)createPostFromEntry:(NSDictionary *)entry {
-  Post* post = [[[Post alloc] init] autorelease];
-  
++ (Post*)fillPost:(Post*)post fromEntry:(NSDictionary*)entry {  
   NSDate* date = [[FacebookJanitor dateFormatter] dateFromString:[entry objectForKey:@"created_time"]];
   post.created = date;
   post.postId = [entry objectForKey:@"id"];
@@ -81,6 +79,11 @@
   post.linkText = [entry objectForKey:@"description"];
 
   return post;
+}
+
++ (Post*)createPostFromEntry:(NSDictionary *)entry {
+  Post* post = [[[Post alloc] init] autorelease];
+  return [self fillPost:post fromEntry:entry];
 }
 
 + (TTURLRequest*)createRequest:(FBRequest*)fbRequest cachePolicy:(TTURLRequestCachePolicy)cachePolicy delegate:(id<TTURLRequestDelegate>)delegate {

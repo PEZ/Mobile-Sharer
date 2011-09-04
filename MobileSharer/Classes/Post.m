@@ -28,6 +28,7 @@
 @synthesize commentCount      = _commentCount;
 @synthesize canComment        = _canComment;
 @synthesize canLike           = _canLike;
+@synthesize isFavorite        = _isFavorite;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_updated);

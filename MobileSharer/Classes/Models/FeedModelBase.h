@@ -13,5 +13,6 @@
 @property (nonatomic, retain)   NSArray*  posts;
 
 - (NSArray*)entriesFromResponse:(TTURLJSONResponse*)response;
+- (void)addEntry:(NSDictionary *)entry toPosts:(NSMutableArray *)posts;
 
 @end
