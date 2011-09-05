@@ -70,23 +70,30 @@ class FBUserTokenAPIHandler(APIHandler):
     def get(self, user_id):
         from google.appengine.api.urlfetch import fetch
         token = self.request.get('fb_token')
-        try:
-            response = fetch('https://graph.facebook.com/me?access_token=%s' % token)
-            me_data = JSONDecoder().decode(response.content)
-            if me_data.get('id', None) is not None:
-                if me_data.get('id') == user_id:
-                    user = SFUser.user_by_id(user_id)
-                    if user is None:
-                        user = SFUser.create(user_id, SFUser.create_secret())
+        user = SFUser.user_by_user_id_and_fb_token(user_id, token)
+        if user is not None:
+            self.respond({'secret': user.secret, 'status': True})
+        else:
+            try:
+                response = fetch('https://graph.facebook.com/me?access_token=%s' % token)
+                me_data = JSONDecoder().decode(response.content)
+                if me_data.get('id', None) is not None:
+                    if me_data.get('id') == user_id:
+                        user = SFUser.user_by_id(user_id)
+                        if user is None:
+                            user = SFUser.create(user_id, token, SFUser.create_secret())
+                        else:
+                            user.fb_token = token
+                            user.put()
+                        self.respond({'secret': user.secret, 'status': True})
+                    else:
+                        raise FBUserTokenError, "User id mismatch"
                 else:
-                    raise FBUserTokenError, "User id mismatch"
-                self.respond({'secret': user.secret, 'status': True})
-            else:
-                self.bail_with_message(None,
-                                       {'status': False, 'message': 'Facebook API said: %s' % response.content},
-                                       response.status_code)
-        except Exception, err:
-            self.bail_with_message(err, {'status': False, 'message': 'Error while validating Facebook token'})
+                    self.bail_with_message(None,
+                                           {'status': False, 'message': 'Facebook API said: %s' % response.content},
+                                           response.status_code)
+            except Exception, err:
+                self.bail_with_message(err, {'status': False, 'message': 'Error while validating Facebook token'})
             
 class CreateFavAPIHandler(APIHandler):
     @valid_api_user_required
