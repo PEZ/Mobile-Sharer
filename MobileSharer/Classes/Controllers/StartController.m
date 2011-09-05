@@ -180,6 +180,15 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     if (_currentUserLoaded) {
       [_notificationsCountFetcher fetch];
       [_hasLikedChecker check];
+#if APP==FAVORITES_APP
+      if (_favoritesSecret == nil) {
+        _secretFetcher = [[[FavoritesSecretFetcher alloc] initWithUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                                                          andAccessToken:[FacebookJanitor sharedInstance].facebook.accessToken
+                                                             andDelegate:self] retain];
+        [_secretFetcher load:TTURLRequestCachePolicyNetwork more:NO];
+      }
+#endif
+
     }
     else {
       [[FacebookJanitor sharedInstance] getCurrentUserInfo:self];
@@ -377,12 +386,6 @@ Read reviews, ask questions, suggest features, whatever on the \
 - (void) userRequestDidFinishLoad:(UserModel*)userModel {
   _currentUserLoaded = YES;
   _currentUserLoadFailed = NO;
-#if APP==FAVORITES_APP
-  _secretFetcher = [[[FavoritesSecretFetcher alloc] initWithUserId:[FacebookJanitor sharedInstance].currentUser.userId
-                                                    andAccessToken:[FacebookJanitor sharedInstance].facebook.accessToken
-                                                       andDelegate:self] retain];
-  [_secretFetcher load:TTURLRequestCachePolicyNetwork more:NO];
-#endif
   [self refreshData];
 }
 

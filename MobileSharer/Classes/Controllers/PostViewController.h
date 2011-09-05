@@ -12,6 +12,7 @@
 #import "CommentsPostController.h"
 #import "Post.h"
 #import "FavoriteAdder.h"
+#import "FavoriteRemover.h"
 
 @class PostViewController;
 
@@ -34,6 +35,7 @@
   TTActionSheetController* _actionSheet;
   UIBarButtonItem*  _shareButton;
   FavoriteAdder* _favoriteAdder;
+  FavoriteRemover* _favoriteRemover;
 }
 
 @property (nonatomic, retain)   Post* post;

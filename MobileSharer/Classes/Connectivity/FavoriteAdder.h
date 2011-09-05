@@ -12,8 +12,6 @@
 - (void)request:(TTURLRequest*)request addingFavoriteError:(NSError*)error;
 @end
 
-#import "FavoriteUpdaterBase.h"
-
 @interface FavoriteAdder : FavoriteUpdaterBase <TTURLRequestDelegate> {
   @private
   NSString* _authorId;

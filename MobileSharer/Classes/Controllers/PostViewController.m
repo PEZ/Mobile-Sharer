@@ -223,19 +223,29 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
 }
 
 - (void)removeFavorite {
-  TTAlert([NSString stringWithFormat:@"Remove %@", _postId]);
+  self.navigationItem.rightBarButtonItem.enabled = NO;
+  TT_RELEASE_SAFELY(_favoriteRemover);
+  _favoriteRemover = [[FavoriteRemover alloc] initWithPostId:_postId
+                                                   andUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                                                   andSecret:[FavoritesSecretFetcher getSecret]
+                                                 andDelegate:self];
+  [_favoriteRemover remove];
 }
+
+#if APP==FAVORITES_APP
+- (void)createFavoriteUpdaterButton {
+  self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
+                                             initWithImage:_isFavoritePost ? [UIImage imageNamed:@"remove-favorite.png"] : [UIImage imageNamed:@"add-favorite.png"]
+                                             style:UIBarButtonItemStylePlain
+                                             target:self
+                                             action:_isFavoritePost ? @selector(removeFavorite) : @selector(addFavorite)] autorelease];
+}
+#endif
 
 - (void)setupView {
   if ([self.toolbarItems count] < 1) {
 #if APP==FAVORITES_APP
-    if (self.navigationItem.rightBarButtonItem == nil) {
-      self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
-                                                 initWithImage:[UIImage imageNamed:@"add-favorite.png"]
-                                                 style:UIBarButtonItemStylePlain
-                                                 target:self
-                                                 action:_isFavoritePost ? @selector(removeFavorite) : @selector(addFavorite)] autorelease];
-    }
+    [self createFavoriteUpdaterButton];
 #endif
     NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:4];
     if (_post.canComment) {
@@ -329,15 +339,26 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
 #pragma mark FavoriteAdderDelegate
 
 - (void)addingFavoriteDone {
-  _isFavoritePost = NO;
-  self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"bundle://remove-favorite.png"];
-  self.navigationItem.rightBarButtonItem.action = @selector(removeFavorite);
-  self.navigationItem.rightBarButtonItem.enabled = TRUE;
+  _isFavoritePost = YES;
+  [self createFavoriteUpdaterButton];
 }
 
 - (void)request:(TTURLRequest*)request addingFavoriteError:(NSError*)error {
   self.navigationItem.rightBarButtonItem.enabled = TRUE;
   TTAlert([NSString stringWithFormat:@"Failed adding favorite.\n\n(%@)", error]);
+}
+
+#pragma mark -
+#pragma mark FavoriteRemoverDelegate
+
+- (void)removingFavoriteDone {
+  _isFavoritePost = NO;
+  [self createFavoriteUpdaterButton];
+}
+
+- (void)request:(TTURLRequest*)request removingFavoriteError:(NSError*)error {
+  self.navigationItem.rightBarButtonItem.enabled = TRUE;
+  TTAlert([NSString stringWithFormat:@"Failed removing favorite.\n\n(%@)", error]);
 }
 
 @end
