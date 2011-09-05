@@ -119,6 +119,7 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   TT_RELEASE_SAFELY(_postId);
   TT_RELEASE_SAFELY(_actionSheet);
   TT_RELEASE_SAFELY(_favoriteAdder);
+  TT_RELEASE_SAFELY(_favoriteRemover);
   [super dealloc];
 }
 

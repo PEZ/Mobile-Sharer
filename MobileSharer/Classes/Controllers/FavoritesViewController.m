@@ -27,6 +27,10 @@
   [super dealloc];
 }
 
+- (id<UITableViewDelegate>)createDelegate {
+  return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
+}
+
 - (void)createModel {
   self.dataSource = [[[FavoritesFeedDataSource alloc]
                       initWithSecret:_secret andUserId:_userId] autorelease];
