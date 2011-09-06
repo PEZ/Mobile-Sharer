@@ -17,6 +17,7 @@
     _userId = [userId retain];
     self.title = name;
     self.variableHeightRows = YES;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
   }
   return self;
 }

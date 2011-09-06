@@ -214,22 +214,24 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
 
 - (void)addFavorite {
   self.navigationItem.rightBarButtonItem.enabled = NO;
-  TT_RELEASE_SAFELY(_favoriteAdder);
-  _favoriteAdder = [[FavoriteAdder alloc] initWithPostId:_postId
-                                               andUserId:[FacebookJanitor sharedInstance].currentUser.userId
-                                             andAuthorId:_post.fromId
-                                               andSecret:[FavoritesSecretFetcher getSecret]
-                                             andDelegate:self];
+  if (_favoriteAdder == nil) {
+    _favoriteAdder = [[FavoriteAdder alloc] initWithPostId:_postId
+                                                 andUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                                               andAuthorId:_post.fromId
+                                                 andSecret:[FavoritesSecretFetcher getSecret]
+                                               andDelegate:self];
+  }
   [_favoriteAdder add];
 }
 
 - (void)removeFavorite {
   self.navigationItem.rightBarButtonItem.enabled = NO;
-  TT_RELEASE_SAFELY(_favoriteRemover);
-  _favoriteRemover = [[FavoriteRemover alloc] initWithPostId:_postId
-                                                   andUserId:[FacebookJanitor sharedInstance].currentUser.userId
-                                                   andSecret:[FavoritesSecretFetcher getSecret]
-                                                 andDelegate:self];
+  if (_favoriteRemover == nil) {
+    _favoriteRemover = [[FavoriteRemover alloc] initWithPostId:_postId
+                                                     andUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                                                     andSecret:[FavoritesSecretFetcher getSecret]
+                                                   andDelegate:self];
+  }
   [_favoriteRemover remove];
 }
 
