@@ -31,18 +31,24 @@
   @protected
   NSString* _postId;
   BOOL _wasShared;
-  BOOL _isFavoritePost;
   TTActionSheetController* _actionSheet;
   UIBarButtonItem*  _shareButton;
+#if APP==FAVORITES_APP
+  BOOL _isFavoritePost;
+  BOOL _hideFavoriteUpdateUI;
   FavoriteAdder* _favoriteAdder;
   FavoriteRemover* _favoriteRemover;
+#endif
 }
 
 @property (nonatomic, retain)   Post* post;
 
 - (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title;
-- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title isFavorite:(BOOL)isFavorite;
 - (void)setupView;
 - (void)comment:(NSString*)text;
+
+#if APP==FAVORITES_APP
+- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title hideFavoriteUpdateUI:(BOOL)hideFavoriteUpdateUI;
+#endif
 
 @end

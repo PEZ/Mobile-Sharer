@@ -8,7 +8,9 @@
 
 #import "FavoritesFeedDataSource.h"
 #import "FavoritesFeedModel.h"
+#import "FavoritesSecretFetcher.h"
 #import "Post.h"
+#import "FacebookJanitor.h"
 
 @implementation FavoritesFeedDataSource
 
@@ -19,6 +21,11 @@
   }
   
   return self;
+}
+
+- (void) dealloc {
+  TT_RELEASE_SAFELY(_favoriteRemover);
+  [super dealloc];
 }
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
@@ -34,17 +41,26 @@
   TT_RELEASE_SAFELY(items);
 }
 
+
+- (void)removeFavorite:(NSString*)postId {
+  if (_favoriteRemover != nil) {
+    TT_RELEASE_SAFELY(_favoriteRemover);
+  }
+  _favoriteRemover = [[FavoriteRemover alloc] initWithPostId:postId
+                                                   andUserId:[FacebookJanitor sharedInstance].currentUser.userId
+                                                   andSecret:[FavoritesSecretFetcher getSecret]
+                                                 andDelegate:self];
+  [_favoriteRemover remove];
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
   [tableView beginUpdates];
   if (editingStyle == UITableViewCellEditingStyleDelete) {
     if([self.feedModel.posts count] >= indexPath.row){
-      Post* post = [[self.feedModel.posts objectAtIndex:indexPath.row] retain];
-      //[self removeObjectById: myobject.id];
-      
+      [self removeFavorite:((Post*)[self.feedModel.posts objectAtIndex:indexPath.row]).postId];
       [self.feedModel.posts removeObjectAtIndex:indexPath.row];
-      
+      [_items removeObjectAtIndex:indexPath.row];
       [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];
-      TT_RELEASE_SAFELY(post);
     }
   }
   [tableView endUpdates];
@@ -52,6 +68,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   return [self.feedModel.posts count];
+}
+
+
+#pragma mark -
+#pragma mark FavoriteRemoverDelegate
+
+- (void)removingFavoriteDone {
+}
+
+- (void)request:(TTURLRequest*)request removingFavoriteError:(NSError*)error {
+  DLog(@"Failed removing favorite.\n\n(%@)", error)
 }
 
 @end

@@ -106,20 +106,23 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   return self;
 }
 
-- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title isFavorite:(BOOL)isFavorite {
+#if APP==FAVORITES_APP
+- (id)initWithPostId:(NSString *)postId andTitle:(NSString*)title hideFavoriteUpdateUI:(BOOL)hideFavoriteUpdateUI {
   if ((self = [self initWithPostId:postId andTitle:title])) {
-    _isFavoritePost = isFavorite;
+    _hideFavoriteUpdateUI = hideFavoriteUpdateUI;
   }
   return self;
 }
-
+#endif
 
 - (void)dealloc {
   [self tearDownNavigation];
   TT_RELEASE_SAFELY(_postId);
   TT_RELEASE_SAFELY(_actionSheet);
+#if APP==FAVORITES_APP
   TT_RELEASE_SAFELY(_favoriteAdder);
   TT_RELEASE_SAFELY(_favoriteRemover);
+#endif
   [super dealloc];
 }
 
@@ -212,6 +215,7 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   }
 }
 
+#if APP==FAVORITES_APP
 - (void)addFavorite {
   self.navigationItem.rightBarButtonItem.enabled = NO;
   if (_favoriteAdder == nil) {
@@ -235,7 +239,6 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   [_favoriteRemover remove];
 }
 
-#if APP==FAVORITES_APP
 - (void)createFavoriteUpdaterButton {
   self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]
                                              initWithImage:_isFavoritePost ? [UIImage imageNamed:@"remove-favorite.png"] : [UIImage imageNamed:@"add-favorite.png"]
@@ -248,7 +251,9 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
 - (void)setupView {
   if ([self.toolbarItems count] < 1) {
 #if APP==FAVORITES_APP
-    [self createFavoriteUpdaterButton];
+    if (!_hideFavoriteUpdateUI) {
+      [self createFavoriteUpdaterButton];
+    }
 #endif
     NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:4];
     if (_post.canComment) {

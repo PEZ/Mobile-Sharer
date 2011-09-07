@@ -24,7 +24,7 @@ NSString* kConnectionsPathPrefix = kUrlScheme @"://connections";
 NSString* kConnectionsURLPath = kUrlScheme @"://connections/(initWithFBConnectionsPath:)/(andName:)";
 NSString* kPostIdPathPrefix = kUrlScheme @"://post";
 NSString* kPostIdPath = kUrlScheme @"://post/(initWithPostId:)/(andTitle:)";
-NSString* kFavoritePostIdPath = kUrlScheme @"://post/(initWithPostId:)/(andTitle:)/(isFavorite:)";
+NSString* kFavoritePostIdPath = kUrlScheme @"://post/(initWithPostId:)/(andTitle:)/(hideFavoriteUpdateUI:)";
 NSString* kAppStartURLPath = kUrlScheme @"://login";
 NSString* kCommentPath = kUrlScheme @"://comment";
 

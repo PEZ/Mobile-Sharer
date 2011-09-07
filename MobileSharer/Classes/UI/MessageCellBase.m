@@ -115,7 +115,7 @@
 
 - (void)layoutSubviews {
   _messageLabel.frame = CGRectMake(0, 0, self.contentView.width, 0);
-  DLog(@"self.contentView.width: %.0f", self.contentView.width);
+  //DLog(@"self.contentView.width: %.0f", self.contentView.width);
   [_messageLabel sizeToFit];
   [super layoutSubviews];
 }

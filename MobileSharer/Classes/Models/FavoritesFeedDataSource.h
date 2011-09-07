@@ -7,8 +7,12 @@
 //
 
 #import "FeedDataSourceBase.h"
+#import "FavoriteRemover.h"
 
-@interface FavoritesFeedDataSource : FeedDataSourceBase
+@interface FavoritesFeedDataSource : FeedDataSourceBase <FavoriteRemoverDelegate> {
+  @private
+  FavoriteRemover* _favoriteRemover;
+}
 
 - (id)initWithSecret:(NSString*)secret andUserId:(NSString*)userId;
 
