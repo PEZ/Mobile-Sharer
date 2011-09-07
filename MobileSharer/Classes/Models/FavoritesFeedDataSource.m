@@ -34,4 +34,24 @@
   TT_RELEASE_SAFELY(items);
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView beginUpdates];
+  if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if([self.feedModel.posts count] >= indexPath.row){
+      Post* post = [[self.feedModel.posts objectAtIndex:indexPath.row] retain];
+      //[self removeObjectById: myobject.id];
+      
+      [self.feedModel.posts removeObjectAtIndex:indexPath.row];
+      
+      [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:YES];
+      TT_RELEASE_SAFELY(post);
+    }
+  }
+  [tableView endUpdates];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return [self.feedModel.posts count];
+}
+
 @end

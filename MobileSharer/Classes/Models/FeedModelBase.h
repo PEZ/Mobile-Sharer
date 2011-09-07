@@ -10,7 +10,7 @@
 
 @interface FeedModelBase : TTURLRequestModel
 
-@property (nonatomic, retain)   NSArray*  posts;
+@property (nonatomic, retain)   NSMutableArray*  posts;
 
 - (NSArray*)entriesFromResponse:(TTURLJSONResponse*)response;
 - (void)addEntry:(NSDictionary *)entry toPosts:(NSMutableArray *)posts;

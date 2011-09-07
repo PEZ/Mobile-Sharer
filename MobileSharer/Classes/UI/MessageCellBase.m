@@ -79,7 +79,7 @@
 }
 
 
-+ (TTStyledTextLabel*)createStyledLabel {
+- (TTStyledTextLabel*)createStyledLabel {
   TTStyledTextLabel* label = [[[TTStyledTextLabel alloc] initWithFrame:CGRectZero] autorelease];
   label.textColor = TTSTYLEVAR(tableTextColor);
   label.highlightedTextColor = [UIColor whiteColor];
@@ -98,7 +98,7 @@
 
 - (TTStyledTextLabel*)messageLabel {
   if (!_messageLabel) {
-    _messageLabel = [[[self class] createStyledLabel] retain];
+    _messageLabel = [[self createStyledLabel] retain];
     _messageLabel.highlightedTextColor = TTSTYLEVAR(lightColor); //TODO: This doesn't do what I want it to do.
     [self.contentView addSubview:_messageLabel];
   }
@@ -114,9 +114,10 @@
 }
 
 - (void)layoutSubviews {
-  [super layoutSubviews];
   _messageLabel.frame = CGRectMake(0, 0, self.contentView.width, 0);
+  DLog(@"self.contentView.width: %.0f", self.contentView.width);
   [_messageLabel sizeToFit];
+  [super layoutSubviews];
 }
 
 - (void)didMoveToSuperview {
