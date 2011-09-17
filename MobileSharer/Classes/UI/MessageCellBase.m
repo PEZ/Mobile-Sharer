@@ -114,10 +114,10 @@
 }
 
 - (void)layoutSubviews {
-  _messageLabel.frame = CGRectMake(0, 0, self.contentView.width, 0);
-  //DLog(@"self.contentView.width: %.0f", self.contentView.width);
-  [_messageLabel sizeToFit];
   [super layoutSubviews];
+  _messageLabel.frame = CGRectMake(0, 0, self.contentView.width, self.contentView.height);
+  //DLog(@"self.contentView.width: %.0f", self.contentView.width);
+  //[_messageLabel sizeToFit];
 }
 
 - (void)didMoveToSuperview {

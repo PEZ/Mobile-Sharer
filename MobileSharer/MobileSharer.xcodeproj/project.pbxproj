@@ -1847,6 +1847,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Peter Stromberg (42W53LZB79)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1876,6 +1878,7 @@
 					"-licucore",
 				);
 				PRODUCT_NAME = Favorites;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3A79EB7-D11E-4C4C-9879-DCC7B9DF46D6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
