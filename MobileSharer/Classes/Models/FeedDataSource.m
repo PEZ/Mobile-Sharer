@@ -20,7 +20,7 @@
     [items addObject:post];
   }
   
-  [items addObject:[TTTableMoreButton itemWithText:@"Load more posts..."]];
+  //[items addObject:[TTTableMoreButton itemWithText:@"Load more posts..."]];
 
   self.items = items;
   TT_RELEASE_SAFELY(items);

@@ -26,6 +26,8 @@
 
 #pragma mark -
 #pragma mark TTTableViewDataSource
+
+
 - (Class)tableView:(UITableView*)tableView cellClassForObject:(id) object { 
 	if ([object isKindOfClass:[Post class]]) {
     return [FeedPostCell class];

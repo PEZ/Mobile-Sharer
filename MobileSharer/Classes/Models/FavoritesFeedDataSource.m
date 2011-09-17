@@ -29,13 +29,14 @@
 }
 
 - (void)tableViewDidLoadModel:(UITableView*)tableView {
+  [super tableViewDidLoadModel:tableView];
   NSMutableArray* items = [[NSMutableArray alloc] init];
   
   for (Post* post in self.feedModel.posts) {
     [items addObject:post];
   }
   
-  [items addObject:[TTTableMoreButton itemWithText:@"Load more posts..."]];
+  //[items addObject:[TTTableMoreButton itemWithText:@"Load more posts..."]];
   
   self.items = items;
   TT_RELEASE_SAFELY(items);

@@ -74,7 +74,7 @@
 - (Connection*)createLikeAppConnection {
   Connection* connection = [[[Connection alloc] init] autorelease];
   connection.connectionId = nil;
-  connection.connectionName = @"Please Like Share! too";
+  connection.connectionName = @"Please Like " kAppTitle @" too";
   connection.imageURL = @"bundle://love-50x50.png";
   connection.text = connection.connectionName;
   connection.URL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kFeedbackPageUsername];

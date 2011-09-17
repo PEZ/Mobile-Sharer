@@ -343,6 +343,7 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
 - (void)request:(FBRequest*)request didLoad:(id)result {
 }
 
+#if APP==FAVORITES_APP
 #pragma mark -
 #pragma mark FavoriteAdderDelegate
 
@@ -368,5 +369,5 @@ static NSString* kCopyMessageQuotingURLStr = @"ms://postviewcontroller/copy_quot
   self.navigationItem.rightBarButtonItem.enabled = TRUE;
   TTAlert([NSString stringWithFormat:@"Failed removing favorite.\n\n(%@)", error]);
 }
-
+#endif
 @end

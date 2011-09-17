@@ -29,7 +29,7 @@
 }
 
 - (id<UITableViewDelegate>)createDelegate {
-  return [[[TTTableViewVarHeightDelegate alloc] initWithController:self] autorelease];
+  return [[[TTTableViewNetworkEnabledDelegate alloc] initWithController:self withDragRefresh:NO withInfiniteScroll:YES] autorelease];
 }
 
 - (void)createModel {

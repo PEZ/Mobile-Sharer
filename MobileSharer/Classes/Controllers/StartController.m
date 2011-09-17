@@ -283,7 +283,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
                                                       imageURL:[FacebookJanitor avatarForId:kFeedbackPageId]
                                                            URL:shareAppUrl]];
     
-    NSString* shareItUrl = [Etc toPostIdPath:@"139083852806042_145649555484134" andTitle:@"Please share!"];
+    NSString* shareItUrl = [Etc toPostIdPath:kSharePostId andTitle:@"Please share!"];
     [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please share this"
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:shareItUrl]];
@@ -291,13 +291,13 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     NSString* appStoreUrl = [NSString stringWithFormat:
                              @"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&mt=8",
                              kAppStoreId];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate Share! on the App Store"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate " kAppTitle @" on the App Store"
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:appStoreUrl]];
 
     if (_hasLikedChecker.hasChecked && !_hasLikedChecker.hasLiked) {
       NSString* fbShareURL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kFeedbackPageUsername];
-      [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please like the Share! page"
+      [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please like the " kAppTitle @" page"
                                                         imageURL:@"bundle://love-50x50.png"
                                                              URL:fbShareURL]];
     }
@@ -370,6 +370,10 @@ Read reviews, ask questions, suggest features, whatever on the \
 
 -(void) fbjDidLogout {
   _currentUserLoaded = NO;
+#if APP==FAVORITES_APP
+  TT_RELEASE_SAFELY(_favoritesSecret);
+  TT_RELEASE_SAFELY(_secretFetcher);
+#endif
   [self invalidateModel];
 }
 

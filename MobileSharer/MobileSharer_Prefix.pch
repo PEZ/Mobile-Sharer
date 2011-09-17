@@ -45,6 +45,7 @@
   #define kFeedbackPageId @"181951418534610"
   #define kAppTitle @"Share!"
   #define kLinkAttachmentImage @"http://dl.dropbox.com/u/3259215/img/Share/share-picture.png"
+  #define kSharePostId @"139083852806042_145649555484134"
 #elif APP==FAVORITES_APP
   #define kUrlScheme @"favs"
   #define kFacebookAppId @"249849508367878"
@@ -55,6 +56,7 @@
   #define kFeedbackPageId @"245161295504531"
   #define kAppTitle @"Favorites"
   #define kLinkAttachmentImage @"http://dl.dropbox.com/u/3259215/img/Favorites/Favorite-mark.png"
+  #define kSharePostId @"245161295504531_268373419849985"
 #endif
 
 #define kFeedbackPageURL @"https://www.facebook.com/" kFeedbackPageUsername

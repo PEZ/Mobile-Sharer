@@ -60,13 +60,12 @@
 		329ADFBA129C50A700B9B01A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 329ADFB9129C50A700B9B01A /* User.m */; };
 		329ADFBD129C53F700B9B01A /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 329ADFBC129C53F700B9B01A /* UserModel.m */; };
 		329AE1E9129F178800B9B01A /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 329AE1E8129F178800B9B01A /* RegexKitLite.m */; };
-		32AAA93012A1B3CA0068C789 /* Icon75.png in Resources */ = {isa = PBXBuildFile; fileRef = 32AAA92F12A1B3CA0068C789 /* Icon75.png */; };
+		32AAA93012A1B3CA0068C789 /* ShareIcon75.png in Resources */ = {isa = PBXBuildFile; fileRef = 32AAA92F12A1B3CA0068C789 /* ShareIcon75.png */; };
 		32CEF85C128807AD00B2D224 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEF85B128807AD00B2D224 /* Comment.m */; };
 		32D585A712A30EE800E4393A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D585A612A30EE800E4393A /* Entitlements.plist */; };
 		EB03560413B761DC00D5C761 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB03560313B761DC00D5C761 /* TableViewController.m */; };
 		EB0FFA5B140F816C0072F21D /* FeedDataSourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5A140F816B0072F21D /* FeedDataSourceBase.m */; };
 		EB0FFA5C140F816C0072F21D /* FeedDataSourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5A140F816B0072F21D /* FeedDataSourceBase.m */; };
-		EB0FFA5F140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5E140F81A40072F21D /* FavoritesFeedDataSource.m */; };
 		EB0FFA60140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5E140F81A40072F21D /* FavoritesFeedDataSource.m */; };
 		EB0FFAB814137E0C0072F21D /* Favorite-AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFAB714137E0B0072F21D /* Favorite-AppIcon.png */; };
 		EB0FFABE141382FC0072F21D /* Favorite-AppIcon~iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFABD141382FC0072F21D /* Favorite-AppIcon~iphone@2x.png */; };
@@ -80,7 +79,6 @@
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
 		EB6F8F2E140CFB490028516D /* FeedViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F2D140CFB480028516D /* FeedViewControllerBase.m */; };
 		EB6F8F2F140CFB490028516D /* FeedViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F2D140CFB480028516D /* FeedViewControllerBase.m */; };
-		EB6F8F32140D04FB0028516D /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F31140D04FB0028516D /* FavoritesViewController.m */; };
 		EB6F8F33140D04FB0028516D /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F31140D04FB0028516D /* FavoritesViewController.m */; };
 		EB6F8F36140D06CB0028516D /* FeedModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F35140D06CB0028516D /* FeedModelBase.m */; };
 		EB6F8F37140D06CB0028516D /* FeedModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB6F8F35140D06CB0028516D /* FeedModelBase.m */; };
@@ -102,7 +100,7 @@
 		EBB0CFD013DC2A5900304A82 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
 		EBB0CFD113DC2A5900304A82 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3288C944126E2F1800BF1E3C /* FBDialog.bundle */; };
 		EBB0CFD213DC2A5900304A82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 324A051712A079DC008BCD8F /* Default.png */; };
-		EBB0CFD313DC2A5900304A82 /* Icon75.png in Resources */ = {isa = PBXBuildFile; fileRef = 32AAA92F12A1B3CA0068C789 /* Icon75.png */; };
+		EBB0CFD313DC2A5900304A82 /* ShareIcon75.png in Resources */ = {isa = PBXBuildFile; fileRef = 32AAA92F12A1B3CA0068C789 /* ShareIcon75.png */; };
 		EBB0CFD413DC2A5900304A82 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D585A612A30EE800E4393A /* Entitlements.plist */; };
 		EBB0CFD613DC2A5900304A82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB60606139D25E100A9F46C /* Default@2x.png */; };
 		EBB0CFD813DC2A5900304A82 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB6060A139D2C3000A9F46C /* Default-Portrait~ipad.png */; };
@@ -561,7 +559,7 @@
 		329ADFBC129C53F700B9B01A /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		329AE1E7129F178800B9B01A /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		329AE1E8129F178800B9B01A /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
-		32AAA92F12A1B3CA0068C789 /* Icon75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon75.png; path = ../Images/Icon75.png; sourceTree = SOURCE_ROOT; };
+		32AAA92F12A1B3CA0068C789 /* ShareIcon75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ShareIcon75.png; path = ../Images/ShareIcon75.png; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* MobileSharer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileSharer_Prefix.pch; sourceTree = "<group>"; };
 		32CEF85A128807AD00B2D224 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		32CEF85B128807AD00B2D224 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
@@ -747,7 +745,7 @@
 				EBF1658213BA0D3100BA0485 /* Icons */,
 				EBF1658013B9099C00BA0485 /* imageDefault50x50.png */,
 				32D585A612A30EE800E4393A /* Entitlements.plist */,
-				32AAA92F12A1B3CA0068C789 /* Icon75.png */,
+				32AAA92F12A1B3CA0068C789 /* ShareIcon75.png */,
 				324A051712A079DC008BCD8F /* Default.png */,
 				329079CE12836D95005D193A /* Icon.png */,
 				EBB60602139D23C200A9F46C /* Icon@2x.png */,
@@ -942,8 +940,8 @@
 				322DD287128CA5AF00E7D1DA /* CommentsPostController.m */,
 				322DD346128DB47E00E7D1DA /* SharePostController.h */,
 				322DD347128DB47E00E7D1DA /* SharePostController.m */,
-				322DD444128F1D0400E7D1DA /* PostController.h */,
 				322DD445128F1D0400E7D1DA /* PostController.m */,
+				322DD444128F1D0400E7D1DA /* PostController.h */,
 				32034E9212A5AC4000879C06 /* WebController.h */,
 				32034E9312A5AC4000879C06 /* WebController.m */,
 				3242B04D12AECFCC0003F7F3 /* ComposePostController.h */,
@@ -1345,7 +1343,7 @@
 				EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */,
 				3288C95C126E2F1800BF1E3C /* FBDialog.bundle in Resources */,
 				324A051812A079DC008BCD8F /* Default.png in Resources */,
-				32AAA93012A1B3CA0068C789 /* Icon75.png in Resources */,
+				32AAA93012A1B3CA0068C789 /* ShareIcon75.png in Resources */,
 				32D585A712A30EE800E4393A /* Entitlements.plist in Resources */,
 				EBB60603139D23C200A9F46C /* Icon@2x.png in Resources */,
 				EBB60607139D25E200A9F46C /* Default@2x.png in Resources */,
@@ -1384,7 +1382,7 @@
 				EBB0CFD013DC2A5900304A82 /* Three20.bundle in Resources */,
 				EBB0CFD113DC2A5900304A82 /* FBDialog.bundle in Resources */,
 				EBB0CFD213DC2A5900304A82 /* Default.png in Resources */,
-				EBB0CFD313DC2A5900304A82 /* Icon75.png in Resources */,
+				EBB0CFD313DC2A5900304A82 /* ShareIcon75.png in Resources */,
 				EBB0CFD413DC2A5900304A82 /* Entitlements.plist in Resources */,
 				EBB0CFD613DC2A5900304A82 /* Default@2x.png in Resources */,
 				EBB0CFD813DC2A5900304A82 /* Default-Portrait~ipad.png in Resources */,
@@ -1482,10 +1480,8 @@
 				EBEC4F3D13C0BB7500F5731C /* NotificationCell.m in Sources */,
 				EBA9556213D389C300AE581C /* HighlightedTableImageItemCell.m in Sources */,
 				EB6F8F2E140CFB490028516D /* FeedViewControllerBase.m in Sources */,
-				EB6F8F32140D04FB0028516D /* FavoritesViewController.m in Sources */,
 				EB6F8F36140D06CB0028516D /* FeedModelBase.m in Sources */,
 				EB0FFA5B140F816C0072F21D /* FeedDataSourceBase.m in Sources */,
-				EB0FFA5F140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */,
 				EBAA3393141419EE00F7037C /* FavoriteUpdaterBase.m in Sources */,
 				EBAA339514142D7A00F7037C /* FavoriteAdder.m in Sources */,
 				EBAA33AA14157B0A00F7037C /* FavoriteRemover.m in Sources */,
