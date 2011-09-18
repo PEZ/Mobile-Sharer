@@ -123,7 +123,7 @@ static const CGFloat kMarginY = 6;
         _linkField.text = [Etc mobileYouTubeURL:_linkField.text];
       }
       [Etc params:&params addObject:_linkField.text forKey:@"link"];
-      [Etc params:&params addObject:kLinkAttachmentImage forKey:@"picture"];
+      //[Etc params:&params addObject:kLinkAttachmentImage forKey:@"picture"]; //TODO: Evaluate this and come up with a better solution
     }
     NSString* path = [NSString stringWithFormat:@"%@/%@", _feedId, [_linkField.text isMatchedByRegex:@"^http://(www[.])?youtube[.]com"] ? @"links" : @"feed"];
     [fb requestWithGraphPath:path
