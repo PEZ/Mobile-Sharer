@@ -180,7 +180,7 @@
 		EBB0D02313DC2A5900304A82 /* HighlightedTableImageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EBA9556113D389C300AE581C /* HighlightedTableImageItemCell.m */; };
 		EBB0D02513DC2A5900304A82 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF1659E13BA892400BA0485 /* Security.framework */; };
 		EBB0D02613DC2A5900304A82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		EBB0D02713DC2A5900304A82 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		EBB0D02713DC2A5900304A82 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EBB0D02813DC2A5900304A82 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		EBB0D02913DC2A5900304A82 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
 		EBB0D02A13DC2A5900304A82 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
