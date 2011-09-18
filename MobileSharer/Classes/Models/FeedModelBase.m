@@ -27,16 +27,19 @@
   [posts addObject:[FacebookModel createPostFromEntry:entry]];
 }
 
+- (BOOL)isLoadMoreQuery:(TTURLRequest *)request  {
+  return [[request urlPath] rangeOfString:@"until="].location != NSNotFound;
+}
+
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
   TTURLJSONResponse* response = request.response;
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);
   
   NSArray *entries = [self entriesFromResponse:response];
   
-  BOOL more = ([[request urlPath] rangeOfString:@"until="].location != NSNotFound);
   NSMutableArray* posts;
   
-  if (more) {
+  if ([self isLoadMoreQuery: request]) {
     posts = [[NSMutableArray arrayWithArray:_posts] retain];
   }
   else {

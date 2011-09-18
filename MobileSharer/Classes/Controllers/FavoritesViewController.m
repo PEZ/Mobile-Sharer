@@ -8,6 +8,7 @@
 
 #import "FavoritesViewController.h"
 #import "FavoritesFeedDataSource.h"
+#import "FavoritesFeedModel.h"
 
 @implementation FavoritesViewController
 
@@ -37,5 +38,13 @@
                       initWithSecret:_secret andUserId:_userId] autorelease];
 }
 
-
+- (BOOL)shouldLoadAtScrollRatio:(CGFloat)scrollRatio {
+  TTURLRequestModel* model = (TTURLRequestModel*)self.dataSource.model;
+  if (model.hasNoMore) {
+    return NO;
+  }
+  else {
+    return scrollRatio > 0.5;
+  }
+}
 @end

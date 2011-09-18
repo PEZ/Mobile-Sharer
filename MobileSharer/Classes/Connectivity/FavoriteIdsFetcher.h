@@ -9,7 +9,7 @@
 #import "FavoritesSettings.h"
 
 @protocol FavoriteIdsFetcherDelegate <NSObject>
-- (void)fetchingFavoriteIdsDone:(NSArray*)ids;
+- (void)fetchingFavoriteIdsDone:(NSArray*)ids more:(BOOL)more hasNoMore:(BOOL)hasNoMore;
 - (void)request:(TTURLRequest*)request fetchingFavoriteIdsError:(NSError*)error;
 @end
 
@@ -18,9 +18,10 @@
   NSString* _secret;
   NSString* _userId;
   id<FavoriteIdsFetcherDelegate> _delegate;
+  NSString* _lastFavCreatedAt;
 }
 
-@property (readonly, retain) NSDate* lastFavCreatedAt;
+@property (nonatomic, retain) NSString* lastFavCreatedAt;
 
 - (id)initWithSecret:(NSString*)secret andUserId:(NSString*)userId andDelegate:(id<FavoriteIdsFetcherDelegate>)delegate;
 

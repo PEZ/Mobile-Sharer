@@ -32,12 +32,16 @@
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
   if (!self.isLoading) {
     
+    NSString* url = [NSString stringWithFormat:@"%@/favs?user_id=%@&secret=%@&limit=%d",
+                     kFavsServerBase,
+                     _userId,
+                     _secret,
+                     kFavIdsPerPage];
+    if (more && _lastFavCreatedAt != nil) {
+      url = [NSString stringWithFormat:@"%@&older_than=%@", url, _lastFavCreatedAt];
+    }
     TTURLRequest* request = [TTURLRequest
-                             requestWithURL:[NSString stringWithFormat:@"%@/favs?user_id=%@&secret=%@&limit=%d",
-                                             kFavsServerBase,
-                                             _userId,
-                                             _secret,
-                                             kIdsPerPage]
+                             requestWithURL:url
                              delegate:self];
     
     request.cachePolicy = TTURLRequestCachePolicyNetwork;
@@ -63,12 +67,11 @@
   TTDASSERT([response.rootObject isKindOfClass:[NSDictionary class]]);  
   NSDictionary* info = response.rootObject;
   
-  if (_lastFavCreatedAt != nil) {
-    TT_RELEASE_SAFELY(_lastFavCreatedAt);
+  if (_lastFavCreatedAt == nil || ![_lastFavCreatedAt isEqualToString:[info objectForKey:@"oldest_created_at"]]) {
+    self.lastFavCreatedAt = [info objectForKey:@"oldest_created_at"];
   }
-  _lastFavCreatedAt = [info objectForKey:@"oldest_created_at"];
   
-  [_delegate fetchingFavoriteIdsDone:[NSArray arrayWithArray:[info objectForKey:@"favorites"]]];
+  [_delegate fetchingFavoriteIdsDone:[NSArray arrayWithArray:[info objectForKey:@"favorites"]] more:[[request urlPath] rangeOfString:@"older_than="].location != NSNotFound hasNoMore:self.lastFavCreatedAt == nil];
   
   [super requestDidFinishLoad:request];
 }

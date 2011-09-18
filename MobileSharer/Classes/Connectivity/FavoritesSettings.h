@@ -9,5 +9,4 @@
 //#define kFavsServerBase @"http://localhost:8080/api"
 #define kFavsServerBase @"https://social-favorites.appspot.com/api"
 
-#define kIdsPerPage 25
-#define secretForUserIdKey @"favSecret" userId 
+#define kFavIdsPerPage 20

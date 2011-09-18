@@ -34,18 +34,30 @@
   [super load:cachePolicy more:more];
 }
 
-- (void)fetchingFavoriteIdsDone:(NSArray*)ids {
+- (BOOL)isLoadMoreQuery:(TTURLRequest *)request  {
+  return [[request urlPath] rangeOfString:@"load_more=1"].location != NSNotFound;
+}
+
+- (void)fetchingFavoriteIdsDone:(NSArray*)ids more:(BOOL)more hasNoMore:(BOOL)hasNoMore {
+  self.hasNoMore = hasNoMore;
+  
   TT_RELEASE_SAFELY(_favoriteIds);
   _favoriteIds = [ids retain];
-  FBRequest* fbRequest;
-  NSString* path = @"";
-  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:[_favoriteIds componentsJoinedByString:@","] forKey:@"ids"];
-  fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path
-                                                                          andParams:params
-                                                                      andHttpMethod:@"GET"
-                                                                        andDelegate:nil];
-  
-  [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
+  if ([ids count] > 0) {
+    FBRequest* fbRequest;
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:[_favoriteIds componentsJoinedByString:@","] forKey:@"ids"];
+    if (more) {
+      [params setObject:@"1" forKey:@"load_more"];
+    }
+    fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:@""
+                                                                            andParams:params
+                                                                        andHttpMethod:@"GET"
+                                                                          andDelegate:nil];
+    [[FacebookModel createRequest:fbRequest cachePolicy:TTURLRequestCachePolicyNetwork delegate:self] send]; //TODO: use cachePolicy arg
+  }
+  else {
+    [self reset];
+  }
 }
 
 - (void)request:(TTURLRequest*)request fetchingFavoriteIdsError:(NSError*)error {
