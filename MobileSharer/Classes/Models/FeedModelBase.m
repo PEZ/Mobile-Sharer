@@ -48,7 +48,10 @@
   TT_RELEASE_SAFELY(_posts);
   
   for (NSDictionary* entry in entries) {
-    [self addEntry:entry toPosts:posts];
+    //DLog(@"Type: %@ - Message: %@", [entry objectForKey:@"type"], [entry objectForKey:@"message"]);
+    if (!([[entry objectForKey:@"type"] isEqualToString:@"status"] && [entry objectForKey:@"message"] == nil)) {
+      [self addEntry:entry toPosts:posts];
+    }
   }
   self.posts = posts;
   TT_RELEASE_SAFELY(posts)
