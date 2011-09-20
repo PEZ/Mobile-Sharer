@@ -198,11 +198,11 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 }
 
 - (void)createModel {
+  self.variableHeightRows = NO;
+  self.tableView.rowHeight = 64;
   TTListDataSource* dataSource = [[TTListDataSource alloc] init];
   NSString* html = @"";
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
-    self.variableHeightRows = NO;
-    self.tableView.rowHeight = 64;
     _loginLogoutButton.title = @"Logout";
     _loginLogoutButton.action = @selector(logout);
 
@@ -304,15 +304,27 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
   }
   else {
     self.variableHeightRows = YES;
-    html = [NSString stringWithFormat:@"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://Icon75.png\"/>\
+#if APP==SHARE_APP
+    html = [NSString stringWithFormat:@"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://ShareIcon75.png\"/>\
 Welcome to Share!\n\n\
 To be able to help you follow your Facebook feed and share links <b>Share!</b> needs your permission. Please \
 click the login button and grant it.\n\n\
 Share! will never post in your name without you telling it to. Hopefull you will use Share! to tell your \
 friends you are a happy user of the app anyway. Please do!\n\n\
 Read reviews, ask questions, suggest features, whatever on the \
-<a href=\"%@\">Share! Facebook page.</a> \
+Share!'s <a href=\"%@\">Facebook page.</a> \
 (Please Like that page too.)</div>", kFeedbackPageURL];
+#else
+    html = [NSString stringWithFormat:@"<div class=\"appInfo\"><img class=\"articleImage\" src=\"bundle://FavoritesIcon75.png\"/>\
+Welcome to Social Favorites for Facebook\n\n\
+To be able to help you follow your Facebook feed, share links and save Favorite posts <b>Favorites</b> needs your permission. Please \
+click the login button and grant it.\n\n\
+Social Favorites will never post in your name without you telling it to. Hopefull you will use Social Favorites to tell your \
+friends you are a happy user of the app anyway. Please do!\n\n\
+Read reviews, ask questions, suggest features, whatever on \
+Social Favorite's <a href=\"%@\">Facebook page.</a> \
+(Please Like that page too.)</div>", kFeedbackPageURL];
+#endif    
     _loginLogoutButton.title = @"Login";
     _loginLogoutButton.action = @selector(login);
     self.navigationItem.leftBarButtonItem = nil;

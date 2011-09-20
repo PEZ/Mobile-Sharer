@@ -29,11 +29,6 @@ extern NSString* kAppStartURLPath;
 extern NSString* kFacebookLoginPath;
 extern NSString* kCommentPath;
 
-extern NSString* kAppStoreId;
-extern NSString* kFeedbackPageUsername;
-extern NSString* kFeedbackPageId;
-extern NSString* kFeedbackPageURL;
-
 @interface Etc : NSObject {
 }
 

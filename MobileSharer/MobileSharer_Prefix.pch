@@ -52,7 +52,7 @@
   #define kFacebookAccessTokenKey @"fbAccessToken-Favorites"
   #define kFacebookExpirationDateKey kFacebookAccessTokenKey @"-expires"
   #define kAppStoreId @"454057589"
-  #define kFeedbackPageUsername @"favorites"
+  #define kFeedbackPageUsername @"SocialFavorites"
   #define kFeedbackPageId @"245161295504531"
   #define kAppTitle @"Favorites"
   #define kLinkAttachmentImage @"http://dl.dropbox.com/u/3259215/img/Favorites/Favorite-mark.png"

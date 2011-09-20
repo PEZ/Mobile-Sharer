@@ -64,5 +64,9 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
+	<key>UILaunchImageFile~iphone</key>
+	<string>FavoritesDefault.png</string>
+	<key>UILaunchImageFile~ipad</key>
+	<string>FavoritesDefault.png</string>
 </dict>
 </plist>
