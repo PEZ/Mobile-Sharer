@@ -1905,7 +1905,7 @@
 			};
 			name = Debug;
 		};
-		EBB0D03413DC2A5900304A82 /* Ad Hoc */ = {
+		EBB0D03413DC2A5900304A82 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1939,12 +1939,12 @@
 					"-licucore",
 				);
 				PRODUCT_NAME = Favorites;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8CFC7DC1-CFC1-4A40-9F7F-EDFBD86C96AB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "16DE5154-4E6B-4252-A1A6-F6E2421081B2";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
-			name = "Ad Hoc";
+			name = AdHoc;
 		};
 		EBB0D03513DC2A5900304A82 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -2023,11 +2023,11 @@
 			};
 			name = AppStore;
 		};
-		EBF9BE8B13D087A100AC6124 /* Ad Hoc */ = {
+		EBF9BE8B13D087A100AC6124 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -2046,9 +2046,9 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 			};
-			name = "Ad Hoc";
+			name = AdHoc;
 		};
-		EBF9BE8C13D087A100AC6124 /* Ad Hoc */ = {
+		EBF9BE8C13D087A100AC6124 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2087,7 +2087,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
-			name = "Ad Hoc";
+			name = AdHoc;
 		};
 /* End XCBuildConfiguration section */
 
@@ -2096,7 +2096,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
-				EBF9BE8C13D087A100AC6124 /* Ad Hoc */,
+				EBF9BE8C13D087A100AC6124 /* AdHoc */,
 				3282165A12A31C5C00600FDB /* Release */,
 				32D5851212A30D4B00E4393A /* AppStore */,
 			);
@@ -2107,7 +2107,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
-				EBF9BE8B13D087A100AC6124 /* Ad Hoc */,
+				EBF9BE8B13D087A100AC6124 /* AdHoc */,
 				3282165912A31C5C00600FDB /* Release */,
 				32D5851112A30D4B00E4393A /* AppStore */,
 			);
@@ -2118,7 +2118,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBB0D03313DC2A5900304A82 /* Debug */,
-				EBB0D03413DC2A5900304A82 /* Ad Hoc */,
+				EBB0D03413DC2A5900304A82 /* AdHoc */,
 				EBB0D03513DC2A5900304A82 /* Release */,
 				EBB0D03613DC2A5900304A82 /* AppStore */,
 			);
