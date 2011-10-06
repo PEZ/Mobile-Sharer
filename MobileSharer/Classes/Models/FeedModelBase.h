@@ -11,6 +11,7 @@
 @interface FeedModelBase : TTURLRequestModel
 
 @property (nonatomic, retain)   NSMutableArray*  posts;
+@property (nonatomic, retain)   NSDate*          lastPostCreated;
 
 - (NSArray*)entriesFromResponse:(TTURLJSONResponse*)response;
 - (void)addEntry:(NSDictionary *)entry toPosts:(NSMutableArray *)posts;

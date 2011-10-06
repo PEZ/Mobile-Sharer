@@ -25,7 +25,7 @@
     NSString* path = [NSString stringWithFormat:@"%@/%@", _feedId, [_feedId isEqual:@"me"] ? @"home" : @"feed"];
     if (more) {
       NSString* until = [NSString stringWithFormat:@"%@",
-                         [NSNumber numberWithDouble:[[[self.posts lastObject] created] timeIntervalSince1970]]];
+                         [NSNumber numberWithDouble:[self.lastPostCreated timeIntervalSince1970]]];
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObject:until forKey:@"until"];
       fbRequest = [[FacebookJanitor sharedInstance].facebook createRequestWithGraphPath:path
                                                                            andParams:params

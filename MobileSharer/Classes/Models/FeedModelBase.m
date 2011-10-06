@@ -9,13 +9,15 @@
 #import "FeedModelBase.h"
 #import "Post.h"
 #import "FacebookJanitor.h"
-
+#import "RegexKitLite.h"
 @implementation FeedModelBase
 
 @synthesize posts      = _posts;
+@synthesize lastPostCreated = _lastPostCreated;
 
 - (void)dealloc {
   TT_RELEASE_SAFELY(_posts);
+  TT_RELEASE_SAFELY(_lastPostCreated);
   [super dealloc];
 }
 
@@ -37,6 +39,10 @@
   
   NSArray *entries = [self entriesFromResponse:response];
   
+  if ([entries count] > 0) {
+    self.lastPostCreated = [[FacebookJanitor dateFormatter] dateFromString:[[entries lastObject] objectForKey:@"created_time"]];
+  }
+  
   NSMutableArray* posts;
   
   if ([self isLoadMoreQuery: request]) {
@@ -48,10 +54,15 @@
   TT_RELEASE_SAFELY(_posts);
   
   for (NSDictionary* entry in entries) {
-    //DLog(@"Type: %@ - Message: %@", [entry objectForKey:@"type"], [entry objectForKey:@"message"]);
-    if (!([[entry objectForKey:@"type"] isEqualToString:@"status"] && [entry objectForKey:@"message"] == nil)) {
-      [self addEntry:entry toPosts:posts];
+    //DLog(@"Type: [%@], Message: [%@], Story: [%@]", [entry objectForKey:@"type"], [entry objectForKey:@"message"], [entry objectForKey:@"story"]);
+    if (([(NSString*)[entry objectForKey:@"type"] isEqualToString:@"status"] && [entry objectForKey:@"message"] == nil)) {
+      continue;
     }
+    if (([(NSString*)[entry objectForKey:@"type"] isEqualToString:@"link"] && [entry objectForKey:@"story"] != nil &&
+            ![(NSString*)[entry objectForKey:@"story"] isMatchedByRegex:@"shared a link.$"])) {
+      continue;
+    }
+    [self addEntry:entry toPosts:posts];
   }
   self.posts = posts;
   TT_RELEASE_SAFELY(posts)

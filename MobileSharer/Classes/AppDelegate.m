@@ -30,7 +30,7 @@
   else 
     [[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
 
-  [TTStyleSheet setGlobalStyleSheet:[[[DefaultStyleSheet 
+  [TTStyleSheet setGlobalStyleSheet:[[[DefaultStyleSheet
                                        alloc] init] autorelease]];
   TTNavigator* navigator = [TTNavigator navigator];
   navigator.persistenceMode = TTNavigatorPersistenceModeAll;

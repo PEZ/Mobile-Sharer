@@ -44,6 +44,8 @@
 	<string>0.9</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UILaunchImageFile</key>
+	<string>FavoritesDefault.png</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIStatusBarHidden</key>
@@ -64,9 +66,5 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
-	<key>UILaunchImageFile~iphone</key>
-	<string>FavoritesDefault.png</string>
-	<key>UILaunchImageFile~ipad</key>
-	<string>FavoritesDefault.png</string>
 </dict>
 </plist>

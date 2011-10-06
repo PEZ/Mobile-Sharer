@@ -40,7 +40,7 @@
     notification.created = [NSDate dateWithTimeIntervalSince1970:[[entry objectForKey:@"created_time"] intValue]];
     notification.fromAvatar = [FacebookJanitor avatarForId:notification.fromId];
     notification.isNew = [(NSNumber*)[entry objectForKey:@"is_unread"] boolValue];
-    NSString* href = [entry objectForKey:@"href"]; 
+    NSString* href = [entry objectForKey:@"href"];
     if (notification.type != nil && ![notification.type isKindOfClass:[NSNull class]]) {
       if ([notification.type isEqualToString:@"stream"] ) {
         if (href && [href isKindOfClass:[NSString class]] && [href rangeOfString:@"sk=wall"].location != NSNotFound) {
@@ -65,6 +65,10 @@
       }
       else if ([notification.type isEqualToString:@"friend"] ) {
         notification.URL = [Etc toFeedURLPath:notification.objectId name:@"Friend"];
+      }
+      else if ([href isMatchedByRegex:@"/posts/[0-9]+\\?"]){
+        NSString *objectId = [href stringByMatching:@"/posts/([0-9]+)" capture:1];
+        notification.URL = [Etc toPostIdPath:objectId andTitle:@"Post"];
       }
     }
   }

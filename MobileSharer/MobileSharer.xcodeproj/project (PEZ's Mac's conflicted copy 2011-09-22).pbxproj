@@ -72,14 +72,14 @@
 		EB0FFA5B140F816C0072F21D /* FeedDataSourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5A140F816B0072F21D /* FeedDataSourceBase.m */; };
 		EB0FFA5C140F816C0072F21D /* FeedDataSourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5A140F816B0072F21D /* FeedDataSourceBase.m */; };
 		EB0FFA60140F81A50072F21D /* FavoritesFeedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFA5E140F81A40072F21D /* FavoritesFeedDataSource.m */; };
+		EB0FFAB814137E0C0072F21D /* Favorite-AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFAB714137E0B0072F21D /* Favorite-AppIcon.png */; };
+		EB0FFABE141382FC0072F21D /* Favorite-AppIcon~iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFABD141382FC0072F21D /* Favorite-AppIcon~iphone@2x.png */; };
+		EB0FFAC0141383370072F21D /* Favorite-AppIcon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFABF141383370072F21D /* Favorite-AppIcon~ipad.png */; };
 		EB0FFAC3141384530072F21D /* favorites-50x50.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFAC1141384530072F21D /* favorites-50x50.png */; };
 		EB0FFAC4141384530072F21D /* favorites-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFAC2141384530072F21D /* favorites-50x50@2x.png */; };
 		EB0FFAC7141389070072F21D /* FavoritesSecretFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFAC6141389070072F21D /* FavoritesSecretFetcher.m */; };
 		EB0FFACD1413A67E0072F21D /* FavoriteIdsFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFACC1413A67E0072F21D /* FavoriteIdsFetcher.m */; };
 		EB0FFACF1413A6B50072F21D /* FavoritesFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EB0FFACE1413A6B50072F21D /* FavoritesFeedModel.m */; };
-		EB2D11E7143D99E200431364 /* Favorite-AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFAB714137E0B0072F21D /* Favorite-AppIcon.png */; };
-		EB2D11E8143D99E500431364 /* Favorite-AppIcon~iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFABD141382FC0072F21D /* Favorite-AppIcon~iphone@2x.png */; };
-		EB2D11E9143D99EE00431364 /* Favorite-AppIcon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0FFABF141383370072F21D /* Favorite-AppIcon~ipad.png */; };
 		EB383C1410BBF8C70000B2D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB383C1310BBF8C70000B2D2 /* QuartzCore.framework */; };
 		EB383D1110BBFC630000B2D2 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB383D1010BBFC630000B2D2 /* Three20.bundle */; };
 		EB4D54C214291E3300DBFE60 /* FavoritesDefault-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4D54C114291E3300DBFE60 /* FavoritesDefault-Portrait.png */; };
@@ -1419,6 +1419,9 @@
 				EBB0CFE913DC2A5900304A82 /* likes-50x50@2x.png in Resources */,
 				EBB0CFEA13DC2A5900304A82 /* notifications-50x50.png in Resources */,
 				EBB0CFEB13DC2A5900304A82 /* notifications-50x50@2x.png in Resources */,
+				EB0FFAB814137E0C0072F21D /* Favorite-AppIcon.png in Resources */,
+				EB0FFABE141382FC0072F21D /* Favorite-AppIcon~iphone@2x.png in Resources */,
+				EB0FFAC0141383370072F21D /* Favorite-AppIcon~ipad.png in Resources */,
 				EB0FFAC3141384530072F21D /* favorites-50x50.png in Resources */,
 				EB0FFAC4141384530072F21D /* favorites-50x50@2x.png in Resources */,
 				EBAA33A61414326C00F7037C /* add-favorite.png in Resources */,
@@ -1431,9 +1434,6 @@
 				EB0657631429163F00A3A020 /* FavoritesDefault@2x.png in Resources */,
 				EB4D54C214291E3300DBFE60 /* FavoritesDefault-Portrait.png in Resources */,
 				EB4D54C41429226C00DBFE60 /* FavoritesDefault-Landscape.png in Resources */,
-				EB2D11E7143D99E200431364 /* Favorite-AppIcon.png in Resources */,
-				EB2D11E8143D99E500431364 /* Favorite-AppIcon~iphone@2x.png in Resources */,
-				EB2D11E9143D99EE00431364 /* Favorite-AppIcon~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1894,14 +1894,14 @@
 					"-licucore",
 				);
 				PRODUCT_NAME = Favorites;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3A79EB7-D11E-4C4C-9879-DCC7B9DF46D6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74158F22-4BE3-4B7E-8DE3-9B72DFD83D7F";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
-		EBB0D03413DC2A5900304A82 /* AdHoc */ = {
+		EBB0D03413DC2A5900304A82 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1940,7 +1940,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
-			name = AdHoc;
+			name = "Ad Hoc";
 		};
 		EBB0D03513DC2A5900304A82 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1985,7 +1985,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Stromberg";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2012,18 +2012,18 @@
 					"-licucore",
 				);
 				PRODUCT_NAME = Favorites;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74F91047-9437-4734-B499-B45A2B076319";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = AppStore;
 		};
-		EBF9BE8B13D087A100AC6124 /* AdHoc */ = {
+		EBF9BE8B13D087A100AC6124 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -2042,9 +2042,9 @@
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 			};
-			name = AdHoc;
+			name = "Ad Hoc";
 		};
-		EBF9BE8C13D087A100AC6124 /* AdHoc */ = {
+		EBF9BE8C13D087A100AC6124 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2083,7 +2083,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
-			name = AdHoc;
+			name = "Ad Hoc";
 		};
 /* End XCBuildConfiguration section */
 
@@ -2092,7 +2092,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
-				EBF9BE8C13D087A100AC6124 /* AdHoc */,
+				EBF9BE8C13D087A100AC6124 /* Ad Hoc */,
 				3282165A12A31C5C00600FDB /* Release */,
 				32D5851212A30D4B00E4393A /* AppStore */,
 			);
@@ -2103,7 +2103,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
-				EBF9BE8B13D087A100AC6124 /* AdHoc */,
+				EBF9BE8B13D087A100AC6124 /* Ad Hoc */,
 				3282165912A31C5C00600FDB /* Release */,
 				32D5851112A30D4B00E4393A /* AppStore */,
 			);
@@ -2114,7 +2114,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EBB0D03313DC2A5900304A82 /* Debug */,
-				EBB0D03413DC2A5900304A82 /* AdHoc */,
+				EBB0D03413DC2A5900304A82 /* Ad Hoc */,
 				EBB0D03513DC2A5900304A82 /* Release */,
 				EBB0D03613DC2A5900304A82 /* AppStore */,
 			);

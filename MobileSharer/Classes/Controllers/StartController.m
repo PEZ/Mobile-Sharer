@@ -199,7 +199,7 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
 
 - (void)createModel {
   self.variableHeightRows = NO;
-  self.tableView.rowHeight = 64;
+  self.tableView.rowHeight = 70;
   TTListDataSource* dataSource = [[TTListDataSource alloc] init];
   NSString* html = @"";
   if ([[FacebookJanitor sharedInstance] isLoggedIn]) {
@@ -291,16 +291,17 @@ static const NSTimeInterval kNotificationsCountFetchInterval = 120;
     NSString* appStoreUrl = [NSString stringWithFormat:
                              @"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&mt=8",
                              kAppStoreId];
-    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please rate " kAppTitle @" on the App Store"
+    [dataSource.items addObject:[TTTableImageItem itemWithText:@"Rate " kAppTitle @" on the App Store"
                                                       imageURL:@"bundle://love-50x50.png"
                                                            URL:appStoreUrl]];
-
+/*
     if (_hasLikedChecker.hasChecked && !_hasLikedChecker.hasLiked) {
       NSString* fbShareURL = [NSString stringWithFormat:@"https://www.facebook.com/%@", kFeedbackPageUsername];
       [dataSource.items addObject:[TTTableImageItem itemWithText:@"Please like the " kAppTitle @" page"
                                                         imageURL:@"bundle://love-50x50.png"
                                                              URL:fbShareURL]];
     }
+*/
   }
   else {
     self.variableHeightRows = YES;

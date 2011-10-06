@@ -201,13 +201,13 @@
 }
 
 - (TTBoxStyle*)tableMetaText {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin, 0, 0, kTableCellSmallMargin) next:
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(kTableCellSmallMargin + 3, 0, 0, kTableCellSmallMargin) next:
           [TTTextStyle styleWithFont:TTSTYLEVAR(tableMetaFont) color:TTSTYLEVAR(tableMetaTextColor) next:
            nil]];
 }
 
 - (TTBoxStyle*)tableMetaIcon {
-  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(0, 0, 0, kTableCellSmallMargin)
+  return [TTBoxStyle styleWithMargin:UIEdgeInsetsMake(-3, 0, 0, kTableCellSmallMargin)
                              padding:UIEdgeInsetsZero
                              minSize:CGSizeZero
                             position:TTPositionStatic next:nil];
